@@ -1,22 +1,15 @@
 
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import React from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import RoleLayout from '@/components/RoleLayout';
 import RoleProtectedRoute from '@/components/RoleProtectedRoute';
-import { Card, CardContent } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import TranscriptViewer from '@/components/conversations/TranscriptViewer';
-import SkillFeedbackAccordion from '@/components/ai/SkillFeedbackAccordion';
-import InsightSection from '@/components/insights/InsightSection';
+import { nanoid } from 'nanoid';
 import { mockConversations } from '@/data/mockData';
 import { conversationSkillAnalysisMock } from '@/mocks/conversationSkillAnalysis';
-import { nanoid } from 'nanoid';
 import { expandableInsightsMock } from '@/data/insightsMockData';
-import ConversationHeader from '@/components/conversations/ConversationHeader';
-import AudioPlayer from '@/components/conversations/AudioPlayer';
-import ConversationMeta from '@/components/conversations/ConversationMeta';
-import AiRecommendations from '@/components/conversations/AiRecommendations';
+import ConversationHeader from './components/ConversationHeader';
+import ConversationContent from './components/ConversationContent';
+import ConversationSidebar from './components/ConversationSidebar';
 
 // Mock transcript data with AI insights for salesperson messages and dual-language support
 const mockTranscript = [{
@@ -131,11 +124,8 @@ const mockRecommendations = [
 ];
 
 const ConversationDetail = () => {
-  const { t } = useTranslation();
   const { id } = useParams<{ id: string; }>();
   const location = useLocation();
-  const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('transcript');
 
   // Find the conversation by ID
   const conversation = mockConversations.find(conv => conv.id === id);
@@ -152,8 +142,8 @@ const ConversationDetail = () => {
               duration={0} 
             />
             <div className="p-12 text-center">
-              <h2 className="text-2xl font-bold text-red-500 mb-2">{t('common.error')}</h2>
-              <p className="text-muted-foreground">{t('sales.noConversations')}</p>
+              <h2 className="text-2xl font-bold text-red-500 mb-2">Error</h2>
+              <p className="text-muted-foreground">Conversation not found</p>
             </div>
           </div>
         </RoleLayout>
@@ -174,58 +164,19 @@ const ConversationDetail = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
             {/* Left column - main content */}
-            <div className="lg:col-span-2 space-y-6">
-              {/* Audio player */}
-              <AudioPlayer duration={conversation.duration} />
-              
-              {/* Transcript and Insights */}
-              <Tabs defaultValue="transcript" value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid grid-cols-2 mb-4">
-                  <TabsTrigger value="transcript">{t('conversation.transcript')}</TabsTrigger>
-                  <TabsTrigger value="insights">{t('conversation.insights')}</TabsTrigger>
-                </TabsList>
-                
-                <TabsContent value="transcript" className="space-y-4 animate-fade-in">
-                  <Card>
-                    <CardContent className="pt-6">
-                      <TranscriptViewer messages={mockTranscript} />
-                    </CardContent>
-                  </Card>
-                </TabsContent>
-                
-                <TabsContent value="insights" className="space-y-4 animate-fade-in">
-                  {/* Skill Feedback Section */}
-                  <Card>
-                    <CardContent className="pt-6">
-                      <SkillFeedbackAccordion skills={conversationSkillAnalysisMock} />
-                    </CardContent>
-                  </Card>
-                  
-                  {/* Insights Analysis Section */}
-                  <Card>
-                    <CardContent>
-                      <InsightSection insights={expandableInsightsMock} />
-                    </CardContent>
-                  </Card>
-                </TabsContent>
-              </Tabs>
-            </div>
+            <ConversationContent 
+              duration={conversation.duration}
+              transcript={mockTranscript}
+              skills={conversationSkillAnalysisMock}
+              insights={expandableInsightsMock}
+            />
             
             {/* Right column - meta info */}
-            <div className="space-y-6">
-              {/* Meta information card */}
-              <Card>
-                <CardContent className="p-6">
-                  <ConversationMeta
-                    date={conversation.date}
-                    duration={conversation.duration}
-                  />
-                </CardContent>
-              </Card>
-              
-              {/* AI Recommendations */}
-              <AiRecommendations recommendations={mockRecommendations} />
-            </div>
+            <ConversationSidebar 
+              date={conversation.date}
+              duration={conversation.duration}
+              recommendations={mockRecommendations}
+            />
           </div>
         </div>
       </RoleLayout>

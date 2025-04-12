@@ -3,17 +3,16 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import DashboardLayout from '@/components/DashboardLayout';
 import { mockConversations } from '@/data/mockData';
-import { ArrowLeftIcon, CalendarIcon, ClockIcon, PercentIcon } from 'lucide-react';
-import { format } from 'date-fns';
-import InsightCard from '@/components/InsightCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { conversationSkillAnalysisMock } from '@/mocks/conversationSkillAnalysis';
-import SkillFeedbackAccordion from '@/components/ai/SkillFeedbackAccordion';
-import TranscriptViewer, { TranscriptMessage } from '@/components/conversations/TranscriptViewer';
+import { formatDuration } from '@/utils/formatters';
+import ConversationDetailHeader from './components/ConversationDetailHeader';
+import TranscriptTabContent from './components/TranscriptTabContent';
+import InsightsTabContent from './components/InsightsTabContent';
+import RecommendationsSidebar from './components/RecommendationsSidebar';
+import { TranscriptMessage } from '@/components/conversations/TranscriptViewer';
 
 const ConversationDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -34,13 +33,6 @@ const ConversationDetail = () => {
       </DashboardLayout>
     );
   }
-  
-  // Format duration from seconds to minutes:seconds
-  const formatDuration = (seconds: number) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
   
   // Enhanced transcript with inline AI insights and dual-language support
   const mockTranscriptWithInsights: TranscriptMessage[] = [
@@ -220,38 +212,34 @@ const ConversationDetail = () => {
     behavior: allInsights.filter(i => i.type === "behavior"),
     custom: allInsights.filter(i => i.type === "custom")
   };
+  
+  // Sample recommendations for sidebar
+  const recommendations = [
+    {
+      label: "improvement",
+      text: "Offer accessories after customer shows interest in a specific phone model.",
+      type: "improvement" as const
+    },
+    {
+      label: "opportunity",
+      text: "Address price concerns by highlighting value and financing options earlier.",
+      type: "opportunity" as const
+    },
+    {
+      label: "improvement",
+      text: "Continue demonstrating strong product knowledge across multiple brands.",
+      type: "improvement" as const
+    }
+  ];
 
   return (
     <DashboardLayout>
-      <div className="mb-6 flex justify-between items-center">
-        <div className="flex items-center">
-          <Button variant="ghost" size="icon" onClick={() => navigate(-1)} className="mr-2">
-            <ArrowLeftIcon className="h-4 w-4" />
-          </Button>
-          <h1 className="text-2xl font-bold">
-            {t('conversation.transcript')}
-          </h1>
-        </div>
-        
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center text-sm text-muted-foreground">
-            <CalendarIcon className="mr-1 h-4 w-4" />
-            {format(new Date(conversation.date), 'PP')}
-          </div>
-          <div className="flex items-center text-sm text-muted-foreground">
-            <ClockIcon className="mr-1 h-4 w-4" />
-            {formatDuration(conversation.duration)}
-          </div>
-          <div className={`px-2 py-1 rounded-full text-xs font-medium flex items-center ${
-            conversation.score >= 90 ? 'bg-insight-green/20 text-insight-green' :
-            conversation.score >= 70 ? 'bg-insight-yellow/20 text-insight-yellow' :
-            'bg-insight-red/20 text-insight-red'
-          }`}>
-            <PercentIcon className="mr-1 h-3 w-3" />
-            {t('conversation.score')}: {conversation.score}
-          </div>
-        </div>
-      </div>
+      <ConversationDetailHeader 
+        date={conversation.date}
+        score={conversation.score}
+        duration={conversation.duration}
+        formatDuration={formatDuration}
+      />
 
       <div className="grid gap-6 md:grid-cols-3">
         <div className="md:col-span-2">
@@ -262,123 +250,20 @@ const ConversationDetail = () => {
             </TabsList>
             
             <TabsContent value="transcript">
-              <Card>
-                <CardContent className="p-6">
-                  <TranscriptViewer messages={mockTranscriptWithInsights} />
-                </CardContent>
-              </Card>
+              <TranscriptTabContent messages={mockTranscriptWithInsights} />
             </TabsContent>
             
             <TabsContent value="analysis">
-              <Card className="mb-6">
-                <CardContent className="p-6">
-                  <SkillFeedbackAccordion skills={conversationSkillAnalysisMock} />
-                </CardContent>
-              </Card>
-              
-              {/* Critical/Urgent insights - shown first for priority */}
-              {groupedInsights.urgent.length > 0 && (
-                <div className="mb-4">
-                  <h3 className="text-md font-semibold mb-2 text-insight-red">
-                    {t('insight.type.urgent')} ({groupedInsights.urgent.length})
-                  </h3>
-                  <div className="space-y-3">
-                    {groupedInsights.urgent.map(insight => (
-                      <InsightCard key={insight.id} insight={insight} />
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Improvement insights */}
-              {groupedInsights.improvement.length > 0 && (
-                <div className="mb-4">
-                  <h3 className="text-md font-semibold mb-2 text-insight-green">
-                    {t('insight.type.improvement')} ({groupedInsights.improvement.length})
-                  </h3>
-                  <div className="space-y-3">
-                    {groupedInsights.improvement.map(insight => (
-                      <InsightCard key={insight.id} insight={insight} />
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Opportunity insights */}
-              {groupedInsights.opportunity.length > 0 && (
-                <div className="mb-4">
-                  <h3 className="text-md font-semibold mb-2 text-insight-yellow">
-                    {t('insight.type.opportunity')} ({groupedInsights.opportunity.length})
-                  </h3>
-                  <div className="space-y-3">
-                    {groupedInsights.opportunity.map(insight => (
-                      <InsightCard key={insight.id} insight={insight} />
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Behavior insights */}
-              {groupedInsights.behavior.length > 0 && (
-                <div className="mb-4">
-                  <h3 className="text-md font-semibold mb-2 text-gray-600">
-                    {t('insight.type.behavior')} ({groupedInsights.behavior.length})
-                  </h3>
-                  <div className="space-y-3">
-                    {groupedInsights.behavior.map(insight => (
-                      <InsightCard key={insight.id} insight={insight} />
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Custom insights */}
-              {groupedInsights.custom.length > 0 && (
-                <div className="mb-4">
-                  <h3 className="text-md font-semibold mb-2 text-blue-600">
-                    {t('insight.type.custom')} ({groupedInsights.custom.length})
-                  </h3>
-                  <div className="space-y-3">
-                    {groupedInsights.custom.map(insight => (
-                      <InsightCard key={insight.id} insight={insight} />
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Empty state when no insights are available */}
-              {Object.values(groupedInsights).every(group => group.length === 0) && (
-                <Card className="p-8 text-center text-muted-foreground">
-                  {t('sales.noAnalysisAvailable')}
-                </Card>
-              )}
+              <InsightsTabContent 
+                skills={conversationSkillAnalysisMock} 
+                groupedInsights={groupedInsights} 
+              />
             </TabsContent>
           </Tabs>
         </div>
         
         <div>
-          <h2 className="text-lg font-semibold mb-4">{t('conversation.recommendations.title')}</h2>
-          <div className="space-y-4">
-            <Card>
-              <CardContent className="p-4">
-                <h3 className="font-medium mb-2">{t('conversation.recommendations.title')}</h3>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start">
-                    <div className="w-2 h-2 rounded-full bg-insight-green mt-1.5 mr-2" />
-                    <span>Offer accessories after customer shows interest in a specific phone model.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="w-2 h-2 rounded-full bg-insight-yellow mt-1.5 mr-2" />
-                    <span>Address price concerns by highlighting value and financing options earlier.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="w-2 h-2 rounded-full bg-insight-green mt-1.5 mr-2" />
-                    <span>Continue demonstrating strong product knowledge across multiple brands.</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
+          <RecommendationsSidebar recommendations={recommendations} />
         </div>
       </div>
     </DashboardLayout>

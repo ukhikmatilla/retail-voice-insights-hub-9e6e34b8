@@ -14,7 +14,9 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import InsightCard from '@/components/InsightCard';
 import TranscriptViewer from '@/components/conversations/TranscriptViewer';
+import SkillFeedbackAccordion from '@/components/ai/SkillFeedbackAccordion';
 import { mockConversations } from '@/data/mockData';
+import { conversationSkillAnalysisMock } from '@/mocks/conversationSkillAnalysis';
 import { nanoid } from 'nanoid';
 
 // Mock transcript data - in a real application, this would be dynamic
@@ -215,6 +217,12 @@ const ConversationDetail = () => {
                 </TabsContent>
                 
                 <TabsContent value="insights" className="space-y-4 animate-fade-in">
+                  <Card>
+                    <CardContent className="pt-6">
+                      <SkillFeedbackAccordion skills={conversationSkillAnalysisMock} />
+                    </CardContent>
+                  </Card>
+                  
                   {conversation.insights.length > 0 ? (
                     conversation.insights.map(insight => (
                       <InsightCard key={insight.id} insight={insight} />

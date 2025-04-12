@@ -1,18 +1,20 @@
+
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { InsightType, Insight } from '@/types';
 import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
 import { LightbulbIcon, TrendingUpIcon, AlertTriangleIcon, RepeatIcon, WrenchIcon } from 'lucide-react';
+
 interface InsightCardProps {
   insight: Insight;
 }
+
 const InsightCard: React.FC<InsightCardProps> = ({
   insight
 }) => {
-  const {
-    t
-  } = useTranslation();
+  const { t } = useTranslation();
+  
   const getInsightDetails = () => {
     switch (insight.type) {
       case 'improvement':
@@ -47,10 +49,33 @@ const InsightCard: React.FC<InsightCardProps> = ({
         };
     }
   };
-  const {
-    icon,
-    className
-  } = getInsightDetails();
-  return;
+  
+  const { icon, className } = getInsightDetails();
+  
+  return (
+    <Card className={cn("mb-3 overflow-hidden", className)}>
+      <CardContent className="p-4">
+        <div className="flex items-start gap-3">
+          <div className="mt-0.5 shrink-0">
+            {icon}
+          </div>
+          <div>
+            <h4 className="font-medium text-sm">
+              {t(`insight.type.${insight.type}`)}
+            </h4>
+            <p className="text-sm text-gray-600 mt-1">
+              {insight.content}
+            </p>
+            {insight.timestamp && (
+              <p className="text-xs text-gray-500 mt-2">
+                {insight.timestamp}
+              </p>
+            )}
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
 };
+
 export default InsightCard;

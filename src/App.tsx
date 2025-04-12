@@ -14,6 +14,7 @@ import Onboarding from "./pages/onboarding";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import SelectRole from "./pages/auth/SelectRole";
+import ForgotPassword from "./pages/auth/ForgotPassword";
 
 // Salesperson pages
 import SalesDashboard from "./pages/sales/dashboard";
@@ -57,6 +58,7 @@ const App = () => (
               {/* Auth routes */}
               <Route path="/auth/login" element={<Login />} />
               <Route path="/auth/register" element={<Register />} />
+              <Route path="/auth/forgot-password" element={<ForgotPassword />} />
               <Route 
                 path="/auth/select-role" 
                 element={

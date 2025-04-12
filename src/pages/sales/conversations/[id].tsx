@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import RoleLayout from '@/components/RoleLayout';
 import RoleProtectedRoute from '@/components/RoleProtectedRoute';
@@ -11,6 +12,7 @@ import ConversationContent from './components/ConversationContent';
 import ConversationSidebar from './components/ConversationSidebar';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 
 // Mock transcript data with AI insights for salesperson messages and dual-language support
 const mockTranscript = [{
@@ -130,6 +132,12 @@ const ConversationDetail = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
+  useEffect(() => {
+    // Log for debugging
+    console.log("Current conversation ID:", id);
+    console.log("Available conversations:", mockConversations.map(c => c.id));
+  }, [id]);
+
   // Find the conversation by ID
   const conversation = id ? mockConversations.find(conv => conv.id === id) : null;
 
@@ -142,19 +150,19 @@ const ConversationDetail = () => {
             <div className="mb-6">
               <Button 
                 variant="ghost" 
-                className="mb-6" 
                 onClick={() => navigate('/sales/conversations')}
               >
-                <h1 className="text-2xl font-bold">{t('conversation.transcript')}</h1>
-              </Button>
-            </div>
-            <div className="p-12 text-center">
-              <h2 className="text-2xl font-bold text-red-500 mb-2">{t('common.error')}</h2>
-              <p className="text-muted-foreground mb-6">Conversation not found</p>
-              <Button onClick={() => navigate('/sales/conversations')}>
+                <ArrowLeft className="h-4 w-4 mr-2" />
                 {t('common.back')}
               </Button>
             </div>
+            <Card className="p-8 text-center">
+              <h2 className="text-2xl font-bold text-red-500 mb-2">{t('common.error')}</h2>
+              <p className="text-muted-foreground mb-6">{t('conversation.notFound', 'Conversation not found')}</p>
+              <Button onClick={() => navigate('/sales/conversations')}>
+                {t('common.back')}
+              </Button>
+            </Card>
           </div>
         </RoleLayout>
       </RoleProtectedRoute>

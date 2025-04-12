@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { format, isValid } from 'date-fns';
+import { format, isValid, parseISO } from 'date-fns';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -25,10 +25,26 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
   const getFormattedDate = () => {
     if (!date) return '';
     
-    const dateObj = new Date(date);
-    if (!isValid(dateObj)) return t('common.error');
-    
-    return format(dateObj, 'PPP');
+    try {
+      // First try parsing as ISO string
+      let dateObj = parseISO(date);
+      
+      // If that doesn't work, try as a regular date
+      if (!isValid(dateObj)) {
+        dateObj = new Date(date);
+      }
+      
+      // If still not valid, return error message
+      if (!isValid(dateObj)) {
+        console.warn('Invalid date format:', date);
+        return t('common.error');
+      }
+      
+      return format(dateObj, 'PPP');
+    } catch (error) {
+      console.error('Error formatting date:', error);
+      return t('common.error');
+    }
   };
 
   return (

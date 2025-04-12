@@ -139,7 +139,8 @@
     "customer": "Mijoz",
     "playAudio": "Audio yozuvni tinglash",
     "pauseAudio": "To'xtatish",
-    "downloadTranscript": "Matnni yuklab olish"
+    "downloadTranscript": "Matnni yuklab olish",
+    "notFound": "Suhbat topilmadi"
   },
   "insight": {
     "type": {

@@ -139,9 +139,9 @@
     "customer": "Клиент",
     "playAudio": "Прослушать аудиозапись",
     "pauseAudio": "Приостановить",
-    "downloadTranscript": "Скачать расшифровку"
+    "downloadTranscript": "Скачать расшифровку",
+    "notFound": "Разговор не найден"
   },
-  
   "insight": {
     "type": {
       "improvement": "Улучшение",
@@ -151,7 +151,6 @@
       "custom": "Специальное"
     }
   },
-  
   "insights": {
     "skillAnalysis": "Анализ навыков",
     "noSkillAnalysisAvailable": "Анализ навыков пока недоступен",
@@ -181,7 +180,6 @@
       }
     }
   },
-  
   "training": {
     "status": {
       "assigned": "Назначено",
@@ -231,7 +229,8 @@
     "viewInsight": "Посмотреть подсказку AI",
     "speakerLabels": {
       "seller": "Продавец",
-      "customer": "Клиент"
+      "customer": "Клиент",
+      "salesperson": "Продавец"
     }
   }
 }

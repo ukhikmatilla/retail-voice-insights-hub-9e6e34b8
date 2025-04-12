@@ -11,19 +11,17 @@ import { Separator } from '@/components/ui/separator';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import InsightCard from '@/components/InsightCard';
-import TranscriptViewer, { TranscriptMessage } from '@/components/conversations/TranscriptViewer';
+import TranscriptViewer from '@/components/conversations/TranscriptViewer';
 import SkillFeedbackAccordion from '@/components/ai/SkillFeedbackAccordion';
 import { mockConversations } from '@/data/mockData';
 import { conversationSkillAnalysisMock } from '@/mocks/conversationSkillAnalysis';
-import { InsightType } from '@/types';
 import { nanoid } from 'nanoid';
 import InsightSection from '@/components/insights/InsightSection';
 import { expandableInsightsMock } from '@/data/insightsMockData';
 
 // Mock transcript data - in a real application, this would be dynamic
 // Ensuring that the speaker property is explicitly typed as "salesperson" | "customer"
-const mockTranscript: TranscriptMessage[] = [{
+const mockTranscript = [{
   id: nanoid(),
   speaker: "salesperson",
   content: 'Hello! Welcome to our store. How can I help you today?',
@@ -65,14 +63,8 @@ const mockTranscript: TranscriptMessage[] = [{
   timestamp: '00:52'
 }];
 const ConversationDetail = () => {
-  const {
-    t
-  } = useTranslation();
-  const {
-    id
-  } = useParams<{
-    id: string;
-  }>();
+  const { t } = useTranslation();
+  const { id } = useParams<{ id: string; }>();
   const navigate = useNavigate();
   const location = useLocation();
   const [isPlaying, setIsPlaying] = useState(false);
@@ -103,7 +95,8 @@ const ConversationDetail = () => {
 
   // Return to conversations list if conversation not found
   if (!conversation) {
-    return <RoleProtectedRoute allowedRoles={['salesperson']}>
+    return (
+      <RoleProtectedRoute allowedRoles={['salesperson']}>
         <RoleLayout currentPath={location.pathname}>
           <div className="animate-fade-in">
             <Button variant="ghost" onClick={() => navigate('/sales/conversations')}>
@@ -116,35 +109,13 @@ const ConversationDetail = () => {
             </div>
           </div>
         </RoleLayout>
-      </RoleProtectedRoute>;
+      </RoleProtectedRoute>
+    );
   }
   const formattedDate = format(new Date(conversation.date), 'PPP');
 
-  // Additional example insights for the extended types
-  const additionalInsights = [{
-    id: "behavior-1",
-    type: "behavior" as InsightType,
-    content: t("insights.types.behavior.example"),
-    skillKey: "trustBuilding"
-  }, {
-    id: "custom-1",
-    type: "custom" as InsightType,
-    content: "Customer showed interest in product colors, indicating preference-based shopping.",
-    timestamp: "00:25"
-  }];
-
-  // All insights including standard ones from the conversation plus the new types
-  const allInsights = [...conversation.insights, ...additionalInsights];
-
-  // Group insights by type for better organization
-  const groupedInsights = {
-    urgent: allInsights.filter(i => i.type === "urgent"),
-    improvement: allInsights.filter(i => i.type === "improvement"),
-    opportunity: allInsights.filter(i => i.type === "opportunity"),
-    behavior: allInsights.filter(i => i.type === "behavior"),
-    custom: allInsights.filter(i => i.type === "custom")
-  };
-  return <RoleProtectedRoute allowedRoles={['salesperson']}>
+  return (
+    <RoleProtectedRoute allowedRoles={['salesperson']}>
       <RoleLayout currentPath={location.pathname}>
         <div className="animate-fade-in">
           {/* Back button */}
@@ -218,13 +189,14 @@ const ConversationDetail = () => {
                 </TabsContent>
                 
                 <TabsContent value="insights" className="space-y-4 animate-fade-in">
+                  {/* Skill Feedback Section */}
                   <Card>
                     <CardContent className="pt-6">
                       <SkillFeedbackAccordion skills={conversationSkillAnalysisMock} />
                     </CardContent>
                   </Card>
                   
-                  {/* New Expandable Insights Section */}
+                  {/* Insights Analysis Section - KEEP ONLY HERE */}
                   <Card>
                     <CardHeader>
                       <CardTitle className="text-lg">{t('conversation.insights')}</CardTitle>
@@ -233,54 +205,6 @@ const ConversationDetail = () => {
                       <InsightSection insights={expandableInsightsMock} />
                     </CardContent>
                   </Card>
-                  
-                  {/* Old Insights Display - kept for backward compatibility */}
-                  {/* Critical/Urgent insights - shown first for priority */}
-                  {groupedInsights.urgent.length > 0 && <div className="mb-4">
-                      <h3 className="text-md font-semibold mb-2 text-insight-red">
-                        {t('insight.type.urgent')} ({groupedInsights.urgent.length})
-                      </h3>
-                      <div className="space-y-3">
-                        {groupedInsights.urgent.map(insight => <InsightCard key={insight.id} insight={insight} />)}
-                      </div>
-                    </div>}
-                  
-                  {/* Improvement insights */}
-                  {groupedInsights.improvement.length > 0 && <div className="mb-4">
-                      
-                      <div className="space-y-3">
-                        {groupedInsights.improvement.map(insight => <InsightCard key={insight.id} insight={insight} />)}
-                      </div>
-                    </div>}
-                  
-                  {/* Opportunity insights */}
-                  {groupedInsights.opportunity.length > 0 && <div className="mb-4">
-                      
-                      <div className="space-y-3">
-                        {groupedInsights.opportunity.map(insight => <InsightCard key={insight.id} insight={insight} />)}
-                      </div>
-                    </div>}
-                  
-                  {/* Behavior insights */}
-                  {groupedInsights.behavior.length > 0 && <div className="mb-4">
-                      
-                      <div className="space-y-3">
-                        {groupedInsights.behavior.map(insight => <InsightCard key={insight.id} insight={insight} />)}
-                      </div>
-                    </div>}
-                  
-                  {/* Custom insights */}
-                  {groupedInsights.custom.length > 0 && <div className="mb-4">
-                      
-                      <div className="space-y-3">
-                        {groupedInsights.custom.map(insight => <InsightCard key={insight.id} insight={insight} />)}
-                      </div>
-                    </div>}
-                  
-                  {/* Empty state when no insights are available */}
-                  {Object.values(groupedInsights).every(group => group.length === 0) && <Card className="p-8 text-center text-muted-foreground">
-                      {t('sales.noAnalysisAvailable')}
-                    </Card>}
                 </TabsContent>
               </Tabs>
             </div>
@@ -386,6 +310,7 @@ const ConversationDetail = () => {
           </div>
         </div>
       </RoleLayout>
-    </RoleProtectedRoute>;
+    </RoleProtectedRoute>
+  );
 };
 export default ConversationDetail;

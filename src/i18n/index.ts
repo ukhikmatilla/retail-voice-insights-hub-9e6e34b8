@@ -21,7 +21,16 @@ i18n
     fallbackLng: 'uz',
     interpolation: {
       escapeValue: false
+    },
+    react: {
+      useSuspense: false // Prevents loading issues with React 18
     }
   });
+
+// Export a function to change language that also updates localStorage
+export const changeLanguage = (lang: 'uz' | 'ru') => {
+  localStorage.setItem('language', lang);
+  i18n.changeLanguage(lang);
+};
 
 export default i18n;

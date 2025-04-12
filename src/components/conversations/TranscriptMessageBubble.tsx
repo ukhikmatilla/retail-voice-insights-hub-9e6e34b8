@@ -16,12 +16,16 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 
-// Enhanced TranscriptMessage interface with insight data
+// Enhanced TranscriptMessage interface with insight data and translations
 export interface TranscriptMessage {
   id: string;
   speaker: 'salesperson' | 'customer';
-  content: string;
+  content?: string; // Legacy field (keeping for backward compatibility)
   timestamp: string; // mm:ss format
+  translations?: {
+    uz: string;
+    ru: string;
+  };
   insight?: {
     category: 'closing' | 'personalization' | 'error' | 'opportunity';
     title: {
@@ -61,6 +65,14 @@ const TranscriptMessageBubble: React.FC<TranscriptMessageBubbleProps> = ({ messa
   // Handle toggling insight on mobile
   const toggleInsight = () => {
     setIsExpanded(!isExpanded);
+  };
+
+  // Get the message text in the current language
+  const getMessageText = () => {
+    if (message.translations) {
+      return message.translations[currentLang];
+    }
+    return message.content || '';
   };
   
   // Insight content component (shared between mobile and desktop)
@@ -119,7 +131,7 @@ const TranscriptMessageBubble: React.FC<TranscriptMessageBubbleProps> = ({ messa
             </span>
           </div>
           <p className="text-sm break-words whitespace-pre-wrap">
-            {message.content}
+            {getMessageText()}
           </p>
           
           {/* Insight icon for salesperson messages with insights */}

@@ -223,6 +223,11 @@
       "personalization": "Персонализация",
       "error": "Ошибка",
       "opportunity": "Возможность"
+    },
+    "viewInsight": "Посмотреть подсказку AI",
+    "speakerLabels": {
+      "seller": "Продавец",
+      "customer": "Клиент"
     }
   }
 }

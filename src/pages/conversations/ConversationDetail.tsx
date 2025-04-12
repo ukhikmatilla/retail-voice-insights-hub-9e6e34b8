@@ -42,13 +42,16 @@ const ConversationDetail = () => {
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
   
-  // Enhanced transcript with inline AI insights
+  // Enhanced transcript with inline AI insights and dual-language support
   const mockTranscriptWithInsights: TranscriptMessage[] = [
     { 
       id: "1",
       speaker: 'salesperson', 
-      content: 'Hello! Welcome to our store. How can I help you today?',
       timestamp: '00:00',
+      translations: {
+        uz: 'Salom! Do\'konimizga xush kelibsiz. Sizga qanday yordam bera olaman?',
+        ru: 'Здравствуйте! Добро пожаловать в наш магазин. Как я могу вам помочь?'
+      },
       insight: {
         category: 'personalization',
         title: {
@@ -64,26 +67,38 @@ const ConversationDetail = () => {
     { 
       id: "2",
       speaker: 'customer', 
-      content: "Hi, I'm looking for a new smartphone with a good camera.",
-      timestamp: '00:05'
+      timestamp: '00:05',
+      translations: {
+        uz: "Salom, men yaxshi kamerali yangi smartfon qidiryapman.",
+        ru: "Здравствуйте, я ищу новый смартфон с хорошей камерой."
+      }
     },
     { 
       id: "3",
       speaker: 'salesperson', 
-      content: "We have several great options. Are you interested in any specific brand?",
-      timestamp: '00:12'
+      timestamp: '00:12',
+      translations: {
+        uz: "Bizda bir nechta ajoyib variantlar bor. Biror brend bilan qiziqasizmi?",
+        ru: "У нас есть несколько отличных вариантов. Интересуетесь какой-то конкретной маркой?"
+      }
     },
     { 
       id: "4",
       speaker: 'customer', 
-      content: "I've been using Samsung for years, but I'm open to other suggestions.",
-      timestamp: '00:22'
+      timestamp: '00:22',
+      translations: {
+        uz: "Men yillar davomida Samsung ishlatganman, lekin boshqa takliflarga ham ochiqman.",
+        ru: "Я годами пользовался Samsung, но открыт и для других предложений."
+      }
     },
     { 
       id: "5",
       speaker: 'salesperson', 
-      content: "Samsung makes excellent cameras. The new Galaxy S23 Ultra has an amazing 108MP camera with great low-light performance. But if you're open to alternatives, the iPhone 14 Pro also has an exceptional camera system.",
       timestamp: '00:28',
+      translations: {
+        uz: "Samsung ajoyib kameralar yaratadi. Yangi Galaxy S23 Ultra ajoyib 108MP kamera va yaxshi kam yorug'lik ko'rsatkichlariga ega. Ammo agar alternativalarni o'ylayotgan bo'lsangiz, iPhone 14 Pro ham ajoyib kamera tizimiga ega.",
+        ru: "Samsung создает отличные камеры. Новый Galaxy S23 Ultra имеет потрясающую 108-мегапиксельную камеру с отличной работой при слабом освещении. Но если вы рассматриваете альтернативы, iPhone 14 Pro также имеет исключительную систему камер."
+      },
       insight: {
         category: 'closing',
         title: {
@@ -99,26 +114,38 @@ const ConversationDetail = () => {
     { 
       id: "6",
       speaker: 'customer', 
-      content: "What about price? What's the difference between them?",
-      timestamp: '00:40'
+      timestamp: '00:40',
+      translations: {
+        uz: "Narxi qanday? Ular orasida qanday farq bor?",
+        ru: "А как насчет цены? В чем разница между ними?"
+      }
     },
     { 
       id: "7",
       speaker: 'salesperson', 
-      content: "The Galaxy S23 Ultra starts at $1,199 and the iPhone 14 Pro starts at $999. Both are premium devices, but they have different ecosystems.",
-      timestamp: '00:45'
+      timestamp: '00:45',
+      translations: {
+        uz: "Galaxy S23 Ultra narxi 1,199 dollardan boshlanadi va iPhone 14 Pro narxi 999 dollardan boshlanadi. Ikkalasi ham premium qurilmalar, lekin turli ekotizimlarga ega.",
+        ru: "Galaxy S23 Ultra стоит от 1199 долларов, а iPhone 14 Pro - от 999 долларов. Оба являются премиальными устройствами, но имеют разные экосистемы."
+      }
     },
     { 
       id: "8",
       speaker: 'customer', 
-      content: "That's quite expensive. Do you have any mid-range options with good cameras?",
-      timestamp: '00:52'
+      timestamp: '00:52',
+      translations: {
+        uz: "Bu ancha qimmat ekan. Yaxshi kamerali o'rta narxdagi variantlaringiz bormi?",
+        ru: "Это довольно дорого. У вас есть варианты среднего ценового сегмента с хорошими камерами?"
+      }
     },
     { 
       id: "9",
       speaker: 'salesperson', 
-      content: "Yes, the Google Pixel 7a has one of the best cameras in the mid-range segment, and it's priced at $499. The Samsung Galaxy A54 is also excellent at $449.",
       timestamp: '01:05',
+      translations: {
+        uz: "Ha, Google Pixel 7a o'rta narx segmentida eng yaxshi kameralardan biriga ega va narxi 499 dollar. Samsung Galaxy A54 ham 449 dollar narxi bilan ajoyib.",
+        ru: "Да, Google Pixel 7a имеет одну из лучших камер в среднем сегменте и стоит 499 долларов. Samsung Galaxy A54 также отличный вариант за 449 долларов."
+      },
       insight: {
         category: 'opportunity',
         title: {
@@ -134,14 +161,20 @@ const ConversationDetail = () => {
     { 
       id: "10",
       speaker: 'customer', 
-      content: "I think I'll take a look at the Pixel 7a. Can I see it?",
-      timestamp: '01:15'
+      timestamp: '01:15',
+      translations: {
+        uz: "Men Pixel 7a'ga qarab ko'rsam bo'ladi deb o'ylayman. Uni ko'rsating.",
+        ru: "Думаю, я посмотрю на Pixel 7a. Можно его увидеть?"
+      }
     },
     { 
       id: "11",
       speaker: 'salesperson', 
-      content: "Absolutely, let me get one for you.",
       timestamp: '01:20',
+      translations: {
+        uz: "Albatta, sizga birini olib kelaman.",
+        ru: "Конечно, сейчас принесу вам один."
+      },
       insight: {
         category: 'error',
         title: {

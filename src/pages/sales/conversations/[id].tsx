@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
@@ -20,12 +19,15 @@ import { nanoid } from 'nanoid';
 import InsightSection from '@/components/insights/InsightSection';
 import { expandableInsightsMock } from '@/data/insightsMockData';
 
-// Mock transcript data with AI insights for salesperson messages
+// Mock transcript data with AI insights for salesperson messages and dual-language support
 const mockTranscript = [{
   id: nanoid(),
   speaker: "salesperson" as const,
-  content: 'Hello! Welcome to our store. How can I help you today?',
   timestamp: '00:00',
+  translations: {
+    uz: 'Salom! Do\'konimizga xush kelibsiz. Qanday yordam bera olaman?',
+    ru: 'Здравствуйте! Добро пожаловать в наш магазин. Чем могу помочь?'
+  },
   insight: {
     category: 'personalization' as const,
     title: {
@@ -40,23 +42,35 @@ const mockTranscript = [{
 }, {
   id: nanoid(),
   speaker: "customer" as const,
-  content: 'Hi, I\'m looking for kids shoes, size 30.',
-  timestamp: '00:05'
+  timestamp: '00:05',
+  translations: {
+    uz: 'Salom, menga 30-razmerli bolalar uchun poyabzal kerak.',
+    ru: 'Здравствуйте, мне нужны детские туфли, размер 30.'
+  }
 }, {
   id: nanoid(),
   speaker: "salesperson" as const,
-  content: 'Of course! We have several options for kids in size 30. Let me show you our collection over here.',
-  timestamp: '00:12'
+  timestamp: '00:12',
+  translations: {
+    uz: 'Albatta! Bizda 30-razmerli bolalar uchun bir nechta variantlar bor. Keling, ko\'rsataman.',
+    ru: 'Конечно! У нас есть несколько вариантов для детей 30 размера. Позвольте показать вам коллекцию.'
+  }
 }, {
   id: nanoid(),
   speaker: "customer" as const,
-  content: 'Do they come in blue? My son really likes blue shoes.',
-  timestamp: '00:22'
+  timestamp: '00:22',
+  translations: {
+    uz: 'Ular moviy rangdami? O\'g\'limga moviy poyabzal yoqadi.',
+    ru: 'А есть в синем цвете? Моему сыну нравятся синие туфли.'
+  }
 }, {
   id: nanoid(),
   speaker: "salesperson" as const,
-  content: 'Yes, we have these models in blue. They\'re very comfortable and durable for active children.',
   timestamp: '00:28',
+  translations: {
+    uz: 'Ha, bu modellardan moviy rangda ham bor. Juda qulay va bardoshli, ayniqsa faol bolalar uchun.',
+    ru: 'Да, у нас есть такие модели в синем. Они очень удобные и долговечные для активных детей.'
+  },
   insight: {
     category: 'opportunity' as const,
     title: {
@@ -71,13 +85,19 @@ const mockTranscript = [{
 }, {
   id: nanoid(),
   speaker: "customer" as const,
-  content: 'Perfect! I\'ll take these. How much are they?',
-  timestamp: '00:40'
+  timestamp: '00:40',
+  translations: {
+    uz: 'Zo\'r! Shularni olaman. Narxi qancha?',
+    ru: 'Отлично! Беру. Сколько стоит?'
+  }
 }, {
   id: nanoid(),
   speaker: "salesperson" as const,
-  content: 'These are 150,000 soums. Would you like me to get them in a box for you?',
   timestamp: '00:45',
+  translations: {
+    uz: 'Ular 150 000 so\'m turadi. Ularni qutiga solib beraymi?',
+    ru: 'Они стоят 150 000 сум. Хотите, я положу их в коробку?'
+  },
   insight: {
     category: 'closing' as const,
     title: {
@@ -92,8 +112,11 @@ const mockTranscript = [{
 }, {
   id: nanoid(),
   speaker: "customer" as const,
-  content: 'Yes, please. I\'ll take them.',
-  timestamp: '00:52'
+  timestamp: '00:52',
+  translations: {
+    uz: 'Ha, albatta. Men olaman.',
+    ru: 'Да, пожалуйста. Я их возьму.'
+  }
 }];
 
 const ConversationDetail = () => {

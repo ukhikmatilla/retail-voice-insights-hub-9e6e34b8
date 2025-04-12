@@ -220,6 +220,11 @@
       "personalization": "Shaxsiylashtirish",
       "error": "Xatolik",
       "opportunity": "Imkoniyat"
+    },
+    "viewInsight": "AI tavsiyasini ko'rish",
+    "speakerLabels": {
+      "seller": "Sotuvchi",
+      "customer": "Mijoz"
     }
   }
 }

@@ -18,13 +18,18 @@ const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
   messages, 
   isLoading = false 
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language as 'uz' | 'ru';
 
   const handleDownloadTranscript = () => {
     // Create transcript content
     const content = messages.map(msg => {
       const speakerLabel = t(`conversation.${msg.speaker}`);
-      return `[${msg.timestamp}] ${speakerLabel}: ${msg.content}`;
+      // Get message text based on translations or fallback to content
+      const messageText = msg.translations 
+        ? msg.translations[currentLang] 
+        : msg.content || '';
+      return `[${msg.timestamp}] ${speakerLabel}: ${messageText}`;
     }).join('\n\n');
     
     // Create download link

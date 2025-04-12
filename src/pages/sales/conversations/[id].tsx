@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
@@ -143,7 +142,13 @@ const ConversationDetail = () => {
                   {t('conversation.title', { date: formattedDate })}
                 </h1>
                 <div className="flex items-center mt-2 space-x-2">
-                  <Badge variant={conversation.score >= 90 ? "success" : conversation.score >= 70 ? "warning" : "destructive"}>
+                  <Badge 
+                    variant={
+                      conversation.score >= 90 ? "default" : 
+                      conversation.score >= 70 ? "secondary" : 
+                      "destructive"
+                    }
+                  >
                     {t('conversation.score')}: {conversation.score}/100
                   </Badge>
                   <Badge variant="outline">

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
@@ -26,7 +27,7 @@ const mockTranscript = [{
   content: 'Hello! Welcome to our store. How can I help you today?',
   timestamp: '00:00',
   insight: {
-    category: 'personalization',
+    category: 'personalization' as const,
     title: {
       uz: "Shaxsiylashtirish",
       ru: "Персонализация"
@@ -57,7 +58,7 @@ const mockTranscript = [{
   content: 'Yes, we have these models in blue. They\'re very comfortable and durable for active children.',
   timestamp: '00:28',
   insight: {
-    category: 'opportunity',
+    category: 'opportunity' as const,
     title: {
       uz: "Imkoniyat",
       ru: "Возможность"
@@ -78,7 +79,7 @@ const mockTranscript = [{
   content: 'These are 150,000 soums. Would you like me to get them in a box for you?',
   timestamp: '00:45',
   insight: {
-    category: 'closing',
+    category: 'closing' as const,
     title: {
       uz: "Bitimni yakunlash",
       ru: "Закрытие сделки"

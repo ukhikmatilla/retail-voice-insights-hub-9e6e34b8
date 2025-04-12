@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import ConversationMeta from '@/components/conversations/ConversationMeta';
 import AiRecommendations from '@/components/conversations/AiRecommendations';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ConversationSidebarProps {
   date: string;
@@ -11,12 +12,16 @@ interface ConversationSidebarProps {
     type: 'improvement' | 'opportunity' | 'urgent';
     content: string;
   }[];
+  language?: string;
+  device?: string;
 }
 
 const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
   date,
   duration,
-  recommendations
+  recommendations,
+  language = 'Uzbek 🇺🇿',
+  device = 'iPhone 14'
 }) => {
   return (
     <div className="space-y-6">
@@ -26,6 +31,8 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
           <ConversationMeta
             date={date}
             duration={duration}
+            language={language}
+            device={device}
           />
         </CardContent>
       </Card>

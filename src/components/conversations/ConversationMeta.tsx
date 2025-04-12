@@ -1,10 +1,10 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { format } from 'date-fns';
 import { Calendar, Clock, Smartphone, Globe } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { Separator } from '@/components/ui/separator';
+import { formatLocalizedDate } from '@/utils/formatters';
 
 interface ConversationMetaProps {
   date: string;
@@ -31,9 +31,12 @@ const ConversationMeta: React.FC<ConversationMetaProps> = ({
     customerSatisfaction: 90
   }
 }) => {
-  const { t } = useTranslation();
-  const formattedDate = format(new Date(date), 'PPP');
-
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+  const formattedDate = formatLocalizedDate(date, currentLanguage);
+  const minutes = Math.floor(duration / 60);
+  const seconds = duration % 60;
+  
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
@@ -51,7 +54,7 @@ const ConversationMeta: React.FC<ConversationMetaProps> = ({
               {t('conversation.duration')}
             </p>
             <p className="text-sm font-medium break-words">
-              {Math.floor(duration / 60)}:{(duration % 60).toString().padStart(2, '0')} {t('common.min')}
+              {minutes}:{seconds.toString().padStart(2, '0')} {t('common.min')}
             </p>
           </div>
         </div>
@@ -66,7 +69,7 @@ const ConversationMeta: React.FC<ConversationMetaProps> = ({
           <Globe className="h-4 w-4 mr-2 text-muted-foreground" />
           <div>
             <p className="text-xs text-muted-foreground">{t('conversation.language')}</p>
-            <p className="text-sm font-medium">{language}</p>
+            <p className="text-sm font-medium">{t(`language.${language.split(' ')[0].toLowerCase()}`)}</p>
           </div>
         </div>
       </div>
@@ -79,28 +82,28 @@ const ConversationMeta: React.FC<ConversationMetaProps> = ({
         <div className="space-y-3">
           <div className="space-y-1">
             <div className="flex justify-between text-xs">
-              <span>Engagement</span>
+              <span>{t('insights.trustBuilding')}</span>
               <span>{scoreBreakdown.engagement}/100</span>
             </div>
             <Progress value={scoreBreakdown.engagement} className="h-2" />
           </div>
           <div className="space-y-1">
             <div className="flex justify-between text-xs">
-              <span>Product Knowledge</span>
+              <span>{t('insights.valueExplanation')}</span>
               <span>{scoreBreakdown.productKnowledge}/100</span>
             </div>
             <Progress value={scoreBreakdown.productKnowledge} className="h-2" />
           </div>
           <div className="space-y-1">
             <div className="flex justify-between text-xs">
-              <span>Closing Skills</span>
+              <span>{t('insights.closing')}</span>
               <span>{scoreBreakdown.closingSkills}/100</span>
             </div>
             <Progress value={scoreBreakdown.closingSkills} className="h-2" />
           </div>
           <div className="space-y-1">
             <div className="flex justify-between text-xs">
-              <span>Customer Satisfaction</span>
+              <span>{t('insights.objections')}</span>
               <span>{scoreBreakdown.customerSatisfaction}/100</span>
             </div>
             <Progress value={scoreBreakdown.customerSatisfaction} className="h-2" />

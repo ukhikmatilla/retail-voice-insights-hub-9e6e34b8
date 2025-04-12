@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -17,7 +16,7 @@ import { TranscriptMessage } from '@/components/conversations/TranscriptViewer';
 const ConversationDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   
   const conversation = mockConversations.find(c => c.id === id);
   
@@ -25,9 +24,9 @@ const ConversationDetail = () => {
     return (
       <DashboardLayout>
         <div className="text-center py-12">
-          <h2 className="text-2xl font-bold mb-4">Conversation not found</h2>
+          <h2 className="text-2xl font-bold mb-4">{t('common.error')}</h2>
           <Button onClick={() => navigate('/dashboard')}>
-            Back to Dashboard
+            {t('common.back')}
           </Button>
         </div>
       </DashboardLayout>
@@ -213,24 +212,28 @@ const ConversationDetail = () => {
     custom: allInsights.filter(i => i.type === "custom")
   };
   
-  // Sample recommendations for sidebar
+  // Sample recommendations for sidebar with translated content
   const recommendations = [
     {
-      label: "improvement",
-      text: "Offer accessories after customer shows interest in a specific phone model.",
+      label: t('insight.type.improvement'),
+      text: t('insights.types.improvement.example'),
       type: "improvement" as const
     },
     {
-      label: "opportunity",
-      text: "Address price concerns by highlighting value and financing options earlier.",
+      label: t('insight.type.opportunity'),
+      text: t('insights.types.opportunity.example'),
       type: "opportunity" as const
     },
     {
-      label: "improvement",
-      text: "Continue demonstrating strong product knowledge across multiple brands.",
+      label: t('insight.type.improvement'),
+      text: t('insights.types.behavior.example'),
       type: "improvement" as const
     }
   ];
+
+  // Get conversation language and device
+  const conversationLanguage = conversation.language || 'Uzbek 🇺🇿';
+  const conversationDevice = conversation.device || 'iPhone 14';
 
   return (
     <DashboardLayout>

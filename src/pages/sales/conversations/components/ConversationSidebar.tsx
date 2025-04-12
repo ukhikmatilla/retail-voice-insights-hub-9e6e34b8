@@ -19,10 +19,8 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
   duration,
   recommendations
 }) => {
-  const { i18n } = useTranslation();
-  const language = 'Uzbek 🇺🇿';
-  const device = 'iPhone 14';
-
+  const { t } = useTranslation();
+  
   return (
     <div className="space-y-6">
       {/* Meta information card */}
@@ -31,8 +29,8 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
           <ConversationMeta
             date={date}
             duration={duration}
-            language={language}
-            device={device}
+            language="uzbek"
+            device="iPhone 14"
           />
         </CardContent>
       </Card>

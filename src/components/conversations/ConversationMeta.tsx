@@ -22,7 +22,7 @@ interface ConversationMetaProps {
 const ConversationMeta: React.FC<ConversationMetaProps> = ({
   date,
   duration,
-  language = 'Uzbek 🇺🇿',
+  language = 'uzbek',
   device = 'iPhone 14',
   scoreBreakdown = {
     engagement: 85,
@@ -69,7 +69,9 @@ const ConversationMeta: React.FC<ConversationMetaProps> = ({
           <Globe className="h-4 w-4 mr-2 text-muted-foreground" />
           <div>
             <p className="text-xs text-muted-foreground">{t('conversation.language')}</p>
-            <p className="text-sm font-medium">{t(`language.${language.split(' ')[0].toLowerCase()}`)}</p>
+            <p className="text-sm font-medium">
+              {t(`language.uzbek`)} {t(`language.uzbek_flag`)}
+            </p>
           </div>
         </div>
       </div>

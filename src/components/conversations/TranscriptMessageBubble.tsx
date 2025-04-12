@@ -124,7 +124,7 @@ const TranscriptMessageBubble: React.FC<TranscriptMessageBubbleProps> = ({ messa
           
           {/* Insight icon for salesperson messages with insights */}
           {hasInsight && !isMobile && (
-            <HoverCard>
+            <HoverCard openDelay={100}>
               <HoverCardTrigger asChild>
                 <button 
                   className="absolute -right-6 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-1 shadow-sm hover:shadow"

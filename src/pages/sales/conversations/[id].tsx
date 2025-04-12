@@ -19,13 +19,23 @@ import { nanoid } from 'nanoid';
 import InsightSection from '@/components/insights/InsightSection';
 import { expandableInsightsMock } from '@/data/insightsMockData';
 
-// Mock transcript data - in a real application, this would be dynamic
-// Ensuring that the speaker property is explicitly typed as "salesperson" | "customer"
+// Mock transcript data with AI insights for salesperson messages
 const mockTranscript = [{
   id: nanoid(),
   speaker: "salesperson" as const,
   content: 'Hello! Welcome to our store. How can I help you today?',
-  timestamp: '00:00'
+  timestamp: '00:00',
+  insight: {
+    category: 'personalization',
+    title: {
+      uz: "Shaxsiylashtirish",
+      ru: "Персонализация"
+    },
+    message: {
+      uz: "Mijozni salomlashda uning ismini so'rang. Bu shaxsiyroq munosabatni yaratadi.",
+      ru: "Спросите имя клиента при приветствии. Это создаст более персонализированное общение."
+    }
+  }
 }, {
   id: nanoid(),
   speaker: "customer" as const,
@@ -45,7 +55,18 @@ const mockTranscript = [{
   id: nanoid(),
   speaker: "salesperson" as const,
   content: 'Yes, we have these models in blue. They\'re very comfortable and durable for active children.',
-  timestamp: '00:28'
+  timestamp: '00:28',
+  insight: {
+    category: 'opportunity',
+    title: {
+      uz: "Imkoniyat",
+      ru: "Возможность"
+    },
+    message: {
+      uz: "Bu yerda bolaning yoshini so'rab, unga mos poyabzal modellari haqida ko'proq ma'lumot berishingiz mumkin edi.",
+      ru: "Здесь вы могли бы спросить о возрасте ребенка, чтобы предложить более подходящие модели обуви."
+    }
+  }
 }, {
   id: nanoid(),
   speaker: "customer" as const,
@@ -55,13 +76,25 @@ const mockTranscript = [{
   id: nanoid(),
   speaker: "salesperson" as const,
   content: 'These are 150,000 soums. Would you like me to get them in a box for you?',
-  timestamp: '00:45'
+  timestamp: '00:45',
+  insight: {
+    category: 'closing',
+    title: {
+      uz: "Bitimni yakunlash",
+      ru: "Закрытие сделки"
+    },
+    message: {
+      uz: "Bu yerda qo'shimcha aksessuarlar (paypoq yoki poyabzal uchun ximoya vositalari) taklif qilishingiz mumkin edi.",
+      ru: "Здесь вы могли бы предложить дополнительные аксессуары (носки или средства защиты обуви)."
+    }
+  }
 }, {
   id: nanoid(),
   speaker: "customer" as const,
   content: 'Yes, please. I\'ll take them.',
   timestamp: '00:52'
 }];
+
 const ConversationDetail = () => {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string; }>();
@@ -196,7 +229,7 @@ const ConversationDetail = () => {
                     </CardContent>
                   </Card>
                   
-                  {/* Insights Analysis Section - KEEP ONLY HERE */}
+                  {/* Insights Analysis Section */}
                   <Card>
                     <CardHeader>
                       <CardTitle className="text-lg">{t('conversation.insights')}</CardTitle>

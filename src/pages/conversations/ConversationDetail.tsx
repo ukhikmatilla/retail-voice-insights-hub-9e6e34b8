@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -231,9 +232,9 @@ const ConversationDetail = () => {
     }
   ];
 
-  // Get conversation language and device
-  const conversationLanguage = conversation.language || 'Uzbek 🇺🇿';
-  const conversationDevice = conversation.device || 'iPhone 14';
+  // Default values for language and device since they don't exist in the Conversation type
+  const conversationLanguage = 'Uzbek 🇺🇿';
+  const conversationDevice = 'iPhone 14';
 
   return (
     <DashboardLayout>

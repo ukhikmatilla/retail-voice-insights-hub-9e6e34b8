@@ -17,55 +17,56 @@ import TranscriptViewer from '@/components/conversations/TranscriptViewer';
 import SkillFeedbackAccordion from '@/components/ai/SkillFeedbackAccordion';
 import { mockConversations } from '@/data/mockData';
 import { conversationSkillAnalysisMock } from '@/mocks/conversationSkillAnalysis';
+import { InsightType } from '@/types';
 import { nanoid } from 'nanoid';
 
 // Mock transcript data - in a real application, this would be dynamic
 const mockTranscript = [
   {
     id: nanoid(),
-    speaker: 'salesperson' as const,
+    speaker: "salesperson",
     content: 'Hello! Welcome to our store. How can I help you today?',
     timestamp: '00:00',
   },
   {
     id: nanoid(),
-    speaker: 'customer' as const,
+    speaker: "customer",
     content: 'Hi, I\'m looking for kids shoes, size 30.',
     timestamp: '00:05',
   },
   {
     id: nanoid(),
-    speaker: 'salesperson' as const,
+    speaker: "salesperson",
     content: 'Of course! We have several options for kids in size 30. Let me show you our collection over here.',
     timestamp: '00:12',
   },
   {
     id: nanoid(),
-    speaker: 'customer' as const,
+    speaker: "customer",
     content: 'Do they come in blue? My son really likes blue shoes.',
     timestamp: '00:22',
   },
   {
     id: nanoid(),
-    speaker: 'salesperson' as const,
+    speaker: "salesperson",
     content: 'Yes, we have these models in blue. They\'re very comfortable and durable for active children.',
     timestamp: '00:28',
   },
   {
     id: nanoid(),
-    speaker: 'customer' as const,
+    speaker: "customer",
     content: 'Perfect! I\'ll take these. How much are they?',
     timestamp: '00:40',
   },
   {
     id: nanoid(),
-    speaker: 'salesperson' as const,
+    speaker: "salesperson",
     content: 'These are 150,000 soums. Would you like me to get them in a box for you?',
     timestamp: '00:45',
   },
   {
     id: nanoid(),
-    speaker: 'customer' as const,
+    speaker: "customer",
     content: 'Yes, please. I\'ll take them.',
     timestamp: '00:52',
   }
@@ -126,6 +127,37 @@ const ConversationDetail = () => {
 
   const formattedDate = format(new Date(conversation.date), 'PPP');
   
+  // Additional example insights for the extended types
+  const additionalInsights = [
+    {
+      id: "behavior-1",
+      type: "behavior" as InsightType,
+      content: t("insights.types.behavior.example"),
+      skillKey: "trustBuilding"
+    },
+    {
+      id: "custom-1",
+      type: "custom" as InsightType,
+      content: "Customer showed interest in product colors, indicating preference-based shopping.",
+      timestamp: "00:25"
+    }
+  ];
+  
+  // All insights including standard ones from the conversation plus the new types
+  const allInsights = [
+    ...conversation.insights,
+    ...additionalInsights
+  ];
+
+  // Group insights by type for better organization
+  const groupedInsights = {
+    urgent: allInsights.filter(i => i.type === "urgent"),
+    improvement: allInsights.filter(i => i.type === "improvement"),
+    opportunity: allInsights.filter(i => i.type === "opportunity"),
+    behavior: allInsights.filter(i => i.type === "behavior"),
+    custom: allInsights.filter(i => i.type === "custom")
+  };
+
   return (
     <RoleProtectedRoute allowedRoles={['salesperson']}>
       <RoleLayout currentPath={location.pathname}>
@@ -223,11 +255,78 @@ const ConversationDetail = () => {
                     </CardContent>
                   </Card>
                   
-                  {conversation.insights.length > 0 ? (
-                    conversation.insights.map(insight => (
-                      <InsightCard key={insight.id} insight={insight} />
-                    ))
-                  ) : (
+                  {/* Critical/Urgent insights - shown first for priority */}
+                  {groupedInsights.urgent.length > 0 && (
+                    <div className="mb-4">
+                      <h3 className="text-md font-semibold mb-2 text-insight-red">
+                        {t('insight.type.urgent')} ({groupedInsights.urgent.length})
+                      </h3>
+                      <div className="space-y-3">
+                        {groupedInsights.urgent.map(insight => (
+                          <InsightCard key={insight.id} insight={insight} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Improvement insights */}
+                  {groupedInsights.improvement.length > 0 && (
+                    <div className="mb-4">
+                      <h3 className="text-md font-semibold mb-2 text-insight-green">
+                        {t('insight.type.improvement')} ({groupedInsights.improvement.length})
+                      </h3>
+                      <div className="space-y-3">
+                        {groupedInsights.improvement.map(insight => (
+                          <InsightCard key={insight.id} insight={insight} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Opportunity insights */}
+                  {groupedInsights.opportunity.length > 0 && (
+                    <div className="mb-4">
+                      <h3 className="text-md font-semibold mb-2 text-insight-yellow">
+                        {t('insight.type.opportunity')} ({groupedInsights.opportunity.length})
+                      </h3>
+                      <div className="space-y-3">
+                        {groupedInsights.opportunity.map(insight => (
+                          <InsightCard key={insight.id} insight={insight} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Behavior insights */}
+                  {groupedInsights.behavior.length > 0 && (
+                    <div className="mb-4">
+                      <h3 className="text-md font-semibold mb-2 text-gray-600">
+                        {t('insight.type.behavior')} ({groupedInsights.behavior.length})
+                      </h3>
+                      <div className="space-y-3">
+                        {groupedInsights.behavior.map(insight => (
+                          <InsightCard key={insight.id} insight={insight} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Custom insights */}
+                  {groupedInsights.custom.length > 0 && (
+                    <div className="mb-4">
+                      <h3 className="text-md font-semibold mb-2 text-blue-600">
+                        {t('insight.type.custom')} ({groupedInsights.custom.length})
+                      </h3>
+                      <div className="space-y-3">
+                        {groupedInsights.custom.map(insight => (
+                          <InsightCard key={insight.id} insight={insight} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Empty state when no insights are available */}
+                  {Object.values(groupedInsights).every(group => group.length === 0) && (
                     <Card className="p-8 text-center text-muted-foreground">
                       {t('sales.noAnalysisAvailable')}
                     </Card>

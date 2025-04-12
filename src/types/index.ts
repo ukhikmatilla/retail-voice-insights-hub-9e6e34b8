@@ -18,10 +18,14 @@ export interface Conversation {
   insights: Insight[];
 }
 
+export type InsightType = 'improvement' | 'opportunity' | 'urgent' | 'behavior' | 'custom';
+
 export interface Insight {
   id: string;
-  type: 'improvement' | 'opportunity' | 'urgent';
+  type: InsightType;
   content: string;
+  timestamp?: string;
+  skillKey?: string;
 }
 
 export interface TeamMember {

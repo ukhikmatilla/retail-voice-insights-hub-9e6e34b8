@@ -127,7 +127,9 @@
     "type": {
       "improvement": "Takomillashtirish",
       "opportunity": "Imkoniyat",
-      "urgent": "Muhim"
+      "urgent": "Muhim",
+      "behavior": "Xulq-atvor",
+      "custom": "Maxsus"
     }
   },
   "insights": {
@@ -143,7 +145,21 @@
     "closing": "Bitimni yakunlash",
     "criterion": "Mezon",
     "rating": "Baho",
-    "comment": "Izoh"
+    "comment": "Izoh",
+    "types": {
+      "improvement": {
+        "example": "Mahsulot haqida yaxshi ma'lumot berildi. Moliya variantlarini erta tushuntirish mumkin edi."
+      },
+      "opportunity": {
+        "example": "Mijoz aksessuarlar bilan qiziqdi, lekin davom ettirilmagan."
+      },
+      "urgent": {
+        "example": "Narx e'tirozi noto'g'ri boshqarildi, natijada savdo yo'qolgan."
+      },
+      "behavior": {
+        "example": "Suhbatda juda ko'p pauzalar, ishonch yetarli emas."
+      }
+    }
   },
   "training": {
     "status": {

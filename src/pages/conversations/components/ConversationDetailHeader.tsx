@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import { ArrowLeftIcon, CalendarIcon, ClockIcon, PercentIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -22,6 +22,16 @@ const ConversationDetailHeader: React.FC<ConversationDetailHeaderProps> = ({
   const { t } = useTranslation();
   const navigate = useNavigate();
   
+  // Safely format the date
+  const getFormattedDate = () => {
+    if (!date) return '';
+    
+    const dateObj = new Date(date);
+    if (!isValid(dateObj)) return t('common.error');
+    
+    return format(dateObj, 'PP');
+  };
+  
   return (
     <div className="mb-6 flex justify-between items-center">
       <div className="flex items-center">
@@ -36,7 +46,7 @@ const ConversationDetailHeader: React.FC<ConversationDetailHeaderProps> = ({
       <div className="flex items-center space-x-4">
         <div className="flex items-center text-sm text-muted-foreground">
           <CalendarIcon className="mr-1 h-4 w-4" />
-          {format(new Date(date), 'PP')}
+          {getFormattedDate()}
         </div>
         <div className="flex items-center text-sm text-muted-foreground">
           <ClockIcon className="mr-1 h-4 w-4" />

@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -20,7 +20,16 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
 }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const formattedDate = format(new Date(date), 'PPP');
+  
+  // Safely format the date, handling potential invalid dates
+  const getFormattedDate = () => {
+    if (!date) return '';
+    
+    const dateObj = new Date(date);
+    if (!isValid(dateObj)) return t('common.error');
+    
+    return format(dateObj, 'PPP');
+  };
 
   return (
     <>
@@ -35,7 +44,7 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
       
       <div>
         <h1 className="text-3xl font-bold">
-          {t('conversation.title', { date: formattedDate })}
+          {t('conversation.title', { date: getFormattedDate() })}
         </h1>
         <div className="flex items-center mt-2 space-x-2">
           <Badge 

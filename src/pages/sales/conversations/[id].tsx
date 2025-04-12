@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import RoleLayout from '@/components/RoleLayout';
 import RoleProtectedRoute from '@/components/RoleProtectedRoute';
 import { nanoid } from 'nanoid';
@@ -10,6 +9,8 @@ import { expandableInsightsMock } from '@/data/insightsMockData';
 import ConversationHeader from './components/ConversationHeader';
 import ConversationContent from './components/ConversationContent';
 import ConversationSidebar from './components/ConversationSidebar';
+import { useTranslation } from 'react-i18next';
+import { Button } from '@/components/ui/button';
 
 // Mock transcript data with AI insights for salesperson messages and dual-language support
 const mockTranscript = [{
@@ -126,9 +127,11 @@ const mockRecommendations = [
 const ConversationDetail = () => {
   const { id } = useParams<{ id: string; }>();
   const location = useLocation();
+  const navigate = useNavigate();
+  const { t } = useTranslation();
 
   // Find the conversation by ID
-  const conversation = mockConversations.find(conv => conv.id === id);
+  const conversation = id ? mockConversations.find(conv => conv.id === id) : null;
 
   // Return to conversations list if conversation not found
   if (!conversation) {
@@ -136,14 +139,21 @@ const ConversationDetail = () => {
       <RoleProtectedRoute allowedRoles={['salesperson']}>
         <RoleLayout currentPath={location.pathname}>
           <div className="animate-fade-in">
-            <ConversationHeader 
-              date="" 
-              score={0} 
-              duration={0} 
-            />
+            <div className="mb-6">
+              <Button 
+                variant="ghost" 
+                className="mb-6" 
+                onClick={() => navigate('/sales/conversations')}
+              >
+                <h1 className="text-2xl font-bold">{t('conversation.transcript')}</h1>
+              </Button>
+            </div>
             <div className="p-12 text-center">
-              <h2 className="text-2xl font-bold text-red-500 mb-2">Error</h2>
-              <p className="text-muted-foreground">Conversation not found</p>
+              <h2 className="text-2xl font-bold text-red-500 mb-2">{t('common.error')}</h2>
+              <p className="text-muted-foreground mb-6">Conversation not found</p>
+              <Button onClick={() => navigate('/sales/conversations')}>
+                {t('common.back')}
+              </Button>
             </div>
           </div>
         </RoleLayout>
@@ -151,21 +161,25 @@ const ConversationDetail = () => {
     );
   }
 
+  const date = conversation?.date || '';
+  const score = conversation?.score || 0;
+  const duration = conversation?.duration || 0;
+
   return (
     <RoleProtectedRoute allowedRoles={['salesperson']}>
       <RoleLayout currentPath={location.pathname}>
         <div className="animate-fade-in">
           {/* Header with back button and title */}
           <ConversationHeader 
-            date={conversation.date} 
-            score={conversation.score} 
-            duration={conversation.duration} 
+            date={date} 
+            score={score} 
+            duration={duration} 
           />
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
             {/* Left column - main content */}
             <ConversationContent 
-              duration={conversation.duration}
+              duration={duration}
               transcript={mockTranscript}
               skills={conversationSkillAnalysisMock}
               insights={expandableInsightsMock}
@@ -173,8 +187,8 @@ const ConversationDetail = () => {
             
             {/* Right column - meta info */}
             <ConversationSidebar 
-              date={conversation.date}
-              duration={conversation.duration}
+              date={date}
+              duration={duration}
               recommendations={mockRecommendations}
             />
           </div>

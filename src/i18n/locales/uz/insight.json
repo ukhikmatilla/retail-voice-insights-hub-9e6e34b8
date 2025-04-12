@@ -1,0 +1,10 @@
+
+{
+  "type": {
+    "improvement": "Takomillashtirish",
+    "opportunity": "Imkoniyat",
+    "urgent": "Muhim",
+    "behavior": "Xulq-atvor",
+    "custom": "Maxsus"
+  }
+}

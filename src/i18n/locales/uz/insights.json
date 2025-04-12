@@ -1,0 +1,30 @@
+
+{
+  "skillAnalysis": "Ko'nikmalar tahlili",
+  "noSkillAnalysisAvailable": "Ko'nikmalar tahlili hali mavjud emas",
+  "expand": "Batafsil ko'rsatish",
+  "hide": "Yopish",
+  "aiAdvice": "AI tavsiyasi",
+  "trustBuilding": "Ishonch uygʻotish",
+  "objections": "E'tirozlarga ishlov berish",
+  "crossSelling": "Qo'shimcha savdo",
+  "valueExplanation": "Qiymatni tushuntirish",
+  "closing": "Bitimni yakunlash",
+  "criterion": "Mezon",
+  "rating": "Baho",
+  "comment": "Izoh",
+  "types": {
+    "improvement": {
+      "example": "Mahsulot haqida yaxshi ma'lumot berildi. Moliya variantlarini erta tushuntirish mumkin edi."
+    },
+    "opportunity": {
+      "example": "Mijoz aksessuarlar bilan qiziqdi, lekin davom ettirilmagan."
+    },
+    "urgent": {
+      "example": "Narx e'tirozi noto'g'ri boshqarildi, natijada savdo yo'qolgan."
+    },
+    "behavior": {
+      "example": "Suhbatda juda ko'p pauzalar, ishonch yetarli emas."
+    }
+  }
+}

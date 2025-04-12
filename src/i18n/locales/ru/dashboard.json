@@ -1,0 +1,20 @@
+
+{
+  "welcome": "Добро пожаловать, {{name}}!",
+  "overview": "Обзор",
+  "conversations": "Разговоры",
+  "insights": "Аналитика",
+  "training": "Обучение",
+  "team": "Команда",
+  "personnel": "Персонал",
+  "behaviorAnalysis": "Анализ поведения",
+  "trainingManagement": "Управление обучением",
+  "criticalAttention": "Требует внимания",
+  "stats": {
+    "title": "Статистика",
+    "totalConversations": "Всего разговоров",
+    "averageScore": "Средний балл",
+    "successRate": "Уровень успеха",
+    "missedOpportunities": "Упущенные возможности"
+  }
+}

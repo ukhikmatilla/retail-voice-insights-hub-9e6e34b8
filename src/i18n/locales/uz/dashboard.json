@@ -1,0 +1,20 @@
+
+{
+  "welcome": "Xush kelibsiz, {{name}}!",
+  "overview": "Umumiy ko'rinish",
+  "conversations": "Suhbatlar",
+  "insights": "Tahlillar",
+  "training": "Treninglar",
+  "team": "Jamoa",
+  "personnel": "Xodimlar",
+  "behaviorAnalysis": "Xulq-atvor tahlili",
+  "trainingManagement": "Treninglarni boshqarish",
+  "criticalAttention": "Muhim e'tibor",
+  "stats": {
+    "title": "Statistika",
+    "totalConversations": "Jami suhbatlar",
+    "averageScore": "O'rtacha ball",
+    "successRate": "Muvaffaqiyat darajasi",
+    "missedOpportunities": "Boy berilgan imkoniyatlar"
+  }
+}

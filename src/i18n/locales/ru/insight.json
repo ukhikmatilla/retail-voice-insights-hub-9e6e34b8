@@ -1,0 +1,10 @@
+
+{
+  "type": {
+    "improvement": "Улучшение",
+    "opportunity": "Возможность",
+    "urgent": "Срочно",
+    "behavior": "Поведение",
+    "custom": "Специальное"
+  }
+}

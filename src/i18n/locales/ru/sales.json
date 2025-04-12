@@ -1,0 +1,20 @@
+
+{
+  "dashboardDescription": "Ваши персональные показатели и последние аналитические данные.",
+  "recentConversations": "Последние разговоры",
+  "noConversations": "Разговоров пока нет",
+  "trainingModules": "Учебные модули",
+  "noTrainingModules": "Учебные модули не назначены",
+  "weeklyInsights": "Еженедельная аналитика",
+  "noInsights": "Аналитика пока отсутствует",
+  "keyMetrics": "Ключевые показатели",
+  "conversations": "Разговоры",
+  "conversationsDescription": "Ваши разговоры с клиентами и аналитика ИИ.",
+  "conversationDetails": "Детали разговора",
+  "noAudioAvailable": "Аудиозапись недоступна",
+  "noAnalysisAvailable": "Анализ ИИ еще не доступен",
+  "filterConversations": "Фильтровать разговоры",
+  "dateRange": "Диапазон дат",
+  "scoreThreshold": "Пороговый балл",
+  "language": "Язык"
+}

@@ -1,0 +1,16 @@
+
+{
+  "welcome": {
+    "title": "RetailVoiceAI platformasiga xush kelibsiz!",
+    "description": "Sotuvchilar va mijozlar o'rtasidagi suhbatlarni tahlil qilishning eng yaxshi vositasi."
+  },
+  "features": {
+    "title": "AI-quvvatlangan tahlillar",
+    "description": "Mijozlar bilan bo'lgan suhbatlaringizni tahlil qiling, o'z ishingizdagi kuchli va zaif tomonlaringizni aniqlang."
+  },
+  "getStarted": {
+    "title": "Boshlashga tayyormisiz?",
+    "description": "Hoziroq ro'yxatdan o'ting va savdo jarayonlaringizni optimallashtirishni boshlang.",
+    "button": "Boshlash"
+  }
+}

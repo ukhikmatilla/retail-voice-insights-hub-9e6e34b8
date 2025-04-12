@@ -1,15 +1,15 @@
 
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import uzTranslation from './locales/uz.json';
-import ruTranslation from './locales/ru.json';
+import { loadTranslationModules } from './utils';
 
+// Load all translation modules for each language
 const resources = {
   uz: {
-    translation: uzTranslation
+    translation: loadTranslationModules('uz')
   },
   ru: {
-    translation: ruTranslation
+    translation: loadTranslationModules('ru')
   }
 };
 

@@ -13,7 +13,7 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import InsightCard from '@/components/InsightCard';
-import TranscriptViewer from '@/components/conversations/TranscriptViewer';
+import TranscriptViewer, { TranscriptMessage } from '@/components/conversations/TranscriptViewer';
 import SkillFeedbackAccordion from '@/components/ai/SkillFeedbackAccordion';
 import { mockConversations } from '@/data/mockData';
 import { conversationSkillAnalysisMock } from '@/mocks/conversationSkillAnalysis';
@@ -21,7 +21,8 @@ import { InsightType } from '@/types';
 import { nanoid } from 'nanoid';
 
 // Mock transcript data - in a real application, this would be dynamic
-const mockTranscript = [
+// Ensuring that the speaker property is explicitly typed as "salesperson" | "customer"
+const mockTranscript: TranscriptMessage[] = [
   {
     id: nanoid(),
     speaker: "salesperson",

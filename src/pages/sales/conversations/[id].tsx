@@ -1,0 +1,352 @@
+
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { format } from 'date-fns';
+import { ArrowLeft, Play, Pause, Download, Smartphone, Globe, Calendar, Clock } from 'lucide-react';
+import RoleLayout from '@/components/RoleLayout';
+import RoleProtectedRoute from '@/components/RoleProtectedRoute';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { Progress } from '@/components/ui/progress';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import InsightCard from '@/components/InsightCard';
+import { mockConversations } from '@/data/mockData';
+
+interface TranscriptEntry {
+  speaker: 'salesperson' | 'customer';
+  content: string;
+  timestamp: string;
+}
+
+// Mock transcript data - in a real application, this would be dynamic
+const mockTranscript: TranscriptEntry[] = [
+  {
+    speaker: 'salesperson',
+    content: 'Hello! Welcome to our store. How can I help you today?',
+    timestamp: '00:00',
+  },
+  {
+    speaker: 'customer',
+    content: 'Hi, I\'m looking for kids shoes, size 30.',
+    timestamp: '00:05',
+  },
+  {
+    speaker: 'salesperson',
+    content: 'Of course! We have several options for kids in size 30. Let me show you our collection over here.',
+    timestamp: '00:12',
+  },
+  {
+    speaker: 'customer',
+    content: 'Do they come in blue? My son really likes blue shoes.',
+    timestamp: '00:22',
+  },
+  {
+    speaker: 'salesperson',
+    content: 'Yes, we have these models in blue. They\'re very comfortable and durable for active children.',
+    timestamp: '00:28',
+  },
+  {
+    speaker: 'customer',
+    content: 'Perfect! I\'ll take these. How much are they?',
+    timestamp: '00:40',
+  },
+  {
+    speaker: 'salesperson',
+    content: 'These are 150,000 soums. Would you like me to get them in a box for you?',
+    timestamp: '00:45',
+  },
+  {
+    speaker: 'customer',
+    content: 'Yes, please. I\'ll take them.',
+    timestamp: '00:52',
+  }
+];
+
+const ConversationDetail = () => {
+  const { t } = useTranslation();
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audioProgress, setAudioProgress] = useState(0);
+  const [activeTab, setActiveTab] = useState('transcript');
+
+  // Find the conversation by ID
+  const conversation = mockConversations.find(conv => conv.id === id);
+  
+  // Simulate audio progress updates
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    
+    if (isPlaying) {
+      interval = setInterval(() => {
+        setAudioProgress(prev => {
+          if (prev >= 100) {
+            setIsPlaying(false);
+            return 100;
+          }
+          return prev + 1;
+        });
+      }, 300);
+    }
+    
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isPlaying]);
+  
+  // Return to conversations list if conversation not found
+  if (!conversation) {
+    return (
+      <RoleProtectedRoute allowedRoles={['salesperson']}>
+        <RoleLayout currentPath={location.pathname}>
+          <div className="animate-fade-in">
+            <Button variant="ghost" onClick={() => navigate('/sales/conversations')}>
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              {t('common.back')}
+            </Button>
+            <div className="p-12 text-center">
+              <h2 className="text-2xl font-bold text-red-500 mb-2">{t('common.error')}</h2>
+              <p className="text-muted-foreground">{t('sales.noConversations')}</p>
+            </div>
+          </div>
+        </RoleLayout>
+      </RoleProtectedRoute>
+    );
+  }
+
+  const formattedDate = format(new Date(conversation.date), 'PPP');
+  
+  return (
+    <RoleProtectedRoute allowedRoles={['salesperson']}>
+      <RoleLayout currentPath={location.pathname}>
+        <div className="animate-fade-in">
+          {/* Back button */}
+          <Button 
+            variant="ghost" 
+            className="mb-6" 
+            onClick={() => navigate('/sales/conversations')}
+          >
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            {t('common.back')}
+          </Button>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Left column - main content */}
+            <div className="lg:col-span-2 space-y-6">
+              {/* Header */}
+              <div>
+                <h1 className="text-3xl font-bold">
+                  {t('conversation.title', { date: formattedDate })}
+                </h1>
+                <div className="flex items-center mt-2 space-x-2">
+                  <Badge variant={conversation.score >= 90 ? "success" : conversation.score >= 70 ? "warning" : "destructive"}>
+                    {t('conversation.score')}: {conversation.score}/100
+                  </Badge>
+                  <Badge variant="outline">
+                    {Math.floor(conversation.duration / 60)}:{(conversation.duration % 60).toString().padStart(2, '0')}
+                  </Badge>
+                </div>
+              </div>
+              
+              {/* Audio player */}
+              <Card>
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-md font-medium">
+                    {t('conversation.playAudio')}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <Button 
+                      onClick={() => setIsPlaying(!isPlaying)} 
+                      variant="outline"
+                      className="w-12 h-12 rounded-full"
+                    >
+                      {isPlaying ? 
+                        <Pause className="h-5 w-5" /> : 
+                        <Play className="h-5 w-5 ml-0.5" />
+                      }
+                    </Button>
+                    <div className="space-y-2">
+                      <Progress value={audioProgress} />
+                      <div className="flex justify-between text-xs text-muted-foreground">
+                        <span>
+                          {Math.floor((audioProgress / 100) * conversation.duration) / 60 < 1 ? 
+                            '00:' : '01:'}
+                          {Math.floor((audioProgress / 100) * (conversation.duration % 60)).toString().padStart(2, '0')}
+                        </span>
+                        <span>
+                          {Math.floor(conversation.duration / 60)}:
+                          {(conversation.duration % 60).toString().padStart(2, '0')}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              {/* Transcript and Insights */}
+              <Tabs defaultValue="transcript" value={activeTab} onValueChange={setActiveTab} className="w-full">
+                <TabsList className="grid grid-cols-2 mb-4">
+                  <TabsTrigger value="transcript">{t('conversation.transcript')}</TabsTrigger>
+                  <TabsTrigger value="insights">{t('conversation.insights')}</TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="transcript" className="space-y-4 animate-fade-in">
+                  <Card>
+                    <CardContent className="pt-6">
+                      <div className="flex justify-end mb-2">
+                        <Button variant="ghost" size="sm" className="text-xs">
+                          <Download className="h-3 w-3 mr-2" />
+                          {t('conversation.downloadTranscript')}
+                        </Button>
+                      </div>
+                      <div className="space-y-6">
+                        {mockTranscript.map((entry, index) => (
+                          <div key={index} className={`flex ${entry.speaker === 'salesperson' ? 'justify-end' : 'justify-start'}`}>
+                            <div className={`max-w-[80%] ${
+                              entry.speaker === 'salesperson' ? 
+                                'bg-primary/10 text-primary-foreground' : 
+                                'bg-muted'
+                            } p-3 rounded-lg`}>
+                              <div className="flex justify-between mb-1">
+                                <span className="text-xs font-medium">
+                                  {t(`conversation.${entry.speaker}`)}
+                                </span>
+                                <span className="text-xs text-muted-foreground">
+                                  {entry.timestamp}
+                                </span>
+                              </div>
+                              <p className="text-sm">{entry.content}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+                
+                <TabsContent value="insights" className="space-y-4 animate-fade-in">
+                  {conversation.insights.length > 0 ? (
+                    conversation.insights.map(insight => (
+                      <InsightCard key={insight.id} insight={insight} />
+                    ))
+                  ) : (
+                    <Card className="p-8 text-center text-muted-foreground">
+                      {t('sales.noAnalysisAvailable')}
+                    </Card>
+                  )}
+                </TabsContent>
+              </Tabs>
+            </div>
+            
+            {/* Right column - meta info */}
+            <div className="space-y-6">
+              {/* Meta information card */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">{t('conversation.metaInfo')}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex items-center">
+                      <Calendar className="h-4 w-4 mr-2 text-muted-foreground" />
+                      <div>
+                        <p className="text-xs text-muted-foreground">{t('conversation.date')}</p>
+                        <p className="text-sm font-medium">{formattedDate}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <Clock className="h-4 w-4 mr-2 text-muted-foreground" />
+                      <div>
+                        <p className="text-xs text-muted-foreground">{t('conversation.duration')}</p>
+                        <p className="text-sm font-medium">
+                          {Math.floor(conversation.duration / 60)}:{(conversation.duration % 60).toString().padStart(2, '0')} min
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <Smartphone className="h-4 w-4 mr-2 text-muted-foreground" />
+                      <div>
+                        <p className="text-xs text-muted-foreground">{t('conversation.device')}</p>
+                        <p className="text-sm font-medium">iPhone 14</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <Globe className="h-4 w-4 mr-2 text-muted-foreground" />
+                      <div>
+                        <p className="text-xs text-muted-foreground">{t('conversation.language')}</p>
+                        <p className="text-sm font-medium">Uzbek 🇺🇿</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <Separator />
+                  
+                  {/* Score breakdown */}
+                  <div>
+                    <h4 className="text-sm font-medium mb-3">{t('conversation.score')} breakdown</h4>
+                    <div className="space-y-3">
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-xs">
+                          <span>Engagement</span>
+                          <span>85/100</span>
+                        </div>
+                        <Progress value={85} className="h-2" />
+                      </div>
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-xs">
+                          <span>Product Knowledge</span>
+                          <span>92/100</span>
+                        </div>
+                        <Progress value={92} className="h-2" />
+                      </div>
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-xs">
+                          <span>Closing Skills</span>
+                          <span>78/100</span>
+                        </div>
+                        <Progress value={78} className="h-2" />
+                      </div>
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-xs">
+                          <span>Customer Satisfaction</span>
+                          <span>90/100</span>
+                        </div>
+                        <Progress value={90} className="h-2" />
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              {/* AI Recommendations */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">{t('conversation.recommendations.title')}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="p-3 bg-green-50 text-green-700 rounded-md text-sm">
+                    <p className="font-medium mb-1">{t('conversation.recommendations.improvement')}</p>
+                    <p>Ask more open-ended questions to understand customer needs better.</p>
+                  </div>
+                  
+                  <div className="p-3 bg-yellow-50 text-yellow-700 rounded-md text-sm">
+                    <p className="font-medium mb-1">{t('conversation.recommendations.opportunity')}</p>
+                    <p>Mention our loyalty program for repeat customers.</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </RoleLayout>
+    </RoleProtectedRoute>
+  );
+};
+
+export default ConversationDetail;

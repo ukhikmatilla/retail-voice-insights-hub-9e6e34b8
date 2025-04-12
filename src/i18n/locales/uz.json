@@ -90,7 +90,16 @@
     "noTrainingModules": "Hech qanday o'quv moduli tayinlanmagan",
     "weeklyInsights": "Haftalik tahlillar",
     "noInsights": "Hali tahlillar yo'q",
-    "keyMetrics": "Asosiy ko'rsatkichlar"
+    "keyMetrics": "Asosiy ko'rsatkichlar",
+    "conversations": "Suhbatlar",
+    "conversationsDescription": "Mijozlar bilan bo'lgan suhbatlaringiz va AI tahlillar.",
+    "conversationDetails": "Suhbat tafsilotlari",
+    "noAudioAvailable": "Audio yozuv mavjud emas",
+    "noAnalysisAvailable": "AI tahlili hali mavjud emas",
+    "filterConversations": "Suhbatlarni filterlash",
+    "dateRange": "Sana oralig'i",
+    "scoreThreshold": "Ball chegarasi",
+    "language": "Til"
   },
   "conversation": {
     "duration": "Davomiyligi",
@@ -103,6 +112,22 @@
       "improvement": "Umumiy takomillashtirish",
       "opportunity": "Potentsial imkoniyat",
       "urgent": "Shoshilinch masala"
+    },
+    "title": "{{date}} sanasidagi suhbat",
+    "metaInfo": "Meta-ma'lumot",
+    "device": "Qurilma",
+    "language": "Til",
+    "salesperson": "Sotuvchi",
+    "customer": "Mijoz",
+    "playAudio": "Audio yozuvni tinglash",
+    "pauseAudio": "To'xtatish",
+    "downloadTranscript": "Matnni yuklab olish"
+  },
+  "insight": {
+    "type": {
+      "improvement": "Takomillashtirish",
+      "opportunity": "Imkoniyat",
+      "urgent": "Muhim"
     }
   },
   "training": {
@@ -117,13 +142,6 @@
     "viewCertificate": "Sertifikatni ko'rish",
     "continue": "Davom ettirish",
     "start": "Boshlash"
-  },
-  "insight": {
-    "type": {
-      "improvement": "Takomillashtirish",
-      "opportunity": "Imkoniyat",
-      "urgent": "Muhim"
-    }
   },
   "hr": {
     "analysis": "Tahlil",

@@ -18,6 +18,7 @@ import SelectRole from "./pages/auth/SelectRole";
 // Salesperson pages
 import SalesDashboard from "./pages/sales/dashboard";
 import SalesConversations from "./pages/sales/conversations";
+import ConversationDetail from "./pages/sales/conversations/[id]";
 import SalesInsights from "./pages/sales/insights";
 import SalesTraining from "./pages/sales/training";
 
@@ -89,6 +90,14 @@ const App = () => (
                 element={
                   <RoleProtectedRoute allowedRoles={['salesperson']}>
                     <SalesConversations />
+                  </RoleProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/sales/conversations/:id" 
+                element={
+                  <RoleProtectedRoute allowedRoles={['salesperson']}>
+                    <ConversationDetail />
                   </RoleProtectedRoute>
                 } 
               />

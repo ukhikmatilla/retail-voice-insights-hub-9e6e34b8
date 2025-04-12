@@ -130,6 +130,21 @@
       "urgent": "Muhim"
     }
   },
+  "insights": {
+    "skillAnalysis": "Ko'nikmalar tahlili",
+    "noSkillAnalysisAvailable": "Ko'nikmalar tahlili hali mavjud emas",
+    "expand": "Batafsil ko'rsatish",
+    "hide": "Yopish",
+    "aiAdvice": "AI tavsiyasi",
+    "trustBuilding": "Ishonch uygʻotish",
+    "objections": "E'tirozlarga ishlov berish",
+    "crossSelling": "Qo'shimcha savdo",
+    "valueExplanation": "Qiymatni tushuntirish",
+    "closing": "Bitimni yakunlash",
+    "criterion": "Mezon",
+    "rating": "Baho",
+    "comment": "Izoh"
+  },
   "training": {
     "status": {
       "assigned": "Tayinlangan",

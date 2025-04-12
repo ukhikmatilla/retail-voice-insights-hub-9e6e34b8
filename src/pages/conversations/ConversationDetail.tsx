@@ -9,6 +9,10 @@ import { mockConversations } from '@/data/mockData';
 import { ArrowLeftIcon, CalendarIcon, ClockIcon, PercentIcon } from 'lucide-react';
 import { format } from 'date-fns';
 import InsightCard from '@/components/InsightCard';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { conversationSkillAnalysisMock } from '@/mocks/conversationSkillAnalysis';
+import SkillFeedbackAccordion from '@/components/ai/SkillFeedbackAccordion';
 
 const ConversationDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -86,23 +90,42 @@ const ConversationDetail = () => {
 
       <div className="grid gap-6 md:grid-cols-3">
         <div className="md:col-span-2">
-          <Card>
-            <CardContent className="p-6">
-              <h2 className="text-lg font-semibold mb-4">{t('conversation.transcript')}</h2>
-              <div className="space-y-4">
-                {mockTranscript.map((line, index) => (
-                  <div key={index} className="flex">
-                    <div className={`w-28 flex-shrink-0 font-medium ${
-                      line.speaker === 'Salesperson' ? 'text-primary' : 'text-muted-foreground'
-                    }`}>
-                      {line.speaker}:
+          <Tabs defaultValue="transcript" className="w-full">
+            <TabsList className="mb-4 w-full justify-start">
+              <TabsTrigger value="transcript">{t('conversation.transcript')}</TabsTrigger>
+              <TabsTrigger value="analysis">{t('conversation.insights')}</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="transcript">
+              <Card>
+                <CardContent className="p-6">
+                  <h2 className="text-lg font-semibold mb-4">{t('conversation.transcript')}</h2>
+                  <ScrollArea className="h-[500px] pr-4">
+                    <div className="space-y-4">
+                      {mockTranscript.map((line, index) => (
+                        <div key={index} className="flex">
+                          <div className={`w-28 flex-shrink-0 font-medium ${
+                            line.speaker === 'Salesperson' ? 'text-primary' : 'text-muted-foreground'
+                          }`}>
+                            {line.speaker}:
+                          </div>
+                          <div>{line.text}</div>
+                        </div>
+                      ))}
                     </div>
-                    <div>{line.text}</div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                  </ScrollArea>
+                </CardContent>
+              </Card>
+            </TabsContent>
+            
+            <TabsContent value="analysis">
+              <Card>
+                <CardContent className="p-6">
+                  <SkillFeedbackAccordion skills={conversationSkillAnalysisMock} />
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
         </div>
         
         <div>

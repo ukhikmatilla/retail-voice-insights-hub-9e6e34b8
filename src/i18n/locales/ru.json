@@ -130,6 +130,21 @@
       "urgent": "Срочно"
     }
   },
+  "insights": {
+    "skillAnalysis": "Анализ навыков",
+    "noSkillAnalysisAvailable": "Анализ навыков пока недоступен",
+    "expand": "Показать подробнее",
+    "hide": "Скрыть",
+    "aiAdvice": "Рекомендация AI",
+    "trustBuilding": "Построение доверия",
+    "objections": "Работа с возражениями",
+    "crossSelling": "Кросс-продажи",
+    "valueExplanation": "Аргументация ценности",
+    "closing": "Закрытие сделки",
+    "criterion": "Критерий",
+    "rating": "Оценка",
+    "comment": "Комментарий"
+  },
   "training": {
     "status": {
       "assigned": "Назначено",

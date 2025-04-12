@@ -161,5 +161,11 @@
     "save": "Saqlash",
     "successUpdate": "Profil muvaffaqiyatli yangilandi",
     "errorUpdate": "Profilni yangilashda xatolik yuz berdi"
+  },
+  "transcript": {
+    "title": "Suhbat matni",
+    "download": "Matnni yuklab olish",
+    "empty": "Matn hali mavjud emas. AI suhbatni qayta ishlamoqda...",
+    "client": "Mijoz"
   }
 }

@@ -1,8 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { format } from 'date-fns';
-import { ArrowLeft, Play, Pause, Download, Smartphone, Globe, Calendar, Clock } from 'lucide-react';
+import { ArrowLeft, Play, Pause, Smartphone, Globe, Calendar, Clock } from 'lucide-react';
 import RoleLayout from '@/components/RoleLayout';
 import RoleProtectedRoute from '@/components/RoleProtectedRoute';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,52 +13,56 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import InsightCard from '@/components/InsightCard';
+import TranscriptViewer from '@/components/conversations/TranscriptViewer';
 import { mockConversations } from '@/data/mockData';
-
-interface TranscriptEntry {
-  speaker: 'salesperson' | 'customer';
-  content: string;
-  timestamp: string;
-}
+import { nanoid } from 'nanoid';
 
 // Mock transcript data - in a real application, this would be dynamic
-const mockTranscript: TranscriptEntry[] = [
+const mockTranscript = [
   {
+    id: nanoid(),
     speaker: 'salesperson',
     content: 'Hello! Welcome to our store. How can I help you today?',
     timestamp: '00:00',
   },
   {
+    id: nanoid(),
     speaker: 'customer',
     content: 'Hi, I\'m looking for kids shoes, size 30.',
     timestamp: '00:05',
   },
   {
+    id: nanoid(),
     speaker: 'salesperson',
     content: 'Of course! We have several options for kids in size 30. Let me show you our collection over here.',
     timestamp: '00:12',
   },
   {
+    id: nanoid(),
     speaker: 'customer',
     content: 'Do they come in blue? My son really likes blue shoes.',
     timestamp: '00:22',
   },
   {
+    id: nanoid(),
     speaker: 'salesperson',
     content: 'Yes, we have these models in blue. They\'re very comfortable and durable for active children.',
     timestamp: '00:28',
   },
   {
+    id: nanoid(),
     speaker: 'customer',
     content: 'Perfect! I\'ll take these. How much are they?',
     timestamp: '00:40',
   },
   {
+    id: nanoid(),
     speaker: 'salesperson',
     content: 'These are 150,000 soums. Would you like me to get them in a box for you?',
     timestamp: '00:45',
   },
   {
+    id: nanoid(),
     speaker: 'customer',
     content: 'Yes, please. I\'ll take them.',
     timestamp: '00:52',
@@ -204,33 +209,7 @@ const ConversationDetail = () => {
                 <TabsContent value="transcript" className="space-y-4 animate-fade-in">
                   <Card>
                     <CardContent className="pt-6">
-                      <div className="flex justify-end mb-2">
-                        <Button variant="ghost" size="sm" className="text-xs">
-                          <Download className="h-3 w-3 mr-2" />
-                          {t('conversation.downloadTranscript')}
-                        </Button>
-                      </div>
-                      <div className="space-y-6">
-                        {mockTranscript.map((entry, index) => (
-                          <div key={index} className={`flex ${entry.speaker === 'salesperson' ? 'justify-end' : 'justify-start'}`}>
-                            <div className={`max-w-[80%] ${
-                              entry.speaker === 'salesperson' ? 
-                                'bg-primary/10 text-primary-foreground' : 
-                                'bg-muted'
-                            } p-3 rounded-lg`}>
-                              <div className="flex justify-between mb-1">
-                                <span className="text-xs font-medium">
-                                  {t(`conversation.${entry.speaker}`)}
-                                </span>
-                                <span className="text-xs text-muted-foreground">
-                                  {entry.timestamp}
-                                </span>
-                              </div>
-                              <p className="text-sm">{entry.content}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+                      <TranscriptViewer messages={mockTranscript} />
                     </CardContent>
                   </Card>
                 </TabsContent>

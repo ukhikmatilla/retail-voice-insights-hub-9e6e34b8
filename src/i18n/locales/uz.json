@@ -1,3 +1,4 @@
+
 {
   "app": {
     "name": "RetailVoiceAI"
@@ -127,7 +128,9 @@
       "title": "Tavsiyalar",
       "improvement": "Umumiy takomillashtirish",
       "opportunity": "Potentsial imkoniyat",
-      "urgent": "Shoshilinch masala"
+      "urgent": "Shoshilinch masala",
+      "askMoreQuestions": "Mijoz ehtiyojlarini yaxshiroq tushunish uchun ko'proq ochiq savollar bering.",
+      "mentionLoyaltyProgram": "Doimiy mijozlar uchun bizning sodiqlik dasturimizni eslatib o'ting."
     },
     "title": "{{date}} sanasidagi suhbat",
     "metaInfo": "Meta-ma'lumot",

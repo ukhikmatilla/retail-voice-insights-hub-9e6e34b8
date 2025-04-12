@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -28,6 +27,19 @@ const AiRecommendations: React.FC<AiRecommendationsProps> = ({
     }
   };
 
+  // Helper to get translated content based on recommendation type
+  const getTranslatedContent = (type: RecommendationType['type'], content: string) => {
+    // For the specific English phrases, use the translations
+    if (type === 'improvement' && content === "Ask more open-ended questions to understand customer needs better.") {
+      return t('conversation.recommendations.askMoreQuestions');
+    }
+    if (type === 'opportunity' && content === "Mention our loyalty program for repeat customers.") {
+      return t('conversation.recommendations.mentionLoyaltyProgram');
+    }
+    // Otherwise return the original content
+    return content;
+  };
+
   return (
     <Card>
       <CardHeader>
@@ -37,7 +49,7 @@ const AiRecommendations: React.FC<AiRecommendationsProps> = ({
         {recommendations.map((rec, index) => (
           <div key={index} className={`p-3 rounded-md text-sm ${getTypeStyles(rec.type)}`}>
             <p className="font-medium mb-1">{t(`conversation.recommendations.${rec.type}`)}</p>
-            <p>{rec.content}</p>
+            <p>{getTranslatedContent(rec.type, rec.content)}</p>
           </div>
         ))}
       </CardContent>

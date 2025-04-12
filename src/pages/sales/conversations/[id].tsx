@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import RoleLayout from '@/components/RoleLayout';
@@ -13,6 +12,7 @@ import ConversationSidebar from './components/ConversationSidebar';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { ArrowLeft } from 'lucide-react';
 
 // Mock transcript data with AI insights for salesperson messages and dual-language support
 const mockTranscript = [{

@@ -21,49 +21,49 @@ import { nanoid } from 'nanoid';
 const mockTranscript = [
   {
     id: nanoid(),
-    speaker: 'salesperson',
+    speaker: 'salesperson' as const,
     content: 'Hello! Welcome to our store. How can I help you today?',
     timestamp: '00:00',
   },
   {
     id: nanoid(),
-    speaker: 'customer',
+    speaker: 'customer' as const,
     content: 'Hi, I\'m looking for kids shoes, size 30.',
     timestamp: '00:05',
   },
   {
     id: nanoid(),
-    speaker: 'salesperson',
+    speaker: 'salesperson' as const,
     content: 'Of course! We have several options for kids in size 30. Let me show you our collection over here.',
     timestamp: '00:12',
   },
   {
     id: nanoid(),
-    speaker: 'customer',
+    speaker: 'customer' as const,
     content: 'Do they come in blue? My son really likes blue shoes.',
     timestamp: '00:22',
   },
   {
     id: nanoid(),
-    speaker: 'salesperson',
+    speaker: 'salesperson' as const,
     content: 'Yes, we have these models in blue. They\'re very comfortable and durable for active children.',
     timestamp: '00:28',
   },
   {
     id: nanoid(),
-    speaker: 'customer',
+    speaker: 'customer' as const,
     content: 'Perfect! I\'ll take these. How much are they?',
     timestamp: '00:40',
   },
   {
     id: nanoid(),
-    speaker: 'salesperson',
+    speaker: 'salesperson' as const,
     content: 'These are 150,000 soums. Would you like me to get them in a box for you?',
     timestamp: '00:45',
   },
   {
     id: nanoid(),
-    speaker: 'customer',
+    speaker: 'customer' as const,
     content: 'Yes, please. I\'ll take them.',
     timestamp: '00:52',
   }

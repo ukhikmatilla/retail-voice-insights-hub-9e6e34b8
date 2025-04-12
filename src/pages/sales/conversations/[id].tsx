@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { format } from 'date-fns';
-import { ArrowLeft, Play, Pause, Smartphone, Globe, Calendar, Clock } from 'lucide-react';
 import RoleLayout from '@/components/RoleLayout';
 import RoleProtectedRoute from '@/components/RoleProtectedRoute';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
-import { Progress } from '@/components/ui/progress';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import TranscriptViewer from '@/components/conversations/TranscriptViewer';
 import SkillFeedbackAccordion from '@/components/ai/SkillFeedbackAccordion';
+import InsightSection from '@/components/insights/InsightSection';
 import { mockConversations } from '@/data/mockData';
 import { conversationSkillAnalysisMock } from '@/mocks/conversationSkillAnalysis';
 import { nanoid } from 'nanoid';
-import InsightSection from '@/components/insights/InsightSection';
 import { expandableInsightsMock } from '@/data/insightsMockData';
+import ConversationHeader from '@/components/conversations/ConversationHeader';
+import AudioPlayer from '@/components/conversations/AudioPlayer';
+import ConversationMeta from '@/components/conversations/ConversationMeta';
+import AiRecommendations from '@/components/conversations/AiRecommendations';
 
 // Mock transcript data with AI insights for salesperson messages and dual-language support
 const mockTranscript = [{
@@ -119,36 +118,27 @@ const mockTranscript = [{
   }
 }];
 
+// Mock recommendations
+const mockRecommendations = [
+  {
+    type: 'improvement' as const,
+    content: "Ask more open-ended questions to understand customer needs better."
+  },
+  {
+    type: 'opportunity' as const,
+    content: "Mention our loyalty program for repeat customers."
+  }
+];
+
 const ConversationDetail = () => {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string; }>();
-  const navigate = useNavigate();
   const location = useLocation();
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [audioProgress, setAudioProgress] = useState(0);
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('transcript');
 
   // Find the conversation by ID
   const conversation = mockConversations.find(conv => conv.id === id);
-
-  // Simulate audio progress updates
-  useEffect(() => {
-    let interval: ReturnType<typeof setInterval>;
-    if (isPlaying) {
-      interval = setInterval(() => {
-        setAudioProgress(prev => {
-          if (prev >= 100) {
-            setIsPlaying(false);
-            return 100;
-          }
-          return prev + 1;
-        });
-      }, 300);
-    }
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [isPlaying]);
 
   // Return to conversations list if conversation not found
   if (!conversation) {
@@ -156,10 +146,11 @@ const ConversationDetail = () => {
       <RoleProtectedRoute allowedRoles={['salesperson']}>
         <RoleLayout currentPath={location.pathname}>
           <div className="animate-fade-in">
-            <Button variant="ghost" onClick={() => navigate('/sales/conversations')}>
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              {t('common.back')}
-            </Button>
+            <ConversationHeader 
+              date="" 
+              score={0} 
+              duration={0} 
+            />
             <div className="p-12 text-center">
               <h2 className="text-2xl font-bold text-red-500 mb-2">{t('common.error')}</h2>
               <p className="text-muted-foreground">{t('sales.noConversations')}</p>
@@ -169,66 +160,23 @@ const ConversationDetail = () => {
       </RoleProtectedRoute>
     );
   }
-  const formattedDate = format(new Date(conversation.date), 'PPP');
 
   return (
     <RoleProtectedRoute allowedRoles={['salesperson']}>
       <RoleLayout currentPath={location.pathname}>
         <div className="animate-fade-in">
-          {/* Back button */}
-          <Button variant="ghost" className="mb-6" onClick={() => navigate('/sales/conversations')}>
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            {t('common.back')}
-          </Button>
+          {/* Header with back button and title */}
+          <ConversationHeader 
+            date={conversation.date} 
+            score={conversation.score} 
+            duration={conversation.duration} 
+          />
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
             {/* Left column - main content */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Header */}
-              <div>
-                <h1 className="text-3xl font-bold">
-                  {t('conversation.title', {
-                  date: formattedDate
-                })}
-                </h1>
-                <div className="flex items-center mt-2 space-x-2">
-                  <Badge variant={conversation.score >= 90 ? "default" : conversation.score >= 70 ? "secondary" : "destructive"}>
-                    {t('conversation.score')}: {conversation.score}/100
-                  </Badge>
-                  <Badge variant="outline">
-                    {Math.floor(conversation.duration / 60)}:{(conversation.duration % 60).toString().padStart(2, '0')}
-                  </Badge>
-                </div>
-              </div>
-              
               {/* Audio player */}
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-md font-medium">
-                    {t('conversation.playAudio')}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <Button onClick={() => setIsPlaying(!isPlaying)} variant="outline" className="w-12 h-12 rounded-full">
-                      {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 ml-0.5" />}
-                    </Button>
-                    <div className="space-y-2">
-                      <Progress value={audioProgress} />
-                      <div className="flex justify-between text-xs text-muted-foreground">
-                        <span>
-                          {Math.floor(audioProgress / 100 * conversation.duration) / 60 < 1 ? '00:' : '01:'}
-                          {Math.floor(audioProgress / 100 * (conversation.duration % 60)).toString().padStart(2, '0')}
-                        </span>
-                        <span>
-                          {Math.floor(conversation.duration / 60)}:
-                          {(conversation.duration % 60).toString().padStart(2, '0')}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <AudioPlayer duration={conversation.duration} />
               
               {/* Transcript and Insights */}
               <Tabs defaultValue="transcript" value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -255,9 +203,6 @@ const ConversationDetail = () => {
                   
                   {/* Insights Analysis Section */}
                   <Card>
-                    <CardHeader>
-                      <CardTitle className="text-lg">{t('conversation.insights')}</CardTitle>
-                    </CardHeader>
                     <CardContent>
                       <InsightSection insights={expandableInsightsMock} />
                     </CardContent>
@@ -270,101 +215,16 @@ const ConversationDetail = () => {
             <div className="space-y-6">
               {/* Meta information card */}
               <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">{t('conversation.metaInfo')}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 mr-2 text-muted-foreground" />
-                      <div>
-                        <p className="text-xs text-muted-foreground">{t('conversation.date')}</p>
-                        <p className="text-sm font-medium">{formattedDate}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="h-4 w-4 mr-2 text-muted-foreground" />
-                      <div>
-                        <p className="text-muted-foreground text-left text-xs px-0 mx-0">
-                          {t('conversation.duration')}
-                        </p>
-                        <p className="text-sm font-medium break-words">
-                          {Math.floor(conversation.duration / 60)}:{(conversation.duration % 60).toString().padStart(2, '0')} {t('common.min')}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center">
-                      <Smartphone className="h-4 w-4 mr-2 text-muted-foreground" />
-                      <div>
-                        <p className="text-xs text-muted-foreground">{t('conversation.device')}</p>
-                        <p className="text-sm font-medium">iPhone 14</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center">
-                      <Globe className="h-4 w-4 mr-2 text-muted-foreground" />
-                      <div>
-                        <p className="text-xs text-muted-foreground">{t('conversation.language')}</p>
-                        <p className="text-sm font-medium">Uzbek 🇺🇿</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <Separator />
-                  
-                  {/* Score breakdown */}
-                  <div>
-                    <h4 className="text-sm font-medium mb-3">{t('conversation.score')} breakdown</h4>
-                    <div className="space-y-3">
-                      <div className="space-y-1">
-                        <div className="flex justify-between text-xs">
-                          <span>Engagement</span>
-                          <span>85/100</span>
-                        </div>
-                        <Progress value={85} className="h-2" />
-                      </div>
-                      <div className="space-y-1">
-                        <div className="flex justify-between text-xs">
-                          <span>Product Knowledge</span>
-                          <span>92/100</span>
-                        </div>
-                        <Progress value={92} className="h-2" />
-                      </div>
-                      <div className="space-y-1">
-                        <div className="flex justify-between text-xs">
-                          <span>Closing Skills</span>
-                          <span>78/100</span>
-                        </div>
-                        <Progress value={78} className="h-2" />
-                      </div>
-                      <div className="space-y-1">
-                        <div className="flex justify-between text-xs">
-                          <span>Customer Satisfaction</span>
-                          <span>90/100</span>
-                        </div>
-                        <Progress value={90} className="h-2" />
-                      </div>
-                    </div>
-                  </div>
+                <CardContent className="p-6">
+                  <ConversationMeta
+                    date={conversation.date}
+                    duration={conversation.duration}
+                  />
                 </CardContent>
               </Card>
               
               {/* AI Recommendations */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">{t('conversation.recommendations.title')}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="p-3 bg-green-50 text-green-700 rounded-md text-sm">
-                    <p className="font-medium mb-1">{t('conversation.recommendations.improvement')}</p>
-                    <p>Ask more open-ended questions to understand customer needs better.</p>
-                  </div>
-                  
-                  <div className="p-3 bg-yellow-50 text-yellow-700 rounded-md text-sm">
-                    <p className="font-medium mb-1">{t('conversation.recommendations.opportunity')}</p>
-                    <p>Mention our loyalty program for repeat customers.</p>
-                  </div>
-                </CardContent>
-              </Card>
+              <AiRecommendations recommendations={mockRecommendations} />
             </div>
           </div>
         </div>

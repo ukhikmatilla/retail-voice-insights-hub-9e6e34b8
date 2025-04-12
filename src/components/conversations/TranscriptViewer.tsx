@@ -24,7 +24,7 @@ const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
   const handleDownloadTranscript = () => {
     // Create transcript content
     const content = messages.map(msg => {
-      const speakerLabel = t(`conversation.${msg.speaker}`);
+      const speakerLabel = t(`transcript.speakerLabels.${msg.speaker}`);
       // Get message text based on translations or fallback to content
       const messageText = msg.translations 
         ? msg.translations[currentLang] 

@@ -1,3 +1,4 @@
+
 {
   "app": {
     "name": "RetailVoiceAI"
@@ -224,7 +225,8 @@
     "viewInsight": "AI tavsiyasini ko'rish",
     "speakerLabels": {
       "seller": "Sotuvchi",
-      "customer": "Mijoz"
+      "customer": "Mijoz",
+      "salesperson": "Sotuvchi"
     }
   }
 }

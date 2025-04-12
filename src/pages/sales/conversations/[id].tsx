@@ -304,7 +304,7 @@ const ConversationDetail = () => {
                     <div className="flex items-center">
                       <Clock className="h-4 w-4 mr-2 text-muted-foreground" />
                       <div>
-                        <p className="text-xs text-muted-foreground">{t('conversation.duration')}</p>
+                        <p className="text-muted-foreground text-left text-xs px-0 mx-0">{t('conversation.duration')}</p>
                         <p className="text-sm font-medium">
                           {Math.floor(conversation.duration / 60)}:{(conversation.duration % 60).toString().padStart(2, '0')} min
                         </p>

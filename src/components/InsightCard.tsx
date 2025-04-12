@@ -51,8 +51,6 @@ const InsightCard: React.FC<InsightCardProps> = ({
     icon,
     className
   } = getInsightDetails();
-  return <Card className={cn("overflow-hidden shadow-sm", className)}>
-      
-    </Card>;
+  return;
 };
 export default InsightCard;

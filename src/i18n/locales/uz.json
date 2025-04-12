@@ -211,6 +211,15 @@
     "title": "Suhbat matni",
     "download": "Matnni yuklab olish",
     "empty": "Matn hali mavjud emas. AI suhbatni qayta ishlamoqda...",
-    "client": "Mijoz"
+    "client": "Mijoz",
+    "showInsight": "AI tavsiyasini ko'rish",
+    "hideInsight": "Yopish",
+    "aiTip": "AI tavsiyasi",
+    "categories": {
+      "closing": "Bitimni yakunlash",
+      "personalization": "Shaxsiylashtirish",
+      "error": "Xatolik",
+      "opportunity": "Imkoniyat"
+    }
   }
 }

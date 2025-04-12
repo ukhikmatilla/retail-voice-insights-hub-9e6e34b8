@@ -13,6 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { conversationSkillAnalysisMock } from '@/mocks/conversationSkillAnalysis';
 import SkillFeedbackAccordion from '@/components/ai/SkillFeedbackAccordion';
+import TranscriptViewer, { TranscriptMessage } from '@/components/conversations/TranscriptViewer';
 
 const ConversationDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -41,19 +42,118 @@ const ConversationDetail = () => {
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
   
-  // Mock transcript - in a real app, this would come from the backend
-  const mockTranscript = [
-    { speaker: 'Salesperson', text: 'Hello! Welcome to our store. How can I help you today?' },
-    { speaker: 'Customer', text: 'Hi, I\'m looking for a new smartphone with a good camera.' },
-    { speaker: 'Salesperson', text: 'We have several great options. Are you interested in any specific brand?' },
-    { speaker: 'Customer', text: 'I\'ve been using Samsung for years, but I\'m open to other suggestions.' },
-    { speaker: 'Salesperson', text: 'Samsung makes excellent cameras. The new Galaxy S23 Ultra has an amazing 108MP camera with great low-light performance. But if you\'re open to alternatives, the iPhone 14 Pro also has an exceptional camera system.' },
-    { speaker: 'Customer', text: 'What about price? What\'s the difference between them?' },
-    { speaker: 'Salesperson', text: 'The Galaxy S23 Ultra starts at $1,199 and the iPhone 14 Pro starts at $999. Both are premium devices, but they have different ecosystems.' },
-    { speaker: 'Customer', text: 'That\'s quite expensive. Do you have any mid-range options with good cameras?' },
-    { speaker: 'Salesperson', text: 'Yes, the Google Pixel 7a has one of the best cameras in the mid-range segment, and it\'s priced at $499. The Samsung Galaxy A54 is also excellent at $449.' },
-    { speaker: 'Customer', text: 'I think I\'ll take a look at the Pixel 7a. Can I see it?' },
-    { speaker: 'Salesperson', text: 'Absolutely, let me get one for you.' }
+  // Enhanced transcript with inline AI insights
+  const mockTranscriptWithInsights: TranscriptMessage[] = [
+    { 
+      id: "1",
+      speaker: 'salesperson', 
+      content: 'Hello! Welcome to our store. How can I help you today?',
+      timestamp: '00:00',
+      insight: {
+        category: 'personalization',
+        title: {
+          uz: "Shaxsiylashtirish",
+          ru: "Персонализация"
+        },
+        message: {
+          uz: "Salomlashish yaxshi, lekin mijozning ismini so'rab, unga shaxsiy yondashishingiz mumkin edi.",
+          ru: "Приветствие хорошее, но можно было спросить имя клиента для более персонализированного подхода."
+        }
+      }
+    },
+    { 
+      id: "2",
+      speaker: 'customer', 
+      content: "Hi, I'm looking for a new smartphone with a good camera.",
+      timestamp: '00:05'
+    },
+    { 
+      id: "3",
+      speaker: 'salesperson', 
+      content: "We have several great options. Are you interested in any specific brand?",
+      timestamp: '00:12'
+    },
+    { 
+      id: "4",
+      speaker: 'customer', 
+      content: "I've been using Samsung for years, but I'm open to other suggestions.",
+      timestamp: '00:22'
+    },
+    { 
+      id: "5",
+      speaker: 'salesperson', 
+      content: "Samsung makes excellent cameras. The new Galaxy S23 Ultra has an amazing 108MP camera with great low-light performance. But if you're open to alternatives, the iPhone 14 Pro also has an exceptional camera system.",
+      timestamp: '00:28',
+      insight: {
+        category: 'closing',
+        title: {
+          uz: "Bitimni yakunlash",
+          ru: "Закрытие сделки"
+        },
+        message: {
+          uz: "Mahsulot haqidagi ma'lumotlar juda yaxshi, ammo mijozning ehtiyojlarini ko'proq so'rang. Bu sizga mahsulotni aniqroq tavsiya qilish imkonini beradi.",
+          ru: "Отличные сведения о продукте, но рекомендуется задать больше вопросов о потребностях клиента, чтобы сделать более точную рекомендацию."
+        }
+      }
+    },
+    { 
+      id: "6",
+      speaker: 'customer', 
+      content: "What about price? What's the difference between them?",
+      timestamp: '00:40'
+    },
+    { 
+      id: "7",
+      speaker: 'salesperson', 
+      content: "The Galaxy S23 Ultra starts at $1,199 and the iPhone 14 Pro starts at $999. Both are premium devices, but they have different ecosystems.",
+      timestamp: '00:45'
+    },
+    { 
+      id: "8",
+      speaker: 'customer', 
+      content: "That's quite expensive. Do you have any mid-range options with good cameras?",
+      timestamp: '00:52'
+    },
+    { 
+      id: "9",
+      speaker: 'salesperson', 
+      content: "Yes, the Google Pixel 7a has one of the best cameras in the mid-range segment, and it's priced at $499. The Samsung Galaxy A54 is also excellent at $449.",
+      timestamp: '01:05',
+      insight: {
+        category: 'opportunity',
+        title: {
+          uz: "Imkoniyat",
+          ru: "Возможность"
+        },
+        message: {
+          uz: "Mijoz narxdan tashvishda. Bu yerda moliyalashtirish yoki chegirma variantlarini taklif qilish juda foydali bo'lar edi.",
+          ru: "Клиент обеспокоен ценой. Здесь было бы полезно предложить варианты рассрочки или скидки."
+        }
+      }
+    },
+    { 
+      id: "10",
+      speaker: 'customer', 
+      content: "I think I'll take a look at the Pixel 7a. Can I see it?",
+      timestamp: '01:15'
+    },
+    { 
+      id: "11",
+      speaker: 'salesperson', 
+      content: "Absolutely, let me get one for you.",
+      timestamp: '01:20',
+      insight: {
+        category: 'error',
+        title: {
+          uz: "Xatolik",
+          ru: "Ошибка"
+        },
+        message: {
+          uz: "Bu yerda qo'shimcha aksessuarlar yoki himoya rejalari haqida so'rab, savdo hajmini oshirish imkoniyati boy berildi.",
+          ru: "Упущена возможность задать вопрос о дополнительных аксессуарах или планах защиты, что могло бы увеличить объем продаж."
+        }
+      }
+    }
   ];
 
   // Example behavioral insight
@@ -131,21 +231,7 @@ const ConversationDetail = () => {
             <TabsContent value="transcript">
               <Card>
                 <CardContent className="p-6">
-                  <h2 className="text-lg font-semibold mb-4">{t('conversation.transcript')}</h2>
-                  <ScrollArea className="h-[500px] pr-4">
-                    <div className="space-y-4">
-                      {mockTranscript.map((line, index) => (
-                        <div key={index} className="flex">
-                          <div className={`w-28 flex-shrink-0 font-medium ${
-                            line.speaker === 'Salesperson' ? 'text-primary' : 'text-muted-foreground'
-                          }`}>
-                            {line.speaker}:
-                          </div>
-                          <div>{line.text}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </ScrollArea>
+                  <TranscriptViewer messages={mockTranscriptWithInsights} />
                 </CardContent>
               </Card>
             </TabsContent>

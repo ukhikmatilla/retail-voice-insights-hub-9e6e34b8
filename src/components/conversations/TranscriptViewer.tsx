@@ -3,15 +3,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import TranscriptMessageBubble from './TranscriptMessageBubble';
+import TranscriptMessageBubble, { TranscriptMessage } from './TranscriptMessageBubble';
 import TranscriptEmptyState from './TranscriptEmptyState';
-
-export interface TranscriptMessage {
-  id: string;
-  speaker: 'salesperson' | 'customer';
-  content: string;
-  timestamp: string; // mm:ss format
-}
 
 interface TranscriptViewerProps {
   messages: TranscriptMessage[];
@@ -70,7 +63,7 @@ const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
         </Button>
       </div>
       
-      <div className="space-y-4 pb-2">
+      <div className="space-y-0 pb-2">
         {messages.map((message) => (
           <TranscriptMessageBubble 
             key={message.id} 

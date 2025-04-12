@@ -1,0 +1,93 @@
+
+{
+  "app": {
+    "name": "RetailVoiceAI"
+  },
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "error": "Xatolik yuz berdi",
+    "submit": "Yuborish",
+    "cancel": "Bekor qilish",
+    "save": "Saqlash",
+    "delete": "O'chirish",
+    "search": "Qidirish",
+    "back": "Orqaga",
+    "next": "Keyingi",
+    "previous": "Oldingi",
+    "viewDetails": "Batafsil ko'rish",
+    "assignTraining": "Trening tayinlash",
+    "scheduleCoaching": "Murabbiylik rejalashtirish"
+  },
+  "language": {
+    "uz": "O'zbekcha 🇺🇿",
+    "ru": "Ruscha 🇷🇺",
+    "select": "Tilni tanlang"
+  },
+  "auth": {
+    "login": "Kirish",
+    "register": "Ro'yxatdan o'tish",
+    "email": "Elektron pochta",
+    "password": "Parol",
+    "confirmPassword": "Parolni tasdiqlang",
+    "forgotPassword": "Parolni unutdingizmi?",
+    "name": "To'liq ism",
+    "role": "Lavozim",
+    "loginSuccess": "Muvaffaqiyatli kirildi",
+    "registerSuccess": "Muvaffaqiyatli ro'yxatdan o'tildi",
+    "passwordMismatch": "Parollar mos kelmadi",
+    "invalidCredentials": "Noto'g'ri elektron pochta yoki parol",
+    "requiredField": "Bu maydon talab qilinadi"
+  },
+  "roles": {
+    "salesperson": "Sotuvchi",
+    "manager": "Menejer",
+    "hr": "HR mutaxassis",
+    "select": "Lavozimingizni tanlang"
+  },
+  "onboarding": {
+    "welcome": {
+      "title": "RetailVoiceAI platformasiga xush kelibsiz!",
+      "description": "Sotuvchilar va mijozlar o'rtasidagi suhbatlarni tahlil qilishning eng yaxshi vositasi."
+    },
+    "features": {
+      "title": "AI-quvvatlangan tahlillar",
+      "description": "Mijozlar bilan bo'lgan suhbatlaringizni tahlil qiling, o'z ishingizdagi kuchli va zaif tomonlaringizni aniqlang."
+    },
+    "getStarted": {
+      "title": "Boshlashga tayyormisiz?",
+      "description": "Hoziroq ro'yxatdan o'ting va savdo jarayonlaringizni optimallashtirishni boshlang.",
+      "button": "Boshlash"
+    }
+  },
+  "dashboard": {
+    "welcome": "Xush kelibsiz, {{name}}!",
+    "overview": "Umumiy ko'rinish",
+    "conversations": "Suhbatlar",
+    "insights": "Tahlillar",
+    "training": "Treninglar",
+    "team": "Jamoa",
+    "personnel": "Xodimlar",
+    "behaviorAnalysis": "Xulq-atvor tahlili",
+    "trainingManagement": "Treninglarni boshqarish",
+    "criticalAttention": "Muhim e'tibor",
+    "stats": {
+      "totalConversations": "Jami suhbatlar",
+      "averageScore": "O'rtacha ball",
+      "successRate": "Muvaffaqiyat darajasi",
+      "missedOpportunities": "Boy berilgan imkoniyatlar"
+    }
+  },
+  "conversation": {
+    "duration": "Davomiyligi",
+    "date": "Sana",
+    "score": "Ball",
+    "transcript": "Matn",
+    "insights": "Tahlillar",
+    "recommendations": {
+      "title": "Tavsiyalar",
+      "improvement": "Umumiy takomillashtirish",
+      "opportunity": "Potentsial imkoniyat",
+      "urgent": "Shoshilinch masala"
+    }
+  }
+}

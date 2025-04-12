@@ -33,6 +33,9 @@ import HrPersonnel from "./pages/hr/personnel";
 import HrAnalysis from "./pages/hr/analysis";
 import HrTrainingManagement from "./pages/hr/training-management";
 
+// Profile pages
+import ProfileSettings from "./pages/profile/settings";
+
 // Import i18n instance
 import "./i18n/index";
 
@@ -58,6 +61,16 @@ const App = () => (
                 element={
                   <ProtectedRoute>
                     <SelectRole />
+                  </ProtectedRoute>
+                } 
+              />
+
+              {/* Profile routes */}
+              <Route 
+                path="/profile/settings" 
+                element={
+                  <ProtectedRoute>
+                    <ProfileSettings />
                   </ProtectedRoute>
                 } 
               />

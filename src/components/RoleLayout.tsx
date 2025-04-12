@@ -14,7 +14,8 @@ import {
   UsersIcon,
   UserIcon,
   LineChartIcon,
-  BookOpenIcon
+  BookOpenIcon,
+  SettingsIcon
 } from 'lucide-react';
 
 interface NavItem {
@@ -161,7 +162,11 @@ const RoleLayout: React.FC<RoleLayoutProps> = ({ children, currentPath }) => {
         
         <div className="p-4 border-t border-sidebar-border mt-auto">
           <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center">
+            <Button 
+              variant="ghost" 
+              className="flex items-center w-full justify-start p-2 hover:bg-sidebar-accent/50"
+              onClick={() => navigate('/profile/settings')}
+            >
               <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-medium">
                 {user?.name.charAt(0)}
               </div>
@@ -169,7 +174,8 @@ const RoleLayout: React.FC<RoleLayoutProps> = ({ children, currentPath }) => {
                 <p className="text-sm font-medium">{user?.name}</p>
                 <p className="text-xs text-sidebar-foreground/70">{t(`roles.${user?.role}`)}</p>
               </div>
-            </div>
+              <SettingsIcon className="ml-auto h-4 w-4 opacity-70" />
+            </Button>
           </div>
           
           <div className="grid grid-cols-2 gap-2">
@@ -190,6 +196,13 @@ const RoleLayout: React.FC<RoleLayoutProps> = ({ children, currentPath }) => {
       <div className="md:hidden flex items-center justify-between p-4 border-b">
         <h1 className="text-xl font-bold">RetailVoiceAI</h1>
         <div className="flex items-center space-x-2">
+          <Button 
+            variant="ghost"
+            size="icon"
+            onClick={() => navigate('/profile/settings')}
+          >
+            <SettingsIcon className="h-4 w-4" />
+          </Button>
           <LanguageSelector size="sm" />
           <Button 
             variant="outline" 

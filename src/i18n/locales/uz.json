@@ -132,5 +132,16 @@
   "manager": {
     "team": "Jamoa",
     "teamDescription": "Jamoa a'zolaringizning faoliyati va statistikasi."
+  },
+  "profile": {
+    "title": "Profil sozlamalari",
+    "fullName": "To'liq ism",
+    "role": "Lavozim",
+    "email": "Elektron pochta",
+    "language": "Interfeys tili",
+    "logout": "Chiqish",
+    "save": "Saqlash",
+    "successUpdate": "Profil muvaffaqiyatli yangilandi",
+    "errorUpdate": "Profilni yangilashda xatolik yuz berdi"
   }
 }

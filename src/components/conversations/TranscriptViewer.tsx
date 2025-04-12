@@ -6,6 +6,9 @@ import { Button } from '@/components/ui/button';
 import TranscriptMessageBubble, { TranscriptMessage } from './TranscriptMessageBubble';
 import TranscriptEmptyState from './TranscriptEmptyState';
 
+// Re-export the TranscriptMessage type for convenience
+export type { TranscriptMessage };
+
 interface TranscriptViewerProps {
   messages: TranscriptMessage[];
   isLoading?: boolean;

@@ -57,4 +57,9 @@ export const useDesktopDevice = (): boolean => {
   return useMediaQuery('(min-width: 1025px)');
 };
 
+/**
+ * Alias for useMobileDevice for compatibility
+ */
+export const useIsMobile = useMobileDevice;
+
 export default useMobileDevice;

@@ -1,4 +1,3 @@
-
 {
   "app": {
     "name": "RetailVoiceAI"
@@ -20,7 +19,8 @@
     "metricsPlaceholder": "Bu yerda metrikalar ko'rsatiladi",
     "analysisPlaceholder": "Bu yerda tahlillar ko'rsatiladi",
     "conversationsPlaceholder": "Bu yerda suhbatlar ko'rsatiladi",
-    "teamPlaceholder": "Bu yerda jamoa a'zolari ko'rsatiladi"
+    "teamPlaceholder": "Bu yerda jamoa a'zolari ko'rsatiladi",
+    "min": "daq"
   },
   "language": {
     "uz": "O'zbekcha 🇺🇿",

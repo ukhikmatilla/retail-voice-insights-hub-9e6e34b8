@@ -285,9 +285,11 @@ const ConversationDetail = () => {
                     <div className="flex items-center">
                       <Clock className="h-4 w-4 mr-2 text-muted-foreground" />
                       <div>
-                        <p className="text-muted-foreground text-left text-xs px-0 mx-0">{t('conversation.duration')}</p>
-                        <p className="text-sm font-medium">
-                          {Math.floor(conversation.duration / 60)}:{(conversation.duration % 60).toString().padStart(2, '0')} min
+                        <p className="text-muted-foreground text-left text-xs px-0 mx-0">
+                          {t('conversation.duration')}
+                        </p>
+                        <p className="text-sm font-medium break-words">
+                          {Math.floor(conversation.duration / 60)}:{(conversation.duration % 60).toString().padStart(2, '0')} {t('common.min')}
                         </p>
                       </div>
                     </div>
@@ -370,4 +372,5 @@ const ConversationDetail = () => {
     </RoleProtectedRoute>
   );
 };
+
 export default ConversationDetail;

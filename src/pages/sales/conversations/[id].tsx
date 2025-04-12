@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
@@ -24,60 +23,56 @@ import { expandableInsightsMock } from '@/data/insightsMockData';
 
 // Mock transcript data - in a real application, this would be dynamic
 // Ensuring that the speaker property is explicitly typed as "salesperson" | "customer"
-const mockTranscript: TranscriptMessage[] = [
-  {
-    id: nanoid(),
-    speaker: "salesperson",
-    content: 'Hello! Welcome to our store. How can I help you today?',
-    timestamp: '00:00',
-  },
-  {
-    id: nanoid(),
-    speaker: "customer",
-    content: 'Hi, I\'m looking for kids shoes, size 30.',
-    timestamp: '00:05',
-  },
-  {
-    id: nanoid(),
-    speaker: "salesperson",
-    content: 'Of course! We have several options for kids in size 30. Let me show you our collection over here.',
-    timestamp: '00:12',
-  },
-  {
-    id: nanoid(),
-    speaker: "customer",
-    content: 'Do they come in blue? My son really likes blue shoes.',
-    timestamp: '00:22',
-  },
-  {
-    id: nanoid(),
-    speaker: "salesperson",
-    content: 'Yes, we have these models in blue. They\'re very comfortable and durable for active children.',
-    timestamp: '00:28',
-  },
-  {
-    id: nanoid(),
-    speaker: "customer",
-    content: 'Perfect! I\'ll take these. How much are they?',
-    timestamp: '00:40',
-  },
-  {
-    id: nanoid(),
-    speaker: "salesperson",
-    content: 'These are 150,000 soums. Would you like me to get them in a box for you?',
-    timestamp: '00:45',
-  },
-  {
-    id: nanoid(),
-    speaker: "customer",
-    content: 'Yes, please. I\'ll take them.',
-    timestamp: '00:52',
-  }
-];
-
+const mockTranscript: TranscriptMessage[] = [{
+  id: nanoid(),
+  speaker: "salesperson",
+  content: 'Hello! Welcome to our store. How can I help you today?',
+  timestamp: '00:00'
+}, {
+  id: nanoid(),
+  speaker: "customer",
+  content: 'Hi, I\'m looking for kids shoes, size 30.',
+  timestamp: '00:05'
+}, {
+  id: nanoid(),
+  speaker: "salesperson",
+  content: 'Of course! We have several options for kids in size 30. Let me show you our collection over here.',
+  timestamp: '00:12'
+}, {
+  id: nanoid(),
+  speaker: "customer",
+  content: 'Do they come in blue? My son really likes blue shoes.',
+  timestamp: '00:22'
+}, {
+  id: nanoid(),
+  speaker: "salesperson",
+  content: 'Yes, we have these models in blue. They\'re very comfortable and durable for active children.',
+  timestamp: '00:28'
+}, {
+  id: nanoid(),
+  speaker: "customer",
+  content: 'Perfect! I\'ll take these. How much are they?',
+  timestamp: '00:40'
+}, {
+  id: nanoid(),
+  speaker: "salesperson",
+  content: 'These are 150,000 soums. Would you like me to get them in a box for you?',
+  timestamp: '00:45'
+}, {
+  id: nanoid(),
+  speaker: "customer",
+  content: 'Yes, please. I\'ll take them.',
+  timestamp: '00:52'
+}];
 const ConversationDetail = () => {
-  const { t } = useTranslation();
-  const { id } = useParams<{ id: string }>();
+  const {
+    t
+  } = useTranslation();
+  const {
+    id
+  } = useParams<{
+    id: string;
+  }>();
   const navigate = useNavigate();
   const location = useLocation();
   const [isPlaying, setIsPlaying] = useState(false);
@@ -86,11 +81,10 @@ const ConversationDetail = () => {
 
   // Find the conversation by ID
   const conversation = mockConversations.find(conv => conv.id === id);
-  
+
   // Simulate audio progress updates
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
-    
     if (isPlaying) {
       interval = setInterval(() => {
         setAudioProgress(prev => {
@@ -102,16 +96,14 @@ const ConversationDetail = () => {
         });
       }, 300);
     }
-    
     return () => {
       if (interval) clearInterval(interval);
     };
   }, [isPlaying]);
-  
+
   // Return to conversations list if conversation not found
   if (!conversation) {
-    return (
-      <RoleProtectedRoute allowedRoles={['salesperson']}>
+    return <RoleProtectedRoute allowedRoles={['salesperson']}>
         <RoleLayout currentPath={location.pathname}>
           <div className="animate-fade-in">
             <Button variant="ghost" onClick={() => navigate('/sales/conversations')}>
@@ -124,33 +116,25 @@ const ConversationDetail = () => {
             </div>
           </div>
         </RoleLayout>
-      </RoleProtectedRoute>
-    );
+      </RoleProtectedRoute>;
   }
-
   const formattedDate = format(new Date(conversation.date), 'PPP');
-  
+
   // Additional example insights for the extended types
-  const additionalInsights = [
-    {
-      id: "behavior-1",
-      type: "behavior" as InsightType,
-      content: t("insights.types.behavior.example"),
-      skillKey: "trustBuilding"
-    },
-    {
-      id: "custom-1",
-      type: "custom" as InsightType,
-      content: "Customer showed interest in product colors, indicating preference-based shopping.",
-      timestamp: "00:25"
-    }
-  ];
-  
+  const additionalInsights = [{
+    id: "behavior-1",
+    type: "behavior" as InsightType,
+    content: t("insights.types.behavior.example"),
+    skillKey: "trustBuilding"
+  }, {
+    id: "custom-1",
+    type: "custom" as InsightType,
+    content: "Customer showed interest in product colors, indicating preference-based shopping.",
+    timestamp: "00:25"
+  }];
+
   // All insights including standard ones from the conversation plus the new types
-  const allInsights = [
-    ...conversation.insights,
-    ...additionalInsights
-  ];
+  const allInsights = [...conversation.insights, ...additionalInsights];
 
   // Group insights by type for better organization
   const groupedInsights = {
@@ -160,17 +144,11 @@ const ConversationDetail = () => {
     behavior: allInsights.filter(i => i.type === "behavior"),
     custom: allInsights.filter(i => i.type === "custom")
   };
-
-  return (
-    <RoleProtectedRoute allowedRoles={['salesperson']}>
+  return <RoleProtectedRoute allowedRoles={['salesperson']}>
       <RoleLayout currentPath={location.pathname}>
         <div className="animate-fade-in">
           {/* Back button */}
-          <Button 
-            variant="ghost" 
-            className="mb-6" 
-            onClick={() => navigate('/sales/conversations')}
-          >
+          <Button variant="ghost" className="mb-6" onClick={() => navigate('/sales/conversations')}>
             <ArrowLeft className="h-4 w-4 mr-2" />
             {t('common.back')}
           </Button>
@@ -181,16 +159,12 @@ const ConversationDetail = () => {
               {/* Header */}
               <div>
                 <h1 className="text-3xl font-bold">
-                  {t('conversation.title', { date: formattedDate })}
+                  {t('conversation.title', {
+                  date: formattedDate
+                })}
                 </h1>
                 <div className="flex items-center mt-2 space-x-2">
-                  <Badge 
-                    variant={
-                      conversation.score >= 90 ? "default" : 
-                      conversation.score >= 70 ? "secondary" : 
-                      "destructive"
-                    }
-                  >
+                  <Badge variant={conversation.score >= 90 ? "default" : conversation.score >= 70 ? "secondary" : "destructive"}>
                     {t('conversation.score')}: {conversation.score}/100
                   </Badge>
                   <Badge variant="outline">
@@ -208,23 +182,15 @@ const ConversationDetail = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <Button 
-                      onClick={() => setIsPlaying(!isPlaying)} 
-                      variant="outline"
-                      className="w-12 h-12 rounded-full"
-                    >
-                      {isPlaying ? 
-                        <Pause className="h-5 w-5" /> : 
-                        <Play className="h-5 w-5 ml-0.5" />
-                      }
+                    <Button onClick={() => setIsPlaying(!isPlaying)} variant="outline" className="w-12 h-12 rounded-full">
+                      {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 ml-0.5" />}
                     </Button>
                     <div className="space-y-2">
                       <Progress value={audioProgress} />
                       <div className="flex justify-between text-xs text-muted-foreground">
                         <span>
-                          {Math.floor((audioProgress / 100) * conversation.duration) / 60 < 1 ? 
-                            '00:' : '01:'}
-                          {Math.floor((audioProgress / 100) * (conversation.duration % 60)).toString().padStart(2, '0')}
+                          {Math.floor(audioProgress / 100 * conversation.duration) / 60 < 1 ? '00:' : '01:'}
+                          {Math.floor(audioProgress / 100 * (conversation.duration % 60)).toString().padStart(2, '0')}
                         </span>
                         <span>
                           {Math.floor(conversation.duration / 60)}:
@@ -270,81 +236,51 @@ const ConversationDetail = () => {
                   
                   {/* Old Insights Display - kept for backward compatibility */}
                   {/* Critical/Urgent insights - shown first for priority */}
-                  {groupedInsights.urgent.length > 0 && (
-                    <div className="mb-4">
+                  {groupedInsights.urgent.length > 0 && <div className="mb-4">
                       <h3 className="text-md font-semibold mb-2 text-insight-red">
                         {t('insight.type.urgent')} ({groupedInsights.urgent.length})
                       </h3>
                       <div className="space-y-3">
-                        {groupedInsights.urgent.map(insight => (
-                          <InsightCard key={insight.id} insight={insight} />
-                        ))}
+                        {groupedInsights.urgent.map(insight => <InsightCard key={insight.id} insight={insight} />)}
                       </div>
-                    </div>
-                  )}
+                    </div>}
                   
                   {/* Improvement insights */}
-                  {groupedInsights.improvement.length > 0 && (
-                    <div className="mb-4">
-                      <h3 className="text-md font-semibold mb-2 text-insight-green">
-                        {t('insight.type.improvement')} ({groupedInsights.improvement.length})
-                      </h3>
+                  {groupedInsights.improvement.length > 0 && <div className="mb-4">
+                      
                       <div className="space-y-3">
-                        {groupedInsights.improvement.map(insight => (
-                          <InsightCard key={insight.id} insight={insight} />
-                        ))}
+                        {groupedInsights.improvement.map(insight => <InsightCard key={insight.id} insight={insight} />)}
                       </div>
-                    </div>
-                  )}
+                    </div>}
                   
                   {/* Opportunity insights */}
-                  {groupedInsights.opportunity.length > 0 && (
-                    <div className="mb-4">
-                      <h3 className="text-md font-semibold mb-2 text-insight-yellow">
-                        {t('insight.type.opportunity')} ({groupedInsights.opportunity.length})
-                      </h3>
+                  {groupedInsights.opportunity.length > 0 && <div className="mb-4">
+                      
                       <div className="space-y-3">
-                        {groupedInsights.opportunity.map(insight => (
-                          <InsightCard key={insight.id} insight={insight} />
-                        ))}
+                        {groupedInsights.opportunity.map(insight => <InsightCard key={insight.id} insight={insight} />)}
                       </div>
-                    </div>
-                  )}
+                    </div>}
                   
                   {/* Behavior insights */}
-                  {groupedInsights.behavior.length > 0 && (
-                    <div className="mb-4">
-                      <h3 className="text-md font-semibold mb-2 text-gray-600">
-                        {t('insight.type.behavior')} ({groupedInsights.behavior.length})
-                      </h3>
+                  {groupedInsights.behavior.length > 0 && <div className="mb-4">
+                      
                       <div className="space-y-3">
-                        {groupedInsights.behavior.map(insight => (
-                          <InsightCard key={insight.id} insight={insight} />
-                        ))}
+                        {groupedInsights.behavior.map(insight => <InsightCard key={insight.id} insight={insight} />)}
                       </div>
-                    </div>
-                  )}
+                    </div>}
                   
                   {/* Custom insights */}
-                  {groupedInsights.custom.length > 0 && (
-                    <div className="mb-4">
-                      <h3 className="text-md font-semibold mb-2 text-blue-600">
-                        {t('insight.type.custom')} ({groupedInsights.custom.length})
-                      </h3>
+                  {groupedInsights.custom.length > 0 && <div className="mb-4">
+                      
                       <div className="space-y-3">
-                        {groupedInsights.custom.map(insight => (
-                          <InsightCard key={insight.id} insight={insight} />
-                        ))}
+                        {groupedInsights.custom.map(insight => <InsightCard key={insight.id} insight={insight} />)}
                       </div>
-                    </div>
-                  )}
+                    </div>}
                   
                   {/* Empty state when no insights are available */}
-                  {Object.values(groupedInsights).every(group => group.length === 0) && (
-                    <Card className="p-8 text-center text-muted-foreground">
+                  {Object.values(groupedInsights).every(group => group.length === 0) && <Card className="p-8 text-center text-muted-foreground">
                       {t('sales.noAnalysisAvailable')}
-                    </Card>
-                  )}
+                    </Card>}
                 </TabsContent>
               </Tabs>
             </div>
@@ -450,8 +386,6 @@ const ConversationDetail = () => {
           </div>
         </div>
       </RoleLayout>
-    </RoleProtectedRoute>
-  );
+    </RoleProtectedRoute>;
 };
-
 export default ConversationDetail;

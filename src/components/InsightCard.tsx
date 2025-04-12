@@ -1,26 +1,20 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { InsightType, Insight } from '@/types';
 import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
-import { 
-  LightbulbIcon, 
-  TrendingUpIcon, 
-  AlertTriangleIcon, 
-  RepeatIcon, 
-  WrenchIcon 
-} from 'lucide-react';
-
+import { LightbulbIcon, TrendingUpIcon, AlertTriangleIcon, RepeatIcon, WrenchIcon } from 'lucide-react';
 interface InsightCardProps {
   insight: Insight;
 }
-
-const InsightCard: React.FC<InsightCardProps> = ({ insight }) => {
-  const { t } = useTranslation();
-  
+const InsightCard: React.FC<InsightCardProps> = ({
+  insight
+}) => {
+  const {
+    t
+  } = useTranslation();
   const getInsightDetails = () => {
-    switch(insight.type) {
+    switch (insight.type) {
       case 'improvement':
         return {
           icon: <LightbulbIcon className="h-5 w-5 text-insight-green" />,
@@ -47,46 +41,18 @@ const InsightCard: React.FC<InsightCardProps> = ({ insight }) => {
           className: 'border-l-4 border-blue-400 bg-blue-50'
         };
       default:
-        return { 
+        return {
           icon: <LightbulbIcon className="h-5 w-5" />,
-          className: '' 
+          className: ''
         };
     }
   };
-
-  const { icon, className } = getInsightDetails();
-
-  return (
-    <Card className={cn("overflow-hidden shadow-sm", className)}>
-      <CardContent className="p-4">
-        <div className="flex items-start">
-          <div className="mr-3 pt-0.5">
-            {icon}
-          </div>
-          <div className="flex-1">
-            <div className="font-medium text-sm mb-1">
-              {t(`insight.type.${insight.type}`)}
-            </div>
-            <p className="text-sm">{insight.content}</p>
-            
-            {insight.timestamp && (
-              <div className="mt-2 text-xs text-muted-foreground">
-                {insight.timestamp}
-              </div>
-            )}
-            
-            {insight.skillKey && (
-              <div className="mt-1 text-xs">
-                <span className="text-primary">
-                  {t(`insights.${insight.skillKey}`)}
-                </span>
-              </div>
-            )}
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
+  const {
+    icon,
+    className
+  } = getInsightDetails();
+  return <Card className={cn("overflow-hidden shadow-sm", className)}>
+      
+    </Card>;
 };
-
 export default InsightCard;

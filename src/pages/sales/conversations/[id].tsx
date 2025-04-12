@@ -19,6 +19,8 @@ import { mockConversations } from '@/data/mockData';
 import { conversationSkillAnalysisMock } from '@/mocks/conversationSkillAnalysis';
 import { InsightType } from '@/types';
 import { nanoid } from 'nanoid';
+import InsightSection from '@/components/insights/InsightSection';
+import { expandableInsightsMock } from '@/data/insightsMockData';
 
 // Mock transcript data - in a real application, this would be dynamic
 // Ensuring that the speaker property is explicitly typed as "salesperson" | "customer"
@@ -256,6 +258,17 @@ const ConversationDetail = () => {
                     </CardContent>
                   </Card>
                   
+                  {/* New Expandable Insights Section */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">{t('conversation.insights')}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <InsightSection insights={expandableInsightsMock} />
+                    </CardContent>
+                  </Card>
+                  
+                  {/* Old Insights Display - kept for backward compatibility */}
                   {/* Critical/Urgent insights - shown first for priority */}
                   {groupedInsights.urgent.length > 0 && (
                     <div className="mb-4">

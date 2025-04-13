@@ -50,6 +50,9 @@ import TrainingModuleDetail from "./pages/sales/training/[slug]";
 // Import i18n instance
 import "./i18n/index";
 
+// Import the new templates page
+import ManagerTemplates from "./pages/manager/templates";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -224,6 +227,15 @@ const App = () => (
                 element={
                   <RoleProtectedRoute allowedRoles={['manager']}>
                     <ManagerStores />
+                  </RoleProtectedRoute>
+                } 
+              />
+              {/* Add new templates route */}
+              <Route 
+                path="/manager/templates" 
+                element={
+                  <RoleProtectedRoute allowedRoles={['manager']}>
+                    <ManagerTemplates />
                   </RoleProtectedRoute>
                 } 
               />

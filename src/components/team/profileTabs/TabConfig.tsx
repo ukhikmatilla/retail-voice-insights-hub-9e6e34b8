@@ -7,7 +7,8 @@ import {
   BookOpen,
   Award,
   Upload,
-  Zap
+  Zap,
+  Layers
 } from 'lucide-react';
 import { TeamMember } from '@/utils/mockData/types';
 import { TeamMemberDetails } from '@/utils/mockData/types';

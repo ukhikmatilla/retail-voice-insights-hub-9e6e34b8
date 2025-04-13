@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, Link } from 'react-router-dom';
@@ -17,7 +16,8 @@ import {
   BookOpenIcon,
   SettingsIcon,
   StoreIcon,
-  BuildingIcon
+  BuildingIcon,
+  LayersIcon
 } from 'lucide-react';
 
 interface NavItem {
@@ -101,6 +101,12 @@ const RoleLayout: React.FC<RoleLayoutProps> = ({ children, currentPath }) => {
             icon: <BuildingIcon className="h-5 w-5" />,
             href: '/manager/stores',
             active: currentPath === '/manager/stores'
+          },
+          { 
+            label: t('sidebar.templates'),
+            icon: <LayersIcon className="h-5 w-5" />,
+            href: '/manager/templates',
+            active: currentPath === '/manager/templates'
           },
           { 
             label: t('dashboard.insights'),

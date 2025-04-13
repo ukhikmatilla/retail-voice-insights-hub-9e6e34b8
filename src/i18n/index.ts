@@ -14,6 +14,7 @@ import uzRoles from './locales/uz/roles.json';
 import uzButton from './locales/uz/button.json';
 import uzLanguage from './locales/uz/language.json';
 import uzStoresTranslation from './locales/uz/stores.json';
+import uzTemplates from './locales/uz/templates.json';
 
 // Russian translations
 import ruCommon from './locales/ru/common.json';
@@ -33,6 +34,7 @@ import ruSotuvchi from './locales/ru/sotuvchi.json';
 import ruCalls from './locales/ru/calls.json';
 import ruSales from './locales/ru/sales.json';
 import ruStoresTranslation from './locales/ru/stores.json';
+import ruTemplates from './locales/ru/templates.json';
 
 // Merge translations
 const mergedUzTranslations = {
@@ -46,7 +48,8 @@ const mergedUzTranslations = {
   ...uzRoles,
   ...uzButton,
   ...uzLanguage,
-  ...uzStoresTranslation
+  ...uzStoresTranslation,
+  ...uzTemplates
 };
 
 const mergedRuTranslations = {
@@ -66,7 +69,8 @@ const mergedRuTranslations = {
   ...ruSotuvchi,
   ...ruCalls,
   ...ruSales,
-  ...ruStoresTranslation
+  ...ruStoresTranslation,
+  ...ruTemplates
 };
 
 const resources = {

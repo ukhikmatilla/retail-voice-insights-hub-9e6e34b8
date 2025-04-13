@@ -25,17 +25,29 @@ const TrainingContentArea: React.FC<TrainingContentAreaProps> = ({
   const { t } = useTranslation();
   const { steps, currentStep, handlePrevStep, handleNextStep } = useTrainingSteps();
   
-  const currentStepData = steps.find(step => step.id === currentStep) || steps[0];
+  const currentStepData = steps.find(step => step.id === currentStep);
+  
+  // Added logging to help debug step issues
+  if (!currentStepData) {
+    console.error(`Could not find step with id: ${currentStep}`);
+    console.log('Available steps:', steps);
+  }
   
   return (
     <Card className="p-6">
-      <TrainingModuleContent 
-        step={currentStepData}
-        theoryData={theoryData}
-        videoData={videoData}
-        quizData={quizData}
-        onComplete={handleNextStep}
-      />
+      {currentStepData ? (
+        <TrainingModuleContent 
+          step={currentStepData}
+          theoryData={theoryData}
+          videoData={videoData}
+          quizData={quizData}
+          onComplete={handleNextStep}
+        />
+      ) : (
+        <div className="p-6 text-center">
+          <p className="text-muted-foreground">{t('common.error.stepNotFound')}</p>
+        </div>
+      )}
       
       <div className="flex justify-between mt-8">
         <Button 

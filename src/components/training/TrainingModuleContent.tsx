@@ -38,6 +38,16 @@ const TrainingModuleContent: React.FC<TrainingModuleContentProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  // Early return if step is undefined to prevent errors
+  if (!step) {
+    console.error('Training step is undefined');
+    return (
+      <div className="p-6 text-center">
+        <p className="text-muted-foreground">{t('common.error.contentNotFound')}</p>
+      </div>
+    );
+  }
+
   // Get tips from translations for AI hints
   const getAITips = (): string[] => {
     const moduleKey = 'priceObjections';

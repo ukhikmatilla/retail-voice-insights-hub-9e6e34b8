@@ -44,6 +44,7 @@ export const TrainingStepsProvider: React.FC<TrainingStepsProviderProps> = ({
   const { t } = useTranslation();
   const [steps, setSteps] = useState<Step[]>([]);
   const [currentStep, setCurrentStep] = useState('intro');
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     // Generate steps from translations
@@ -101,7 +102,21 @@ export const TrainingStepsProvider: React.FC<TrainingStepsProviderProps> = ({
       }
     ];
     
-    setSteps(generatedSteps);
+    // Add fallback titles for any steps where translation is missing
+    const fallbackSteps = generatedSteps.map(step => {
+      if (step.title === `training_content.${moduleKey}.steps.${step.id}.title`) {
+        return {
+          ...step,
+          title: `${step.id.charAt(0).toUpperCase() + step.id.slice(1)} Content`
+        };
+      }
+      return step;
+    });
+    
+    setSteps(fallbackSteps);
+    setIsInitialized(true);
+
+    console.log('Initialized steps:', fallbackSteps);
   }, [t, moduleKey]);
 
   const handleStepChange = (stepId: string) => {
@@ -143,6 +158,25 @@ export const TrainingStepsProvider: React.FC<TrainingStepsProviderProps> = ({
       setCurrentStep(prevStep.id);
     }
   };
+
+  // Provide empty initial values until initialization completes
+  if (!isInitialized) {
+    return (
+      <TrainingStepsContext.Provider value={{
+        steps: [],
+        currentStep: '',
+        handleStepChange: () => {},
+        handleNextStep: () => {},
+        handlePrevStep: () => {}
+      }}>
+        <div className="animate-pulse p-8">
+          <div className="h-6 bg-muted rounded w-1/4 mb-4"></div>
+          <div className="h-24 bg-muted rounded mb-4"></div>
+          <div className="h-12 bg-muted rounded"></div>
+        </div>
+      </TrainingStepsContext.Provider>
+    );
+  }
 
   const value = {
     steps,

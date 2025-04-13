@@ -1,3 +1,4 @@
+<lov-code>
 {
   "app": {
     "title": "RetailVoiceAI",
@@ -730,4 +731,3 @@
   "transcript": {
     "speakerLabels": {
       "salesperson": "Продавец",
-      "customer": "Клиент

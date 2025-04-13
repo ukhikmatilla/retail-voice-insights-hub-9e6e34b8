@@ -1,3 +1,4 @@
+
 {
   "app": {
     "title": "RetailVoiceAI",
@@ -595,4 +596,32 @@
     "startModule": "Modulni boshlash",
     "continue": "Davom ettirish",
     "viewDetails": "Batafsil ko'rish",
-    "submitAnswer": "Jav
+    "submitAnswer": "Javobni yuborish",
+    "tryAgain": "Qayta urinish",
+    "finish": "Yakunlash",
+    "startTraining": "O'quvni boshlash",
+    "viewAll": "Barchasini ko'rish",
+    "downloadTranscript": "Transkripsiyani yuklab olish",
+    "uploadConversation": "Suhbatni yuklash",
+    "filterResults": "Natijalarni filtrlash",
+    "clearFilters": "Filtrlarni tozalash",
+    "saveChanges": "O'zgarishlarni saqlash",
+    "cancel": "Bekor qilish",
+    "confirm": "Tasdiqlash"
+  },
+  "title": {
+    "modules": "O'quv modullari",
+    "recentConversations": "Oxirgi suhbatlar",
+    "insightsSummary": "Tahlillar xulosasi",
+    "weeklyProgress": "Haftalik jarayon",
+    "skillsAnalysis": "Ko'nikmalar tahlili",
+    "recommendations": "Tavsiyalar",
+    "profileSettings": "Profil sozlamalari",
+    "conversationDetails": "Suhbat tafsilotlari",
+    "training": "O'quv",
+    "insights": "Tahlillar",
+    "conversations": "Suhbatlar",
+    "scripts": "Skriptlar",
+    "dashboard": "Boshqaruv paneli"
+  }
+}

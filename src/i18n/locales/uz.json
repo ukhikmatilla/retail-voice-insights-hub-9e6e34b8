@@ -218,7 +218,18 @@
       "behavior": {
         "example": "Suhbatda juda ko'p pauzalar, ishonch yetarli emas."
       }
-    }
+    },
+    "strengthsAndWeaknesses": "Kuchli va zaif tomonlar",
+    "strengths": "Kuchli tomonlar",
+    "weaknesses": "Zaif tomonlar",
+    "goToTraining": "Treningga o'tish",
+    "noStrengthsYet": "Hali kuchli tomonlar aniqlanmagan",
+    "noWeaknessesYet": "Hali zaif tomonlar aniqlanmagan",
+    "weeklySkill": "Haftalik ko'nikma",
+    "frequentIssue": "Ko'p uchraydigan muammo",
+    "weeklySkillDescription": "Bu ko'nikmani yaxshilash uchun treningni boshlang",
+    "startTraining": "Treningni boshlash",
+    "viewConversation": "Suhbatni ko'rish"
   },
   "training": {
     "status": {

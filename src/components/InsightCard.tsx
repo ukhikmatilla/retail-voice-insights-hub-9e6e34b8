@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { InsightType, Insight } from '@/types';
@@ -11,7 +10,9 @@ import {
   RepeatIcon, 
   WrenchIcon,
   ChevronDownIcon,
-  ChevronUpIcon
+  ChevronUpIcon,
+  ArrowUpRightIcon,
+  ClockIcon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
@@ -19,11 +20,15 @@ import { useState } from 'react';
 interface InsightCardProps {
   insight: Insight;
   showActions?: boolean;
+  conversationId?: string; // Added conversationId prop
+  timestamp?: string; // Added timestamp for the drill-down feature
 }
 
 const InsightCard: React.FC<InsightCardProps> = ({
   insight,
-  showActions = false
+  showActions = false,
+  conversationId,
+  timestamp
 }) => {
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
@@ -119,19 +124,35 @@ const InsightCard: React.FC<InsightCardProps> = ({
             </div>
             
             <div className="flex justify-between items-center mt-2">
-              {insight.timestamp && (
-                <p className="text-xs text-gray-500">
-                  {insight.timestamp}
-                </p>
+              {/* Timestamp display with clock icon */}
+              {(insight.timestamp || timestamp) && (
+                <div className="flex items-center text-xs text-gray-500">
+                  <ClockIcon className="h-3 w-3 mr-1" />
+                  <p>{insight.timestamp || timestamp}</p>
+                </div>
               )}
               
-              {showActions && (
-                <div className={insight.timestamp ? "" : "ml-auto"}>
+              <div className={insight.timestamp || timestamp ? "" : "ml-auto"}>
+                {/* If conversationId is provided, show View Conversation button */}
+                {conversationId && (
+                  <Button size="sm" variant="outline" className="text-xs h-7 px-2 mr-2">
+                    <a 
+                      href={`/sales/conversations/${conversationId}`}
+                      className="flex items-center"
+                    >
+                      {t('insights.viewConversation')}
+                      <ArrowUpRightIcon className="h-3 w-3 ml-1" />
+                    </a>
+                  </Button>
+                )}
+                
+                {/* Existing training button */}
+                {showActions && (
                   <Button size="sm" variant="ghost" className="text-xs h-7 px-2">
                     {t('insights.viewRelatedTraining')}
                   </Button>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </div>

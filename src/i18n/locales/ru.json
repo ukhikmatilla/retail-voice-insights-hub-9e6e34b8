@@ -218,7 +218,18 @@
       "behavior": {
         "example": "Много пауз в речи, низкая уверенность в разговоре."
       }
-    }
+    },
+    "strengthsAndWeaknesses": "Сильные и слабые стороны",
+    "strengths": "Сильные стороны",
+    "weaknesses": "Слабые стороны",
+    "goToTraining": "Перейти к обучению",
+    "noStrengthsYet": "Сильные стороны еще не определены",
+    "noWeaknessesYet": "Слабые стороны еще не определены",
+    "weeklySkill": "Навык недели",
+    "frequentIssue": "Частая проблема",
+    "weeklySkillDescription": "Начните обучение для улучшения этого навыка",
+    "startTraining": "Начать обучение",
+    "viewConversation": "Просмотреть разговор"
   },
   "training": {
     "status": {

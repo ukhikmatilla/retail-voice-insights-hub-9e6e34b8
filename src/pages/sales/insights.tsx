@@ -31,8 +31,10 @@ import {
 import StatCard from '@/components/StatCard';
 import InsightCard from '@/components/InsightCard';
 import { expandableInsightsMock } from '@/data/insightsMockData';
+import StrengthsWeaknessesCard from '@/components/insights/StrengthsWeaknessesCard';
+import WeeklyFocusCard from '@/components/insights/WeeklyFocusCard';
 
-// Mock data for insights charts
+// Mock data for insights charts and strengths/weaknesses
 const insightTypeData = [
   { name: 'improvement', value: 8, fill: '#10b981' },
   { name: 'opportunity', value: 5, fill: '#f59e0b' },
@@ -49,6 +51,17 @@ const skillProgressData = [
   { month: 'Apr', trustBuilding: 75, objections: 50, crossSelling: 62, valueExplanation: 78, closing: 60 },
   { month: 'May', trustBuilding: 80, objections: 55, crossSelling: 65, valueExplanation: 80, closing: 65 },
   { month: 'Jun', trustBuilding: 85, objections: 60, crossSelling: 70, valueExplanation: 83, closing: 70 }
+];
+
+// Mock strengths and weaknesses data
+const strengthsData = [
+  { skillKey: 'trustBuilding', score: 85, trend: 'up' as const },
+  { skillKey: 'valueExplanation', score: 82, trend: 'stable' as const }
+];
+
+const weaknessesData = [
+  { skillKey: 'objections', score: 62, trend: 'down' as const },
+  { skillKey: 'closing', score: 70, trend: 'stable' as const }
 ];
 
 // AI recommendations mock data
@@ -83,6 +96,7 @@ const SalesInsights = () => {
   const [insightType, setInsightType] = useState('all');
   const [skillFilter, setSkillFilter] = useState('all');
   const [activeTab, setActiveTab] = useState('summary');
+  const [timelineFilter, setTimelineFilter] = useState('30days'); // New filter for timeline
   
   // Filter insights based on selected filters
   const filteredInsights = expandableInsightsMock.filter(insight => {
@@ -98,7 +112,7 @@ const SalesInsights = () => {
           <div>
             <h1 className="text-3xl font-bold">{t('sales.insights')}</h1>
             <p className="text-muted-foreground mt-1">
-              {t('sales.insightsDescription') || 'AI-driven analysis of your sales conversations'}
+              {t('sales.insightsDescription')}
             </p>
           </div>
           
@@ -181,6 +195,14 @@ const SalesInsights = () => {
               />
             </div>
             
+            {/* Strengths & Weaknesses Card - NEW */}
+            <div className="mb-6">
+              <StrengthsWeaknessesCard 
+                strengths={strengthsData}
+                weaknesses={weaknessesData}
+              />
+            </div>
+            
             {/* Charts */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {/* Insight Types Chart */}
@@ -207,8 +229,20 @@ const SalesInsights = () => {
               
               {/* Skills Progress Chart */}
               <Card>
-                <CardHeader>
+                <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle>{t('insights.charts.skillProgress')}</CardTitle>
+                  
+                  {/* NEW: Timeline Filter Dropdown */}
+                  <Select value={timelineFilter} onValueChange={setTimelineFilter}>
+                    <SelectTrigger className="w-[130px] h-8">
+                      <SelectValue placeholder={t('insights.filters.dateRange')} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="7days">{t('insights.filters.last7Days')}</SelectItem>
+                      <SelectItem value="30days">{t('insights.filters.last30Days')}</SelectItem>
+                      <SelectItem value="90days">{t('insights.filters.last90Days')}</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </CardHeader>
                 <CardContent>
                   <div className="h-80">
@@ -242,7 +276,12 @@ const SalesInsights = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {filteredInsights.length > 0 ? (
                 filteredInsights.map(insight => (
-                  <InsightCard key={insight.id} insight={insight} />
+                  <InsightCard 
+                    key={insight.id} 
+                    insight={insight} 
+                    conversationId={insight.id} // For demo, using insight ID as conversation ID
+                    timestamp="Apr 15, 2025"
+                  />
                 ))
               ) : (
                 <div className="col-span-full p-8 text-center border rounded-lg">
@@ -254,43 +293,55 @@ const SalesInsights = () => {
           
           {/* Recommendations Tab */}
           <TabsContent value="recommendations">
-            <div className="mb-4">
-              <h3 className="text-xl font-semibold mb-2">{t('insights.recommendationsList')}</h3>
-              <p className="text-muted-foreground mb-4">{t('insights.recommendationsDescription')}</p>
-            </div>
-            
-            <div className="space-y-4">
-              {aiRecommendationsMock.map(recommendation => (
-                <Card key={recommendation.id}>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="bg-primary/10 p-2 rounded-full">
-                        <LightbulbIcon className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-lg">{recommendation.title}</h4>
-                        <p className="text-muted-foreground mt-1">{recommendation.description}</p>
-                        <div className="mt-3 flex gap-2">
-                          <span className="bg-slate-100 text-slate-800 text-xs px-2 py-1 rounded">
-                            {t(`insights.${recommendation.skillArea}`)}
-                          </span>
-                          <span className={`text-xs px-2 py-1 rounded ${
-                            recommendation.priority === 'high' ? 'bg-red-100 text-red-800' : 'bg-amber-100 text-amber-800'
-                          }`}>
-                            {t(`insights.priority.${recommendation.priority}`)}
-                          </span>
+            {/* NEW: Weekly Focus Card */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+              <div className="md:col-span-2">
+                <div className="mb-4">
+                  <h3 className="text-xl font-semibold mb-2">{t('insights.recommendationsList')}</h3>
+                  <p className="text-muted-foreground mb-4">{t('insights.recommendationsDescription')}</p>
+                </div>
+                
+                <div className="space-y-4">
+                  {aiRecommendationsMock.map(recommendation => (
+                    <Card key={recommendation.id}>
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4">
+                          <div className="bg-primary/10 p-2 rounded-full">
+                            <LightbulbIcon className="h-6 w-6 text-primary" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-lg">{recommendation.title}</h4>
+                            <p className="text-muted-foreground mt-1">{recommendation.description}</p>
+                            <div className="mt-3 flex gap-2">
+                              <span className="bg-slate-100 text-slate-800 text-xs px-2 py-1 rounded">
+                                {t(`insights.${recommendation.skillArea}`)}
+                              </span>
+                              <span className={`text-xs px-2 py-1 rounded ${
+                                recommendation.priority === 'high' ? 'bg-red-100 text-red-800' : 'bg-amber-100 text-amber-800'
+                              }`}>
+                                {t(`insights.priority.${recommendation.priority}`)}
+                              </span>
+                            </div>
+                            
+                            <div className="mt-4">
+                              <Button size="sm" variant="outline">
+                                {t('insights.viewTrainingModule')}
+                              </Button>
+                            </div>
+                          </div>
                         </div>
-                        
-                        <div className="mt-4">
-                          <Button size="sm" variant="outline">
-                            {t('insights.viewTrainingModule')}
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <WeeklyFocusCard 
+                  skillKey="objections"
+                  context={t('insights.types.improvement.example')}
+                  score={62}
+                />
+              </div>
             </div>
           </TabsContent>
         </Tabs>

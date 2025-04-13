@@ -11,13 +11,7 @@ const LanguageContext = createContext<LanguageContextProps | undefined>(undefine
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { i18n } = useTranslation();
-  
-  // Get stored language or default to 'ru' instead of 'uz'
-  const [language, setLanguage] = useState<string>(() => {
-    const storedLang = localStorage.getItem('language');
-    // Only allow 'ru' or 'uz', default to 'ru' if anything else
-    return storedLang === 'uz' ? 'uz' : 'ru';
-  });
+  const [language, setLanguage] = useState<string>(localStorage.getItem('language') || 'uz');
 
   useEffect(() => {
     // Initialize with stored language or default
@@ -25,11 +19,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }, [i18n, language]);
 
   const changeLanguage = (lang: string) => {
-    // Only allow 'ru' or 'uz'
-    const validLang = lang === 'uz' ? 'uz' : 'ru';
-    localStorage.setItem('language', validLang);
-    setLanguage(validLang);
-    i18n.changeLanguage(validLang);
+    localStorage.setItem('language', lang);
+    setLanguage(lang);
+    i18n.changeLanguage(lang);
   };
 
   return (

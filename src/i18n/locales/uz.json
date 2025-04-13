@@ -1,0 +1,626 @@
+
+{
+  "app": {
+    "title": "RetailVoiceAI",
+    "desc": "AI orqali savdo ko'nikmalaringizni yaxshilang",
+    "name": "RetailVoiceAI"
+  },
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "delete": "O'chirish",
+    "edit": "Tahrirlash",
+    "add": "Qo'shish",
+    "back": "Orqaga",
+    "next": "Keyingi",
+    "close": "Yopish",
+    "done": "Tayyor",
+    "continue": "Davom etish",
+    "viewAll": "Barchasini ko'rish",
+    "seeDetails": "Batafsil",
+    "min": "daq",
+    "viewDetails": "Batafsil →",
+    "search": "Qidirish",
+    "error": {
+      "stepNotFound": "Qadam topilmadi",
+      "contentNotFound": "Tarkib topilmadi"
+    }
+  },
+  "auth": {
+    "login": "Kirish",
+    "register": "Ro'yxatdan o'tish",
+    "logout": "Chiqish",
+    "email": "Email",
+    "emailPlaceholder": "email@misol.uz",
+    "password": "Parol",
+    "firstName": "Ism",
+    "lastName": "Familiya",
+    "confirmPassword": "Parolni tasdiqlang",
+    "alreadyHaveAccount": "Allaqachon hisobingiz bormi?",
+    "forgotPassword": "Parolni unutdingizmi?",
+    "noAccount": "Hisobingiz yo'qmi?",
+    "resetPassword": "Parolni tiklash",
+    "forgotPasswordTitle": "Parolni tiklash",
+    "forgotPasswordSubtitle": "Email manzilingizni kiriting va biz sizga tiklash havolasini yuboramiz",
+    "backToLogin": "Kirish sahifasiga qaytish",
+    "previewTitle": "Email ko'rinishi",
+    "previewText": "Parolni tiklash uchun quyidagi tugmani bosing. Agar siz bu so'rovni yubormagan bo'lsangiz, bu xabarni e'tiborsiz qoldiring.",
+    "previewButton": "Parolni tiklash",
+    "previewFooter": "Agar sizga yordam kerak bo'lsa, bizning yordam markazimiz bilan bog'laning.",
+    "resetLinkSent": "Tiklash havolasi yuborildi",
+    "somethingWentWrong": "Nimadir xato ketdi",
+    "emailRequired": "Email talab qilinadi",
+    "emailInvalid": "Noto'g'ri email formati",
+    "expireTooltip": "Tiklash havolasi 15 daqiqa davomida amal qiladi",
+    "selectRole": "Rolni tanlang",
+    "selectRoleDescription": "O'zingizga mos rolni tanlang",
+    "continueAs": "{{role}} sifatida davom eting"
+  },
+  "roles": {
+    "salesperson": "Sotuvchi",
+    "manager": "Menejer",
+    "hr": "HR-mutaxassisi",
+    "admin": "Administrator"
+  },
+  "dashboard": {
+    "welcome": "Xush kelibsiz,",
+    "welcomeBack": "Qaytganingiz bilan,",
+    "today": "Bugun",
+    "summary": "Xulosa",
+    "totalConversations": "Jami suhbatlar",
+    "avgScore": "O'rtacha ball",
+    "successRate": "Muvaffaqiyat darajasi",
+    "missedOpportunities": "Boy berilgan imkoniyatlar",
+    "overview": "Umumiy ko'rinish",
+    "conversations": "Suhbatlar",
+    "insights": "Tahlillar",
+    "training": "O'quv",
+    "stats": {
+      "title": "Statistika",
+      "totalConversations": "Jami suhbatlar",
+      "averageScore": "O'rtacha ball",
+      "missedOpportunities": "Boy berilgan imkoniyatlar",
+      "successRate": "Muvaffaqiyat darajasi"
+    },
+    "totalConversations": {
+      "title": "Jami suhbatlar",
+      "tooltip": "Siz 23 ta suhbat o'tkazdingiz. Ulardan 8 tasi yaxshi tuzilgan."
+    },
+    "averageScore": {
+      "title": "O'rtacha ball",
+      "tooltip": "O'rtacha ball 3% ga oshdi. Sababi — argumentatsiya ko'nikmasi yaxshilangan."
+    },
+    "missedOpportunities": {
+      "title": "Yo'qotilgan imkoniyatlar",
+      "tooltip": "12 ta imkoniyat qo'ldan boy berilgan. Apseyl taklif qilinmagan bo'lishi mumkin."
+    },
+    "successRate": {
+      "title": "Muvaffaqiyat darajasi",
+      "tooltip": "67% muvaffaqiyat. Bu o'tgan haftaga nisbatan 2% yuqori."
+    }
+  },
+  "navigation": {
+    "dashboard": "Boshqaruv paneli",
+    "conversations": "Suhbatlar",
+    "insights": "Tahlillar",
+    "training": "O'quv",
+    "scripts": "Skriptlar",
+    "team": "Jamoa",
+    "coaching": "Kouching",
+    "personnel": "Xodimlar",
+    "analysis": "Tahlil",
+    "trainingManagement": "O'quv boshqaruvi",
+    "settings": "Sozlamalar"
+  },
+  "profile": {
+    "settings": "Profil sozlamalari",
+    "personalInfo": "Shaxsiy ma'lumotlar",
+    "language": "Til",
+    "notifications": "Bildirishnomalar",
+    "title": "Profil",
+    "fullName": "To'liq ism",
+    "email": "Email",
+    "role": "Rol",
+    "save": "Saqlash",
+    "logout": "Chiqish"
+  },
+  "conversations": {
+    "recent": "Oxirgi suhbatlar",
+    "search": "Suhbatlarni qidirish",
+    "sort": "Saralash",
+    "filter": "Filtrlash",
+    "filterByDate": "Sana bo'yicha filtrlash",
+    "filterByScore": "Ball bo'yicha filtrlash",
+    "noConversations": "Suhbatlar yo'q",
+    "uploadNew": "Yangi yuklash",
+    "transcript": "Transkripsiya",
+    "insights": "Tahlil",
+    "download": "Yuklab olish",
+    "share": "Ulashish",
+    "delete": "O'chirish",
+    "recording": "Yozuv",
+    "recommendations": "Tavsiyalar",
+    "customerSaid": "Mijoz aytdi",
+    "youSaid": "Siz aytdingiz",
+    "addLabel": "Yorliq qo'shish",
+    "title": "Suhbat",
+    "score": "Ball",
+    "duration": "Davomiyligi",
+    "date": "Sana",
+    "device": "Qurilma",
+    "language": "Til",
+    "playAudio": "Audioni ijro etish",
+    "downloadTranscript": "Transkripsiyani yuklab olish",
+    "salesperson": "Sotuvchi",
+    "customer": "Mijoz",
+    "scoreBreakdown": "Ball taqsimoti",
+    "recommendations": {
+      "title": "Tavsiyalar",
+      "improvement": "Yaxshilash uchun",
+      "askMoreQuestions": "Ko'proq savollar bering",
+      "opportunity": "Imkoniyat",
+      "mentionLoyaltyProgram": "Sodiqlik dasturini eslatib o'ting"
+    },
+    "notFound": "Suhbat topilmadi",
+    "recommendation": "Tavsiya"
+  },
+  "insights": {
+    "yourInsights": "Sizning tahlillaringiz",
+    "improvement": "Yaxshilash",
+    "improvements": "Yaxshilashlar",
+    "opportunity": "Imkoniyat",
+    "opportunities": "Imkoniyatlar",
+    "urgent": "Shoshilinch",
+    "behavior": "Xulq-atvor",
+    "totalScore": "Umumiy ball",
+    "byCriteria": "Mezonlar bo'yicha",
+    "objections": "Qarshiliklar",
+    "trustBuilding": "Ishonch qurish",
+    "closing": "Bitimni yakunlash",
+    "questioning": "Savol berish",
+    "presenting": "Taqdimot",
+    "weeklyFocus": "Haftalik e'tibor",
+    "strengthsWeaknesses": "Kuchli/zaif tomonlar",
+    "keyStrengths": "Asosiy kuchli tomonlar",
+    "areasForImprovement": "Yaxshilash kerak bo'lgan sohalar",
+    "overTime": "Vaqt davomida",
+    "valueExplanation": "Qiymat tushuntirish",
+    "crossSelling": "Qo'shimcha sotuv",
+    "expand": "Kengaytirish",
+    "goToTraining": "O'quvga o'tish",
+    "chartExplanation": "Diagramma tushuntirishi",
+    "strengthsAndWeaknesses": "Kuchli va zaif tomonlar",
+    "strengths": "Kuchli tomonlar",
+    "weaknesses": "Zaif tomonlar",
+    "hide": "Yashirish",
+    "weeklySkill": "Haftalik ko'nikma",
+    "weeklySkillTooltip": "AI suhbat tahlillaringiz asosida e'tibor qaratish kerak bo'lgan sohasini aniqlaydi",
+    "weeklySkillDescription": "Bu ko'nikmani rivojlantirish orqali savdo samaradorligingizni oshirishingiz mumkin",
+    "types": {
+      "improvement": {
+        "example": "Ko'proq ochiq savollar bering va sotish strategiyasini mijoz ehtiyojlariga qarab moslashtiring"
+      }
+    },
+    "frequentIssue": "Tez-tez uchraydigan muammo",
+    "startTraining": "O'quvni boshlash",
+    "priority": {
+      "high": "Yuqori",
+      "medium": "O'rta"
+    },
+    "viewTrainingModule": "O'quv modulini ko'rish",
+    "insightsList": "Tahlillar ro'yxati",
+    "insightsDescription": "Savdo ko'nikmalaringiz bo'yicha topilgan tahlillar",
+    "viewConversation": "Suhbatni ko'rish",
+    "filters": {
+      "dateRange": "Sana oralig'i",
+      "last7Days": "Oxirgi 7 kun",
+      "last30Days": "Oxirgi 30 kun",
+      "last90Days": "Oxirgi 90 kun",
+      "last3Months": "Oxirgi 3 oy",
+      "last6Months": "Oxirgi 6 oy",
+      "last12Months": "Oxirgi 12 oy",
+      "custom": "Boshqa",
+      "insightType": "Tahlil turi",
+      "skill": "Ko'nikma",
+      "all": "Barchasi"
+    },
+    "tabs": {
+      "summary": "Xulosa",
+      "insights": "Tahlillar",
+      "recommendations": "Tavsiyalar"
+    },
+    "summary": {
+      "totalInsights": "Jami tahlillar",
+      "averageScore": "O'rtacha ball",
+      "improvementRate": "Yaxshilash ko'rsatkichi"
+    },
+    "charts": {
+      "insightTypes": "Tahlil turlari",
+      "skillProgress": "Ko'nikmalar taraqqiyoti"
+    },
+    "skillAnalysis": "Ko'nikmalar tahlili",
+    "aiAdvice": "AI maslahatlar",
+    "score": {
+      "title": "Ball tahlili",
+      "description": "Ball ko'rsatkichingizning vaqt davomida o'zgarishi",
+      "trendChart": "Ball tendensiyasi",
+      "trendDescription": "Vaqt davomidagi o'rtacha ball ko'rsatkichi",
+      "skillContribution": "Ko'nikmalar hissasi",
+      "skillScore": "Ko'nikma bali",
+      "aiTips": "AI maslahatlar",
+      "averageScore": "O'rtacha ball",
+      "recommendations": "Tavsiyalar",
+      "shortTermTips": "Qisqa muddatli maslahatlar",
+      "longTermTips": "Uzoq muddatli maslahatlar",
+      "tip1": "Mijoz ehtiyojlarini aniqroq tushunish uchun ko'proq ochiq savollar bering",
+      "tip2": "Mahsulot afzalliklarini mijozning aniq ehtiyojlariga bog'lang",
+      "tip3": "Narx haqida gaplashishdan oldin qiymatni belgilang",
+      "tip4": "Muntazam ravishda savdo qobiliyatlaringizni takomillashtirish uchun treninglardan o'ting",
+      "tip5": "Yaxshi savollar berish va tinglash ko'nikmalarini rivojlantiring",
+      "tip6": "O'zingizning savdo uslubingizni doimiy ravishda tahlil qiling va takomillashtiring"
+    },
+    "improvement": {
+      "title": "Yaxshilash tahlili",
+      "description": "Ko'nikmalaringizni qanday yaxshilayotganingizni ko'ring",
+      "skillImprovementChart": "Ko'nikma yaxshilanish grafigi",
+      "chartDescription": "Ko'nikmalaringizning vaqt davomida qanday rivojlanganini ko'ring",
+      "beforeAfter": "Oldin/Keyin taqqoslash",
+      "before": "Oldin",
+      "after": "Keyin",
+      "aiAdvice": "AI maslahatlar",
+      "keyInsight": "Asosiy tahlil",
+      "aiAdvice1": "Sizning eng katta yaxshilanishingiz mijoz ehtiyojlarini aniqlash uchun ochiq savollar berishda bo'ldi. Davom eting va bu strategiyani boshqa sohalarga ham qo'llang.",
+      "nextChallenge": "Keyingi qiyinchilik",
+      "aiAdvice2": "Keyingi bosqichda narx haqidagi e'tirozlarga samarali javob berishga e'tibor qarating, bu sizning eng zaif ko'nikmangiz bo'lib qolmoqda.",
+      "improvementLog": "Yaxshilash jurnali",
+      "logDescription": "Ko'nikmalaringizning yaxshilanishiga olib kelgan asosiy harakatlar",
+      "viewRelatedTraining": "Tegishli o'quvni ko'rish"
+    },
+    "total": {
+      "title": "Jami tahlillar",
+      "description": "Barcha tahlillaringizni ko'ring va tushunchalarga ega bo'ling",
+      "noInsightsFound": "Tahlillar topilmadi"
+    },
+    "noInsightsFound": "Tahlillar topilmadi",
+    "weeklyTrend": "Haftalik tendensiya",
+    "recommendationsList": "Tavsiyalar ro'yxati",
+    "recommendationsDescription": "AI tavsiyalari asosida ko'nikmalaringizni qanday yaxshilash kerakligi",
+    "tooltips": {
+      "total": {
+        "title": "Jami tahlillar",
+        "description": "Sizning suhbatlaringizdan AI tomonidan aniqlangan barcha tahlillar"
+      },
+      "score": {
+        "title": "O'rtacha ball",
+        "description": "Sizning barcha suhbatlaringiz bo'yicha o'rtacha ball"
+      },
+      "improvement": {
+        "title": "Taraqqiyot ko'rsatkichi",
+        "description": "Vaqt davomida savdo ko'nikmalaringiz qanchalik yaxshilanganini ko'rsatadi"
+      },
+      "fromLastPeriod": "oxirgi davrga nisbatan",
+      "clickForDetails": "Batafsil ma'lumot uchun bosing",
+      "conversations": {
+        "title": "Jami suhbatlar",
+        "description": "Siz 23 ta suhbat o'tkazdingiz. Ulardan 8 tasi yaxshi tuzilgan."
+      },
+      "missed": {
+        "title": "Yo'qotilgan imkoniyatlar",
+        "description": "12 ta imkoniyat qo'ldan boy berilgan. Apseyl taklif qilinmagan bo'lishi mumkin."
+      },
+      "success": {
+        "title": "Muvaffaqiyat darajasi",
+        "description": "67% muvaffaqiyat. Bu o'tgan haftaga nisbatan 2% yuqori."
+      },
+      "viewDetails": "Batafsil ma'lumotni ko'rish"
+    },
+    "shortLabels": {
+      "improvement": "Yaxsh.",
+      "opportunity": "Imk.",
+      "urgent": "Shosh.",
+      "behavior": "Xulq",
+      "custom": "Max."
+    },
+    "pages": {
+      "conversations": {
+        "title": "Suhbatlar tahlili",
+        "description": "Barcha suhbatlaringiz bo'yicha batafsil tahlil",
+        "weeklyTrend": "Haftalik tendensiya",
+        "patterns": "Asosiy naqshlar",
+        "recommendations": "Tavsiyalar"
+      },
+      "score": {
+        "title": "Ball tahlili",
+        "description": "Savdo samaradorligi ballari tahlili",
+        "weeklyTrend": "Haftalik tendensiya",
+        "patterns": "Asosiy naqshlar",
+        "recommendations": "Tavsiyalar"
+      },
+      "missed": {
+        "title": "Yo'qotilgan imkoniyatlar tahlili",
+        "description": "Boy berilgan imkoniyatlar bo'yicha batafsil tahlil",
+        "weeklyTrend": "Haftalik tendensiya",
+        "patterns": "Asosiy naqshlar",
+        "recommendations": "Tavsiyalar"
+      },
+      "success": {
+        "title": "Muvaffaqiyat darajasi tahlili",
+        "description": "Savdo muvaffaqiyati ko'rsatkichlari tahlili",
+        "weeklyTrend": "Haftalik tendensiya",
+        "patterns": "Asosiy naqshlar",
+        "recommendations": "Tavsiyalar"
+      }
+    }
+  },
+  "training": {
+    "recommendedFor": "Siz uchun tavsiya etilgan",
+    "sortBy": "Saralash",
+    "filterBy": "Filtrlash",
+    "allLevels": "Barcha darajalar",
+    "allSkills": "Barcha ko'nikmalar",
+    "beginner": "Boshlang'ich",
+    "intermediate": "O'rta",
+    "advanced": "Ilg'or",
+    "complete": "yakunlandi",
+    "completed": "Yakunlangan",
+    "inProgress": "Jarayonda",
+    "continue": "Davom etish",
+    "start": "Boshlash",
+    "view": "Ko'rish",
+    "assigned": "Tayinlangan",
+    "status": {
+      "assigned": "Tayinlangan",
+      "inProgress": "Jarayonda",
+      "completed": "Yakunlangan"
+    },
+    "dueDate": "Oxirgi muddat",
+    "overdue": "Muddat o'tgan",
+    "progress": "Jarayon",
+    "theory": "Nazariya",
+    "video": "Video",
+    "quiz": "Test",
+    "theoryTitle": "Nazariy qism",
+    "videoDuration": "Video davomiyligi",
+    "aiTipsTitle": "AI maslahatlar",
+    "quizResults": "Test natijalari",
+    "passed": "O'tdi",
+    "failed": "O'tmadi",
+    "tryAgain": "Qayta urinish",
+    "viewCertificate": "Sertifikatni ko'rish",
+    "skill": "Ko'nikma",
+    "level": "Daraja",
+    "recommended": "Tavsiya etilgan",
+    "badges": "Nishonlar",
+    "earnBadges": "Nishonlarni qozonish",
+    "badgesEarned": "Qozonilgan nishonlar",
+    "streakDays": "Ketma-ket kunlar",
+    "lastActivity": "Oxirgi faollik",
+    "microLearning": "Mikro o'rganish",
+    "estimatedTime": "Taxminiy vaqt",
+    "moduleContents": "Modul mazmuni",
+    "finalQuiz": "Yakuniy test",
+    "quizDescription": "Quyidagi savollarga javob berib bilimlaringizni tekshiring. Testni o'tkazish uchun kamida 70% to'g'ri javoblar berishingiz kerak.",
+    "nextLesson": "Keyingi dars",
+    "previousLesson": "Oldingi dars",
+    "microTitle": "Bugungi mikro-o'quv",
+    "microCompleted": "Mikro-o'quv yakunlandi",
+    "badgeEarned": "Siz yangi nishon qozondingiz!",
+    "question": "Savol",
+    "answer": "Javob",
+    "showAnswer": "Javobni ko'rsatish",
+    "markComplete": "Yakunlandi deb belgilash",
+    "todayTraining": "Bugungi o'quv",
+    "today": "Bugun",
+    "correctOf": "to'g'ri javob, jami",
+    "questions": "savollardan",
+    "checkAnswer": "Javobni tekshirish",
+    "nextQuestion": "Keyingi savol",
+    "finish": "Yakunlash",
+    "quizTitle": "Bilimingizni tekshiring",
+    "quizResult": "Test natijasi",
+    "retryQuiz": "Testni qayta topshirish",
+    "moduleResult": "Modul natijasi",
+    "needsImprovement": "Yaxshilanishi kerak",
+    "backToTraining": "O'quvga qaytish",
+    "retryModule": "Modulni qayta o'tish",
+    "of": "dan",
+    "aiGoalTitle": "AI tavsiya etgan haftalik maqsad",
+    "aiGoalDesc": "Tahlillaringizga asosan, siz quyidagi ko'nikmani yaxshilashingiz kerak:",
+    "skillFilter": "Ko'nikma bo'yicha filtrlash",
+    "levelFilter": "Daraja bo'yicha filtrlash",
+    "statusFilter": "Holat bo'yicha filtrlash",
+    "scriptLibrary": "Skriptlar kutubxonasi",
+    "scriptLibraryDesc": "Turli savdo vaziyatlari uchun tayyor skriptlar",
+    "viewScript": "Skriptni ko'rish",
+    "gameProgress": "O'quv taraqqiyoti",
+    "gameProgressDesc": "Yakunlangan va jarayondagi modullaringizni kuzating",
+    "badges": {
+      "dailyLearner": "Kunlik o'quvchi",
+      "perfectScore": "Mukammal ball",
+      "teamLeader": "Jamoa yetakchisi"
+    },
+    "viewAllBadges": "Barcha nishonlarni ko'rish"
+  },
+  "scripts": {
+    "recommended": "Tavsiya etilgan skriptlar",
+    "mostUsed": "Eng ko'p ishlatilgan",
+    "searchScripts": "Skriptlarni qidirish",
+    "title": "Skript kutubxonasi",
+    "description": "Turli savdo vaziyatlari uchun tayyor skriptlar",
+    "categories": {
+      "all": "Barchasi",
+      "greeting": "Salomlashish",
+      "objection": "E'tirozlar",
+      "closing": "Bitimni yakunlash",
+      "followUp": "Keyingi aloqa",
+      "pricing": "Narxlash",
+      "trust": "Ishonch yaratish",
+      "crossSell": "Qo'shimcha mahsulot",
+      "other": "Boshqa"
+    },
+    "source": "Manba",
+    "noScriptsFound": "Skriptlar topilmadi",
+    "viewScript": "Javobni ko'rish",
+    "hideScript": "Javobni yopish",
+    "aiSelected": "AI bu skriptni {count} ta muvaffaqiyatli sotuv asosida tanladi"
+  },
+  "team": {
+    "yourTeam": "Sizning jamoangiz",
+    "teamMembers": "Jamoa a'zolari",
+    "addMember": "A'zo qo'shish",
+    "activity": "Faollik",
+    "performance": "Ko'rsatkichlar",
+    "conversations": "Suhbatlar",
+    "score": "Ball",
+    "successRate": "Muvaffaqiyat darajasi"
+  },
+  "coaching": {
+    "sessions": "Kouching sessiyalari",
+    "upcoming": "Kelgusi",
+    "past": "O'tgan",
+    "schedule": "Yangi rejalashtirish",
+    "noSessions": "Rejalashtirilgan sessiyalar yo'q"
+  },
+  "hr": {
+    "statistics": "Statistika",
+    "topPerformers": "Eng yaxshi xodimlar",
+    "needsImprovement": "Yaxshilanishi kerak",
+    "departmentComparison": "Bo'limlar taqqoslash",
+    "trainingEffectiveness": "O'quv samaradorligi",
+    "addTraining": "O'quv qo'shish",
+    "assignTraining": "O'quv tayinlash"
+  },
+  "errors": {
+    "somethingWrong": "Nimadir xato ketdi",
+    "tryAgain": "Keyinroq qayta urinib ko'ring",
+    "notFound": "Sahifa topilmadi",
+    "back": "Asosiy sahifaga qaytish"
+  },
+  "onboarding": {
+    "welcome": {
+      "title": "RetailVoiceAI'ga xush kelibsiz",
+      "description": "Sun'iy intellekt yordamida savdo ko'nikmalaringizni yaxshilang"
+    },
+    "features": {
+      "title": "Xususiyatlar",
+      "description": "Savdolarni tahlil qilish va tavsiyalarni olish uchun suhbatlarni yuklang"
+    },
+    "getStarted": {
+      "title": "Boshlash",
+      "description": "Savdo ko'nikmalaringizni o'rganishni boshlang",
+      "button": "Boshlash"
+    },
+    "intro": "Sun'iy intellekt yordamida savdo ko'nikmalaringizni yaxshilang",
+    "step1": "Mijozlar bilan suhbat yozuvlarini yuklang",
+    "step2": "Qimmatli ma'lumotlar va tavsiyalar oling",
+    "step3": "Savdo ko'nikmalaringizni yaxshilang",
+    "start": "Boshlash",
+    "skip": "O'tkazib yuborish"
+  },
+  "language": {
+    "uz": "O'zbekcha",
+    "ru": "Русский",
+    "uzbek": "O'zbek tili",
+    "uzbek_flag": "🇺🇿"
+  },
+  "insight": {
+    "type": {
+      "improvement": "Yaxshilash",
+      "opportunity": "Imkoniyat",
+      "urgent": "Shoshilinch",
+      "behavior": "Xulq-atvor",
+      "custom": "Maxsus"
+    }
+  },
+  "sales": {
+    "conversations": "Suhbatlar",
+    "conversationsDescription": "O'tkazilgan suhbatlar va AI tahlillari",
+    "insights": "Tahlillar",
+    "insightsDescription": "Savdo ko'nikmalaringiz haqida AI tahlillari",
+    "recentConversations": "Oxirgi suhbatlar",
+    "trainingModules": "O'quv modullari",
+    "weeklyInsights": "Haftalik tahlillar",
+    "training": "O'quv",
+    "trainingDescription": "O'quv modullari va savdo ko'nikmalarini yaxshilash uchun vositalar",
+    "dashboardDescription": "Savdolaringiz va ko'rsatkichlaringiz umumiy ko'rinishi",
+    "dateRange": "Sana oralig'i",
+    "language": "Til",
+    "filterConversations": "Suhbatlarni filtrlash",
+    "scoreThreshold": "Ball chegarasi",
+    "noConversations": "Suhbatlar topilmadi",
+    "noTrainingModules": "O'quv modullari topilmadi"
+  },
+  "transcript": {
+    "speakerLabels": {
+      "salesperson": "Sotuvchi",
+      "customer": "Mijoz"
+    },
+    "showInsight": "AI tahlilni ko'rsatish",
+    "hideInsight": "AI tahlilni yashirish"
+  },
+  "conversation": {
+    "playAudio": "Audioni ijro etish",
+    "downloadTranscript": "Transkripsiyani yuklab olish",
+    "salesperson": "Sotuvchi",
+    "customer": "Mijoz",
+    "recommendation": "Tavsiya",
+    "scoreBreakdown": "Ball taqsimoti",
+    "device": "Qurilma",
+    "transcript": "Transkripsiya",
+    "meta": {
+      "location": "Joylashuv",
+      "device": "Qurilma",
+      "duration": "Davomiyligi"
+    },
+    "title": "Suhbat"
+  },
+  "training_content": {
+    "priceObjections": {
+      "title": "Narx qarshiliklarini boshqarish",
+      "description": "Mijozlar narxga qarshi e'tirozlar bildirganida qanday samarali muloqot qilishni o'rganing",
+      "tips": {
+        "0": "Avval mahsulotning qiymatini ta'kidlang, keyin narxni muhokama qiling",
+        "1": "Mijoz e'tirozlariga qarshi turmasdan, ularni e'tirof etiring va qayta yo'naltiring",
+        "2": "Narx qarshiliklarini har doim ulkan savdo to'siqlari deb o'ylamang - ular ko'pincha qo'shimcha ma'lumot uchun so'rovlardir",
+        "3": "Narx/qiymat nisbatini tushuntirish ko'pincha to'g'ridan-to'g'ri narx chegirmasidan ko'ra ta'sirliroq bo'ladi"
+      },
+      "steps": {
+        "intro": {
+          "title": "Narx qarshiliklarini tushunish",
+          "content": "Bu kursda siz mijozlarning narx qarshiliklarini samarali boshqarish va ularni savdo imkoniyatlariga aylantirish usullarini o'rganasiz."
+        },
+        "lesson1": {
+          "title": "Qarshiliklar turlari",
+          "content": "Narx qarshiliklarining turli ko'rinishlari va ular nimani anglatishi haqida."
+        },
+        "lesson2": {
+          "title": "Qiymat-asoslangan yondashuv",
+          "content": "Qanday qilib narxdan ko'ra qiymatga e'tibor qaratish mumkin."
+        },
+        "lesson3": {
+          "title": "Muhokama qilish texnikasi",
+          "content": "Qarshiliklarni yengishda samarali bo'lgan konkret texnikalar."
+        },
+        "practice": {
+          "title": "Amaliyot va o'yin rollari",
+          "content": "Haqiqiy hayotdagi stsenariylarda o'rgangan ko'nikmalaringizni qo'llang."
+        },
+        "aiAdvice": {
+          "title": "AI maslahat va tashxis",
+          "content": "Ko'nikmalaringizni takomillashtirish uchun shaxsiylashtirilgan maslahatlar."
+        },
+        "quiz": {
+          "title": "Yakuniy bilimlar tekshiruvi",
+          "content": "O'rganganlaringizni tekshirish uchun test."
+        }
+      },
+      "theory": {
+        "section1": {
+          "title": "Asosiy tushunchalar",
+          "content": "Narx qarshiliklari savdo jarayonida tabiiy hisoblanadi va har doim ham bitimni rad etish emas, balki ko'pincha mahsulot/xizmat haqida qo'shimcha ma'lumot olish usuli bo'lishi mumkin."
+        }
+      }
+    }
+  }
+}

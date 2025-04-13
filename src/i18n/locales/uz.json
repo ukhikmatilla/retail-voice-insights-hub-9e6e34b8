@@ -1,3 +1,4 @@
+
 {
   "app": {
     "name": "RetailVoiceAI"
@@ -20,7 +21,8 @@
     "analysisPlaceholder": "Bu yerda tahlillar ko'rsatiladi",
     "conversationsPlaceholder": "Bu yerda suhbatlar ko'rsatiladi",
     "teamPlaceholder": "Bu yerda jamoa a'zolari ko'rsatiladi",
-    "min": "daq"
+    "min": "daq",
+    "insightsPlaceholder": "Bu yerda tahlillar ko'rsatiladi"
   },
   "language": {
     "uz": "O'zbekcha 🇺🇿",
@@ -115,7 +117,9 @@
     "filterConversations": "Suhbatlarni filterlash",
     "dateRange": "Sana oralig'i",
     "scoreThreshold": "Ball chegarasi",
-    "language": "Til"
+    "language": "Til",
+    "insights": "Tahlillar",
+    "insightsDescription": "Suhbatlaringizning AI tahlillari va tavsiyalari."
   },
   "conversation": {
     "duration": "Davomiyligi",
@@ -165,6 +169,42 @@
     "criterion": "Mezon",
     "rating": "Baho",
     "comment": "Izoh",
+    "filters": {
+      "dateRange": "Sana oralig'i",
+      "insightType": "Tahlil turi",
+      "skill": "Ko'nikma",
+      "last7Days": "So'nggi 7 kun",
+      "last30Days": "So'nggi 30 kun",
+      "last90Days": "So'nggi 90 kun",
+      "custom": "Boshqa",
+      "all": "Barchasi"
+    },
+    "summary": {
+      "totalInsights": "Jami tahlillar",
+      "averageScore": "O'rtacha ball",
+      "improvementRate": "Yaxshilanish darajasi"
+    },
+    "charts": {
+      "insightTypes": "Tahlil turlari",
+      "skillProgress": "Ko'nikmalar rivojlanishi"
+    },
+    "tabs": {
+      "summary": "Umumiy ko'rinish",
+      "insights": "Tahlillar",
+      "recommendations": "Tavsiyalar"
+    },
+    "insightsList": "Tahlillar ro'yxati",
+    "insightsDescription": "Suhbatlar davomida aniqlangan eng muhim tahlillar.",
+    "noInsightsFound": "Tanlangan filtrlar bo'yicha tahlillar topilmadi.",
+    "recommendationsList": "AI tavsiyalari",
+    "recommendationsDescription": "Sizning ko'rsatkichlaringizga asoslangan shaxsiy tavsiyalar.",
+    "viewRelatedTraining": "Trening modulini ko'rish",
+    "viewTrainingModule": "Trening moduliga o'tish",
+    "priority": {
+      "high": "Yuqori",
+      "medium": "O'rta",
+      "low": "Past"
+    },
     "types": {
       "improvement": {
         "example": "Mahsulot haqida yaxshi ma'lumot berildi. Moliya variantlarini erta tushuntirish mumkin edi."

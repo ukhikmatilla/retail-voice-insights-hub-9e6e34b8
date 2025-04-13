@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -11,10 +10,10 @@ import TrainingTheory from '@/components/training/TrainingTheory';
 import TrainingVideo from '@/components/training/TrainingVideo';
 import TrainingQuiz from '@/components/training/TrainingQuiz';
 import { mockTrainings } from '@/data/mockData';
-import { Training } from '@/types';
+import { Training, TrainingTheory as TrainingTheoryType, TheorySection, TrainingQuiz as TrainingQuizType } from '@/types';
 
 // Sample mock data for the training module components
-const mockTheoryData = {
+const mockTheoryData: TrainingTheoryType = {
   sections: [
     {
       title: "Understanding Price Objections",
@@ -36,7 +35,7 @@ const mockTheoryData = {
       content: "When a customer says 'Your product is too expensive,' respond with 'I understand price is important. May I ask what specific aspect of the pricing concerns you?' This helps uncover the real objection.",
       type: "example"
     }
-  ]
+  ] as TheorySection[]
 };
 
 const mockVideoData = {
@@ -44,7 +43,7 @@ const mockVideoData = {
   duration: "10:25"
 };
 
-const mockQuizData = {
+const mockQuizData: TrainingQuizType = {
   questions: [
     {
       id: "q1",
@@ -75,6 +74,7 @@ const mockQuizData = {
 };
 
 const TrainingModuleDetail = () => {
+  // ... keep existing code (constants, states, and useParams hook declarations)
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { t } = useTranslation();

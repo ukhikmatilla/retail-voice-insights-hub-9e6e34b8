@@ -270,8 +270,7 @@ const SalesConversations = () => {
             )}
           </>
         )}
-              </div>
-            </div>
+      </div>
     </RoleLayout>
   );
 };

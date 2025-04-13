@@ -25,5 +25,39 @@
   "information": "Ma'lumot",
   "date": "Sana",
   "time": "Vaqt",
-  "status": "Holat"
+  "status": "Holat",
+  "filters": {
+    "dateRange": "Davr",
+    "last7Days": "So'nggi 7 kun",
+    "last30Days": "So'nggi 30 kun",
+    "last90Days": "So'nggi 90 kun",
+    "custom": "Tanlash",
+    "insightType": "Tahlil turi",
+    "skill": "Ko'nikma",
+    "all": "Barchasi"
+  },
+  "insight": {
+    "type": {
+      "improvement": "Yaxshilash",
+      "opportunity": "Imkoniyat",
+      "urgent": "Shoshilinch",
+      "behavior": "Xulq-atvor",
+      "custom": "Maxsus"
+    }
+  },
+  "tabs": {
+    "summary": "Xulosa",
+    "insights": "Tahlillar",
+    "recommendations": "Tavsiyalar"
+  },
+  "insights": {
+    "summary": {
+      "totalInsights": "Jami tahlillar",
+      "averageScore": "O'rtacha ball",
+      "improvementRate": "Yaxshilanish darajasi"
+    },
+    "charts": {
+      "skillProgress": "Ko'nikma progressi"
+    }
+  }
 }

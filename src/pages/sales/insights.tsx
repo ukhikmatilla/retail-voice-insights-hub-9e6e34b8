@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useSearchParams, useNavigate } from 'react-router-dom';
@@ -87,7 +88,7 @@ const aiRecommendationsMock = [
 ];
 
 const SalesInsights = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['dashboard', 'common', 'ai']);
   const location = useLocation();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -143,9 +144,9 @@ const SalesInsights = () => {
       <div className="animate-fade-in">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
           <div>
-            <h1 className="text-3xl font-bold">{t('sales.insights')}</h1>
+            <h1 className="text-3xl font-bold">{t('dashboard:insights')}</h1>
             <p className="text-muted-foreground mt-1">
-              {t('sales.insightsDescription')}
+              {t('dashboard:insightsDescription', "Анализ и рекомендации по улучшению продаж")}
             </p>
           </div>
           
@@ -154,43 +155,43 @@ const SalesInsights = () => {
             <Select value={dateRange} onValueChange={setDateRange}>
               <SelectTrigger className="w-[130px]">
                 <Calendar className="w-4 h-4 mr-2" />
-                <SelectValue placeholder={t('insights.filters.dateRange')} />
+                <SelectValue placeholder={t('common:filters.dateRange', "Период")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="7days">{t('insights.filters.last7Days')}</SelectItem>
-                <SelectItem value="30days">{t('insights.filters.last30Days')}</SelectItem>
-                <SelectItem value="90days">{t('insights.filters.last90Days')}</SelectItem>
-                <SelectItem value="custom">{t('insights.filters.custom')}</SelectItem>
+                <SelectItem value="7days">{t('common:filters.last7Days', "Последние 7 дней")}</SelectItem>
+                <SelectItem value="30days">{t('common:filters.last30Days', "Последние 30 дней")}</SelectItem>
+                <SelectItem value="90days">{t('common:filters.last90Days', "Последние 90 дней")}</SelectItem>
+                <SelectItem value="custom">{t('common:filters.custom', "Выбрать")}</SelectItem>
               </SelectContent>
             </Select>
             
             <Select value={insightType} onValueChange={setInsightType}>
               <SelectTrigger className="w-[140px]">
                 <FilterIcon className="w-4 h-4 mr-2" />
-                <SelectValue placeholder={t('insights.filters.insightType')} />
+                <SelectValue placeholder={t('common:filters.insightType', "Тип аналитики")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
-                <SelectItem value="improvement">{t('insight.type.improvement')}</SelectItem>
-                <SelectItem value="opportunity">{t('insight.type.opportunity')}</SelectItem>
-                <SelectItem value="urgent">{t('insight.type.urgent')}</SelectItem>
-                <SelectItem value="behavior">{t('insight.type.behavior')}</SelectItem>
-                <SelectItem value="custom">{t('insight.type.custom')}</SelectItem>
+                <SelectItem value="all">{t('common:filters.all', "Все")}</SelectItem>
+                <SelectItem value="improvement">{t('common:insight.type.improvement', "Улучшение")}</SelectItem>
+                <SelectItem value="opportunity">{t('common:insight.type.opportunity', "Возможность")}</SelectItem>
+                <SelectItem value="urgent">{t('common:insight.type.urgent', "Срочно")}</SelectItem>
+                <SelectItem value="behavior">{t('common:insight.type.behavior', "Поведение")}</SelectItem>
+                <SelectItem value="custom">{t('common:insight.type.custom', "Своё")}</SelectItem>
               </SelectContent>
             </Select>
             
             <Select value={skillFilter} onValueChange={setSkillFilter}>
               <SelectTrigger className="w-[150px]">
                 <BadgeCheckIcon className="w-4 h-4 mr-2" />
-                <SelectValue placeholder={t('insights.filters.skill')} />
+                <SelectValue placeholder={t('common:filters.skill', "Навык")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
-                <SelectItem value="trustBuilding">{t('insights.trustBuilding')}</SelectItem>
-                <SelectItem value="objections">{t('insights.objections')}</SelectItem>
-                <SelectItem value="crossSelling">{t('insights.crossSelling')}</SelectItem>
-                <SelectItem value="valueExplanation">{t('insights.valueExplanation')}</SelectItem>
-                <SelectItem value="closing">{t('insights.closing')}</SelectItem>
+                <SelectItem value="all">{t('common:filters.all', "Все")}</SelectItem>
+                <SelectItem value="trustBuilding">{t('ai:skills.trustBuilding', "Построение доверия")}</SelectItem>
+                <SelectItem value="objections">{t('ai:skills.objections', "Возражения")}</SelectItem>
+                <SelectItem value="crossSelling">{t('ai:skills.crossSelling', "Кросс-продажи")}</SelectItem>
+                <SelectItem value="valueExplanation">{t('ai:skills.valueExplanation', "Объяснение ценности")}</SelectItem>
+                <SelectItem value="closing">{t('ai:skills.closing', "Закрытие сделки")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -199,9 +200,9 @@ const SalesInsights = () => {
         {/* Tabs Navigation */}
         <Tabs value={activeTab} onValueChange={handleTabChange} className="mt-6">
           <TabsList className="grid w-full md:w-auto grid-cols-3 mb-6">
-            <TabsTrigger value="summary">{t('insights.tabs.summary')}</TabsTrigger>
-            <TabsTrigger value="insights">{t('insights.tabs.insights')}</TabsTrigger>
-            <TabsTrigger value="recommendations">{t('insights.tabs.recommendations')}</TabsTrigger>
+            <TabsTrigger value="summary">{t('common:tabs.summary', "Сводка")}</TabsTrigger>
+            <TabsTrigger value="insights">{t('common:tabs.insights', "Аналитика")}</TabsTrigger>
+            <TabsTrigger value="recommendations">{t('common:tabs.recommendations', "Рекомендации")}</TabsTrigger>
           </TabsList>
           
           {/* Summary Tab */}
@@ -209,7 +210,7 @@ const SalesInsights = () => {
             {/* Stat Cards - Now with navigation to detail pages */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <StatCard 
-                title={t('insights.summary.totalInsights')} 
+                title={t('common:insights.summary.totalInsights', "Всего аналитик")} 
                 value={expandableInsightsMock.length} 
                 icon={<LightbulbIcon />} 
                 trend={{ value: 15, isPositive: true }}
@@ -218,7 +219,7 @@ const SalesInsights = () => {
                 onClick={navigateToTotalInsights}
               />
               <StatCard 
-                title={t('insights.summary.averageScore')} 
+                title={t('common:insights.summary.averageScore', "Средний балл")} 
                 value="72%" 
                 icon={<BarChart3 />} 
                 trend={{ value: 5, isPositive: true }}
@@ -227,7 +228,7 @@ const SalesInsights = () => {
                 onClick={navigateToScoreInsights}
               />
               <StatCard 
-                title={t('insights.summary.improvementRate')} 
+                title={t('common:insights.summary.improvementRate', "Темп улучшения")} 
                 value="8%" 
                 icon={<TrendingUpIcon />} 
                 trend={{ value: 3, isPositive: true }}
@@ -253,17 +254,17 @@ const SalesInsights = () => {
               {/* Skills Progress Chart */}
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between">
-                  <CardTitle>{t('insights.charts.skillProgress')}</CardTitle>
+                  <CardTitle>{t('common:insights.charts.skillProgress', "Прогресс навыков")}</CardTitle>
                   
                   {/* Timeline Filter Dropdown */}
                   <Select value={timelineFilter} onValueChange={setTimelineFilter}>
                     <SelectTrigger className="w-[130px] h-8">
-                      <SelectValue placeholder={t('insights.filters.dateRange')} />
+                      <SelectValue placeholder={t('common:filters.dateRange', "Период")} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="7days">{t('insights.filters.last7Days')}</SelectItem>
-                      <SelectItem value="30days">{t('insights.filters.last30Days')}</SelectItem>
-                      <SelectItem value="90days">{t('insights.filters.last90Days')}</SelectItem>
+                      <SelectItem value="7days">{t('common:filters.last7Days', "Последние 7 дней")}</SelectItem>
+                      <SelectItem value="30days">{t('common:filters.last30Days', "Последние 30 дней")}</SelectItem>
+                      <SelectItem value="90days">{t('common:filters.last90Days', "Последние 90 дней")}</SelectItem>
                     </SelectContent>
                   </Select>
                 </CardHeader>
@@ -275,7 +276,7 @@ const SalesInsights = () => {
                         <XAxis dataKey="month" />
                         <YAxis />
                         <Tooltip />
-                        <Legend formatter={(value) => t(`insights.${value}`)} />
+                        <Legend formatter={(value) => t(`ai:skills.${value}`, value)} />
                         <Line type="monotone" dataKey="trustBuilding" stroke="#8884d8" />
                         <Line type="monotone" dataKey="objections" stroke="#82ca9d" />
                         <Line type="monotone" dataKey="crossSelling" stroke="#ffc658" />

@@ -39,5 +39,12 @@
       "objectionHandler": "Обработчик возражений",
       "trustBuilder": "Строитель доверия"
     }
+  },
+  "skills": {
+    "trustBuilding": "Построение доверия",
+    "objections": "Работа с возражениями",
+    "crossSelling": "Кросс-продажи",
+    "valueExplanation": "Объяснение ценности",
+    "closing": "Закрытие сделки"
   }
 }

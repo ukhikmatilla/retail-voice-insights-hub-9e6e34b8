@@ -33,7 +33,7 @@ const Login = () => {
       const user = await login(email, password);
       navigate('/dashboard');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unknown error occurred');
+      setError(err instanceof Error ? err.message : t('auth.somethingWentWrong'));
     } finally {
       setIsLoading(false);
     }
@@ -52,7 +52,7 @@ const Login = () => {
       await login(demoEmails[role], 'password');
       navigate('/dashboard');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unknown error occurred');
+      setError(err instanceof Error ? err.message : t('auth.somethingWentWrong'));
     } finally {
       setIsLoading(false);
     }
@@ -62,7 +62,7 @@ const Login = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-muted p-4">
       <div className="w-full max-w-md">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold">RetailVoiceAI</h1>
+          <h1 className="text-2xl font-bold">{t('app.title')}</h1>
           <LanguageSelector />
         </div>
         
@@ -117,7 +117,7 @@ const Login = () => {
             
             <div className="mt-6">
               <p className="text-center text-sm text-muted-foreground">
-                {t('app.name')} demo logins:
+                {t('app.name')} {t('auth.demoLogins', "демо входы")}:
               </p>
               <div className="grid grid-cols-3 gap-2 mt-2">
                 <Button 
@@ -126,7 +126,7 @@ const Login = () => {
                   onClick={() => handleDemoLogin('salesperson')}
                   disabled={isLoading}
                 >
-                  Salesperson
+                  {t('roles.salesperson')}
                 </Button>
                 <Button 
                   variant="outline" 
@@ -134,7 +134,7 @@ const Login = () => {
                   onClick={() => handleDemoLogin('manager')}
                   disabled={isLoading}
                 >
-                  Manager
+                  {t('roles.manager')}
                 </Button>
                 <Button 
                   variant="outline" 
@@ -142,14 +142,14 @@ const Login = () => {
                   onClick={() => handleDemoLogin('hr')}
                   disabled={isLoading}
                 >
-                  HR
+                  {t('roles.hr')}
                 </Button>
               </div>
             </div>
             
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
-                {t('auth.register')}?{" "}
+                {t('auth.noAccount')}{" "}
                 <Link to="/auth/register" className="text-primary hover:underline">
                   {t('auth.register')}
                 </Link>

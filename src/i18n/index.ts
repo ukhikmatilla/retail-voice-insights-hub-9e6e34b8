@@ -20,28 +20,34 @@ import uzOnboarding from './locales/uz/onboarding.json';
 import uzTraining from './locales/uz/training.json';
 import uzLanguage from './locales/uz/language.json';
 
+// Create nested resources structure for better organization
 const resources = {
   ru: {
-    translation: {
-      ...ruCommon,
-      ...ruAuth,
-      ...ruDashboard,
-      ...ruAi,
-      ...ruRoles
+    common: ruCommon,
+    auth: ruAuth,
+    dashboard: ruDashboard,
+    ai: ruAi,
+    roles: ruRoles,
+    // Add empty objects for namespaces that exist in uz but not in ru
+    // to prevent fallback to another language
+    app: {},
+    onboarding: {},
+    training: {},
+    language: {
+      ru: "Русский",
+      uz: "Узбекский"
     }
   },
   uz: {
-    translation: {
-      ...uzCommon,
-      ...uzAuth,
-      ...uzDashboard,
-      ...uzAi,
-      ...uzRoles,
-      app: uzApp,
-      onboarding: uzOnboarding,
-      training: uzTraining,
-      language: uzLanguage
-    }
+    common: uzCommon,
+    auth: uzAuth,
+    dashboard: uzDashboard,
+    ai: uzAi,
+    roles: uzRoles,
+    app: uzApp,
+    onboarding: uzOnboarding,
+    training: uzTraining,
+    language: uzLanguage
   }
 };
 
@@ -49,8 +55,11 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: localStorage.getItem('language') || 'uz',
-    fallbackLng: 'uz',
+    // Get stored language or default to 'ru'
+    lng: localStorage.getItem('language') === 'uz' ? 'uz' : 'ru',
+    fallbackLng: 'ru', // Always fallback to Russian, not English
+    defaultNS: 'common',
+    ns: ['common', 'auth', 'dashboard', 'ai', 'roles', 'app', 'onboarding', 'training', 'language'],
     interpolation: {
       escapeValue: false
     },
@@ -60,7 +69,7 @@ i18n
     returnNull: false,      // Return empty string instead of null
     returnEmptyString: false, // Return key instead of empty string
     missingKeyHandler: (lng, ns, key) => {
-      console.warn(`Missing translation key: "${key}" for language: ${lng}`);
+      console.warn(`Missing translation key: "${key}" for language: ${lng}, namespace: ${ns}`);
     },
     returnObjects: true, // Support nested objects in translations
     joinArrays: ' ', // How to join arrays in translations

@@ -25,5 +25,39 @@
   "information": "Информация",
   "date": "Дата",
   "time": "Время",
-  "status": "Статус"
+  "status": "Статус",
+  "filters": {
+    "dateRange": "Период",
+    "last7Days": "Последние 7 дней",
+    "last30Days": "Последние 30 дней",
+    "last90Days": "Последние 90 дней",
+    "custom": "Выбрать",
+    "insightType": "Тип аналитики",
+    "skill": "Навык",
+    "all": "Все"
+  },
+  "insight": {
+    "type": {
+      "improvement": "Улучшение",
+      "opportunity": "Возможность",
+      "urgent": "Срочно",
+      "behavior": "Поведение",
+      "custom": "Своё"
+    }
+  },
+  "tabs": {
+    "summary": "Сводка",
+    "insights": "Аналитика",
+    "recommendations": "Рекомендации"
+  },
+  "insights": {
+    "summary": {
+      "totalInsights": "Всего аналитик",
+      "averageScore": "Средний балл",
+      "improvementRate": "Темп улучшения"
+    },
+    "charts": {
+      "skillProgress": "Прогресс навыков"
+    }
+  }
 }

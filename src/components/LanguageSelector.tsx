@@ -23,6 +23,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
     changeLanguage(newLang);
   };
 
+  // Use the language namespace to access language names
   return (
     <Button
       variant={variant}

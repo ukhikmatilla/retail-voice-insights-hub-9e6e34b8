@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { mockTrainings } from '@/data/mockData';
@@ -13,21 +14,27 @@ export const useTrainingModuleData = (slug: string | undefined) => {
     // Find training by slug
     const foundTraining = mockTrainings.find(
       (module) => module.title.toLowerCase().replace(/\s+/g, '-') === slug
-    ) || {
-      id: '1',
-      title: t('training_content.priceObjections.title'),
-      description: t('training_content.priceObjections.description'),
-      skill: t('training_content.priceObjections.skill', { defaultValue: 'objections' }),
-      level: t('training_content.priceObjections.level', { defaultValue: 'intermediate' }),
-      status: 'recommended',
-      progress: 0,
-      dueDate: '2025-05-01'
-    };
-
-    setTraining(foundTraining);
+    );
+    
+    if (foundTraining) {
+      setTraining(foundTraining);
+    } else {
+      // Create a default training object with correct typing
+      const defaultTraining: Training = {
+        id: '1',
+        title: t('training_content.priceObjections.title'),
+        description: t('training_content.priceObjections.description'),
+        skill: t('training_content.priceObjections.skill', { defaultValue: 'objection' }),
+        level: 'intermediate' as const,
+        status: 'recommended',
+        progress: 0,
+        dueDate: '2025-05-01'
+      };
+      setTraining(defaultTraining);
+    }
     
     // Set document title
-    document.title = foundTraining.title + ' | ' + t('sales.training');
+    document.title = training?.title ? training.title + ' | ' + t('sales.training') : t('sales.training');
 
     // Check if mobile view
     const checkIfMobile = () => {
@@ -44,7 +51,7 @@ export const useTrainingModuleData = (slug: string | undefined) => {
       document.title = t('sales.training');
       window.removeEventListener('resize', checkIfMobile);
     };
-  }, [slug, t]);
+  }, [slug, t, training?.title]);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -67,8 +74,8 @@ export const useTheoryData = () => {
     
     return {
       id: "theory-1",
-      title: "Price Objections Theory",
-      content: "Main content of the theory",
+      title: t(`training_content.${moduleKey}.theory.title`, { defaultValue: "Price Objections Theory" }),
+      content: t(`training_content.${moduleKey}.theory.content`, { defaultValue: "Main content of the theory" }),
       sections: [
         {
           title: t(`training_content.${moduleKey}.theory.section1.title`),
@@ -106,10 +113,15 @@ export const useQuizData = () => {
     
     return {
       id: "quiz-1",
-      question: "Main quiz question",
-      options: ["Option 1", "Option 2", "Option 3", "Option 4"],
-      correctAnswer: "Option 2",
-      explanation: "Explanation for the quiz",
+      question: t(`training_content.${moduleKey}.steps.quiz.mainQuestion`, { defaultValue: "Main quiz question" }),
+      options: [
+        t(`training_content.${moduleKey}.steps.quiz.mainOptions.0`, { defaultValue: "Option 1" }), 
+        t(`training_content.${moduleKey}.steps.quiz.mainOptions.1`, { defaultValue: "Option 2" }), 
+        t(`training_content.${moduleKey}.steps.quiz.mainOptions.2`, { defaultValue: "Option 3" }), 
+        t(`training_content.${moduleKey}.steps.quiz.mainOptions.3`, { defaultValue: "Option 4" })
+      ],
+      correctAnswer: t(`training_content.${moduleKey}.steps.quiz.mainCorrectAnswer`, { defaultValue: "Option 2" }),
+      explanation: t(`training_content.${moduleKey}.steps.quiz.mainExplanation`, { defaultValue: "Explanation for the quiz" }),
       questions: [
         {
           id: "q1",

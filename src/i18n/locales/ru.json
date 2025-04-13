@@ -1,13 +1,17 @@
+
 {
   "common": {
-    "loading": "Загрузка...",
     "error": {
       "stepNotFound": "Шаг не найден. Пожалуйста, вернитесь к предыдущему уроку.",
       "contentNotFound": "Контент не найден. Пожалуйста, попробуйте позже."
     },
     "coachingPlaceholder": "Здесь будет информация о коучинге.",
     "viewDetails": "Подробнее",
-    "insightsPlaceholder": "Здесь будут отображены аналитические данные."
+    "insightsPlaceholder": "Здесь будут отображены аналитические данные.",
+    "workforceOverviewPlaceholder": "Здесь будет отображен обзор рабочей силы.",
+    "personnelPlaceholder": "Здесь будет отображена информация о сотрудниках.",
+    "analysisPlaceholder": "Здесь будет отображена аналитическая информация.",
+    "trainingManagementPlaceholder": "Здесь будет отображена информация об управлении обучением."
   },
   "button": {
     "prevLesson": "Предыдущий урок",
@@ -52,6 +56,26 @@
     "actions": "Действия",
     "stores": "Точки",
     "coaching": "Коучинг"
+  },
+  "hr": {
+    "dashboard": "HR Обзор",
+    "dashboardDescription": "Общая статистика сотрудников и обучения",
+    "personnel": "Сотрудники",
+    "personnelDescription": "Управление персоналом и ролями",
+    "analysis": "Аналитика",
+    "analysisDescription": "Аналитика активности персонала и текучести",
+    "trainingManagement": "Управление обучением",
+    "trainingManagementDescription": "Прогресс обучения и назначение модулей",
+    "workforceOverview": "Обзор персонала",
+    "stats": {
+      "personnelCount": "Всего сотрудников",
+      "activeEmployees": "Активные сотрудники",
+      "newThisMonth": "Принято в этом месяце",
+      "trainingProgress": "Прогресс по обучению"
+    },
+    "turnoverTrend": "Текучесть по месяцам",
+    "departmentBreakdown": "Распределение по отделам",
+    "recentHires": "Недавно принятые"
   },
   "insight": {
     "type": {

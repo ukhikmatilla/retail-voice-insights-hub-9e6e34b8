@@ -1,3 +1,4 @@
+
 {
   "common": {
     "error": {
@@ -6,7 +7,11 @@
     },
     "coachingPlaceholder": "Bu bo'lim kelajakda kouching materiallari bilan to'ldiriladi.",
     "viewDetails": "Batafsil ko'rish",
-    "insightsPlaceholder": "Bu yerda tahliliy ma'lumotlar ko'rsatiladi."
+    "insightsPlaceholder": "Bu yerda tahliliy ma'lumotlar ko'rsatiladi.",
+    "workforceOverviewPlaceholder": "Bu yerda ishchi kuchi haqida ma'lumotlar ko'rsatiladi.",
+    "personnelPlaceholder": "Bu yerda xodimlar haqida ma'lumotlar ko'rsatiladi.",
+    "analysisPlaceholder": "Bu yerda tahlil ma'lumotlari ko'rsatiladi.",
+    "trainingManagementPlaceholder": "Bu yerda o'qitishni boshqarish ma'lumotlari ko'rsatiladi."
   },
   "button": {
     "prevLesson": "Oldingi dars",
@@ -46,6 +51,26 @@
     "actions": "Harakatlar",
     "stores": "Do'konlar",
     "coaching": "Kouching"
+  },
+  "hr": {
+    "dashboard": "HR Ko'rinishi",
+    "dashboardDescription": "Xodimlar va treninglar statistikasi",
+    "personnel": "Xodimlar",
+    "personnelDescription": "Xodimlarni va rollarni boshqarish",
+    "analysis": "Tahlil",
+    "analysisDescription": "Xodimlar faolligi va ishdan ketish statistikasi tahlili",
+    "trainingManagement": "O'qitishni boshqarish",
+    "trainingManagementDescription": "O'qitish jarayoni va modul tayinlash",
+    "workforceOverview": "Xodimlar umumiy ko'rinishi",
+    "stats": {
+      "personnelCount": "Jami xodimlar",
+      "activeEmployees": "Faol xodimlar",
+      "newThisMonth": "Bu oyda ishga olinganlar",
+      "trainingProgress": "Trening jarayoni"
+    },
+    "turnoverTrend": "Oylik ishchi aylanishi",
+    "departmentBreakdown": "Bo'limlar bo'yicha taqsimot",
+    "recentHires": "Yaqinda ishga olinganlar"
   },
   "roles": {
     "salesperson": "Sotuvchi",

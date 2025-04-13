@@ -1,143 +1,231 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Separator } from '@/components/ui/separator';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import { CalendarIcon, FilterIcon, Download } from 'lucide-react';
 import { format } from 'date-fns';
-import { mockStores } from '@/utils/mockData';
-import { CalendarIcon, Download, FileDown, Filter } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { DateRange } from 'react-day-picker';
 
-const InsightsFilterPanel: React.FC = () => {
+const InsightsFilterPanel = () => {
   const { t } = useTranslation();
-  const [storeFilter, setStoreFilter] = useState<string>("all");
-  const [sellerFilter, setSellerFilter] = useState<string>("all");
-  const [dateRange, setDateRange] = useState<{ from?: Date; to?: Date }>({});
-  const [template, setTemplate] = useState<string>("all");
-
-  const handleExportCSV = () => {
-    // Mock functionality for export to CSV
-    console.log("Exporting data as CSV");
+  const [selectedStore, setSelectedStore] = useState<string>('all');
+  const [selectedSeller, setSelectedSeller] = useState<string>('all');
+  const [selectedTemplate, setSelectedTemplate] = useState<string>('all');
+  
+  const [date, setDate] = useState<DateRange | undefined>({
+    from: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+    to: new Date(),
+  });
+  
+  const handleExport = () => {
+    // Export functionality
+    console.log('Exporting data...');
   };
-
-  const handleExportPDF = () => {
-    // Mock functionality for export to PDF
-    console.log("Exporting data as PDF");
-  };
-
+  
   return (
-    <Card className="mb-8">
-      <CardHeader>
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-          <CardTitle>{t('insights.filters.title')}</CardTitle>
-          <div className="flex gap-2 mt-2 sm:mt-0">
-            <Button variant="outline" size="sm" onClick={handleExportCSV}>
-              <FileDown className="mr-1 h-4 w-4" />
-              CSV
+    <div className="bg-card mb-6 p-4 rounded-lg border flex flex-wrap gap-2 items-center justify-between">
+      <div className="flex flex-wrap gap-2 items-center">
+        <Select value={selectedStore} onValueChange={setSelectedStore}>
+          <SelectTrigger className="w-[150px]">
+            <SelectValue placeholder={t('insights.filters.store')} />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
+            <SelectItem value="store1">Yunusabad Plaza</SelectItem>
+            <SelectItem value="store2">Samarkand City</SelectItem>
+            <SelectItem value="store3">Bukhara Mall</SelectItem>
+          </SelectContent>
+        </Select>
+        
+        <Select value={selectedSeller} onValueChange={setSelectedSeller}>
+          <SelectTrigger className="w-[150px]">
+            <SelectValue placeholder={t('insights.filters.seller')} />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
+            <SelectItem value="seller1">Anvar Toshmatov</SelectItem>
+            <SelectItem value="seller2">Gulnora Karimova</SelectItem>
+            <SelectItem value="seller3">Sardor Alimov</SelectItem>
+          </SelectContent>
+        </Select>
+        
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button
+              variant={"outline"}
+              className="w-[250px] justify-start text-left font-normal"
+            >
+              <CalendarIcon className="mr-2 h-4 w-4" />
+              {date?.from ? (
+                date.to ? (
+                  <>
+                    {format(date.from, "LLL dd, y")} -{" "}
+                    {format(date.to, "LLL dd, y")}
+                  </>
+                ) : (
+                  format(date.from, "LLL dd, y")
+                )
+              ) : (
+                <span>{t('insights.filters.dateRange')}</span>
+              )}
             </Button>
-            <Button variant="outline" size="sm" onClick={handleExportPDF}>
-              <Download className="mr-1 h-4 w-4" />
-              PDF
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-0" align="start">
+            <Calendar
+              initialFocus
+              mode="range"
+              defaultMonth={date?.from}
+              selected={date}
+              onSelect={setDate}
+              numberOfMonths={2}
+            />
+          </PopoverContent>
+        </Popover>
+        
+        <Select value={selectedTemplate} onValueChange={setSelectedTemplate}>
+          <SelectTrigger className="w-[200px]">
+            <SelectValue placeholder={t('insights.filters.template')} />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
+            <SelectItem value="template1">{t('insights.templates.productIntro')}</SelectItem>
+            <SelectItem value="template2">{t('insights.templates.objectionHandling')}</SelectItem>
+            <SelectItem value="template3">{t('insights.templates.crossSelling')}</SelectItem>
+          </SelectContent>
+        </Select>
+        
+        {/* Mobile filters */}
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="outline" size="sm" className="md:hidden">
+              <FilterIcon className="h-4 w-4 mr-2" />
+              {t('insights.filters.title')}
             </Button>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Store Filter */}
-          <div>
-            <label className="text-sm font-medium block mb-1">{t('insights.filters.store')}</label>
-            <Select value={storeFilter} onValueChange={setStoreFilter}>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder={t('insights.filters.selectStore')} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
-                {mockStores.map((store) => (
-                  <SelectItem key={store.id} value={store.id}>{store.name}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* Seller Filter */}
-          <div>
-            <label className="text-sm font-medium block mb-1">{t('insights.filters.seller')}</label>
-            <Select value={sellerFilter} onValueChange={setSellerFilter}>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder={t('insights.filters.selectSeller')} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
-                <SelectItem value="top">Top 5</SelectItem>
-                <SelectItem value="bottom">Bottom 5</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* Date Range Picker */}
-          <div>
-            <label className="text-sm font-medium block mb-1">{t('insights.filters.range')}</label>
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="w-full justify-start text-left font-normal"
-                >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
-                  {dateRange.from ? (
-                    dateRange.to ? (
-                      <>
-                        {format(dateRange.from, "P")} - {format(dateRange.to, "P")}
-                      </>
-                    ) : (
-                      format(dateRange.from, "P")
-                    )
-                  ) : (
-                    <span>{t('insights.filters.selectDates')}</span>
-                  )}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
-                <Calendar
-                  mode="range"
-                  selected={dateRange}
-                  onSelect={setDateRange}
-                  initialFocus
-                />
-              </PopoverContent>
-            </Popover>
-          </div>
-
-          {/* Template Filter */}
-          <div>
-            <label className="text-sm font-medium block mb-1">{t('insights.filters.template')}</label>
-            <Select value={template} onValueChange={setTemplate}>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder={t('insights.filters.selectTemplate')} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
-                <SelectItem value="product-intro">{t('insights.templates.productIntro')}</SelectItem>
-                <SelectItem value="objection-handling">{t('insights.templates.objectionHandling')}</SelectItem>
-                <SelectItem value="cross-selling">{t('insights.templates.crossSelling')}</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          
-          {/* Apply Filters Button */}
-          <div className="col-span-1 sm:col-span-2 lg:col-span-4 mt-2">
-            <Button className="w-full sm:w-auto">
-              <Filter className="mr-2 h-4 w-4" />
-              {t('insights.filters.apply')}
-            </Button>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>{t('insights.filters.title')}</SheetTitle>
+            </SheetHeader>
+            <div className="py-4 flex flex-col gap-4">
+              <div className="space-y-2">
+                <h3 className="text-sm font-medium">{t('insights.filters.selectStore')}</h3>
+                <Select value={selectedStore} onValueChange={setSelectedStore}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
+                    <SelectItem value="store1">Yunusabad Plaza</SelectItem>
+                    <SelectItem value="store2">Samarkand City</SelectItem>
+                    <SelectItem value="store3">Bukhara Mall</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div className="space-y-2">
+                <h3 className="text-sm font-medium">{t('insights.filters.selectSeller')}</h3>
+                <Select value={selectedSeller} onValueChange={setSelectedSeller}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
+                    <SelectItem value="seller1">Anvar Toshmatov</SelectItem>
+                    <SelectItem value="seller2">Gulnora Karimova</SelectItem>
+                    <SelectItem value="seller3">Sardor Alimov</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div className="space-y-2">
+                <h3 className="text-sm font-medium">{t('insights.filters.selectDates')}</h3>
+                <div className="grid gap-2">
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant={"outline"}
+                        className="w-full justify-start text-left font-normal"
+                      >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {date?.from ? (
+                          date.to ? (
+                            <>
+                              {format(date.from, "LLL dd, y")} -{" "}
+                              {format(date.to, "LLL dd, y")}
+                            </>
+                          ) : (
+                            format(date.from, "LLL dd, y")
+                          )
+                        ) : (
+                          <span>{t('insights.filters.dateRange')}</span>
+                        )}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        initialFocus
+                        mode="range"
+                        defaultMonth={date?.from}
+                        selected={date}
+                        onSelect={setDate}
+                        numberOfMonths={1}
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <h3 className="text-sm font-medium">{t('insights.filters.selectTemplate')}</h3>
+                <Select value={selectedTemplate} onValueChange={setSelectedTemplate}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
+                    <SelectItem value="template1">{t('insights.templates.productIntro')}</SelectItem>
+                    <SelectItem value="template2">{t('insights.templates.objectionHandling')}</SelectItem>
+                    <SelectItem value="template3">{t('insights.templates.crossSelling')}</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <Separator />
+              
+              <Button className="w-full">
+                {t('insights.filters.apply')}
+              </Button>
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
+      
+      <Button variant="outline" onClick={handleExport}>
+        <Download className="h-4 w-4 mr-2" />
+        {t('insights.export')}
+      </Button>
+    </div>
   );
 };
 

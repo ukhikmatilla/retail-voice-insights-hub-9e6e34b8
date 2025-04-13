@@ -41,7 +41,7 @@ const WeeklyFocusCard: React.FC<WeeklyFocusCardProps> = ({
               </TooltipTrigger>
               <TooltipContent>
                 <p className="max-w-xs text-sm">
-                  {t('insights.weeklySkillTooltip', { defaultValue: 'AI determines your focus area based on recent conversation analysis' })}
+                  {t('insights.weeklySkillTooltip')}
                 </p>
               </TooltipContent>
             </Tooltip>

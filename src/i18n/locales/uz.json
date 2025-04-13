@@ -197,7 +197,71 @@
       "skillProgress": "Ko'nikmalar taraqqiyoti"
     },
     "skillAnalysis": "Ko'nikmalar tahlili",
-    "aiAdvice": "AI maslahatlar"
+    "aiAdvice": "AI maslahatlar",
+    "insightsList": "Tahlillar ro'yxati",
+    "insightsDescription": "Savdo ko'nikmalaringiz bo'yicha topilgan tahlillar",
+    "viewConversation": "Suhbatni ko'rish",
+    "hide": "Yashirish",
+    "weeklySkill": "Haftalik ko'nikma",
+    "weeklySkillTooltip": "AI suhbat tahlillaringiz asosida e'tibor qaratish kerak bo'lgan sohasini aniqlaydi",
+    "weeklySkillDescription": "Bu ko'nikmani rivojlantirish orqali savdo samaradorligingizni oshirishingiz mumkin",
+    "types": {
+      "improvement": {
+        "example": "Ko'proq ochiq savollar bering va sotish strategiyasini mijoz ehtiyojlariga qarab moslashtiring"
+      }
+    },
+    "frequentIssue": "Tez-tez uchraydigan muammo",
+    "startTraining": "O'quvni boshlash",
+    "priority": {
+      "high": "Yuqori",
+      "medium": "O'rta"
+    },
+    "viewTrainingModule": "O'quv modulini ko'rish",
+    "recommendationsList": "Tavsiyalar ro'yxati",
+    "recommendationsDescription": "Savdo ko'nikmalaringizni yaxshilash bo'yicha AI tavsiylari",
+    "score": {
+      "title": "Ball tahlili",
+      "description": "Ball ko'rsatkichingizning vaqt davomida o'zgarishi",
+      "trendChart": "Ball tendensiyasi",
+      "trendDescription": "Vaqt davomidagi o'rtacha ball ko'rsatkichi",
+      "skillContribution": "Ko'nikmalar hissasi",
+      "skillScore": "Ko'nikma bali",
+      "aiTips": "AI maslahatlar",
+      "averageScore": "O'rtacha ball",
+      "recommendations": "Tavsiyalar",
+      "shortTermTips": "Qisqa muddatli maslahatlar",
+      "longTermTips": "Uzoq muddatli maslahatlar",
+      "tip1": "Mijoz ehtiyojlarini aniqroq tushunish uchun ko'proq ochiq savollar bering",
+      "tip2": "Mahsulot afzalliklarini mijozning aniq ehtiyojlariga bog'lang",
+      "tip3": "Narx haqida gaplashishdan oldin qiymatni belgilang",
+      "tip4": "Muntazam ravishda savdo qobiliyatlaringizni takomillashtirish uchun treninglardan o'ting",
+      "tip5": "Yaxshi savollar berish va tinglash ko'nikmalarini rivojlantiring",
+      "tip6": "O'zingizning savdo uslubingizni doimiy ravishda tahlil qiling va takomillashtiring"
+    },
+    "improvement": {
+      "title": "Yaxshilash tahlili",
+      "description": "Ko'nikmalaringizni qanday yaxshilayotganingizni ko'ring",
+      "skillImprovementChart": "Ko'nikma yaxshilanish grafigi",
+      "chartDescription": "Ko'nikmalaringizning vaqt davomida qanday rivojlanganini ko'ring",
+      "beforeAfter": "Oldin/Keyin taqqoslash",
+      "before": "Oldin",
+      "after": "Keyin",
+      "aiAdvice": "AI maslahatlar",
+      "keyInsight": "Asosiy tahlil",
+      "aiAdvice1": "Sizning eng katta yaxshilanishingiz mijoz ehtiyojlarini aniqlash uchun ochiq savollar berishda bo'ldi. Davom eting va bu strategiyani boshqa sohalarga ham qo'llang.",
+      "nextChallenge": "Keyingi qiyinchilik",
+      "aiAdvice2": "Keyingi bosqichda narx haqidagi e'tirozlarga samarali javob berishga e'tibor qarating, bu sizning eng zaif ko'nikmangiz bo'lib qolmoqda.",
+      "improvementLog": "Yaxshilash jurnali",
+      "logDescription": "Ko'nikmalaringizning yaxshilanishiga olib kelgan asosiy harakatlar",
+      "viewRelatedTraining": "Tegishli o'quvni ko'rish"
+    },
+    "total": {
+      "title": "Jami tahlillar",
+      "description": "Barcha tahlillaringizni ko'ring va tushunchalarga ega bo'ling",
+      "noInsightsFound": "Tahlillar topilmadi"
+    },
+    "noInsightsFound": "Tahlillar topilmadi",
+    "weeklyTrend": "Eженедельная тенденция"
   },
   "training": {
     "recommendedFor": "Siz uchun tavsiya etilgan",

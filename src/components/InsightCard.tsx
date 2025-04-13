@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { InsightType, Insight } from '@/types';
@@ -149,7 +150,7 @@ const InsightCard: React.FC<InsightCardProps> = ({
                 {/* Existing training button */}
                 {showActions && (
                   <Button size="sm" variant="ghost" className="text-xs h-7 px-2">
-                    {t('insights.viewRelatedTraining')}
+                    {t('insights.viewTrainingModule')}
                   </Button>
                 )}
               </div>

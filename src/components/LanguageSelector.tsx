@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslation } from 'react-i18next';
 
 interface LanguageSelectorProps {
   variant?: 'default' | 'outline' | 'secondary' | 'ghost' | 'link';
@@ -15,12 +15,12 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   size = 'default',
   className = ''
 }) => {
-  const { language, setLanguage } = useLanguage();
+  const { language, changeLanguage } = useLanguage();
   const { t } = useTranslation();
 
   const toggleLanguage = () => {
     const newLang = language === 'uz' ? 'ru' : 'uz';
-    setLanguage(newLang);
+    changeLanguage(newLang);
   };
 
   return (

@@ -36,22 +36,6 @@ import ruSales from './locales/ru/sales.json';
 import ruStoresTranslation from './locales/ru/stores.json';
 import ruTemplates from './locales/ru/templates.json';
 
-// English translations
-import enCommon from './locales/en/common.json';
-import enDashboard from './locales/en/dashboard.json';
-import enInsights from './locales/en/insights.json';
-import enTraining from './locales/en/training.json';
-import enConversation from './locales/en/conversation.json';
-import enTeam from './locales/en/team.json';
-import enHr from './locales/en/hr.json';
-import enRoles from './locales/en/roles.json';
-import enButton from './locales/en/button.json';
-import enLanguage from './locales/en/language.json';
-import enStoresTranslation from './locales/en/stores.json';
-import enTemplates from './locales/en/templates.json';
-
-
-
 // Merge translations
 const mergedUzTranslations = {
   ...uzCommon,
@@ -89,31 +73,12 @@ const mergedRuTranslations = {
   ...ruTemplates
 };
 
-const mergedEnTranslations = {
-  ...enCommon,
-  ...enDashboard,
-  ...enInsights,
-  ...enTraining,
-  ...enConversation,
-  ...enTeam,
-  ...enHr,
-  ...enRoles,
-  ...enButton,
-  ...enLanguage,
-  ...enStoresTranslation,
-  ...enTemplates
-};
-
-
 const resources = {
   uz: {
     translation: mergedUzTranslations
   },
   ru: {
     translation: mergedRuTranslations
-  },
-  en: {
-    translation: mergedEnTranslations
   }
 };
 
@@ -122,7 +87,7 @@ i18n
   .init({
     resources,
     lng: localStorage.getItem('language') || 'uz',
-    fallbackLng: 'en',
+    fallbackLng: 'uz',
     interpolation: {
       escapeValue: false
     },
@@ -139,7 +104,7 @@ i18n
   });
 
 // Export a function to change language that also updates localStorage
-export const changeLanguage = (lang: 'uz' | 'ru' | 'en') => {
+export const changeLanguage = (lang: 'uz' | 'ru') => {
   localStorage.setItem('language', lang);
   i18n.changeLanguage(lang);
 };

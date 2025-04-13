@@ -1,58 +1,71 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { toast } from '@/components/ui/use-toast';
 import { LogOutIcon, SaveIcon } from 'lucide-react';
-import { useProfile } from '@/hooks/useProfile';
-
 
 const ProfileForm = () => {
   const { t } = useTranslation();
-  const { user, error, loading, saveProfile, logout } = useProfile();
-  const { language, setLanguage } = useLanguage();
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
+  const { language, changeLanguage } = useLanguage();
+  
+  const [name, setName] = useState(user?.name || '');
+  const [loading, setLoading] = useState(false);
 
-  const [name, setName] = useState('');
+  const handleLogout = () => {
+    logout();
+    navigate('/auth/login');
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!name.trim()) {
+      return;
+    }
+    
+    setLoading(true);
+    
+    try {
+      // Mock save profile - in a real app, this would update the database
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // Update localStorage user with new name (mock update)
+      if (user) {
+        const updatedUser = { ...user, name: name.trim() };
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+      }
+      
+      toast({
+        title: t('profile.successUpdate'),
+      });
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      toast({
+        title: t('profile.errorUpdate'),
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleLanguageChange = (lang: 'uz' | 'ru') => {
-    setLanguage(lang);
+    changeLanguage(lang);
   };
 
   if (!user) return null;
 
-  useEffect(() => {
-    if (user) {
-      setName(user.name);
-    }
-  }, [user]);
-
-  useEffect(() => {
-    if (error) {
-      toast({
-        title: t('profile.errorUpdate'),
-        description: error,
-        variant: 'destructive',
-      });
-    }
-  }, [error, t]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!name.trim()) {
-      return;
-    }
-
-    await saveProfile(name);
-
-    toast({ title: t('profile.successUpdate') });
-  };
-
-  const getInitials = (name: string): string => {
+  const getInitials = (name: string) => {
     return name.charAt(0).toUpperCase();
   };
 
@@ -62,16 +75,16 @@ const ProfileForm = () => {
         {/* Avatar & User Info */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
           <Avatar className="h-20 w-20 text-lg">
-            <AvatarFallback className="bg-primary text-primary-foreground">{getInitials(user.name)}</AvatarFallback>
+            <AvatarFallback className="bg-primary text-primary-foreground">
+              {getInitials(user.name)}
+            </AvatarFallback>
           </Avatar>
           
           <div className="space-y-1.5">
             <h2 className="text-xl font-semibold">{user.name}</h2>
-            <p className="text-sm text-muted-foreground">{t(`roles.${user.role}`) || t('roles.unknown')}</p>
+            <p className="text-sm text-muted-foreground">{t(`roles.${user.role}`)}</p>
           </div>
         </div>
-        
-
 
         {/* Form Fields */}
         <div className="space-y-6">
@@ -135,15 +148,16 @@ const ProfileForm = () => {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t">
           <Button type="submit" disabled={loading}>
-            <SaveIcon className="mr-2 h-4 w-4" /> {t('profile.save')}
+            <SaveIcon className="mr-2 h-4 w-4" />
+            {t('profile.save')}
           </Button>
-          <Button
-            type="button"
-            variant="destructive"
-            onClick={logout}
-            disabled={loading}
+          <Button 
+            type="button" 
+            variant="destructive" 
+            onClick={handleLogout}
           >
-            <LogOutIcon className="mr-2 h-4 w-4" /> {t('profile.logout')}
+            <LogOutIcon className="mr-2 h-4 w-4" />
+            {t('profile.logout')}
           </Button>
         </div>
       </div>

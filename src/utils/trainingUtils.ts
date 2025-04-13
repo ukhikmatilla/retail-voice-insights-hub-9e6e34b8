@@ -1,31 +1,33 @@
 
+import { format, subDays } from 'date-fns';
 import { Training } from '@/types';
 
-export const generateProgressData = () => {
-  const today = new Date();
-  const oneWeekAgo = new Date(today);
-  oneWeekAgo.setDate(today.getDate() - 7);
-
+// Generate progress data for chart
+export const generateProgressData = (days = 30) => {
   const data = [];
-  for (let i = 0; i < 7; i++) {
-    const date = new Date(oneWeekAgo);
-    date.setDate(oneWeekAgo.getDate() + i);
-    
+  const today = new Date();
+  
+  for (let i = days; i >= 0; i -= 7) {
+    const date = subDays(today, i);
     data.push({
-      date: date.toISOString().split('T')[0],
-      progress: Math.floor(Math.random() * 100)
+      week: format(date, 'MMM d'),
+      completed: Math.floor(Math.random() * 3 + (days - i) / 7), // Increasing trend
+      inProgress: Math.floor(Math.random() * 2)
     });
   }
   
   return data;
 };
 
-export const filterTrainings = (trainings: Training[], filters: any) => {
-  return trainings.filter(training => {
-    const skillMatch = !filters.skill || filters.skill === 'all' || training.skill === filters.skill;
-    const levelMatch = !filters.level || filters.level === 'all' || training.level === filters.level;
-    const statusMatch = !filters.status || filters.status === 'all' || training.status === filters.status;
-    
-    return skillMatch && levelMatch && statusMatch;
+// Filter modules based on selected filters
+export const filterTrainingModules = (
+  modules: Training[],
+  filters: { skill: string; level: string; status: string }
+): Training[] => {
+  return modules.filter(module => {
+    if (filters.skill !== 'all' && module.skill !== filters.skill) return false;
+    if (filters.level !== 'all' && module.level !== filters.level) return false;
+    if (filters.status !== 'all' && module.status !== filters.status) return false;
+    return true;
   });
 };

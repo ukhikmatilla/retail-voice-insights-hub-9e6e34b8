@@ -1,100 +1,121 @@
 
-// Extending the existing file with additional HR types
+export type UserRole = 'salesperson' | 'manager' | 'hr';
 
-// HR related types
-export interface HrTurnoverTrendData {
-  month: string;
-  hires: number;
-  terminations: number;
-}
-
-export interface HrDepartmentData {
-  department: string;
-  count: number;
-}
-
-export interface TrainingCompletionData {
+export interface User {
+  id: string;
   name: string;
-  value: number;
+  email: string;
+  role: UserRole;
+  language: 'uz' | 'ru';
 }
 
-// Alias for compatibility with existing code
-export type DepartmentData = HrDepartmentData;
-export type TrainingCompletion = TrainingCompletionData;
-
-export interface HrAiInsight {
-  id: number;
-  insight: string;
-  priority: 'high' | 'medium' | 'low';
+export interface Conversation {
+  id: string;
+  userId: string;
+  date: string;
+  duration: number;
+  score: number;
+  insights: Insight[];
 }
 
-export interface EmployeeAtRisk {
-  id: number;
+export type InsightType = 'improvement' | 'opportunity' | 'urgent' | 'behavior' | 'custom';
+
+export interface Insight {
+  id: string;
+  type: InsightType;
+  content: string;
+  timestamp?: string;
+  skillKey?: string;
+}
+
+export interface TeamMember {
+  id: string;
   name: string;
-  position: string;
-  issue: string;
-  risk: 'high' | 'medium' | 'low';
+  role: string;
+  conversationsCount: number;
+  averageScore: number;
+  successRate: number;
 }
 
-export interface HrRecentHire {
-  id: number;
-  name: string;
-  position: string;
-  hireDate: string;
+export interface DashboardStats {
+  totalConversations: number;
+  averageScore: number;
+  successRate: number;
+  missedOpportunities: number;
+}
+
+export interface Training {
+  id: string;
+  title: string;
+  description: string;
+  status: 'assigned' | 'inProgress' | 'completed' | 'recommended';
+  dueDate?: string;
+  completedDate?: string;
+  skill: string;
+  level: string;
   progress: number;
 }
 
-// Alias for compatibility
-export type RecentHire = HrRecentHire;
+// New interfaces for enhanced training page
+export interface MicroTraining {
+  id: string;
+  title: string;
+  estimatedTime: string;
+  question: string;
+  answer: string;
+  completed: boolean;
+  date: string;
+}
 
-// Badge related types
+export interface ScriptSnippet {
+  id: string;
+  category: string;
+  scenario: string;
+  aiAnswer: string;
+  source: string;
+  expanded?: boolean;
+}
+
 export interface Badge {
   id: string;
   key: string;
   title: string;
+  description: string;
   status: 'received' | 'locked';
+  icon?: string;
   earnedDate?: string;
 }
 
 export interface StreakInfo {
   days: number;
-  lastLoginDate: string;
+  lastActivity: string;
 }
 
-// Training related types
-export interface Training {
+// Training Module specific interfaces
+export interface TrainingModule {
   id: string;
   title: string;
   description: string;
+  level: 'beginner' | 'intermediate' | 'advanced';
+  dueDate: string;
+  videoUrl: string;
+  videoDuration: string;
   skill: string;
-  level: string;
-  status: 'recommended' | 'inProgress' | 'completed' | 'assigned';
-  progress: number;
-  dueDate?: string;
-  completedDate?: string;
-}
-
-export interface TrainingFilter {
-  skill: string;
-  level: string;
-  status: string;
-}
-
-export interface TheorySection {
-  type: 'normal' | 'warning' | 'tip' | 'example';
-  title?: string;
-  content: string;
+  theory: TrainingTheory;
+  aiTips: string[];
+  quiz: TrainingQuiz;
+  relatedScripts: ScriptSnippet[];
+  badges: string[];
 }
 
 export interface TrainingTheory {
   sections: TheorySection[];
 }
 
-export interface QuizQuestion {
-  question: string;
-  options: string[];
-  correctAnswer: number;
-  explanation: string;
+export interface TheorySection {
+  title: string;
+  content: string;
+  type: 'text' | 'example' | 'warning' | 'tip';
 }
 
 export interface TrainingQuiz {
@@ -102,103 +123,27 @@ export interface TrainingQuiz {
   passingScore: number;
 }
 
-export interface TrainingModule {
+export interface QuizQuestion {
   id: string;
-  title: string;
-  description: string;
-  status: string;
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
 }
 
 export interface TrainingResult {
   score: number;
-  passed: boolean;
-  date: string;
+  completed: boolean;
+  earnedBadges: string[];
+  feedback: string;
 }
 
-export interface MicroTraining {
+// New interfaces for Udemy-like module structure
+export interface TrainingStep {
   id: string;
   title: string;
-  estimatedTime: number;
-  content: string;
-}
-
-export interface ScriptSnippet {
-  id: string;
-  scenario: string;
-  category: string;
-  aiAnswer: string;
-  source: string;
-}
-
-// Insight related types
-export type InsightType = 'urgent' | 'opportunity' | 'improvement' | 'behavior' | 'custom';
-
-export interface Insight {
-  id: string;
-  type: InsightType;
-  content: string;
-  skillKey?: string;
-  timestamp?: string;
-}
-
-// User related types
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  role: 'salesperson' | 'manager' | 'hr';
-}
-
-// Conversation related types
-export interface Conversation {
-  id: string;
-  date: string;
-  duration: number;
-  score: number;
-  insights: ConversationInsight[];
-}
-
-export interface ConversationInsight {
-  id: string;
-  type: string;
-  content: string;
-  date: string;
-}
-
-// Dashboard related types
-export interface DashboardStats {
-  totalStores: number;
-  totalSellers: number;
-  totalCalls: number;
-  avgScore: number;
-}
-
-// Team member related types
-export interface TeamMember {
-  id: string;
-  name: string;
-  email: string;
-  role: string;
-  status: string;
-  lastLogin: string;
-  averageScore?: number;
-}
-
-// Store/seller activity data types
-export interface StoreActivity {
-  id: string;
-  name: string;
-  location: string;
-  score: number;
-  status: 'danger' | 'warning' | 'good';
-}
-
-export interface SellerTrainingData {
-  id: string;
-  name: string;
-  progress: number;
-  modules: {
-    total: number;
-    completed: number;
-  };
+  type: 'video' | 'theory' | 'quiz';
+  status: 'completed' | 'in_progress' | 'locked';
+  youtubeUrl?: string;
+  content?: string;
 }

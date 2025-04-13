@@ -17,7 +17,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from '@/components/ui/select';
-import { DateRangePicker, DateRange } from '@/components/ui/date-range-picker';
+import { DateRangePicker, type DateRange } from '@/components/ui/date-range-picker';
 
 export const MobileFiltersSheet = () => {
   const { t } = useTranslation();

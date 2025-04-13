@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import RoleLayout from '@/components/RoleLayout';
@@ -15,14 +14,15 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowRight, Calendar, Filter } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { DateRange, DateRangePicker } from '@/components/ui/date-range-picker';
+import { DateRangePicker, type DateRange } from '@/components/ui/date-range-picker';
 import { MobileFiltersSheet } from '@/components/insights/MobileFiltersSheet';
 import { expandableInsightsMock } from '@/data/insightsMockData';
 import { 
   AreaChart, 
   BarChart,
   LineChart, 
-  PieChart
+  PieChart,
+  Area
 } from "recharts";
 
 // Mock data for charts
@@ -204,7 +204,7 @@ const SalesInsights = () => {
                       <stop offset="95%" stopColor="#2563EB" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <AreaChart
+                  <Area
                     dataKey="Score"
                     stroke="var(--color-Score)"
                     fillOpacity={1}
@@ -260,7 +260,17 @@ const SalesInsights = () => {
                   className="aspect-square"
                 >
                   <PieChart>
-                    {/* ... */}
+                    <PieChart
+                      data={mockInsightsTypeData}
+                      dataKey="value"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      outerRadius={80}
+                      fill="#8884d8"
+                      label
+                    >
+                    </PieChart>
                   </PieChart>
                 </ChartContainer>
               </div>

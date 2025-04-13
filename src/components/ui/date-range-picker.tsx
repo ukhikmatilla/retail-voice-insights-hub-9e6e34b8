@@ -3,7 +3,6 @@ import * as React from "react"
 import { Calendar as CalendarIcon } from "lucide-react"
 import { addDays, format } from "date-fns"
 import { ru } from "date-fns/locale"
-import { DateRange } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -14,6 +13,11 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { useTranslation } from "react-i18next"
+
+export type DateRange = {
+  from: Date | undefined
+  to?: Date | undefined
+}
 
 export type DateRangePickerProps = {
   value: DateRange | undefined
@@ -68,7 +72,7 @@ export function DateRangePicker({
             selected={value}
             onSelect={onChange}
             numberOfMonths={2}
-            className={cn("rounded-md border", calendarClassName)}
+            className={cn("rounded-md border pointer-events-auto", calendarClassName)}
           />
         </PopoverContent>
       </Popover>

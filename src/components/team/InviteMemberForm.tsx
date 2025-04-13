@@ -25,6 +25,7 @@ export const InviteMemberForm: React.FC = () => {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [role, setRole] = useState<string>("");
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,16 +77,18 @@ export const InviteMemberForm: React.FC = () => {
               <Label htmlFor="role" className="text-right">
                 {t('team.role')}
               </Label>
-              <Select>
-                <SelectTrigger className="col-span-3">
-                  <SelectValue placeholder={t('team.role')} />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="salesperson">{t('roles.salesperson')}</SelectItem>
-                  <SelectItem value="manager">{t('roles.manager')}</SelectItem>
-                  <SelectItem value="hr">{t('roles.hr')}</SelectItem>
-                </SelectContent>
-              </Select>
+              <div className="col-span-3">
+                <Select value={role} onValueChange={setRole}>
+                  <SelectTrigger>
+                    <SelectValue placeholder={t('team.role')} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="salesperson">{t('roles.salesperson')}</SelectItem>
+                    <SelectItem value="manager">{t('roles.manager')}</SelectItem>
+                    <SelectItem value="hr">{t('roles.hr')}</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
           </div>
           <DialogFooter>

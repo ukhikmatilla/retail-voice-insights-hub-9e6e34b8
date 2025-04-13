@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -21,6 +21,7 @@ interface UploadConversationFormProps {
 export const UploadConversationForm: React.FC<UploadConversationFormProps> = ({ userId }) => {
   const { t } = useTranslation();
   const [isUploading, setIsUploading] = React.useState(false);
+  const [selectedStore, setSelectedStore] = useState<string>("");
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,7 +51,7 @@ export const UploadConversationForm: React.FC<UploadConversationFormProps> = ({ 
       
       <div className="space-y-2">
         <Label htmlFor="store">{t('dashboard.storeName')}</Label>
-        <Select>
+        <Select value={selectedStore} onValueChange={setSelectedStore}>
           <SelectTrigger id="store">
             <SelectValue placeholder={t('dashboard.storeName')} />
           </SelectTrigger>

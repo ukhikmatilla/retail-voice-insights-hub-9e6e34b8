@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   ArrowLeft, 
   BarChart3, 
@@ -59,10 +59,11 @@ const aiScoreTips = [
 const ScoreInsightsPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
   const [dateRange, setDateRange] = useState('30days');
   
   return (
-    <RoleLayout>
+    <RoleLayout currentPath={location.pathname}>
       <div className="animate-fade-in">
         <div className="flex items-center mb-6">
           <Button 

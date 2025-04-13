@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, BarChart3, FilterIcon, LightbulbIcon } from 'lucide-react';
 import RoleLayout from '@/components/RoleLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,6 +11,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { expandableInsightsMock } from '@/data/insightsMockData';
 import InsightTypeChart, { InsightType } from '@/components/insights/InsightTypeChart';
 import InsightCard from '@/components/InsightCard';
+import { 
+  ResponsiveContainer, 
+  BarChart, 
+  Bar, 
+  CartesianGrid, 
+  XAxis, 
+  YAxis, 
+  Tooltip, 
+  Legend 
+} from 'recharts';
 
 // Mock data for insights charts
 const insightTypeData = [
@@ -32,6 +42,7 @@ const weeklyTrendData = [
 const TotalInsightsPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
   const [dateRange, setDateRange] = useState('30days');
   const [insightType, setInsightType] = useState('all');
   const [skillFilter, setSkillFilter] = useState('all');
@@ -44,7 +55,7 @@ const TotalInsightsPage = () => {
   });
   
   return (
-    <RoleLayout>
+    <RoleLayout currentPath={location.pathname}>
       <div className="animate-fade-in">
         <div className="flex items-center mb-6">
           <Button 

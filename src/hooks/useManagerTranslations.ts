@@ -8,6 +8,7 @@ export const useManagerTranslations = () => {
     t,
     language: i18n.language,
     isUzbek: i18n.language === 'uz',
-    isRussian: i18n.language === 'ru'
+    isRussian: i18n.language === 'ru',
+    changeLanguage: i18n.changeLanguage
   };
 };

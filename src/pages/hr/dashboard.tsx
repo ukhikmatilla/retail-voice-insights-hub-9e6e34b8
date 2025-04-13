@@ -178,8 +178,7 @@ const HrDashboard: React.FC = () => {
               { value: '7days', label: t('common.last7Days') },
               { value: '30days', label: t('common.last30Days') },
               { value: '90days', label: t('common.last90Days') },
-              { value: 'custom', label: t('common.custom') },
-
+              { value: 'custom', label: t('common.custom') }
             ]}
           />
           , [t])}

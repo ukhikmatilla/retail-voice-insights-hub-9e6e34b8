@@ -516,7 +516,7 @@
       "tips": {
         "0": "Avval mahsulotning qiymatini ta'kidlang, keyin narxni muhokama qiling",
         "1": "Mijoz e'tirozlariga qarshi turmasdan, ularni e'tirof eting va qayta yo'naltiring",
-        "2": "Narx qarshiliklarini har doim ulkan savdo to'siqlari deb o'ylamang - ular ko'pincha qo'shimcha ma'lumot uchun so'rovlardir",
+        "2": "Narx qarshiliklarini har doim ulkan savdo to'siqlari deb o'ylamang - ular ko'pincha qo'shimcha ma'lumot olish usuli bo'lishi mumkin",
         "3": "Narx/qiymat nisbatini tushuntirish ko'pincha to'g'ridan-to'g'ri narx chegirmasidan ko'ra ta'sirliroq bo'ladi"
       },
       "steps": {
@@ -595,4 +595,4 @@
     "startModule": "Modulni boshlash",
     "continue": "Davom ettirish",
     "viewDetails": "Batafsil ko'rish",
-    "submitAnswer": "Javob yub
+    "submitAnswer": "Javob yubor

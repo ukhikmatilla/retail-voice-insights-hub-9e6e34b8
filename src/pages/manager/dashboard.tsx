@@ -1,4 +1,4 @@
-у
+
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
@@ -40,7 +40,6 @@ import {
   useStoreActivity,
   useSellerTrainingData,
 } from '@/hooks/index';
-import {
 import {
   AVG_SCORE_DATA_KEY,
   TOTAL_CALLS_DATA_KEY,

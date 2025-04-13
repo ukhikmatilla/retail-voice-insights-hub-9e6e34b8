@@ -38,6 +38,23 @@ const TrainingModuleContent: React.FC<TrainingModuleContentProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  // Get tips from translations for AI hints
+  const getAITips = (): string[] => {
+    const moduleKey = 'priceObjections';
+    const tipCount = step.id === 'ai-advice' ? 4 : 2;
+    const startIndex = step.id === 'ai-advice' ? 0 : Math.floor(Math.random() * 2);
+    
+    const tips: string[] = [];
+    for (let i = startIndex; i < startIndex + tipCount; i++) {
+      const tipKey = `training_content.${moduleKey}.tips.${i}`;
+      if (t(tipKey) !== tipKey) {
+        tips.push(t(tipKey));
+      }
+    }
+    
+    return tips;
+  };
+
   const renderContent = () => {
     switch (step.type) {
       case 'video':
@@ -48,10 +65,7 @@ const TrainingModuleContent: React.FC<TrainingModuleContentProps> = ({
               <h3>{step.title}</h3>
               <p>{step.content}</p>
             </div>
-            <TrainingAIHint tips={[
-              "Remember to practice this technique in your next customer interaction.",
-              "Pay special attention to the customer's body language when discussing pricing.",
-            ]} />
+            <TrainingAIHint tips={getAITips()} />
           </div>
         );
       case 'quiz':
@@ -73,12 +87,7 @@ const TrainingModuleContent: React.FC<TrainingModuleContentProps> = ({
           <div className="space-y-6">
             <h3 className="text-xl font-bold mb-4">{step.title}</h3>
             {step.id === 'ai-advice' ? (
-              <TrainingAIHint tips={[
-                "Focus on demonstrating value before discussing price.",
-                "Ask clarifying questions when customers mention price concerns.",
-                "Always acknowledge the customer's perspective before providing your own.",
-                "Use social proof when explaining why your product is worth the investment."
-              ]} />
+              <TrainingAIHint tips={getAITips()} />
             ) : (
               <TrainingTheory theory={theoryData} />
             )}

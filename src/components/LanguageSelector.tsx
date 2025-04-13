@@ -7,13 +7,13 @@ import { useTranslation } from 'react-i18next';
 interface LanguageSelectorProps {
   variant?: 'default' | 'outline' | 'secondary' | 'ghost' | 'link';
   size?: 'default' | 'sm' | 'lg' | 'icon';
-  className?: string; // Add className prop
+  className?: string;
 }
 
 const LanguageSelector: React.FC<LanguageSelectorProps> = ({ 
   variant = 'outline', 
   size = 'default',
-  className = '' // Default to empty string
+  className = ''
 }) => {
   const { language, changeLanguage } = useLanguage();
   const { t } = useTranslation();
@@ -30,7 +30,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
       onClick={toggleLanguage}
       className={`font-medium ${className}`}
     >
-      {language === 'uz' ? t('language.uz') : t('language.ru')}
+      {t(`language.${language}`)}
     </Button>
   );
 };

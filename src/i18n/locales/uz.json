@@ -1,4 +1,3 @@
-
 {
   "app": {
     "title": "AISmart",
@@ -17,7 +16,8 @@
     "done": "Tayyor",
     "continue": "Davom etish",
     "viewAll": "Barchasini ko'rish",
-    "seeDetails": "Batafsil"
+    "seeDetails": "Batafsil",
+    "min": "daq"
   },
   "auth": {
     "login": "Kirish",
@@ -161,7 +161,33 @@
     "finalQuiz": "Yakuniy test",
     "quizDescription": "Quyidagi savollarga javob berib bilimlaringizni tekshiring. Testni o'tkazish uchun kamida 70% to'g'ri javoblar berishingiz kerak.",
     "nextLesson": "Keyingi dars",
-    "previousLesson": "Oldingi dars"
+    "previousLesson": "Oldingi dars",
+    "microTitle": "Bugungi mikro-o'quv",
+    "microCompleted": "Mikro-o'quv yakunlandi",
+    "badgeEarned": "Siz yangi nishon qozondingiz!",
+    "question": "Savol",
+    "answer": "Javob",
+    "showAnswer": "Javobni ko'rsatish",
+    "markComplete": "Yakunlandi deb belgilash",
+    "todayTraining": "Bugungi o'quv mashg'uloti",
+    "correctOf": "to'g'ri javob, jami",
+    "questions": "savollardan",
+    "checkAnswer": "Javobni tekshirish",
+    "nextQuestion": "Keyingi savol",
+    "finish": "Yakunlash",
+    "quizTitle": "Bilimingizni tekshiring",
+    "quizResult": "Test natijasi",
+    "retryQuiz": "Testni qayta topshirish",
+    "moduleResult": "Modul natijasi",
+    "needsImprovement": "Yaxshilanishi kerak",
+    "backToTraining": "O'quvga qaytish",
+    "retryModule": "Modulni qayta o'tish",
+    "of": "dan",
+    "aiGoalTitle": "AI tavsiya etgan haftalik maqsad",
+    "aiGoalDesc": "Tahlillaringizga asosan, siz quyidagi ko'nikmani yaxshilashingiz kerak:",
+    "skillFilter": "Ko'nikma bo'yicha filtrlash",
+    "levelFilter": "Daraja bo'yicha filtrlash",
+    "statusFilter": "Holat bo'yicha filtrlash"
   },
   "scripts": {
     "recommended": "Tavsiya etilgan skriptlar",
@@ -218,5 +244,92 @@
     "step3": "Savdo ko'nikmalaringizni yaxshilang",
     "start": "Boshlash",
     "skip": "O'tkazib yuborish"
+  },
+  "language": {
+    "uz": "O'zbekcha",
+    "ru": "Русский"
+  },
+  "training_content": {
+    "priceObjections": {
+      "title": "Narx e'tirozlarini hal qilish",
+      "description": "Mijozlarning narx bo'yicha savollariga samarali javob berish usullarini o'rganing.",
+      "steps": {
+        "intro": {
+          "title": "Kirish",
+          "content": "Narx e'tirozlari savdo mutaxassislari duch keladigan eng keng tarqalgan qiyinchiliklardan biridir. Ular mijoz mahsulot yoki xizmat narxi haqida tashvishlanganida paydo bo'ladi."
+        },
+        "lesson1": {
+          "title": "1-dars: Narx psixologiyasi",
+          "content": "Mijozlar qiymatni qanday idrok etishini tushunish narx e'tirozlarini yengish uchun juda muhimdir."
+        },
+        "lesson2": {
+          "title": "2-dars: Nima deyish mumkin EMAS",
+          "content": "Narx e'tirozlariga duch kelganda hech qachon darhol chegirmalar taklif qilmang. Bu mahsulotingizning qimmatini pasaytiradi va foyda marjasini keraksiz kamayishiga olib keladi."
+        },
+        "lesson3": {
+          "title": "3-dars: Samarali skriptlar",
+          "content": "To'g'ri til ishlatish mijozning e'tiborini narxdan qiymatga qaratishga yordam beradi."
+        },
+        "practice": {
+          "title": "Amaliyot: Rol o'ynash",
+          "content": "Haqiqiy vaziyatlarda ishonchni oshirish uchun ushbu usullarni rol o'ynash orqali mashq qiling."
+        },
+        "aiAdvice": {
+          "title": "AI tavsiyalari",
+          "content": "Oldingi darslardagi javoblaringizga asoslanib, yaxshilash uchun individual tavsiyalar."
+        },
+        "quiz": {
+          "title": "Yakuniy test"
+        }
+      },
+      "theory": {
+        "section1": {
+          "title": "Narx e'tirozlarini tushunish",
+          "content": "Narx e'tirozlari savdo mutaxassislari duch keladigan eng keng tarqalgan qiyinchiliklardan biridir. Ular mijoz mahsulot yoki xizmat narxi haqida tashvishlanganida paydo bo'ladi."
+        },
+        "section2": {
+          "title": "Ko'p uchraydigan xatolar",
+          "content": "Narx e'tirozlariga duch kelganda hech qachon darhol chegirmalar taklif qilmang. Bu mahsulotingizning qimmatini pasaytiradi va foyda marjasini keraksiz kamayishiga olib keladi."
+        },
+        "section3": {
+          "title": "Qiymatga asoslangan yondashuv",
+          "content": "Narx nuqtasini himoya qilish o'rniga, yechimingizning qiymati va ROI-ga e'tibor qarating."
+        },
+        "section4": {
+          "title": "Amaliy misol",
+          "content": "Mijoz 'Mahsulotingiz juda qimmat' deganida, 'Tushunaman, narx muhim. Narxning qaysi jihati sizni tashvishlantiradi?' deb javob bering. Bu haqiqiy e'tirozni aniqlashga yordam beradi."
+        }
+      },
+      "quiz": {
+        "question1": {
+          "question": "Narx e'tiroziga duch kelganda birinchi navbatda nima qilish kerak?",
+          "options": [
+            "Darhol chegirma taklif qilish",
+            "Tashvishni tan olish va chuqurroq surishtirish",
+            "Narxingizni raqobatchilar bilan solishtirish",
+            "Mavzuni o'zgartirish"
+          ],
+          "explanation": "Tashvishni tan olish mijozning nuqtai nazarini tasdiqlaydi, chuqurroq surishtirish esa ularning aniq e'tirozini tushunishga yordam beradi."
+        },
+        "question2": {
+          "question": "Narx e'tirozlarini hal qilish uchun qaysi yondashuv eng samarali?",
+          "options": [
+            "Qiymatga asoslangan savdo",
+            "Narxni moslashtirish",
+            "Chegirma berish",
+            "Muhokamani kechiktirish"
+          ],
+          "explanation": "Qiymatga asoslangan savdo narxning o'rniga yechimingizning foydasi va ROI-ga e'tibor qaratadi."
+        }
+      },
+      "tips": [
+        "Keyingi mijoz bilan muloqotingizda ushbu usulni mashq qilishni unutmang.",
+        "Narx haqida gaplashganda mijozning tana tiliga alohida e'tibor bering.",
+        "Narx haqida gaplashishdan oldin qiymatni ko'rsating.",
+        "Mijozlar narx bo'yicha tashvishlarini bildirganda, aniqlashtiruvchi savollar bering.",
+        "O'z nuqtai nazaringizni taqdim qilishdan oldin doimo mijozning fikrlarini tan oling.",
+        "Mahsulotingiz nima uchun sarmoyaga arzishini tushuntirishda ijtimoiy isbotdan foydalaning."
+      ]
+    }
   }
 }

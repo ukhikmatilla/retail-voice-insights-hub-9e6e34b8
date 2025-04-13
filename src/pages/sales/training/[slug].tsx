@@ -24,131 +24,77 @@ interface Step {
   content?: string;
 }
 
-// Sample mock training module structure
-const mockModuleSteps: Step[] = [
-  {
-    id: 'intro',
-    title: 'Introduction',
-    type: 'theory',
-    status: 'completed',
-    content: "Price objections are one of the most common challenges sales professionals face. They occur when a prospect expresses concern about the cost of your product or service."
-  },
-  {
-    id: 'lesson1',
-    title: 'Lesson 1: Psychology of Pricing',
-    type: 'video',
-    status: 'in_progress',
-    youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    content: "Understanding how customers perceive value is essential to overcoming price objections."
-  },
-  {
-    id: 'lesson2',
-    title: 'Lesson 2: What NOT to Say',
-    type: 'video',
-    status: 'locked',
-    youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    content: "Never immediately offer discounts when facing price objections. This devalues your product and reduces your profit margin unnecessarily."
-  },
-  {
-    id: 'lesson3',
-    title: 'Lesson 3: Effective Scripts',
-    type: 'video',
-    status: 'locked',
-    youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    content: "Using the right language can help redirect the customer's focus from price to value."
-  },
-  {
-    id: 'practice',
-    title: 'Practice: Role Simulation',
-    type: 'theory',
-    status: 'locked',
-    content: "Practice these techniques with role-playing scenarios to build confidence in real-world situations."
-  },
-  {
-    id: 'ai-advice',
-    title: 'AI Recommendations',
-    type: 'theory',
-    status: 'locked',
-    content: "Based on your responses in previous lessons, here are personalized suggestions for improvement."
-  },
-  {
-    id: 'quiz',
-    title: 'Final Test',
-    type: 'quiz',
-    status: 'locked'
-  }
-];
-
-// Sample mock data for the training module components
-const mockTheoryData: TrainingTheoryType = {
-  sections: [
-    {
-      title: "Understanding Price Objections",
-      content: "Price objections are one of the most common challenges sales professionals face. They occur when a prospect expresses concern about the cost of your product or service.",
-      type: "text"
-    },
-    {
-      title: "Common Mistakes",
-      content: "Never immediately offer discounts when facing price objections. This devalues your product and reduces your profit margin unnecessarily.",
-      type: "warning"
-    },
-    {
-      title: "Value-Based Approach",
-      content: "Focus on communicating the value and ROI of your solution rather than defending the price point.",
-      type: "tip"
-    },
-    {
-      title: "Practical Example",
-      content: "When a customer says 'Your product is too expensive,' respond with 'I understand price is important. May I ask what specific aspect of the pricing concerns you?' This helps uncover the real objection.",
-      type: "example"
-    }
-  ] as TheorySection[]
-};
-
-const mockVideoData = {
-  videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  duration: "10:25"
-};
-
-const mockQuizData: TrainingQuizType = {
-  questions: [
-    {
-      id: "q1",
-      question: "What should you do first when facing a price objection?",
-      options: [
-        "Immediately offer a discount",
-        "Acknowledge the concern and probe deeper",
-        "Compare your price to competitors",
-        "Change the subject"
-      ],
-      correctAnswer: 1,
-      explanation: "Acknowledging the concern validates the customer's perspective, while probing deeper helps you understand their specific price objection."
-    },
-    {
-      id: "q2",
-      question: "Which approach is most effective for handling price objections?",
-      options: [
-        "Value-based selling",
-        "Price-matching",
-        "Discounting",
-        "Delaying the discussion"
-      ],
-      correctAnswer: 0,
-      explanation: "Value-based selling focuses on the benefits and ROI of your solution rather than the price itself."
-    }
-  ],
-  passingScore: 70
-};
-
 const TrainingModuleDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [training, setTraining] = useState<Training | null>(null);
   const [currentStep, setCurrentStep] = useState('intro');
-  const [steps, setSteps] = useState<Step[]>(mockModuleSteps);
+  const [steps, setSteps] = useState<Step[]>([]);
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  
+  useEffect(() => {
+    // Generate steps from translations
+    const moduleKey = 'priceObjections'; // This would be dynamic based on slug in a real app
+    
+    // Create steps array from translations
+    const generatedSteps: Step[] = [
+      {
+        id: 'intro',
+        title: t(`training_content.${moduleKey}.steps.intro.title`),
+        type: 'theory',
+        status: 'completed',
+        content: t(`training_content.${moduleKey}.steps.intro.content`)
+      },
+      {
+        id: 'lesson1',
+        title: t(`training_content.${moduleKey}.steps.lesson1.title`),
+        type: 'video',
+        status: 'in_progress',
+        youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        content: t(`training_content.${moduleKey}.steps.lesson1.content`)
+      },
+      {
+        id: 'lesson2',
+        title: t(`training_content.${moduleKey}.steps.lesson2.title`),
+        type: 'video',
+        status: 'locked',
+        youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        content: t(`training_content.${moduleKey}.steps.lesson2.content`)
+      },
+      {
+        id: 'lesson3',
+        title: t(`training_content.${moduleKey}.steps.lesson3.title`),
+        type: 'video',
+        status: 'locked',
+        youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        content: t(`training_content.${moduleKey}.steps.lesson3.content`)
+      },
+      {
+        id: 'practice',
+        title: t(`training_content.${moduleKey}.steps.practice.title`),
+        type: 'theory',
+        status: 'locked',
+        content: t(`training_content.${moduleKey}.steps.practice.content`)
+      },
+      {
+        id: 'ai-advice',
+        title: t(`training_content.${moduleKey}.steps.aiAdvice.title`),
+        type: 'theory',
+        status: 'locked',
+        content: t(`training_content.${moduleKey}.steps.aiAdvice.content`)
+      },
+      {
+        id: 'quiz',
+        title: t(`training_content.${moduleKey}.steps.quiz.title`),
+        type: 'quiz',
+        status: 'locked'
+      }
+    ];
+    
+    setSteps(generatedSteps);
+  }, [t]);
 
   useEffect(() => {
     // Find training by slug
@@ -156,8 +102,8 @@ const TrainingModuleDetail = () => {
       (module) => module.title.toLowerCase().replace(/\s+/g, '-') === slug
     ) || {
       id: '1',
-      title: 'Handling Price Objections',
-      description: 'Learn effective strategies to address price concerns from customers.',
+      title: t('training_content.priceObjections.title'),
+      description: t('training_content.priceObjections.description'),
       skill: 'objections',
       level: 'intermediate',
       status: 'recommended',
@@ -186,6 +132,88 @@ const TrainingModuleDetail = () => {
       window.removeEventListener('resize', checkIfMobile);
     };
   }, [slug, t]);
+
+  // Create theory data from translations
+  const getTheoryData = (): TrainingTheoryType => {
+    const moduleKey = 'priceObjections';
+    
+    return {
+      sections: [
+        {
+          title: t(`training_content.${moduleKey}.theory.section1.title`),
+          content: t(`training_content.${moduleKey}.theory.section1.content`),
+          type: "text"
+        },
+        {
+          title: t(`training_content.${moduleKey}.theory.section2.title`),
+          content: t(`training_content.${moduleKey}.theory.section2.content`),
+          type: "warning"
+        },
+        {
+          title: t(`training_content.${moduleKey}.theory.section3.title`),
+          content: t(`training_content.${moduleKey}.theory.section3.content`),
+          type: "tip"
+        },
+        {
+          title: t(`training_content.${moduleKey}.theory.section4.title`),
+          content: t(`training_content.${moduleKey}.theory.section4.content`),
+          type: "example"
+        }
+      ] as TheorySection[]
+    };
+  };
+
+  // Create quiz data from translations
+  const getQuizData = (): TrainingQuizType => {
+    const moduleKey = 'priceObjections';
+    
+    return {
+      questions: [
+        {
+          id: "q1",
+          question: t(`training_content.${moduleKey}.quiz.question1.question`),
+          options: [
+            t(`training_content.${moduleKey}.quiz.question1.options.0`),
+            t(`training_content.${moduleKey}.quiz.question1.options.1`),
+            t(`training_content.${moduleKey}.quiz.question1.options.2`),
+            t(`training_content.${moduleKey}.quiz.question1.options.3`)
+          ],
+          correctAnswer: 1,
+          explanation: t(`training_content.${moduleKey}.quiz.question1.explanation`)
+        },
+        {
+          id: "q2",
+          question: t(`training_content.${moduleKey}.quiz.question2.question`),
+          options: [
+            t(`training_content.${moduleKey}.quiz.question2.options.0`),
+            t(`training_content.${moduleKey}.quiz.question2.options.1`),
+            t(`training_content.${moduleKey}.quiz.question2.options.2`),
+            t(`training_content.${moduleKey}.quiz.question2.options.3`)
+          ],
+          correctAnswer: 0,
+          explanation: t(`training_content.${moduleKey}.quiz.question2.explanation`)
+        }
+      ],
+      passingScore: 70
+    };
+  };
+
+  // Get AI tips from translations
+  const getAITips = (): string[] => {
+    const moduleKey = 'priceObjections';
+    const tips: string[] = [];
+    
+    for (let i = 0; i < 6; i++) {
+      const tipKey = `training_content.${moduleKey}.tips.${i}`;
+      if (t(tipKey) !== tipKey) {
+        tips.push(t(tipKey));
+      } else {
+        break;
+      }
+    }
+    
+    return tips;
+  };
 
   const handleStepChange = (stepId: string) => {
     setCurrentStep(stepId);
@@ -278,7 +306,7 @@ const TrainingModuleDetail = () => {
             className="mb-4 w-full flex justify-between" 
             onClick={toggleSidebar}
           >
-            {steps.find(step => step.id === currentStep)?.title || 'Navigate'}
+            {steps.find(step => step.id === currentStep)?.title || t('training.moduleContents')}
             <ArrowRight className="h-4 w-4" />
           </Button>
         )}
@@ -309,10 +337,13 @@ const TrainingModuleDetail = () => {
           <div className="md:col-span-3">
             <Card className="p-6">
               <TrainingModuleContent 
-                step={steps.find(step => step.id === currentStep)!}
-                theoryData={mockTheoryData}
-                videoData={mockVideoData}
-                quizData={mockQuizData}
+                step={steps.find(step => step.id === currentStep) || steps[0]}
+                theoryData={getTheoryData()}
+                videoData={{
+                  videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                  duration: "10:25"
+                }}
+                quizData={getQuizData()}
                 onComplete={handleNextStep}
               />
               

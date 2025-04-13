@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Eye } from 'lucide-react';
@@ -17,7 +16,7 @@ import {
   CardHeader,
   CardTitle 
 } from '@/components/ui/card';
-import { TeamMember } from '@/utils/teamMockData';
+import { TeamMember } from '@/utils/mockData/types';
 
 interface TeamTableProps {
   members: TeamMember[];

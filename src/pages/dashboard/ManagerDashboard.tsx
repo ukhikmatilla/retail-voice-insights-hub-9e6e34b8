@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/contexts/AuthContext';
@@ -7,20 +6,23 @@ import StatCard from '@/components/StatCard';
 import TeamMemberCard from '@/components/TeamMemberCard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { mockManagerStats, mockTeamMembers } from '@/data/mockData';
+import { mockManagerStats } from '@/data/mockData';
 import { 
   UsersIcon, 
   MessageSquareIcon, 
   PercentIcon, 
   AlertTriangleIcon 
 } from 'lucide-react';
+import { mockTeamMembers } from '@/utils/mockData';
 
 const ManagerDashboard = () => {
   const { t } = useTranslation();
   const { user } = useAuth();
 
+  // Use the TeamMember type from the mockData folder
   const underperformers = mockTeamMembers.filter(member => member.averageScore < 75);
 
+  
   return (
     <div className="animate-fade-in">
       <h1 className="text-3xl font-bold mb-6">

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -13,7 +12,7 @@ import {
   TabsList,
   TabsTrigger
 } from '@/components/ui/tabs';
-import { mockMemberDetails, mockTeamMembers } from '@/utils/teamMockData';
+import { mockMemberDetails, mockTeamMembers } from '@/utils/mockData';
 import { getTabConfig } from './profileTabs/TabConfig';
 
 interface TeamProfileDrawerProps {

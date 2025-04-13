@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue 
 } from '@/components/ui/select';
-import { mockStores } from '@/utils/teamMockData';
+import { mockStores } from '@/utils/mockData';
 
 interface UploadConversationFormProps {
   userId: string;

@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { TeamMemberDetails } from '@/utils/teamMockData';
+import { TeamMemberDetails } from '@/utils/mockData/types';
 
 interface TranscriptTabProps {
   memberDetails: TeamMemberDetails;

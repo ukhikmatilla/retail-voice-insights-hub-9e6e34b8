@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/contexts/AuthContext';
@@ -7,13 +6,14 @@ import StatCard from '@/components/StatCard';
 import TeamMemberCard from '@/components/TeamMemberCard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { mockHrStats, mockTeamMembers } from '@/data/mockData';
+import { mockHrStats } from '@/data/mockData';
 import { 
   UsersIcon, 
   BriefcaseIcon, 
   PercentIcon, 
   GraduationCapIcon 
 } from 'lucide-react';
+import { mockTeamMembers } from '@/utils/mockData';
 
 const HrDashboard = () => {
   const { t } = useTranslation();

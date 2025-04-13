@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { TeamMemberDetails } from '@/utils/teamMockData';
+import { TeamMemberDetails } from '@/utils/mockData/types';
 
 interface BadgesTabProps {
   memberDetails: TeamMemberDetails;

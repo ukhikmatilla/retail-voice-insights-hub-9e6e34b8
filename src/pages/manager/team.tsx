@@ -6,7 +6,7 @@ import RoleLayout from '@/components/RoleLayout';
 import { TeamTable } from '@/components/team/TeamTable';
 import { TeamProfileDrawer } from '@/components/team/TeamProfileDrawer';
 import { InviteMemberForm } from '@/components/team/InviteMemberForm';
-import { mockTeamMembers } from '@/utils/teamMockData';
+import { mockTeamMembers } from '@/utils/mockData';
 
 const ManagerTeam = () => {
   const { t } = useTranslation();

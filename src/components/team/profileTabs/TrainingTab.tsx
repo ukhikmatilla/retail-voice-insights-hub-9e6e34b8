@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Progress } from '@/components/ui/progress';
-import { TeamMemberDetails } from '@/utils/teamMockData';
+import { TeamMemberDetails } from '@/utils/mockData/types';
 
 interface TrainingTabProps {
   memberDetails: TeamMemberDetails;

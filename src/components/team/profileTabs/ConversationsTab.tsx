@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
-import { TeamMemberDetails } from '@/utils/teamMockData';
+import { TeamMemberDetails } from '@/utils/mockData/types';
 
 interface ConversationsTabProps {
   memberDetails: TeamMemberDetails;

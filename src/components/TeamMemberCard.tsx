@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { TeamMember } from '@/utils/teamMockData';
+import { TeamMember } from '@/utils/mockData/types';
 import { useTranslation } from 'react-i18next';
 import { Eye } from 'lucide-react';
 

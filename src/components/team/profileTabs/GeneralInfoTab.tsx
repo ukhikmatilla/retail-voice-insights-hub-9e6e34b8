@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
-import { TeamMember } from '@/utils/teamMockData';
+import { TeamMember } from '@/utils/mockData/types';
 
 interface GeneralInfoTabProps {
   member: TeamMember;

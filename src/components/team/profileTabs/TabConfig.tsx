@@ -7,7 +7,7 @@ import { TranscriptTab } from './TranscriptTab';
 import { TrainingTab } from './TrainingTab';
 import { BadgesTab } from './BadgesTab';
 import { UploadTab } from './UploadTab';
-import { TeamMember, TeamMemberDetails } from '@/utils/teamMockData';
+import { TeamMember, TeamMemberDetails } from '@/utils/mockData/types';
 
 export interface TabItem {
   id: string;

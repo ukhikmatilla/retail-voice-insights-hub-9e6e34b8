@@ -158,7 +158,7 @@ const ConversationDetail = () => {
             </div>
             <Card className="p-8 text-center">
               <h2 className="text-2xl font-bold text-red-500 mb-2">{t('common.error')}</h2>
-              <p className="text-muted-foreground mb-6">{t('conversation.notFound', 'Conversation not found')}</p>
+              <p className="text-muted-foreground mb-6">{t('conversations.notFound')}</p>
               <Button onClick={() => navigate('/sales/conversations')}>
                 {t('common.back')}
               </Button>

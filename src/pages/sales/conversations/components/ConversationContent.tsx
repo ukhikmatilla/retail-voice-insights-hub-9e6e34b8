@@ -31,8 +31,8 @@ const ConversationContent: React.FC<ConversationContentProps> = ({
       {/* Transcript and Insights */}
       <Tabs defaultValue="transcript" value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="grid grid-cols-2 mb-4">
-          <TabsTrigger value="transcript">{t('conversation.transcript')}</TabsTrigger>
-          <TabsTrigger value="insights">{t('conversation.insights')}</TabsTrigger>
+          <TabsTrigger value="transcript">{t('conversations.transcript')}</TabsTrigger>
+          <TabsTrigger value="insights">{t('conversations.insights')}</TabsTrigger>
         </TabsList>
         
         <TabsContent value="transcript" className="space-y-4 animate-fade-in">

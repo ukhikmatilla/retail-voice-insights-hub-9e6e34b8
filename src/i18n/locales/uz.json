@@ -1,4 +1,3 @@
-
 {
   "app": {
     "title": "RetailVoiceAI",
@@ -135,13 +134,15 @@
     "downloadTranscript": "Transkripsiyani yuklab olish",
     "salesperson": "Sotuvchi",
     "customer": "Mijoz",
+    "scoreBreakdown": "Ball taqsimoti",
     "recommendations": {
       "title": "Tavsiyalar",
       "improvement": "Yaxshilash uchun",
       "askMoreQuestions": "Ko'proq savollar bering",
       "opportunity": "Imkoniyat",
       "mentionLoyaltyProgram": "Sodiqlik dasturini eslatib o'ting"
-    }
+    },
+    "notFound": "Suhbat topilmadi"
   },
   "insights": {
     "yourInsights": "Sizning tahlillaringiz",
@@ -194,7 +195,9 @@
     "charts": {
       "insightTypes": "Tahlil turlari",
       "skillProgress": "Ko'nikmalar taraqqiyoti"
-    }
+    },
+    "skillAnalysis": "Ko'nikmalar tahlili",
+    "aiAdvice": "AI maslahatlar"
   },
   "training": {
     "recommendedFor": "Siz uchun tavsiya etilgan",

@@ -38,13 +38,13 @@ const ConversationCard: React.FC<ConversationCardProps> = ({ conversation }) => 
             conversation.score >= 70 ? 'bg-insight-yellow/20 text-insight-yellow' :
             'bg-insight-red/20 text-insight-red'
           }`}>
-            {t('conversation.score')}: {conversation.score}
+            {t('conversations.score')}: {conversation.score}
           </span>
         </div>
         
         <div className="mb-3">
           <div className="text-sm">
-            {t('conversation.duration')}: {formatDuration(conversation.duration)}
+            {t('conversations.duration')}: {formatDuration(conversation.duration)}
           </div>
         </div>
 
@@ -63,7 +63,7 @@ const ConversationCard: React.FC<ConversationCardProps> = ({ conversation }) => 
           ))}
           {conversation.insights.length > 1 && (
             <div className="mt-2 text-xs text-muted-foreground">
-              +{conversation.insights.length - 1} more insights
+              +{conversation.insights.length - 1} more {t('conversations.insights')}
             </div>
           )}
         </div>

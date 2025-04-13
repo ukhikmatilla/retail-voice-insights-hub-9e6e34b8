@@ -1,4 +1,3 @@
-
 {
   "app": {
     "title": "RetailVoiceAI",
@@ -135,13 +134,15 @@
     "downloadTranscript": "Скачать транскрипт",
     "salesperson": "Продавец",
     "customer": "Клиент",
+    "scoreBreakdown": "Распределение баллов",
     "recommendations": {
       "title": "Рекомендации",
       "improvement": "Для улучшения",
       "askMoreQuestions": "Задавайте больше вопросов",
       "opportunity": "Возможность",
       "mentionLoyaltyProgram": "Упомяните программу лояльности"
-    }
+    },
+    "notFound": "Разговор не найден"
   },
   "insights": {
     "yourInsights": "Ваши инсайты",
@@ -194,7 +195,9 @@
     "charts": {
       "insightTypes": "Типы инсайтов",
       "skillProgress": "Прогресс навыков"
-    }
+    },
+    "skillAnalysis": "Анализ навыков",
+    "aiAdvice": "Советы ИИ"
   },
   "training": {
     "recommendedFor": "Рекомендовано для вас",
@@ -364,7 +367,7 @@
       "improvement": "Улучшение",
       "opportunity": "Возможность",
       "urgent": "Срочно",
-      "behavior": "Поведение", 
+      "behavior": "Поведение",
       "custom": "Пользовательский"
     }
   },

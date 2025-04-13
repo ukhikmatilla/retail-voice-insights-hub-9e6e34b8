@@ -39,7 +39,7 @@ const ConversationDetailHeader: React.FC<ConversationDetailHeaderProps> = ({
           <ArrowLeftIcon className="h-4 w-4" />
         </Button>
         <h1 className="text-2xl font-bold">
-          {t('conversation.transcript')}
+          {t('conversations.transcript')}
         </h1>
       </div>
       
@@ -58,7 +58,7 @@ const ConversationDetailHeader: React.FC<ConversationDetailHeaderProps> = ({
           'bg-insight-red/20 text-insight-red'
         }`}>
           <PercentIcon className="mr-1 h-3 w-3" />
-          {t('conversation.score')}: {score}
+          {t('conversations.score')}: {score}
         </div>
       </div>
     </div>

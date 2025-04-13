@@ -60,13 +60,13 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
       
       <div>
         <h1 className="text-3xl font-bold">
-          {t('conversation.title', { date: getFormattedDate() })}
+          {t('conversations.title')}
         </h1>
         <div className="flex items-center mt-2 space-x-2">
           <Badge 
             variant={score >= 90 ? "default" : score >= 70 ? "secondary" : "destructive"}
           >
-            {t('conversation.score')}: {score}/100
+            {t('conversations.score')}: {score}/100
           </Badge>
           <Badge variant="outline">
             {Math.floor(duration / 60)}:{(duration % 60).toString().padStart(2, '0')}

@@ -28,6 +28,7 @@ const InsightsTabContent: React.FC<InsightsTabContentProps> = ({
     <>
       <Card className="mb-6">
         <CardContent className="p-6">
+          <h3 className="text-md font-semibold mb-4">{t('insights.skillAnalysis')}</h3>
           <SkillFeedbackAccordion skills={skills} />
         </CardContent>
       </Card>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
@@ -64,6 +63,31 @@ const StatusBadge = ({ status }: { status: StatusType | string }) => {
   );
 };
 
+// Status summary component
+const StatusSummary = () => {
+  const { t } = useTranslation();
+  
+  // Count stores by status
+  const statusCounts = mockStores.reduce((acc, store) => {
+    if (!acc[store.status]) {
+      acc[store.status] = 0;
+    }
+    acc[store.status]++;
+    return acc;
+  }, {} as Record<string, number>);
+  
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-4">
+      {Object.entries(statusCounts).map(([status, count]) => (
+        <div key={status} className="flex flex-col items-center p-2 border rounded-md">
+          <StatusBadge status={status} />
+          <span className="mt-1 font-bold">{count}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 // Mobile view using accordion
 const MobileStoreList = ({ stores }: { stores: typeof mockStores }) => {
   const { t } = useTranslation();
@@ -101,31 +125,6 @@ const MobileStoreList = ({ stores }: { stores: typeof mockStores }) => {
           </AccordionItem>
         ))}
       </Accordion>
-    </div>
-  );
-};
-
-// Status summary component
-const StatusSummary = () => {
-  const { t } = useTranslation();
-  
-  // Count stores by status
-  const statusCounts = mockStores.reduce((acc, store) => {
-    if (!acc[store.status]) {
-      acc[store.status] = 0;
-    }
-    acc[store.status]++;
-    return acc;
-  }, {} as Record<string, number>);
-  
-  return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-4">
-      {Object.entries(statusCounts).map(([status, count]) => (
-        <div key={status} className="flex flex-col items-center p-2 border rounded-md">
-          <StatusBadge status={status} />
-          <span className="mt-1 font-bold">{count}</span>
-        </div>
-      ))}
     </div>
   );
 };

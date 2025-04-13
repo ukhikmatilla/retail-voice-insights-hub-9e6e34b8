@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import LanguageSelector from '@/components/LanguageSelector';
@@ -62,7 +61,7 @@ const Register = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-muted p-4">
       <div className="w-full max-w-md">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold">RetailVoiceAI</h1>
+          <h1 className="text-2xl font-bold">{t("RetailVoiceAI")}</h1>
           <LanguageSelector />
         </div>
         

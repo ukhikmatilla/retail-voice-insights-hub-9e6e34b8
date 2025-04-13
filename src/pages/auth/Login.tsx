@@ -62,7 +62,7 @@ const Login = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-muted p-4">
       <div className="w-full max-w-md">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold">RetailVoiceAI</h1>
+          <h1 className="text-2xl font-bold">{t("RetailVoiceAI")}</h1>
           <LanguageSelector />
         </div>
         
@@ -117,7 +117,7 @@ const Login = () => {
             
             <div className="mt-6">
               <p className="text-center text-sm text-muted-foreground">
-                {t('app.name')} demo logins:
+                {t("app.name")} demo logins:
               </p>
               <div className="grid grid-cols-3 gap-2 mt-2">
                 <Button 

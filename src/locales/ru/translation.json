@@ -154,6 +154,7 @@
   "dashboard.stats.successRate": "Процент успеха",
   "dashboard.stats.missedOpportunities": "Упущенные возможности",
   "Progress": "Прогресс", "Due": "Срок", "completed": "завершено", "inProgress": "в процессе"
+},
+  "app.name": "RetailVoiceAI"
 }
-  "Chart: Training Completion by Team Member": "График: Завершение обучения по членам команды"
 }

@@ -150,6 +150,7 @@
   "Due": "Muddati",
   "dashboard.conversations": "Suhbatlar",
   "completed": "tugallangan",
-  "inProgress": "bajarilmoqda"
+  "inProgress": "bajarilmoqda",
+  "app.name": "RetailVoiceAI"
 }
 }

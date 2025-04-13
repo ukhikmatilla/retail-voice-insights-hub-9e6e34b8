@@ -48,6 +48,10 @@ export interface Training {
   id: string;
   title: string;
   description: string;
-  status: 'assigned' | 'inProgress' | 'completed';
+  status: 'assigned' | 'inProgress' | 'completed' | 'recommended';
   dueDate?: string;
+  completedDate?: string;
+  skill: string;
+  level: string;
+  progress: number;
 }

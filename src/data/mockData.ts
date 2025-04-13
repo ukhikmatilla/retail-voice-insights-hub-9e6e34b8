@@ -155,19 +155,29 @@ export const mockTrainings: Training[] = [
     title: "Handling Customer Objections",
     description: "Learn effective techniques for addressing common customer concerns and objections during the sales process.",
     status: "assigned",
-    dueDate: "2025-04-20"
+    dueDate: "2025-04-20",
+    skill: "objections",
+    level: "intermediate",
+    progress: 0
   },
   {
     id: "t2",
     title: "Product Knowledge Essentials",
     description: "Comprehensive overview of product features, benefits, and competitive advantages.",
-    status: "completed"
+    status: "completed",
+    completedDate: "2025-03-10",
+    skill: "valueExplanation",
+    level: "beginner",
+    progress: 100
   },
   {
     id: "t3",
     title: "Upselling Strategies",
     description: "Discover practical methods to increase sales through effective upselling techniques.",
     status: "inProgress",
-    dueDate: "2025-04-25"
+    dueDate: "2025-04-25",
+    skill: "crossSelling",
+    level: "advanced",
+    progress: 65
   }
 ];

@@ -137,3 +137,13 @@ export interface TrainingResult {
   earnedBadges: string[];
   feedback: string;
 }
+
+// New interfaces for Udemy-like module structure
+export interface TrainingStep {
+  id: string;
+  title: string;
+  type: 'video' | 'theory' | 'quiz';
+  status: 'completed' | 'in_progress' | 'locked';
+  youtubeUrl?: string;
+  content?: string;
+}

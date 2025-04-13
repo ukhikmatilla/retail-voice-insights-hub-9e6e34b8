@@ -1,16 +1,70 @@
+
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import RoleLayout from '@/components/RoleLayout';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft } from 'lucide-react';
-import TrainingTheory from '@/components/training/TrainingTheory';
-import TrainingVideo from '@/components/training/TrainingVideo';
-import TrainingQuiz from '@/components/training/TrainingQuiz';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { mockTrainings } from '@/data/mockData';
 import { Training, TrainingTheory as TrainingTheoryType, TheorySection, TrainingQuiz as TrainingQuizType } from '@/types';
+import TrainingModuleSidebar from '@/components/training/TrainingModuleSidebar';
+import TrainingModuleContent from '@/components/training/TrainingModuleContent';
+
+// Sample mock training module structure
+const mockModuleSteps = [
+  {
+    id: 'intro',
+    title: 'Introduction',
+    type: 'theory',
+    status: 'completed',
+    content: "Price objections are one of the most common challenges sales professionals face. They occur when a prospect expresses concern about the cost of your product or service."
+  },
+  {
+    id: 'lesson1',
+    title: 'Lesson 1: Psychology of Pricing',
+    type: 'video',
+    status: 'in_progress',
+    youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    content: "Understanding how customers perceive value is essential to overcoming price objections."
+  },
+  {
+    id: 'lesson2',
+    title: 'Lesson 2: What NOT to Say',
+    type: 'video',
+    status: 'locked',
+    youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    content: "Never immediately offer discounts when facing price objections. This devalues your product and reduces your profit margin unnecessarily."
+  },
+  {
+    id: 'lesson3',
+    title: 'Lesson 3: Effective Scripts',
+    type: 'video',
+    status: 'locked',
+    youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    content: "Using the right language can help redirect the customer's focus from price to value."
+  },
+  {
+    id: 'practice',
+    title: 'Practice: Role Simulation',
+    type: 'theory',
+    status: 'locked',
+    content: "Practice these techniques with role-playing scenarios to build confidence in real-world situations."
+  },
+  {
+    id: 'ai-advice',
+    title: 'AI Recommendations',
+    type: 'theory',
+    status: 'locked',
+    content: "Based on your responses in previous lessons, here are personalized suggestions for improvement."
+  },
+  {
+    id: 'quiz',
+    title: 'Final Test',
+    type: 'quiz',
+    status: 'locked'
+  }
+];
 
 // Sample mock data for the training module components
 const mockTheoryData: TrainingTheoryType = {
@@ -74,13 +128,14 @@ const mockQuizData: TrainingQuizType = {
 };
 
 const TrainingModuleDetail = () => {
-  // ... keep existing code (constants, states, and useParams hook declarations)
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState('theory');
   const [training, setTraining] = useState<Training | null>(null);
-  const [quizCompleted, setQuizCompleted] = useState(false);
+  const [currentStep, setCurrentStep] = useState('intro');
+  const [steps, setSteps] = useState(mockModuleSteps);
+  const [isMobile, setIsMobile] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   useEffect(() => {
     // Find training by slug
@@ -102,15 +157,65 @@ const TrainingModuleDetail = () => {
     // Set document title
     document.title = foundTraining.title + ' | ' + t('sales.training');
 
+    // Check if mobile view
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth < 768) {
+        setSidebarOpen(false);
+      }
+    };
+
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+
     return () => {
       document.title = t('sales.training');
+      window.removeEventListener('resize', checkIfMobile);
     };
   }, [slug, t]);
 
-  const handleQuizComplete = (result: { score: number; completed: boolean }) => {
-    console.log("Quiz completed with score:", result.score);
-    setQuizCompleted(true);
-    // Here you would typically update the user's progress
+  const handleStepChange = (stepId: string) => {
+    setCurrentStep(stepId);
+    
+    // Update steps progress
+    const updatedSteps = steps.map(step => {
+      if (step.id === stepId) {
+        return { ...step, status: 'in_progress' };
+      } else if (step.status === 'locked') {
+        return step;
+      } else {
+        return { ...step, status: 'completed' };
+      }
+    });
+    
+    setSteps(updatedSteps);
+  };
+
+  const handleNextStep = () => {
+    const currentIndex = steps.findIndex(step => step.id === currentStep);
+    if (currentIndex < steps.length - 1) {
+      const nextStep = steps[currentIndex + 1];
+      // Unlock next step
+      const updatedSteps = [...steps];
+      updatedSteps[currentIndex + 1] = {
+        ...updatedSteps[currentIndex + 1],
+        status: 'in_progress'
+      };
+      setSteps(updatedSteps);
+      setCurrentStep(nextStep.id);
+    }
+  };
+
+  const handlePrevStep = () => {
+    const currentIndex = steps.findIndex(step => step.id === currentStep);
+    if (currentIndex > 0) {
+      const prevStep = steps[currentIndex - 1];
+      setCurrentStep(prevStep.id);
+    }
+  };
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
   };
 
   if (!training) {
@@ -153,32 +258,72 @@ const TrainingModuleDetail = () => {
           </div>
         </div>
         
-        <Tabs 
-          defaultValue="theory" 
-          value={activeTab}
-          onValueChange={setActiveTab}
-          className="w-full"
-        >
-          <TabsList className="mb-4">
-            <TabsTrigger value="theory">{t('training.theory')}</TabsTrigger>
-            <TabsTrigger value="video">{t('training.video')}</TabsTrigger>
-            <TabsTrigger value="quiz">{t('training.quiz')}</TabsTrigger>
-          </TabsList>
+        {isMobile && (
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="mb-4 w-full flex justify-between" 
+            onClick={toggleSidebar}
+          >
+            {steps.find(step => step.id === currentStep)?.title || 'Navigate'}
+            <ArrowRight className="h-4 w-4" />
+          </Button>
+        )}
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {/* Sidebar */}
+          {(sidebarOpen || !isMobile) && (
+            <div className={`${isMobile ? 'absolute inset-0 z-10 bg-background p-6 h-screen' : ''}`}>
+              {isMobile && (
+                <Button 
+                  variant="ghost" 
+                  className="mb-4" 
+                  onClick={toggleSidebar}
+                >
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  {t('common.close')}
+                </Button>
+              )}
+              <TrainingModuleSidebar 
+                steps={steps} 
+                currentStep={currentStep} 
+                onSelectStep={handleStepChange} 
+              />
+            </div>
+          )}
           
-          <Card className="p-6">
-            <TabsContent value="theory">
-              <TrainingTheory theory={mockTheoryData} />
-            </TabsContent>
-            
-            <TabsContent value="video">
-              <TrainingVideo videoUrl={mockVideoData.videoUrl} duration={mockVideoData.duration} />
-            </TabsContent>
-            
-            <TabsContent value="quiz">
-              <TrainingQuiz quiz={mockQuizData} onComplete={handleQuizComplete} />
-            </TabsContent>
-          </Card>
-        </Tabs>
+          {/* Content */}
+          <div className="md:col-span-3">
+            <Card className="p-6">
+              <TrainingModuleContent 
+                step={steps.find(step => step.id === currentStep)!}
+                theoryData={mockTheoryData}
+                videoData={mockVideoData}
+                quizData={mockQuizData}
+                onComplete={handleNextStep}
+              />
+              
+              <div className="flex justify-between mt-8">
+                <Button 
+                  variant="outline" 
+                  onClick={handlePrevStep}
+                  disabled={currentStep === 'intro'}
+                >
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  {t('training.previousLesson')}
+                </Button>
+                
+                <Button 
+                  onClick={handleNextStep}
+                  disabled={currentStep === 'quiz'}
+                >
+                  {t('training.nextLesson')}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+            </Card>
+          </div>
+        </div>
       </div>
     </RoleLayout>
   );

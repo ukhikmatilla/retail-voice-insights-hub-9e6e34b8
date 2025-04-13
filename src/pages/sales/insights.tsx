@@ -19,15 +19,25 @@ import InsightCard from '@/components/InsightCard';
 import { expandableInsightsMock } from '@/data/insightsMockData';
 import StrengthsWeaknessesCard from '@/components/insights/StrengthsWeaknessesCard';
 import WeeklyFocusCard from '@/components/insights/WeeklyFocusCard';
-import InsightTypeChart from '@/components/insights/InsightTypeChart';
+import InsightTypeChart, { InsightType } from '@/components/insights/InsightTypeChart';
+import { 
+  ResponsiveContainer,
+  LineChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Line
+} from 'recharts';
 
 // Mock data for insights charts and strengths/weaknesses
 const insightTypeData = [
-  { name: 'improvement', value: 8, fill: '#10b981' },
-  { name: 'opportunity', value: 5, fill: '#f59e0b' },
-  { name: 'urgent', value: 3, fill: '#ef4444' },
-  { name: 'behavior', value: 6, fill: '#6b7280' },
-  { name: 'custom', value: 4, fill: '#3b82f6' }
+  { name: 'improvement' as InsightType, value: 8, fill: '#10b981' },
+  { name: 'opportunity' as InsightType, value: 5, fill: '#f59e0b' },
+  { name: 'urgent' as InsightType, value: 3, fill: '#ef4444' },
+  { name: 'behavior' as InsightType, value: 6, fill: '#6b7280' },
+  { name: 'custom' as InsightType, value: 4, fill: '#3b82f6' }
 ];
 
 // Mock data for skills progress

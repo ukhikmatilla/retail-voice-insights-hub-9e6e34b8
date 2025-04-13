@@ -266,7 +266,30 @@
     "noInsightsFound": "Tahlillar topilmadi",
     "weeklyTrend": "Haftalik tendensiya",
     "recommendationsList": "Tavsiyalar ro'yxati",
-    "recommendationsDescription": "AI tavsiyalari asosida ko'nikmalaringizni qanday yaxshilash kerakligi"
+    "recommendationsDescription": "AI tavsiyalari asosida ko'nikmalaringizni qanday yaxshilash kerakligi",
+    "tooltips": {
+      "total": {
+        "title": "Jami tahlillar",
+        "description": "Sizning suhbatlaringizdan AI tomonidan aniqlangan barcha tahlillar"
+      },
+      "score": {
+        "title": "O'rtacha ball",
+        "description": "Sizning barcha suhbatlaringiz bo'yicha o'rtacha ball"
+      },
+      "improvement": {
+        "title": "Taraqqiyot ko'rsatkichi",
+        "description": "Vaqt davomida savdo ko'nikmalaringiz qanchalik yaxshilanganini ko'rsatadi"
+      },
+      "fromLastPeriod": "oxirgi davrga nisbatan",
+      "clickForDetails": "Batafsil ma'lumot uchun bosing"
+    },
+    "shortLabels": {
+      "improvement": "Yaxsh.",
+      "opportunity": "Imk.",
+      "urgent": "Shosh.",
+      "behavior": "Xulq",
+      "custom": "Max."
+    }
   },
   "training": {
     "recommendedFor": "Siz uchun tavsiya etilgan",

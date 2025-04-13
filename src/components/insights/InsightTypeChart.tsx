@@ -144,14 +144,7 @@ const InsightTypeChart: React.FC<InsightTypeChartProps> = ({ data }) => {
                     tickFormatter={(value) => {
                       if (isSmallMobile) {
                         // Short labels for very small screens
-                        const shortLabels: Record<string, string> = {
-                          improvement: t('insights.shortLabels.improvement'),
-                          opportunity: t('insights.shortLabels.opportunity'),
-                          urgent: t('insights.shortLabels.urgent'),
-                          behavior: t('insights.shortLabels.behavior'),
-                          custom: t('insights.shortLabels.custom')
-                        };
-                        return shortLabels[value] || value;
+                        return t(`insights.shortLabels.${value}`);
                       }
                       return t(`insight.type.${value}`);
                     }} 

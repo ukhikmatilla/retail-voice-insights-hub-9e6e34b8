@@ -265,7 +265,30 @@
     "noInsightsFound": "Инсайты не найдены",
     "weeklyTrend": "Еженедельная тенденция",
     "recommendationsList": "Список рекомендаций",
-    "recommendationsDescription": "Как улучшить свои навыки на основе рекомендаций ИИ"
+    "recommendationsDescription": "Как улучшить свои навыки на основе рекомендаций ИИ",
+    "tooltips": {
+      "total": {
+        "title": "Все инсайты",
+        "description": "Все инсайты, обнаруженные ИИ в ваших разговорах"
+      },
+      "score": {
+        "title": "Средний балл",
+        "description": "Ваш средний балл по всем разговорам"
+      },
+      "improvement": {
+        "title": "Показатель улучшения",
+        "description": "Показывает, как улучшились ваши навыки продаж со временем"
+      },
+      "fromLastPeriod": "по сравнению с предыдущим периодом",
+      "clickForDetails": "Нажмите для подробностей"
+    },
+    "shortLabels": {
+      "improvement": "Улуч.",
+      "opportunity": "Возм.",
+      "urgent": "Сроч.",
+      "behavior": "Повед.",
+      "custom": "Кастом."
+    }
   },
   "training": {
     "recommendedFor": "Рекомендовано для вас",

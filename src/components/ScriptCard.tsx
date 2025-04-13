@@ -23,15 +23,15 @@ const ScriptCard: React.FC<ScriptCardProps> = ({ script }) => {
     <Card className="overflow-hidden">
       <CardContent className="p-4">
         <div className="flex items-start gap-3">
-          <div className="bg-blue-100 rounded-full p-2 mt-1">
+          <div className="bg-blue-100 rounded-full p-2 mt-1 flex-shrink-0">
             <MessageCircle className="h-4 w-4 text-blue-600" />
           </div>
           
           <div className="flex-1">
-            <div className="flex justify-between items-start mb-2">
+            <div className="flex flex-wrap justify-between items-start mb-2">
               <h4 className="text-sm font-medium">{script.scenario}</h4>
-              <Badge variant="outline" className="capitalize ml-2 text-xs">
-                {t(`insights.${script.category}`)}
+              <Badge variant="outline" className="capitalize ml-2 text-xs whitespace-nowrap">
+                {t(`scripts.categories.${script.category}`)}
               </Badge>
             </div>
             
@@ -49,16 +49,16 @@ const ScriptCard: React.FC<ScriptCardProps> = ({ script }) => {
             <Button 
               variant="ghost" 
               size="sm" 
-              className="text-xs mt-2 hover:bg-blue-50 hover:text-blue-700 p-0 h-auto"
+              className="text-xs mt-2 hover:bg-blue-50 hover:text-blue-700 p-0 h-auto w-full sm:w-auto flex justify-center"
               onClick={toggleExpanded}
             >
               {expanded ? (
                 <span className="flex items-center">
-                  {t('training.hideScript')} <ChevronUp className="h-3 w-3 ml-1" />
+                  {t('scripts.hideScript')} <ChevronUp className="h-3 w-3 ml-1" />
                 </span>
               ) : (
                 <span className="flex items-center">
-                  {t('training.viewScript')} <ChevronDown className="h-3 w-3 ml-1" />
+                  {t('scripts.viewScript')} <ChevronDown className="h-3 w-3 ml-1" />
                 </span>
               )}
             </Button>

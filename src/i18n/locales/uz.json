@@ -386,16 +386,24 @@
     "recommended": "Tavsiya etilgan skriptlar",
     "mostUsed": "Eng ko'p ishlatilgan",
     "searchScripts": "Skriptlarni qidirish",
+    "title": "Skript kutubxonasi",
+    "description": "Turli savdo vaziyatlari uchun tayyor skriptlar",
     "categories": {
-      "all": "Barcha",
+      "all": "Barchasi",
       "greeting": "Salomlashish",
-      "objection": "Qarshiliklar",
-      "closing": "Yakunlash",
+      "objection": "E'tirozlar",
+      "closing": "Bitimni yakunlash",
       "followUp": "Keyingi aloqa",
       "pricing": "Narxlash",
+      "trust": "Ishonch yaratish",
+      "crossSell": "Qo'shimcha mahsulot",
       "other": "Boshqa"
     },
-    "source": "Manba"
+    "source": "Manba",
+    "noScriptsFound": "Skriptlar topilmadi",
+    "viewScript": "Javobni ko'rish",
+    "hideScript": "Javobni yopish",
+    "aiSelected": "AI bu skriptni {count} ta muvaffaqiyatli sotuv asosida tanladi"
   },
   "team": {
     "yourTeam": "Sizning jamoangiz",
@@ -584,17 +592,4 @@
             "2": "Mahsulotimiz qanday ishlab chiqarilgani va qanchalik sifatli ekanligi",
             "3": "Bizga mahsulotimizni ishlab chiqarish qanchalik turishi"
           },
-          "explanation": "To'g'ri javob - mijoz ko'rishi mumkin bo'lgan afzalliklar va foyda. Qiymat - bu nafaqat pulda o'lchanadigan narsa, balki mijoz uchun hal qilingan muammo, tejalgan vaqt va kuchaytirilgan qulaylik."
-        }
-      }
-    }
-  },
-  "button": {
-    "startModule": "Modulni boshlash",
-    "continue": "Davom ettirish",
-    "viewDetails": "Batafsil ko'rish",
-    "submitAnswer": "Javob yuborish",
-    "tryAgain": "Qayta urinish",
-    "finish": "Yakunlash"
-  }
-}
+          "explanation": "To'g'ri javob - mijoz ko'rishi mumkin bo'lgan afzalliklar va foyda. Qiymat - bu nafaq

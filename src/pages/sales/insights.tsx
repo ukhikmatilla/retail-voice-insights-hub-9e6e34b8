@@ -1,13 +1,13 @@
-даimport React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useSearchParams, useNavigate } from 'react-router-dom';
 import {
     BarChart3,
     Calendar,
     FilterIcon,
-  LightbulbIcon,
-  TrendingUpIcon,
-  BadgeCheckIcon
+    LightbulbIcon,
+    TrendingUpIcon,
+    BadgeCheckIcon
 } from 'lucide-react';
 import RoleLayout from '@/components/RoleLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';

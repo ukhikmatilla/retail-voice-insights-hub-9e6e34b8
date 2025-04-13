@@ -12,9 +12,10 @@ import TrainingModuleList from '@/components/training/TrainingModuleList';
 import TrainingProgressChart from '@/components/training/TrainingProgressChart';
 import { generateProgressData, filterTrainingModules } from '@/utils/trainingUtils';
 import { mockTrainings, mockMicroTraining, mockScriptSnippets, mockBadges, mockStreak } from '@/data/mockData';
+import { Training } from '@/types';
 
-// Mock training modules
-const trainingModules = [
+// Mock training modules with correct status types
+const trainingModules: Training[] = [
   {
     id: '1',
     title: 'Handling Price Objections',
@@ -96,7 +97,7 @@ const SalesTraining = () => {
   const filteredModules = filterTrainingModules(trainingModules, filters);
   
   // Handler for filter changes
-  const handleFilterChange = (filterType, value) => {
+  const handleFilterChange = (filterType: string, value: string) => {
     setFilters(prev => ({
       ...prev,
       [filterType]: value

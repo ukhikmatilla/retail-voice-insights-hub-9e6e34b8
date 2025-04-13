@@ -28,8 +28,11 @@ const mockStores = [
   { id: 5, name: 'Западный', conversations: 8, averageScore: 43, status: 'critical' },
 ];
 
+// Type for status
+type StatusType = 'good' | 'warning' | 'critical' | 'unknown';
+
 // Status badges for different states
-const StatusBadge = ({ status }: { status: string }) => {
+const StatusBadge = ({ status }: { status: StatusType | string }) => {
   const { t } = useTranslation();
   
   let color = '';
@@ -102,6 +105,31 @@ const MobileStoreList = ({ stores }: { stores: typeof mockStores }) => {
   );
 };
 
+// Status summary component
+const StatusSummary = () => {
+  const { t } = useTranslation();
+  
+  // Count stores by status
+  const statusCounts = mockStores.reduce((acc, store) => {
+    if (!acc[store.status]) {
+      acc[store.status] = 0;
+    }
+    acc[store.status]++;
+    return acc;
+  }, {} as Record<string, number>);
+  
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-4">
+      {Object.entries(statusCounts).map(([status, count]) => (
+        <div key={status} className="flex flex-col items-center p-2 border rounded-md">
+          <StatusBadge status={status} />
+          <span className="mt-1 font-bold">{count}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 // Desktop view using table
 const StoreActivityTable: React.FC = () => {
   const { t } = useTranslation();
@@ -112,6 +140,9 @@ const StoreActivityTable: React.FC = () => {
         <CardTitle>{t('dashboard.activity.title')}</CardTitle>
       </CardHeader>
       <CardContent>
+        {/* Status Summary */}
+        <StatusSummary />
+        
         {/* Mobile View */}
         <MobileStoreList stores={mockStores} />
         

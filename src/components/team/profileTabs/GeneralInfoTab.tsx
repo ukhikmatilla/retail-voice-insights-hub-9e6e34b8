@@ -2,6 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { TeamMember } from '@/utils/mockData/types';
+import { AIAnalysisBlock } from './AIAnalysisBlock';
 
 interface GeneralInfoTabProps {
   memberInfo: TeamMember;
@@ -48,6 +49,11 @@ export const GeneralInfoTab: React.FC<GeneralInfoTabProps> = ({ memberInfo }) =>
           </div>
         ))}
       </div>
+      
+      {/* AI Analysis Block */}
+      {memberInfo.conversationsCount > 0 && (
+        <AIAnalysisBlock memberId={memberInfo.id} />
+      )}
     </div>
   );
 };

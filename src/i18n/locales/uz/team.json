@@ -35,5 +35,41 @@
   },
   "filtering": "Filtr faol",
   "filteringBy": "Filtr bo'yicha",
-  "clearFilter": "Filtrni tozalash"
+  "clearFilter": "Filtrni tozalash",
+  
+  "aiInsights": {
+    "title": "AI tahlili",
+    "strong": "Kuchli tomonlar",
+    "weak": "Yaxshilanish kerak bo'lgan tomonlar",
+    "behavior": "Mijoz bilan munosabat",
+    "template": "Baholash mezonlari bajarilgan",
+    "recommend": "AI tavsiyasi",
+    "projection": "Faollik prognozi",
+    "status": {
+      "good": "Ijobiy o'sish",
+      "bad": "Qo'shimcha trening kerak",
+      "warn": "Barqaror, lekin o'sish yo'q"
+    },
+    "strengths": {
+      "empathy": "Suhbatlarda mijozga hamdardlik bildiradi",
+      "script": "Savdo skriptiga aniq rioya qiladi",
+      "price": "Narxni yaxshi asoslaydi",
+      "listening": "Mijozni diqqat bilan tinglaydi",
+      "product": "Mahsulotni a'lo darajada biladi"
+    },
+    "weaknesses": {
+      "closing": "Kamdan-kam hollarda bitimni yakunlaydi",
+      "needs": "Doim ham ehtiyojlarni aniqlamaydi",
+      "confidence": "Ishonch yetishmaydi",
+      "technical": "Texnik jihatlarni yaxshi bilmasligi"
+    },
+    "behaviors": {
+      "confident": "Ishonchli, mantiqli",
+      "friendly": "Do'stona, mijozga yo'naltirilgan"
+    },
+    "recommendations": {
+      "objections": "'E'tirozlar bilan ishlash' modulini o'tishni tavsiya etamiz",
+      "confidence": "'Ishonchli savdolar' treningi tavsiya etiladi"
+    }
+  }
 }

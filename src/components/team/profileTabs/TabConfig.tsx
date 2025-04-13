@@ -6,7 +6,8 @@ import {
   Headphones,
   BookOpen,
   Award,
-  Upload
+  Upload,
+  Zap
 } from 'lucide-react';
 import { TeamMember } from '@/utils/mockData/types';
 import { TeamMemberDetails } from '@/utils/mockData/types';

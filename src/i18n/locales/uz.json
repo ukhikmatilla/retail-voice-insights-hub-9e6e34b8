@@ -1,3 +1,4 @@
+
 {
   "app": {
     "title": "RetailVoiceAI",
@@ -592,4 +593,135 @@
             "2": "Mahsulotimiz qanday ishlab chiqarilgani va qanchalik sifatli ekanligi",
             "3": "Bizga mahsulotimizni ishlab chiqarish qanchalik turishi"
           },
-          "explanation": "To'g'ri javob - mijoz ko'rishi mumkin bo'lgan afzalliklar va foyda. Qiymat - bu nafaq
+          "explanation": "To'g'ri javob - mijoz ko'rishi mumkin bo'lgan afzalliklar va foyda. Qiymat - bu nafaqat pul, balki mijozning muammosini hal qilish, vaqtni tejash va qulaylikni oshirishdir."
+        }
+      }
+    }
+  },
+  "button": {
+    "startModule": "Modulni boshlash",
+    "continue": "Davom etish",
+    "viewDetails": "Batafsil",
+    "submitAnswer": "Javobni yuborish",
+    "tryAgain": "Qayta urinish",
+    "finish": "Yakunlash",
+    "startTraining": "O'quvni boshlash",
+    "viewAll": "Barchasini ko'rish",
+    "downloadTranscript": "Transkripsiyani yuklab olish",
+    "uploadConversation": "Suhbatni yuklash",
+    "filterResults": "Natijalarni filtrlash",
+    "clearFilters": "Filtrlarni tozalash",
+    "saveChanges": "O'zgarishlarni saqlash",
+    "cancel": "Bekor qilish",
+    "confirm": "Tasdiqlash"
+  },
+  "title": {
+    "modules": "O'quv modullari",
+    "recentConversations": "Oxirgi suhbatlar",
+    "insightsSummary": "Tahlillar xulosasi",
+    "weeklyProgress": "Haftalik taraqqiyot",
+    "skillsAnalysis": "Ko'nikmalar tahlili",
+    "recommendations": "Tavsiyalar",
+    "profileSettings": "Profil sozlamalari",
+    "conversationDetails": "Suhbat tafsilotlari",
+    "training": "O'quv",
+    "insights": "Tahlillar",
+    "conversations": "Suhbatlar",
+    "scripts": "Skriptlar",
+    "dashboard": "Boshqaruv paneli"
+  },
+  "label": {
+    "aiRecommended": "AI tomonidan tavsiya etilgan",
+    "completed": "Yakunlangan",
+    "inProgress": "Jarayonda",
+    "notStarted": "Boshlanmagan",
+    "dueDate": "Topshirish muddati",
+    "priority": "Ustuvorlik",
+    "skillLevel": "Ko'nikma darajasi",
+    "duration": "Davomiyligi",
+    "score": "Ball",
+    "improvement": "Yaxshilash",
+    "date": "Sana",
+    "time": "Vaqt",
+    "status": "Holat",
+    "language": "Til",
+    "category": "Kategoriya",
+    "type": "Turi",
+    "success": "Muvaffaqiyatli",
+    "error": "Xato"
+  },
+  "status": {
+    "inProgress": "Jarayonda",
+    "completed": "Yakunlangan",
+    "pending": "Kutilmoqda",
+    "failed": "Muvaffaqiyatsiz",
+    "canceled": "Bekor qilingan",
+    "overdue": "Muddati o'tgan"
+  },
+  "placeholder": {
+    "search": "Qidirish...",
+    "selectDate": "Sanani tanlang",
+    "selectOption": "Variantni tanlang",
+    "enterName": "Ismni kiriting",
+    "enterEmail": "Email kiriting",
+    "writeComment": "Izoh yozing...",
+    "selectSkill": "Ko'nikma tanlang",
+    "selectLevel": "Daraja tanlang",
+    "selectLanguage": "Til tanlang"
+  },
+  "notification": {
+    "success": "Muvaffaqiyatli bajarildi",
+    "error": "Xato yuz berdi",
+    "info": "Ma'lumot",
+    "warning": "Ogohlantirish",
+    "newMessage": "Yangi xabar",
+    "trainingAssigned": "Yangi o'quv tayinlandi",
+    "conversationAnalyzed": "Suhbat tahlil qilindi",
+    "profileUpdated": "Profil yangilandi",
+    "sessionScheduled": "Sessiya rejalashtirildi"
+  },
+  "onboarding": {
+    "welcome": "RetailVoiceAI'ga xush kelibsiz",
+    "intro": "AI bilan savdo ko'nikmalarini yaxshilang",
+    "step1Title": "Suhbatlarni yuklang",
+    "step1Description": "Mijozlar bilan suhbat yozuvlarini yuklang",
+    "step2Title": "Tahlillarni oling",
+    "step2Description": "Qimmatli ma'lumotlar va tavsiyalar oling",
+    "step3Title": "Ko'nikmalarni yaxshilang",
+    "step3Description": "Savdo ko'nikmalaringizni yaxshilang",
+    "getStarted": "Boshlash",
+    "skip": "O'tkazib yuborish"
+  },
+  "modules": {
+    "priceObjections": {
+      "title": "Narx qarshiliklarini boshqarish",
+      "level": "O'rta",
+      "description": "Mijozlarning narx qarshiliklarini samarali boshqarishni o'rganing."
+    },
+    "buildTrust": {
+      "title": "Ishonch qurish",
+      "level": "Boshlang'ich",
+      "description": "Mijoz bilan muloqotning dastlabki daqiqalarida ishonch qozonish san'atini o'zlashtiribng."
+    },
+    "crossSell": {
+      "title": "Qo'shimcha sotuv",
+      "level": "Ilg'or",
+      "description": "O'rtacha savdo miqdorini oshirish texnikalarini o'rganing."
+    },
+    "closing": {
+      "title": "Bitimni yakunlash",
+      "level": "Ilg'or",
+      "description": "Muvaffaqiyatli bitimni yakunlash uchun psixologik yondashuvlarni o'rganing."
+    },
+    "valueComm": {
+      "title": "Qiymat tushuntirish",
+      "level": "O'rta",
+      "description": "Shunchaki xususiyatlar emas, balki qiymatni sotishni o'rganing."
+    },
+    "customerSignals": {
+      "title": "Mijoz signallarini tushunish",
+      "level": "O'rta",
+      "description": "Mijozlarning so'zli va so'zsiz signallarini aniqlashni o'rganing."
+    }
+  }
+}

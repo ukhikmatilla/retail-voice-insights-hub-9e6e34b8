@@ -3,13 +3,26 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import uzTranslation from './locales/uz.json';
 import ruTranslation from './locales/ru.json';
+import uzStoresTranslation from './locales/uz/stores.json';
+import ruStoresTranslation from './locales/ru/stores.json';
+
+// Merge translations
+const mergedUzTranslations = {
+  ...uzTranslation,
+  ...uzStoresTranslation
+};
+
+const mergedRuTranslations = {
+  ...ruTranslation,
+  ...ruStoresTranslation
+};
 
 const resources = {
   uz: {
-    translation: uzTranslation
+    translation: mergedUzTranslations
   },
   ru: {
-    translation: ruTranslation
+    translation: mergedRuTranslations
   }
 };
 

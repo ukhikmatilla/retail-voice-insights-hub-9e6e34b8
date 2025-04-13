@@ -15,7 +15,8 @@ import {
   UserIcon,
   LineChartIcon,
   BookOpenIcon,
-  SettingsIcon
+  SettingsIcon,
+  StoreIcon
 } from 'lucide-react';
 
 interface NavItem {
@@ -93,6 +94,12 @@ const RoleLayout: React.FC<RoleLayoutProps> = ({ children, currentPath }) => {
             icon: <UsersIcon className="h-5 w-5" />,
             href: '/manager/team',
             active: currentPath === '/manager/team'
+          },
+          {
+            label: t('dashboard.stores'),
+            icon: <StoreIcon className="h-5 w-5" />,
+            href: '/manager/stores',
+            active: currentPath === '/manager/stores'
           },
           { 
             label: t('dashboard.insights'),

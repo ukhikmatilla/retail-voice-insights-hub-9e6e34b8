@@ -33,6 +33,7 @@ import ManagerDashboard from "./pages/manager/dashboard";
 import ManagerTeam from "./pages/manager/team";
 import ManagerInsights from "./pages/manager/insights";
 import ManagerCoaching from "./pages/manager/coaching";
+import ManagerStores from "./pages/manager/stores";
 
 // HR pages
 import HrDashboard from "./pages/hr/dashboard";
@@ -215,6 +216,14 @@ const App = () => (
                 element={
                   <RoleProtectedRoute allowedRoles={['manager']}>
                     <ManagerCoaching />
+                  </RoleProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/manager/stores" 
+                element={
+                  <RoleProtectedRoute allowedRoles={['manager']}>
+                    <ManagerStores />
                   </RoleProtectedRoute>
                 } 
               />

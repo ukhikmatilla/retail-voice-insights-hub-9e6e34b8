@@ -1,0 +1,37 @@
+
+{
+  "stores": {
+    "title": "Точки / Магазины",
+    "add": "Добавить точку",
+    "assignSeller": "Назначить продавца",
+    "assignSellerDescription": "Выберите количество продавцов для магазина: {{store}}",
+    "sellerCountToAssign": "Количество продавцов",
+    "edit": "Редактировать точку",
+    "delete": "Удалить точку",
+    "name": "Название точки",
+    "location": "Адрес / Местоположение",
+    "status": "Статус",
+    "sellersCount": "Продавцы",
+    "lastUpdated": "Последнее обновление",
+    "actions": "Действия"
+  },
+  "confirm": {
+    "delete": "Вы уверены, что хотите удалить точку: {{item}}?"
+  },
+  "actions": {
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "save": "Сохранить",
+    "create": "Создать",
+    "assign": "Назначить"
+  },
+  "validation": {
+    "required": "Это поле обязательно"
+  },
+  "manager": {
+    "storesOverview": "Управление точками и магазинами"
+  },
+  "dashboard": {
+    "stores": "Точки"
+  }
+}

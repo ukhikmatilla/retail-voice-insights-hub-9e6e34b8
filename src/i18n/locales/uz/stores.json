@@ -1,0 +1,37 @@
+
+{
+  "stores": {
+    "title": "Do'konlar",
+    "add": "Yangi do'kon qo'shish",
+    "assignSeller": "Sotuvchini biriktirish",
+    "assignSellerDescription": "Do'kon uchun sotuvchilar sonini tanlang: {{store}}",
+    "sellerCountToAssign": "Sotuvchilar soni",
+    "edit": "Do'konni tahrirlash",
+    "delete": "Do'konni o'chirish",
+    "name": "Do'kon nomi",
+    "location": "Joylashuv",
+    "status": "Holati",
+    "sellersCount": "Sotuvchilar",
+    "lastUpdated": "Oxirgi yangilanish",
+    "actions": "Harakatlar"
+  },
+  "confirm": {
+    "delete": "{{item}} do'konini o'chirishni xohlaysizmi?"
+  },
+  "actions": {
+    "cancel": "Bekor qilish",
+    "confirm": "Tasdiqlash",
+    "save": "Saqlash",
+    "create": "Yaratish",
+    "assign": "Biriktirish"
+  },
+  "validation": {
+    "required": "Bu maydon talab qilinadi"
+  },
+  "manager": {
+    "storesOverview": "Do'konlar va filiallar boshqaruvi"
+  },
+  "dashboard": {
+    "stores": "Do'konlar"
+  }
+}

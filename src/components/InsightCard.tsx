@@ -4,8 +4,17 @@ import { Card, CardContent } from '@/components/ui/card';
 import { InsightType, Insight } from '@/types';
 import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
-import { LightbulbIcon, TrendingUpIcon, AlertTriangleIcon, RepeatIcon, WrenchIcon } from 'lucide-react';
+import { 
+  LightbulbIcon, 
+  TrendingUpIcon, 
+  AlertTriangleIcon, 
+  RepeatIcon, 
+  WrenchIcon,
+  ChevronDownIcon,
+  ChevronUpIcon
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 interface InsightCardProps {
   insight: Insight;
@@ -17,6 +26,11 @@ const InsightCard: React.FC<InsightCardProps> = ({
   showActions = false
 }) => {
   const { t } = useTranslation();
+  const [expanded, setExpanded] = useState(false);
+  
+  const toggleExpanded = () => {
+    setExpanded(!expanded);
+  };
   
   const getInsightDetails = () => {
     switch (insight.type) {
@@ -55,6 +69,12 @@ const InsightCard: React.FC<InsightCardProps> = ({
   
   const { icon, className } = getInsightDetails();
   
+  // For long content, we'll add a show more/less toggle
+  const isLongContent = insight.content && insight.content.length > 100;
+  const displayContent = expanded || !isLongContent
+    ? insight.content
+    : `${insight.content.substring(0, 100)}...`;
+  
   return (
     <Card className={cn("mb-3 overflow-hidden hover:shadow-md transition-shadow", className)}>
       <CardContent className="p-4">
@@ -73,33 +93,46 @@ const InsightCard: React.FC<InsightCardProps> = ({
                 </span>
               )}
             </div>
-            <p className="text-sm text-gray-600 mt-1">
-              {insight.content}
-            </p>
+            <div>
+              <p className="text-sm text-gray-600 mt-1">
+                {displayContent}
+              </p>
+              
+              {isLongContent && (
+                <button 
+                  className="text-xs text-primary mt-1 flex items-center"
+                  onClick={toggleExpanded}
+                >
+                  {expanded ? (
+                    <>
+                      <ChevronUpIcon className="h-3 w-3 mr-1" />
+                      {t('insights.hide')}
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDownIcon className="h-3 w-3 mr-1" />
+                      {t('insights.expand')}
+                    </>
+                  )}
+                </button>
+              )}
+            </div>
             
-            {insight.timestamp && (
-              <div className="flex justify-between items-center">
-                <p className="text-xs text-gray-500 mt-2">
+            <div className="flex justify-between items-center mt-2">
+              {insight.timestamp && (
+                <p className="text-xs text-gray-500">
                   {insight.timestamp}
                 </p>
-                
-                {showActions && (
-                  <div className="mt-2">
-                    <Button size="sm" variant="ghost" className="text-xs h-7 px-2">
-                      {t('insights.viewRelatedTraining')}
-                    </Button>
-                  </div>
-                )}
-              </div>
-            )}
-            
-            {!insight.timestamp && showActions && (
-              <div className="mt-2 flex justify-end">
-                <Button size="sm" variant="ghost" className="text-xs h-7 px-2">
-                  {t('insights.viewRelatedTraining')}
-                </Button>
-              </div>
-            )}
+              )}
+              
+              {showActions && (
+                <div className={insight.timestamp ? "" : "ml-auto"}>
+                  <Button size="sm" variant="ghost" className="text-xs h-7 px-2">
+                    {t('insights.viewRelatedTraining')}
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </CardContent>

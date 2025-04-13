@@ -1,7 +1,9 @@
+
 {
   "app": {
-    "title": "AISmart",
-    "desc": "AI orqali savdo ko'nikmalaringizni yaxshilang"
+    "title": "RetailVoiceAI",
+    "desc": "AI orqali savdo ko'nikmalaringizni yaxshilang",
+    "name": "RetailVoiceAI"
   },
   "common": {
     "loading": "Yuklanmoqda...",
@@ -17,7 +19,10 @@
     "continue": "Davom etish",
     "viewAll": "Barchasini ko'rish",
     "seeDetails": "Batafsil",
-    "min": "daq"
+    "min": "daq",
+    "viewDetails": "Batafsil →",
+    "search": "Qidirish",
+    "error": "Xatolik"
   },
   "auth": {
     "login": "Kirish",
@@ -50,7 +55,18 @@
     "totalConversations": "Jami suhbatlar",
     "avgScore": "O'rtacha ball",
     "successRate": "Muvaffaqiyat darajasi",
-    "missedOpportunities": "Boy berilgan imkoniyatlar"
+    "missedOpportunities": "Boy berilgan imkoniyatlar",
+    "overview": "Umumiy ko'rinish",
+    "conversations": "Suhbatlar",
+    "insights": "Tahlillar",
+    "training": "O'quv",
+    "stats": {
+      "title": "Statistika",
+      "totalConversations": "Jami suhbatlar",
+      "averageScore": "O'rtacha ball",
+      "missedOpportunities": "Boy berilgan imkoniyatlar",
+      "successRate": "Muvaffaqiyat darajasi"
+    }
   },
   "navigation": {
     "dashboard": "Boshqaruv paneli",
@@ -69,7 +85,13 @@
     "settings": "Profil sozlamalari",
     "personalInfo": "Shaxsiy ma'lumotlar",
     "language": "Til",
-    "notifications": "Bildirishnomalar"
+    "notifications": "Bildirishnomalar",
+    "title": "Profil",
+    "fullName": "To'liq ism",
+    "email": "Email",
+    "role": "Rol",
+    "save": "Saqlash",
+    "logout": "Chiqish"
   },
   "conversations": {
     "recent": "Oxirgi suhbatlar",
@@ -89,7 +111,24 @@
     "recommendations": "Tavsiyalar",
     "customerSaid": "Mijoz aytdi",
     "youSaid": "Siz aytdingiz",
-    "addLabel": "Yorliq qo'shish"
+    "addLabel": "Yorliq qo'shish",
+    "title": "Suhbat",
+    "score": "Ball",
+    "duration": "Davomiyligi",
+    "date": "Sana",
+    "device": "Qurilma",
+    "language": "Til",
+    "playAudio": "Audio eshitish",
+    "downloadTranscript": "Transkripsiyani yuklab olish",
+    "salesperson": "Sotuvchi",
+    "customer": "Mijoz",
+    "recommendations": {
+      "title": "Tavsiyalar",
+      "improvement": "Yaxshilash uchun",
+      "askMoreQuestions": "Ko'proq savollar bering",
+      "opportunity": "Imkoniyat",
+      "mentionLoyaltyProgram": "Sodiqlik dasturini eslatib o'ting"
+    }
   },
   "insights": {
     "yourInsights": "Sizning tahlillaringiz",
@@ -110,7 +149,39 @@
     "strengthsWeaknesses": "Kuchli/zaif tomonlar",
     "keyStrengths": "Asosiy kuchli tomonlar",
     "areasForImprovement": "Yaxshilash kerak bo'lgan sohalar",
-    "overTime": "Vaqt davomida"
+    "overTime": "Vaqt davomida",
+    "valueExplanation": "Qiymat tushuntirish",
+    "crossSelling": "Qo'shimcha sotuv",
+    "expand": "Kengaytirish",
+    "goToTraining": "O'quvga o'tish",
+    "chartExplanation": "Diagramma tushuntirishi",
+    "strengthsAndWeaknesses": "Kuchli va zaif tomonlar",
+    "strengths": "Kuchli tomonlar",
+    "weaknesses": "Zaif tomonlar",
+    "filters": {
+      "dateRange": "Sana oralig'i",
+      "last7Days": "Oxirgi 7 kun",
+      "last30Days": "Oxirgi 30 kun",
+      "last90Days": "Oxirgi 90 kun",
+      "custom": "Boshqa",
+      "insightType": "Tahlil turi",
+      "skill": "Ko'nikma",
+      "all": "Barchasi"
+    },
+    "tabs": {
+      "summary": "Xulosa",
+      "insights": "Tahlillar",
+      "recommendations": "Tavsiyalar"
+    },
+    "summary": {
+      "totalInsights": "Jami tahlillar",
+      "averageScore": "O'rtacha ball",
+      "improvementRate": "Yaxshilash ko'rsatkichi"
+    },
+    "charts": {
+      "insightTypes": "Tahlil turlari",
+      "skillProgress": "Ko'nikmalar taraqqiyoti"
+    }
   },
   "training": {
     "recommendedFor": "Siz uchun tavsiya etilgan",
@@ -169,7 +240,8 @@
     "answer": "Javob",
     "showAnswer": "Javobni ko'rsatish",
     "markComplete": "Yakunlandi deb belgilash",
-    "todayTraining": "Bugungi o'quv mashg'uloti",
+    "todayTraining": "Bugungi o'quv",
+    "today": "Bugun",
     "correctOf": "to'g'ri javob, jami",
     "questions": "savollardan",
     "checkAnswer": "Javobni tekshirish",
@@ -187,7 +259,18 @@
     "aiGoalDesc": "Tahlillaringizga asosan, siz quyidagi ko'nikmani yaxshilashingiz kerak:",
     "skillFilter": "Ko'nikma bo'yicha filtrlash",
     "levelFilter": "Daraja bo'yicha filtrlash",
-    "statusFilter": "Holat bo'yicha filtrlash"
+    "statusFilter": "Holat bo'yicha filtrlash",
+    "scriptLibrary": "Skriptlar kutubxonasi",
+    "scriptLibraryDesc": "Turli savdo vaziyatlari uchun tayyor skriptlar",
+    "viewScript": "Skriptni ko'rish",
+    "gameProgress": "O'quv taraqqiyoti",
+    "gameProgressDesc": "Yakunlangan va jarayondagi modullaringizni kuzating",
+    "badges": {
+      "dailyLearner": "Kunlik o'quvchi",
+      "perfectScore": "Mukammal ball",
+      "teamLeader": "Jamoa yetakchisi"
+    },
+    "viewAllBadges": "Barcha nishonlarni ko'rish"
   },
   "scripts": {
     "recommended": "Tavsiya etilgan skriptlar",
@@ -237,7 +320,19 @@
     "back": "Asosiy sahifaga qaytish"
   },
   "onboarding": {
-    "welcome": "AISmart'ga xush kelibsiz",
+    "welcome": {
+      "title": "RetailVoiceAI'ga xush kelibsiz",
+      "description": "Sun'iy intellekt yordamida savdo ko'nikmalaringizni yaxshilang"
+    },
+    "features": {
+      "title": "Xususiyatlar",
+      "description": "Savdolarni tahlil qilish va tavsiyalarni olish uchun suhbatlarni yuklang"
+    },
+    "getStarted": {
+      "title": "Boshlash",
+      "description": "Savdo ko'nikmalaringizni o'rganishni boshlang",
+      "button": "Boshlash"
+    },
     "intro": "Sun'iy intellekt yordamida savdo ko'nikmalaringizni yaxshilang",
     "step1": "Mijozlar bilan suhbat yozuvlarini yuklang",
     "step2": "Qimmatli ma'lumotlar va tavsiyalar oling",
@@ -247,89 +342,34 @@
   },
   "language": {
     "uz": "O'zbekcha",
-    "ru": "Русский"
+    "ru": "Русский",
+    "uzbek": "O'zbek tili",
+    "uzbek_flag": "🇺🇿"
   },
-  "training_content": {
-    "priceObjections": {
-      "title": "Narx e'tirozlarini hal qilish",
-      "description": "Mijozlarning narx bo'yicha savollariga samarali javob berish usullarini o'rganing.",
-      "steps": {
-        "intro": {
-          "title": "Kirish",
-          "content": "Narx e'tirozlari savdo mutaxassislari duch keladigan eng keng tarqalgan qiyinchiliklardan biridir. Ular mijoz mahsulot yoki xizmat narxi haqida tashvishlanganida paydo bo'ladi."
-        },
-        "lesson1": {
-          "title": "1-dars: Narx psixologiyasi",
-          "content": "Mijozlar qiymatni qanday idrok etishini tushunish narx e'tirozlarini yengish uchun juda muhimdir."
-        },
-        "lesson2": {
-          "title": "2-dars: Nima deyish mumkin EMAS",
-          "content": "Narx e'tirozlariga duch kelganda hech qachon darhol chegirmalar taklif qilmang. Bu mahsulotingizning qimmatini pasaytiradi va foyda marjasini keraksiz kamayishiga olib keladi."
-        },
-        "lesson3": {
-          "title": "3-dars: Samarali skriptlar",
-          "content": "To'g'ri til ishlatish mijozning e'tiborini narxdan qiymatga qaratishga yordam beradi."
-        },
-        "practice": {
-          "title": "Amaliyot: Rol o'ynash",
-          "content": "Haqiqiy vaziyatlarda ishonchni oshirish uchun ushbu usullarni rol o'ynash orqali mashq qiling."
-        },
-        "aiAdvice": {
-          "title": "AI tavsiyalari",
-          "content": "Oldingi darslardagi javoblaringizga asoslanib, yaxshilash uchun individual tavsiyalar."
-        },
-        "quiz": {
-          "title": "Yakuniy test"
-        }
-      },
-      "theory": {
-        "section1": {
-          "title": "Narx e'tirozlarini tushunish",
-          "content": "Narx e'tirozlari savdo mutaxassislari duch keladigan eng keng tarqalgan qiyinchiliklardan biridir. Ular mijoz mahsulot yoki xizmat narxi haqida tashvishlanganida paydo bo'ladi."
-        },
-        "section2": {
-          "title": "Ko'p uchraydigan xatolar",
-          "content": "Narx e'tirozlariga duch kelganda hech qachon darhol chegirmalar taklif qilmang. Bu mahsulotingizning qimmatini pasaytiradi va foyda marjasini keraksiz kamayishiga olib keladi."
-        },
-        "section3": {
-          "title": "Qiymatga asoslangan yondashuv",
-          "content": "Narx nuqtasini himoya qilish o'rniga, yechimingizning qiymati va ROI-ga e'tibor qarating."
-        },
-        "section4": {
-          "title": "Amaliy misol",
-          "content": "Mijoz 'Mahsulotingiz juda qimmat' deganida, 'Tushunaman, narx muhim. Narxning qaysi jihati sizni tashvishlantiradi?' deb javob bering. Bu haqiqiy e'tirozni aniqlashga yordam beradi."
-        }
-      },
-      "quiz": {
-        "question1": {
-          "question": "Narx e'tiroziga duch kelganda birinchi navbatda nima qilish kerak?",
-          "options": [
-            "Darhol chegirma taklif qilish",
-            "Tashvishni tan olish va chuqurroq surishtirish",
-            "Narxingizni raqobatchilar bilan solishtirish",
-            "Mavzuni o'zgartirish"
-          ],
-          "explanation": "Tashvishni tan olish mijozning nuqtai nazarini tasdiqlaydi, chuqurroq surishtirish esa ularning aniq e'tirozini tushunishga yordam beradi."
-        },
-        "question2": {
-          "question": "Narx e'tirozlarini hal qilish uchun qaysi yondashuv eng samarali?",
-          "options": [
-            "Qiymatga asoslangan savdo",
-            "Narxni moslashtirish",
-            "Chegirma berish",
-            "Muhokamani kechiktirish"
-          ],
-          "explanation": "Qiymatga asoslangan savdo narxning o'rniga yechimingizning foydasi va ROI-ga e'tibor qaratadi."
-        }
-      },
-      "tips": [
-        "Keyingi mijoz bilan muloqotingizda ushbu usulni mashq qilishni unutmang.",
-        "Narx haqida gaplashganda mijozning tana tiliga alohida e'tibor bering.",
-        "Narx haqida gaplashishdan oldin qiymatni ko'rsating.",
-        "Mijozlar narx bo'yicha tashvishlarini bildirganda, aniqlashtiruvchi savollar bering.",
-        "O'z nuqtai nazaringizni taqdim qilishdan oldin doimo mijozning fikrlarini tan oling.",
-        "Mahsulotingiz nima uchun sarmoyaga arzishini tushuntirishda ijtimoiy isbotdan foydalaning."
-      ]
+  "insight": {
+    "type": {
+      "improvement": "Yaxshilash",
+      "opportunity": "Imkoniyat",
+      "urgent": "Shoshilinch",
+      "behavior": "Xulq-atvor",
+      "custom": "Maxsus"
     }
+  },
+  "sales": {
+    "conversations": "Suhbatlar",
+    "conversationsDescription": "O'tkazilgan suhbatlar va AI tahlillari",
+    "insights": "Tahlillar",
+    "insightsDescription": "Savdo ko'nikmalaringiz haqida AI tahlillari",
+    "recentConversations": "Oxirgi suhbatlar",
+    "trainingModules": "O'quv modullari",
+    "weeklyInsights": "Haftalik tahlillar",
+    "training": "O'quv",
+    "trainingDescription": "O'quv modullari va savdo ko'nikmalarini yaxshilash uchun vositalar",
+    "dashboardDescription": "Savdolaringiz va ko'rsatkichlaringiz umumiy ko'rinishi",
+    "dateRange": "Sana oralig'i",
+    "language": "Til",
+    "filterConversations": "Suhbatlarni filtrlash",
+    "scoreThreshold": "Ball chegarasi",
+    "noConversations": "Suhbatlar topilmadi"
   }
 }

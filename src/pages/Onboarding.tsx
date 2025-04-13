@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import OnboardingSlide from '@/components/OnboardingSlide';
 import LanguageSelector from '@/components/LanguageSelector';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -68,7 +67,7 @@ const Onboarding = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-muted p-4">
       <div className="w-full max-w-md">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold">RetailVoiceAI</h1>
+          <h1 className="text-2xl font-bold">{t('app.name')}</h1>
           {showLanguageSelector && <LanguageSelector />}
         </div>
         

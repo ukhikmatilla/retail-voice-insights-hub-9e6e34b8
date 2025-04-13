@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams, useNavigate } from 'react-router-dom';
 import { 
   BarChart3,
   Calendar,
@@ -89,6 +90,7 @@ const aiRecommendationsMock = [
 const SalesInsights = () => {
   const { t } = useTranslation();
   const location = useLocation();
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [dateRange, setDateRange] = useState('30days');
   const [insightType, setInsightType] = useState('all');
@@ -123,6 +125,19 @@ const SalesInsights = () => {
     if (skillFilter !== 'all' && insight.skillKey !== skillFilter) return false;
     return true;
   });
+  
+  // Handle navigation to detail pages
+  const navigateToTotalInsights = () => {
+    navigate('/sales/insights/total');
+  };
+  
+  const navigateToScoreInsights = () => {
+    navigate('/sales/insights/score');
+  };
+  
+  const navigateToImprovementInsights = () => {
+    navigate('/sales/insights/improvement');
+  };
   
   return (
     <RoleLayout currentPath={location.pathname}>
@@ -192,7 +207,7 @@ const SalesInsights = () => {
           
           {/* Summary Tab */}
           <TabsContent value="summary">
-            {/* Stat Cards */}
+            {/* Stat Cards - Now with navigation to detail pages */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <StatCard 
                 title={t('insights.summary.totalInsights')} 
@@ -201,6 +216,7 @@ const SalesInsights = () => {
                 trend={{ value: 15, isPositive: true }}
                 tooltipKey="total"
                 route="/sales/insights/total"
+                onClick={navigateToTotalInsights}
               />
               <StatCard 
                 title={t('insights.summary.averageScore')} 
@@ -209,6 +225,7 @@ const SalesInsights = () => {
                 trend={{ value: 5, isPositive: true }}
                 tooltipKey="score"
                 route="/sales/insights/score"
+                onClick={navigateToScoreInsights}
               />
               <StatCard 
                 title={t('insights.summary.improvementRate')} 
@@ -217,6 +234,7 @@ const SalesInsights = () => {
                 trend={{ value: 3, isPositive: true }}
                 tooltipKey="improvement"
                 route="/sales/insights/improvement"
+                onClick={navigateToImprovementInsights}
               />
             </div>
             
@@ -228,9 +246,9 @@ const SalesInsights = () => {
               />
             </div>
             
-            {/* Charts - Updated with new InsightTypeChart */}
+            {/* Charts */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              {/* Insight Types Chart - Now using the new component */}
+              {/* Insight Types Chart */}
               <InsightTypeChart data={insightTypeData} />
               
               {/* Skills Progress Chart */}

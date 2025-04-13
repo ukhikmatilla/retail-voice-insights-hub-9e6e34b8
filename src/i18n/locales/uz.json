@@ -176,6 +176,9 @@
       "last7Days": "So'nggi 7 kun",
       "last30Days": "So'nggi 30 kun",
       "last90Days": "So'nggi 90 kun",
+      "last3Months": "So'nggi 3 oy",
+      "last6Months": "So'nggi 6 oy",
+      "last12Months": "So'nggi 12 oy",
       "custom": "Boshqa",
       "all": "Barchasi"
     },
@@ -198,7 +201,7 @@
     "noInsightsFound": "Tanlangan filtrlar bo'yicha tahlillar topilmadi.",
     "recommendationsList": "AI tavsiyalari",
     "recommendationsDescription": "Sizning ko'rsatkichlaringizga asoslangan shaxsiy tavsiyalar.",
-    "viewRelatedTraining": "Trening modulini ko'rish",
+    "viewRelatedTraining": "Tegishli trening modulini ko'rish",
     "viewTrainingModule": "Trening moduliga o'tish",
     "priority": {
       "high": "Yuqori",
@@ -256,7 +259,49 @@
       "urgent": "Muhim",
       "behavior": "Xulq",
       "custom": "Maxs."
-    }
+    },
+    "weeklyTrend": "Haftalik trend",
+    "total": {
+      "title": "Barcha tavsiyalar",
+      "button": "Barchasini ko'rish",
+      "description": "Mijoz bilan barcha suhbatlarda aniqlangan AI tavsiyalari va tahlillar."
+    },
+    "score": {
+      "title": "O'rtacha ball",
+      "description": "Sizning so'nggi suhbatlaringizdagi samaradorlik ko'rsatkichlarining AI tahlili.",
+      "trendChart": "Ball dinamikasi",
+      "trendDescription": "Vaqt o'tishi bilan sizning o'rtacha ballingizning o'zgarishi.",
+      "skillContribution": "Ko'nikmalar ulushi",
+      "skillScore": "Ko'nikma bali",
+      "aiTips": "AI tavsiyalari",
+      "recommendations": "Balni yaxshilash uchun tavsiyalar",
+      "shortTermTips": "Qisqa muddatli tavsiyalar",
+      "longTermTips": "Uzoq muddatli tavsiyalar",
+      "tip1": "Savollarda ochiq formatdan foydalaning",
+      "tip2": "Mijozning asosiy ehtiyojini toping",
+      "tip3": "Qiymat taklifi ustida ishlagandan keyin narxni muhokama qiling",
+      "tip4": "Har bir mahsulot bo'yicha bilimlaringizni mustahkamlang",
+      "tip5": "Motivatsion treningga qatnashing",
+      "tip6": "Mijozlar bilan muloqot ko'nikmalarini rivoljantiring",
+      "averageScore": "O'rtacha ball"
+    },
+    "improvement": {
+      "title": "Yaxshilanish sur'ati",
+      "description": "Ko'nikmalaringizning rivojlanishi va vaqt o'tishi bilan takomillashishingiz.",
+      "skillImprovementChart": "Ko'nikmalar rivojlanish diagrammasi",
+      "chartDescription": "Vaqt o'tishi bilan har bir ko'nikma bo'yicha o'zgarishlar.",
+      "beforeAfter": "Oldin va keyin ko'rsatkichlari",
+      "before": "Oldin",
+      "after": "Keyin",
+      "aiAdvice": "AI tavsiyalari",
+      "improvementLog": "Yaxshilanish jurnali",
+      "logDescription": "Takomillashtirishlar va ularga olib kelgan harakatlar tarixini kuzating.",
+      "keyInsight": "Asosiy kuzatuv",
+      "nextChallenge": "Keyingi vazifa",
+      "aiAdvice1": "Mijozlarga mahsulot haqida ma'lumot berishda ancha yaxshilandingiz (+20%). Ko'p savol berishingiz ularga o'zlarini tushinilgan his qilishlariga yordam bermoqda.",
+      "aiAdvice2": "E'tirozlar bilan ishlashni yaxshilash uchun yangi usullarni sinab ko'ring. Narxga bog'liq e'tirozlar hali ham asosiy qiyinchilikdir."
+    },
+    "back": "Analitikaga qaytish"
   },
   "training": {
     "status": {

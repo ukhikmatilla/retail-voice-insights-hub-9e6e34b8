@@ -33,6 +33,7 @@ interface StatCardProps {
   className?: string;
   route?: string;
   tooltipKey?: 'total' | 'score' | 'improvement';
+  onClick?: () => void; // Added onClick prop
 }
 
 const StatCard: React.FC<StatCardProps> = ({ 
@@ -42,14 +43,17 @@ const StatCard: React.FC<StatCardProps> = ({
   trend, 
   className,
   route,
-  tooltipKey = 'total'
+  tooltipKey = 'total',
+  onClick  // Add onClick handling
 }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   const handleCardClick = () => {
-    if (route) {
+    if (onClick) {
+      onClick();  // Use provided onClick function if available
+    } else if (route) {
       navigate(route);
     }
   };
@@ -148,10 +152,10 @@ const StatCard: React.FC<StatCardProps> = ({
       <DrawerContent className="px-4 pb-6">
         <div className="mt-6">
           {renderTooltipContent()}
-          {route && (
+          {(route || onClick) && (
             <div className="mt-4">
               <button 
-                onClick={() => navigate(route)}
+                onClick={handleCardClick}
                 className="w-full bg-primary text-primary-foreground py-2 rounded-md"
               >
                 {t('insights.tooltips.viewDetails')}

@@ -21,6 +21,9 @@ import SalesDashboard from "./pages/sales/dashboard";
 import SalesConversations from "./pages/sales/conversations";
 import ConversationDetail from "./pages/sales/conversations/[id]";
 import SalesInsights from "./pages/sales/insights";
+import TotalInsightsPage from "./pages/sales/insights/total";
+import ScoreInsightsPage from "./pages/sales/insights/score";
+import ImprovementInsightsPage from "./pages/sales/insights/improvement";
 import SalesTraining from "./pages/sales/training";
 
 // Manager pages
@@ -108,6 +111,30 @@ const App = () => (
                 element={
                   <RoleProtectedRoute allowedRoles={['salesperson']}>
                     <SalesInsights />
+                  </RoleProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/sales/insights/total" 
+                element={
+                  <RoleProtectedRoute allowedRoles={['salesperson']}>
+                    <TotalInsightsPage />
+                  </RoleProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/sales/insights/score" 
+                element={
+                  <RoleProtectedRoute allowedRoles={['salesperson']}>
+                    <ScoreInsightsPage />
+                  </RoleProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/sales/insights/improvement" 
+                element={
+                  <RoleProtectedRoute allowedRoles={['salesperson']}>
+                    <ImprovementInsightsPage />
                   </RoleProtectedRoute>
                 } 
               />

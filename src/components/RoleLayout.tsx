@@ -15,7 +15,8 @@ import {
   UserIcon,
   LineChartIcon,
   BookOpenIcon,
-  SettingsIcon
+  SettingsIcon,
+  Bot
 } from 'lucide-react';
 
 interface NavItem {
@@ -61,6 +62,14 @@ const RoleLayout: React.FC<RoleLayoutProps> = ({ children, currentPath }) => {
       }
     ];
     
+    // Common items for all roles that have access to AI Trainer
+    const aiTrainerItem: NavItem = {
+      label: t('ai.trainer.title'),
+      icon: <Bot className="h-5 w-5" />,
+      href: '/ai/trainer',
+      active: currentPath === '/ai/trainer'
+    };
+    
     // Add role-specific items
     switch(user.role) {
       case 'salesperson':
@@ -83,7 +92,8 @@ const RoleLayout: React.FC<RoleLayoutProps> = ({ children, currentPath }) => {
             icon: <GraduationCapIcon className="h-5 w-5" />,
             href: '/sales/training',
             active: currentPath === '/sales/training'
-          }
+          },
+          aiTrainerItem // Add AI Trainer for salesperson
         ];
       case 'manager':
         return [
@@ -105,7 +115,8 @@ const RoleLayout: React.FC<RoleLayoutProps> = ({ children, currentPath }) => {
             icon: <GraduationCapIcon className="h-5 w-5" />,
             href: '/manager/coaching',
             active: currentPath === '/manager/coaching'
-          }
+          },
+          aiTrainerItem // Add AI Trainer for manager
         ];
       case 'hr':
         return [
@@ -128,6 +139,7 @@ const RoleLayout: React.FC<RoleLayoutProps> = ({ children, currentPath }) => {
             href: '/hr/training-management',
             active: currentPath === '/hr/training-management'
           }
+          // HR doesn't have access to the AI Trainer
         ];
       default:
         return baseItems;

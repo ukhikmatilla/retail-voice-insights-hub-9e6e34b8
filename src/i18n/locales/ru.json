@@ -329,9 +329,30 @@
     "progressTitle": "Ваш прогресс обучения",
     "progressDesc": "Отслеживайте завершенные и текущие модули",
     "badges": {
-      "title": "Ваши достижения"
+      "title": "Ваши достижения",
+      "dailyLearner": "Пройден модуль сегодня",
+      "perfectScore": "100% в тесте",
+      "fiveInARow": "5 дней подряд в обучении",
+      "scriptMaster": "Использовал 5 скриптов",
+      "teamLeader": "Лидер команды",
+      "dailyLearner.description": "Вы прошли сегодняшнее микро-обучение",
+      "perfectScore.description": "Вы получили 100% в тестировании",
+      "fiveInARow.description": "Вы обучались 5 дней подряд",
+      "scriptMaster.description": "Вы использовали 5 скриптов",
+      "teamLeader.description": "Вы заняли 1-е место в команде на этой неделе"
     },
-    "earned": "Получено"
+    "earned": "Получено",
+    "microTitle": "Микрообучение дня",
+    "today": "Сегодня",
+    "viewScript": "Посмотреть ответ",
+    "hideScript": "Скрыть",
+    "scriptLibrary": "Библиотека скриптов",
+    "searchScripts": "Поиск скриптов",
+    "noScriptsFound": "Скрипты не найдены",
+    "gameProgress": "Игровой прогресс",
+    "gameProgressDesc": "Ваши достижения и прогресс",
+    "streakDays": "дней подряд",
+    "viewAllBadges": "Посмотреть все награды"
   },
   "hr": {
     "analysis": "Анализ",

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
@@ -29,7 +28,6 @@ import {
   CardContent, 
   CardHeader, 
   CardTitle, 
-  CardFooter, 
   CardDescription 
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -38,6 +36,10 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
 import TrainingModuleCard from '@/components/TrainingModuleCard';
+import MicroTrainingCard from '@/components/MicroTrainingCard';
+import ScriptLibrary from '@/components/ScriptLibrary';
+import BadgeBoard from '@/components/BadgeBoard';
+import { mockTrainings, mockMicroTraining, mockScriptSnippets, mockBadges, mockStreak } from '@/data/mockData';
 
 // Mock training modules
 const trainingModules = [
@@ -121,38 +123,6 @@ const generateProgressData = (days = 30) => {
 };
 
 const progressData = generateProgressData();
-
-// Mock achievements data
-const achievements = [
-  {
-    id: '1',
-    title: 'First Module',
-    description: 'Completed your first training module',
-    icon: <Award className="h-6 w-6 text-amber-500" />,
-    earned: true
-  },
-  {
-    id: '2',
-    title: 'Skill Master',
-    description: 'Achieved +15% in trust building',
-    icon: <TrendingUp className="h-6 w-6 text-emerald-500" />,
-    earned: true
-  },
-  {
-    id: '3',
-    title: 'Consistent Learner',
-    description: 'Completed training 5 days in a row',
-    icon: <Clock className="h-6 w-6 text-blue-500" />,
-    earned: true
-  },
-  {
-    id: '4',
-    title: 'Knowledge Sharing',
-    description: 'Shared insights with 3 team members',
-    icon: <MessageCircle className="h-6 w-6 text-violet-500" />,
-    earned: false
-  }
-];
 
 // Component for AI recommendation header
 const TrainingHeader = ({ recommendedModule }) => {
@@ -284,42 +254,6 @@ const TrainingProgressChart = ({ data }) => {
   );
 };
 
-// Component for achievements badges
-const TrainingBadgeList = ({ badges }) => {
-  const { t } = useTranslation();
-  
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{t('training.badges.title')}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {badges.map(badge => (
-            <div 
-              key={badge.id} 
-              className={`flex flex-col items-center justify-center p-4 rounded-lg border ${
-                badge.earned ? 'bg-white' : 'bg-gray-50 opacity-50'
-              }`}
-            >
-              <div className="mb-2">
-                {badge.icon}
-              </div>
-              <h4 className="text-sm font-medium text-center">{badge.title}</h4>
-              <p className="text-xs text-muted-foreground text-center mt-1">{badge.description}</p>
-              {badge.earned && (
-                <Badge variant="secondary" className="mt-2">
-                  <Check className="h-3 w-3 mr-1" /> {t('training.earned', 'Earned')}
-                </Badge>
-              )}
-            </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
-
 const SalesTraining = () => {
   const { t } = useTranslation();
   const location = useLocation();
@@ -364,13 +298,19 @@ const SalesTraining = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Filters - Left side on desktop, top on mobile */}
           <div className="lg:col-span-1">
-            <TrainingFilterPanel 
-              filters={filters} 
-              onChange={handleFilterChange} 
-            />
+            {/* Filter Panel */}
+            <div className="space-y-6">
+              <TrainingFilterPanel 
+                filters={filters} 
+                onChange={handleFilterChange} 
+              />
+              
+              {/* Micro-Training of the Day - NEW */}
+              <MicroTrainingCard microTraining={mockMicroTraining} />
+            </div>
           </div>
           
-          {/* Training Modules */}
+          {/* Training Modules and other content */}
           <div className="lg:col-span-3">
             <h2 className="text-xl font-semibold mb-4">{t('sales.trainingModules')}</h2>
             {filteredModules.length > 0 ? (
@@ -388,14 +328,19 @@ const SalesTraining = () => {
               </Card>
             )}
             
+            {/* Script Library - NEW */}
+            <div className="mb-8">
+              <ScriptLibrary scripts={mockScriptSnippets} />
+            </div>
+            
             {/* Progress Chart */}
             <div className="mb-8">
               <TrainingProgressChart data={progressData} />
             </div>
             
-            {/* Achievements */}
+            {/* Gamification and Challenges - NEW */}
             <div>
-              <TrainingBadgeList badges={achievements} />
+              <BadgeBoard badges={mockBadges} streak={mockStreak} />
             </div>
           </div>
         </div>

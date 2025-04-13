@@ -55,3 +55,38 @@ export interface Training {
   level: string;
   progress: number;
 }
+
+// New interfaces for enhanced training page
+export interface MicroTraining {
+  id: string;
+  title: string;
+  estimatedTime: string;
+  question: string;
+  answer: string;
+  completed: boolean;
+  date: string;
+}
+
+export interface ScriptSnippet {
+  id: string;
+  category: string;
+  scenario: string;
+  aiAnswer: string;
+  source: string;
+  expanded?: boolean;
+}
+
+export interface Badge {
+  id: string;
+  key: string;
+  title: string;
+  description: string;
+  status: 'received' | 'locked';
+  icon?: string;
+  earnedDate?: string;
+}
+
+export interface StreakInfo {
+  days: number;
+  lastActivity: string;
+}

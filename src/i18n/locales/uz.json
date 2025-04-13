@@ -329,9 +329,30 @@
     "progressTitle": "O'qish jarayoni",
     "progressDesc": "Tugallangan va jarayondagi modullaringizni kuzating",
     "badges": {
-      "title": "Yutuqlaringiz"
+      "title": "Yutuqlaringiz",
+      "dailyLearner": "Kunlik o'quvchi",
+      "perfectScore": "100% natija",
+      "fiveInARow": "5 kun ketma-ket",
+      "scriptMaster": "Skript ustasi",
+      "teamLeader": "Guruh yetakchisi",
+      "dailyLearner.description": "Bugungi mikro-treningni yakunladingiz",
+      "perfectScore.description": "Treningda 100% to'g'ri javob berdingiz",
+      "fiveInARow.description": "5 kun ketma-ket o'qishda qatnashdingiz",
+      "scriptMaster.description": "5 ta skriptdan foydalandingiz",
+      "teamLeader.description": "Bu hafta jamoangizda 1-o'rinni egallaysiz"
     },
-    "earned": "Qo'lga kiritildi"
+    "earned": "Qo'lga kiritildi",
+    "microTitle": "Kunning mini treningi",
+    "today": "Bugun",
+    "viewScript": "Javobni ko'rish",
+    "hideScript": "Yopish",
+    "scriptLibrary": "Skript kutubxonasi",
+    "searchScripts": "Skriptlarni qidirish",
+    "noScriptsFound": "Skriptlar topilmadi",
+    "gameProgress": "O'yin yutuqlari",
+    "gameProgressDesc": "Sizning yutuqlaringiz va jarayoningiz",
+    "streakDays": "kun ketma-ket",
+    "viewAllBadges": "Barcha yutuqlarni ko'rish"
   },
   "hr": {
     "analysis": "Tahlil",

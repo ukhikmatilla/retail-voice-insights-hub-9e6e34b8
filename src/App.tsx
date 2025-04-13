@@ -25,6 +25,9 @@ import TotalInsightsPage from "./pages/sales/insights/total";
 import ScoreInsightsPage from "./pages/sales/insights/score";
 import ImprovementInsightsPage from "./pages/sales/insights/improvement";
 import SalesTraining from "./pages/sales/training";
+import MicroTrainingDetail from "./pages/sales/training/micro/[id]";
+import ScriptsPage from "./pages/sales/scripts";
+import BadgesPage from "./pages/sales/training/badges";
 
 // Manager pages
 import ManagerDashboard from "./pages/manager/dashboard";
@@ -143,6 +146,30 @@ const App = () => (
                 element={
                   <RoleProtectedRoute allowedRoles={['salesperson']}>
                     <SalesTraining />
+                  </RoleProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/sales/training/micro/:id" 
+                element={
+                  <RoleProtectedRoute allowedRoles={['salesperson']}>
+                    <MicroTrainingDetail />
+                  </RoleProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/sales/scripts" 
+                element={
+                  <RoleProtectedRoute allowedRoles={['salesperson']}>
+                    <ScriptsPage />
+                  </RoleProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/sales/training/badges" 
+                element={
+                  <RoleProtectedRoute allowedRoles={['salesperson']}>
+                    <BadgesPage />
                   </RoleProtectedRoute>
                 } 
               />

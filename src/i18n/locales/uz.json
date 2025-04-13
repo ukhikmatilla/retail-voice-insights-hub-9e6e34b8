@@ -66,11 +66,53 @@
       "personnelCount": "Jami xodimlar",
       "activeEmployees": "Faol xodimlar",
       "newThisMonth": "Bu oyda ishga olinganlar",
-      "trainingProgress": "Trening jarayoni"
+      "terminationsThisMonth": "Bu oyda ishdan ketganlar",
+      "trainingProgress": "Trening jarayoni",
+      "adaptationLevel": "Moslashuv darajasi",
+      "requiredTraining": "Zaruriy treninglar",
+      "averageTenure": "O'rtacha ish staji",
+      "years": "yil",
+      "trainingDistribution": "Trening taqsimoti"
     },
     "turnoverTrend": "Oylik ishchi aylanishi",
     "departmentBreakdown": "Bo'limlar bo'yicha taqsimot",
-    "recentHires": "Yaqinda ishga olinganlar"
+    "recentHires": "Yaqinda ishga olinganlar",
+    "attentionRequired": "E'tibor talab etadigan xodimlar",
+    "aiInsights": "AI tahlillari",
+    "hiredOn": "Ishga olingan sana",
+    "trainingProgress": "Trening jarayoni",
+    "risk": {
+      "high": "Yuqori xavf",
+      "medium": "O'rta xavf",
+      "low": "Past xavf"
+    },
+    "priority": {
+      "high": "Yuqori muhimlik",
+      "medium": "O'rta muhimlik",
+      "low": "Past muhimlik"
+    },
+    "actions": {
+      "addEmployee": "Yangi xodim qo'shish",
+      "assignTraining": "Trening biriktirish",
+      "exportReport": "Hisobotni yuklab olish",
+      "message": "Xabar yuborish",
+      "assignCoach": "Koucher biriktirish",
+      "viewDetails": "Tafsilotlarni ko'rish",
+      "takeAction": "Choralar ko'rish"
+    },
+    "tabs": {
+      "charts": "Grafiklar",
+      "attention": "Diqqat talab",
+      "insights": "AI tahlillar"
+    },
+    "charts": {
+      "hires": "Ishga qabul qilinganlar",
+      "terminations": "Ishdan ketganlar",
+      "employeeCount": "Xodimlar soni"
+    },
+    "aiInsight1": "10 ta xodim mijoz bilan suhbatlashganda, ularni tez-tez uzib qo'yishadi",
+    "aiInsight2": "5 nafar yangi xodim standart salomlashishdan foydalanmaydi",
+    "aiInsight3": "15 nafar xodimda xaridor so'rovlariga javob berish uchun bilim yetarli emas"
   },
   "roles": {
     "salesperson": "Sotuvchi",

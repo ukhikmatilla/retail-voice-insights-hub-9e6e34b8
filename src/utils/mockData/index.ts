@@ -7,3 +7,4 @@ export * from './storePerformance';
 export * from './sellerPerformance';
 export * from './aiBehaviorPatterns';
 export * from './commonMistakes';
+export * from './hrStats';

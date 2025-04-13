@@ -1,3 +1,4 @@
+
 {
   "common": {
     "error": {
@@ -19,10 +20,29 @@
     "personnel": "Xodimlar",
     "analysis": "Tahlil",
     "trainingManagement": "O'qitishni boshqarish",
+    "title": "Umumiy ko'rinish",
     "stats": {
       "totalConversations": "Jami suhbatlar",
-      "successRate": "Muvaffaqiyat darajasi"
-    }
+      "successRate": "Muvaffaqiyat darajasi",
+      "totalStores": "Jami do'konlar",
+      "totalSellers": "Jami sotuvchilar",
+      "totalCalls": "Suhbatlar",
+      "avgScore": "O'rtacha baho"
+    },
+    "aiFocus": "AI haftalik e'tibori",
+    "training": {
+      "title": "Trening jarayoni"
+    },
+    "welcome": "Xush kelibsiz, {name}",
+    "criticalAttention": "E'tibor talab",
+    "aiWeeklyInsights": "AI haftalik tahlillari",
+    "focusOfTheWeek": "Haftalik e'tibor",
+    "storeActivity": "Do'konlar faolligi",
+    "viewAll": "Barchasini ko'rish",
+    "storeName": "Do'kon nomi",
+    "performance": "Ko'rsatkichlar",
+    "status": "Holati",
+    "actions": "Harakatlar"
   },
   "roles": {
     "salesperson": "Sotuvchi",
@@ -37,7 +57,8 @@
     "status": {
       "completed": "Tugallangan",
       "inProgress": "Jarayonda"
-    }
+    },
+    "title": "Trening"
   },
   "conversation": {
     "recommendations": {
@@ -52,7 +73,12 @@
   "insights": {
     "hide": "Yashirish",
     "questioning": "Savol berish ko'nikmalari",
-    "objections": "E'tirozlar bilan ishlash"
+    "objections": "E'tirozlar bilan ishlash",
+    "title": "Tahlil",
+    "weeklyTrends": "Haftalik tendensiyalar",
+    "filters": {
+      "seller": "Sotuvchi"
+    }
   },
   "insight": {
     "type": {
@@ -65,7 +91,9 @@
   },
   "manager": {
     "coaching": "Kouching",
-    "coachingDescription": "Sotuv ko'nikmalarini rivojlantirish va sotuvchilarni o'qitish"
+    "coachingDescription": "Sotuv ko'nikmalarini rivojlantirish va sotuvchilarni o'qitish",
+    "dashboardDescription": "Jamoangizni boshqaring va sotish ko'rsatkichlarini tahlil qiling",
+    "teamOverview": "Jamoa ko'rinishi"
   },
   "coaching": {
     "recommendations": "AI tavsiyalari",
@@ -85,6 +113,25 @@
     "assign": "Belgilash",
     "storeLeaderboard": "Do'konlar reytingi",
     "sellerCount": "Sotuvchilar soni",
-    "viewDetails": "Batafsil ko'rish"
+    "viewDetails": "Batafsil ko'rish",
+    "status": {
+      "needsAttention": "E'tibor kerak",
+      "improving": "Yaxshilanyapti",
+      "good": "Yaxshi"
+    }
+  },
+  "sotuvchi": {
+    "improvement": {
+      "questioning": "Sotuvchilar mijozlarning ehtiyojlarini aniqlash uchun ko'proq ochiq savollar berishlari kerak"
+    },
+    "opportunity": {
+      "upselling": "Qo'shimcha mahsulotlar bilan chekni oshirish imkoniyati mavjud"
+    },
+    "urgent": {
+      "pricing": "Jamoani narx e'tirozlari bilan ishlashga o'rgatish juda zarur"
+    },
+    "focus": {
+      "clarifyingObjections": "Javob berishdan oldin mijozning e'tirozlarini aniqlashtirish"
+    }
   }
 }

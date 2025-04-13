@@ -1,8 +1,11 @@
+
 {
   "common": {
     "loading": "Загрузка...",
-    "error.stepNotFound": "Шаг не найден. Пожалуйста, вернитесь к предыдущему уроку.",
-    "error.contentNotFound": "Контент не найден. Пожалуйста, попробуйте позже.",
+    "error": {
+      "stepNotFound": "Шаг не найден. Пожалуйста, вернитесь к предыдущему уроку.",
+      "contentNotFound": "Контент не найден. Пожалуйста, попробуйте позже."
+    },
     "coachingPlaceholder": "Здесь будет информация о коучинге."
   },
   "button": {
@@ -23,40 +26,75 @@
     "personnel": "Персонал",
     "analysis": "Анализ",
     "trainingManagement": "Управление обучением",
-    "stats.totalConversations": "Всего разговоров",
-    "stats.successRate": "Успешных разговоров"
+    "title": "Обзор",
+    "stats": {
+      "totalConversations": "Всего разговоров",
+      "successRate": "Успешных разговоров",
+      "totalStores": "Всего точек",
+      "totalSellers": "Всего продавцов",
+      "totalCalls": "Разговоров",
+      "avgScore": "Средний балл"
+    },
+    "aiFocus": "Фокус AI недели",
+    "training": {
+      "title": "Прогресс обучения" 
+    },
+    "welcome": "Добро пожаловать, {name}",
+    "criticalAttention": "Требуется внимание",
+    "aiWeeklyInsights": "Аналитика AI за неделю",
+    "focusOfTheWeek": "Фокус недели",
+    "storeActivity": "Активность магазинов",
+    "viewAll": "Посмотреть все",
+    "storeName": "Название магазина",
+    "performance": "Показатели",
+    "status": "Статус",
+    "actions": "Действия"
   },
   "insight": {
-    "type.improvement": "Улучшение",
-    "type.opportunity": "Возможность",
-    "type.urgent": "Срочно",
-    "type.behavior": "Поведение",
-    "type.custom": "Пользовательский"
+    "type": {
+      "improvement": "Улучшение",
+      "opportunity": "Возможность",
+      "urgent": "Срочно",
+      "behavior": "Поведение",
+      "custom": "Пользовательский"
+    }
   },
   "insights": {
     "hide": "Скрыть",
     "questioning": "Навыки задавания вопросов",
-    "objections": "Работа с возражениями"
+    "objections": "Работа с возражениями",
+    "title": "Аналитика",
+    "weeklyTrends": "Тренды недели",
+    "filters": {
+      "seller": "Продавец"
+    }
   },
   "training": {
     "content": "Содержание",
     "theory": "Теория",
     "finalQuiz": "Финальный тест",
     "quizDescription": "Проверьте свои знания, пройдя финальный тест.",
-    "status.completed": "Пройдено",
-    "status.in_progress": "В процессе"
+    "status": {
+      "completed": "Пройдено",
+      "in_progress": "В процессе"
+    },
+    "title": "Обучение"
   },
   "conversation": {
-    "recommendations.title": "Рекомендации AI",
-    "recommendations.improvement": "Улучшение",
-    "recommendations.opportunity": "Возможность",
-    "recommendations.urgent": "Срочно",
-    "recommendations.askMoreQuestions": "Задавайте больше открытых вопросов, чтобы лучше понимать потребности клиентов.",
-    "recommendations.mentionLoyaltyProgram": "Упомяните нашу программу лояльности для постоянных клиентов."
+    "recommendations": {
+      "title": "Рекомендации AI",
+      "improvement": "Улучшение",
+      "opportunity": "Возможность",
+      "urgent": "Срочно",
+      "askMoreQuestions": "Задавайте больше открытых вопросов, чтобы лучше понимать потребности клиентов.",
+      "mentionLoyaltyProgram": "Упомяните нашу программу лояльности для постоянных клиентов."
+    }
   },
   "manager": {
     "coaching": "Коучинг",
-    "coachingDescription": "Развитие навыков продаж и обучение продавцов"
+    "coachingDescription": "Развитие навыков продаж и обучение продавцов",
+    "dashboardDescription": "Управляйте своей командой и анализируйте показатели продаж",
+    "teamOverview": "Обзор команды"
   },
   "coaching": {
     "recommendations": "Рекомендации ИИ",
@@ -76,6 +114,25 @@
     "assign": "Назначить",
     "storeLeaderboard": "Рейтинг магазинов",
     "sellerCount": "Количество продавцов",
-    "viewDetails": "Подробнее"
+    "viewDetails": "Подробнее",
+    "status": {
+      "needsAttention": "Требуется внимание",
+      "improving": "Улучшается",
+      "good": "Хорошо"
+    }
+  },
+  "sotuvchi": {
+    "improvement": {
+      "questioning": "Продавцам следует задавать больше открытых вопросов для выявления потребностей клиентов"
+    },
+    "opportunity": {
+      "upselling": "Есть возможность увеличить чек за счет дополнительных товаров"
+    },
+    "urgent": {
+      "pricing": "Срочно нужно обучить команду работе с возражениями по цене"
+    },
+    "focus": {
+      "clarifyingObjections": "Уточнять возражения клиентов, прежде чем давать ответ"
+    }
   }
 }

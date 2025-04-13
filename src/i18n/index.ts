@@ -1,15 +1,28 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+
+// Import Russian translations
+import ruCommon from './locales/ru/common.json';
+import ruAuth from './locales/ru/auth.json';
+import ruDashboard from './locales/ru/dashboard.json';
+import ruAi from './locales/ru/ai.json';
+import ruRoles from './locales/ru/roles.json';
+
+// Import Uzbek translations
 import uzTranslation from './locales/uz.json';
-import ruTranslation from './locales/ru.json';
 
 const resources = {
+  ru: {
+    translation: {
+      ...ruCommon,
+      ...ruAuth,
+      ...ruDashboard,
+      ...ruAi,
+      ...ruRoles
+    }
+  },
   uz: {
     translation: uzTranslation
-  },
-  ru: {
-    translation: ruTranslation
   }
 };
 

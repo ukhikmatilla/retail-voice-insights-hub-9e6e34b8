@@ -4,14 +4,16 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import RoleLayout from '@/components/RoleLayout';
 import MicroTrainingCard from '@/components/MicroTrainingCard';
-import ScriptLibrary from '@/components/ScriptLibrary';
 import BadgeBoard from '@/components/BadgeBoard';
 import TrainingHeader from '@/components/training/TrainingHeader';
-import TrainingFilterPanel from '@/components/training/TrainingFilterPanel';
 import TrainingModuleList from '@/components/training/TrainingModuleList';
 import TrainingProgressChart from '@/components/training/TrainingProgressChart';
-import { generateProgressData, filterTrainingModules } from '@/utils/trainingUtils';
-import { mockTrainings, mockMicroTraining, mockScriptSnippets, mockBadges, mockStreak } from '@/data/mockData';
+import { generateProgressData } from '@/utils/trainingUtils';
+import { mockMicroTraining, mockScriptSnippets, mockBadges, mockStreak } from '@/data/mockData';
+import { trainingModules as mockTrainingModules } from '@/data/trainingModules';
+import { useTrainingFilters } from '@/hooks/useTrainingFilters';
+import { FilterSelector } from '@/components/FilterSelector';
+import { ALL_TEXT, BEGINNER_TEXT, INTERMEDIATE_TEXT, ADVANCED_TEXT, RECOMMENDED_TEXT, IN_PROGRESS_TEXT, COMPLETED_TEXT, ASSIGNED_TEXT, OBJECTIONS_TEXT, TRUST_BUILDING_TEXT, CROSS_SELLING_TEXT, CLOSING_TEXT, VALUE_EXPLANATION_TEXT } from '@/constants/trainingTexts';
 import { Training } from '@/types';
 
 // Mock training modules with correct status types
@@ -82,27 +84,35 @@ const SalesTraining = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const [filters, setFilters] = useState({
-    skill: 'all',
-    level: 'all',
-    status: 'all',
+    skill: ALL_TEXT,
+    level: ALL_TEXT,
+    status: ALL_TEXT,
   });
   
   // Progress chart data
   const progressData = generateProgressData();
   
   // Find recommended module for AI goal
-  const recommendedModule = trainingModules.find(module => module.status === 'recommended') || trainingModules[0];
-  
-  // Filter modules based on selected filters
-  const filteredModules = filterTrainingModules(trainingModules, filters);
-  
-  // Handler for filter changes
-  const handleFilterChange = (filterType: string, value: string) => {
-    setFilters(prev => ({
-      ...prev,
-      [filterType]: value
-    }));
-  };
+  const recommendedModule = mockTrainingModules.find(module => module.status === 'recommended') || mockTrainingModules[0];
+
+  const { filteredModules } = useTrainingFilters(mockTrainingModules, filters);
+
+  const skillOptions = [
+    { value: ALL_TEXT, label: t('training.filters.all') },
+    { value: OBJECTIONS_TEXT, label: t('training.skills.objections') },
+    { value: TRUST_BUILDING_TEXT, label: t('training.skills.trustBuilding') },
+    { value: CROSS_SELLING_TEXT, label: t('training.skills.crossSelling') },
+    { value: CLOSING_TEXT, label: t('training.skills.closing') },
+    { value: VALUE_EXPLANATION_TEXT, label: t('training.skills.valueExplanation') },
+  ];
+
+  const levelOptions = [
+    { value: ALL_TEXT, label: t('training.filters.all') },
+    { value: BEGINNER_TEXT, label: t('training.levels.beginner') },
+    { value: INTERMEDIATE_TEXT, label: t('training.levels.intermediate') },
+    { value: ADVANCED_TEXT, label: t('training.levels.advanced') },
+  ];
+
   
   return (
     <RoleLayout currentPath={location.pathname}>
@@ -122,10 +132,38 @@ const SalesTraining = () => {
           <div className="lg:col-span-1 order-2 lg:order-1">
             {/* Filter Panel */}
             <div className="space-y-6">
-              <TrainingFilterPanel 
-                filters={filters} 
-                onChange={handleFilterChange} 
-              />
+            <FilterSelector
+              value={filters.skill}
+              onValueChange={(value) => setFilters({ ...filters, skill: value })}
+              placeholder={t('training.filters.skill') || ''}
+              options={skillOptions}
+            />
+
+            <FilterSelector
+              value={filters.level}
+              onValueChange={(value) => setFilters({ ...filters, level: value })}
+              placeholder={t('training.filters.level') || ''}
+              options={levelOptions}
+            />
+
+            {/* Status Filter (Dropdown) */}
+            <FilterSelector
+              value={filters.status}
+              onValueChange={(value) => setFilters({ ...filters, status: value })}
+              placeholder={t('training.filters.status') || ''}
+              options={[
+                { value: ALL_TEXT, label: t('training.filters.all') },
+                { value: RECOMMENDED_TEXT, label: t('training.statuses.recommended') },
+                { value: IN_PROGRESS_TEXT, label: t('training.statuses.inProgress') },
+                { value: COMPLETED_TEXT, label: t('training.statuses.completed') },
+                { value: ASSIGNED_TEXT, label: t('training.statuses.assigned') },
+              ]}
+            />
+              
+              
+              
+              
+              
               
               {/* Micro-Training of the Day */}
               <MicroTrainingCard microTraining={mockMicroTraining} />
@@ -138,11 +176,6 @@ const SalesTraining = () => {
             
             {/* Training Module List */}
             <TrainingModuleList modules={filteredModules} />
-            
-            {/* Script Library */}
-            <div className="mb-8">
-              <ScriptLibrary scripts={mockScriptSnippets} />
-            </div>
             
             {/* Progress Chart */}
             <div className="mb-8">

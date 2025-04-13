@@ -1,6 +1,7 @@
 import * as React from "react"
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react"
-
+import { useTranslation } from "react-i18next"
+import i18n from "@/i18n/i18n"
 import { cn } from "@/lib/utils"
 import { ButtonProps, buttonVariants } from "@/components/ui/button"
 
@@ -69,7 +70,8 @@ const PaginationPrevious = ({
     className={cn("gap-1 pl-2.5", className)}
     {...props}
   >
-    <ChevronLeft className="h-4 w-4" />
+    {i18n.language === 'uz' ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+    
     <span>Previous</span>
   </PaginationLink>
 )
@@ -85,7 +87,7 @@ const PaginationNext = ({
     className={cn("gap-1 pr-2.5", className)}
     {...props}
   >
-    <span>Next</span>
+    <span>Next</span> 
     <ChevronRight className="h-4 w-4" />
   </PaginationLink>
 )

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+даimport React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useSearchParams, useNavigate } from 'react-router-dom';
-import { 
-  BarChart3,
-  Calendar,
-  FilterIcon,
+import {
+    BarChart3,
+    Calendar,
+    FilterIcon,
   LightbulbIcon,
   TrendingUpIcon,
   BadgeCheckIcon
@@ -13,23 +13,29 @@ import RoleLayout from '@/components/RoleLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import StatCard from '@/components/StatCard';
 import InsightCard from '@/components/InsightCard';
 import { expandableInsightsMock } from '@/data/insightsMockData';
 import StrengthsWeaknessesCard from '@/components/insights/StrengthsWeaknessesCard';
 import WeeklyFocusCard from '@/components/insights/WeeklyFocusCard';
 import InsightTypeChart, { InsightType } from '@/components/insights/InsightTypeChart';
-import { 
-  ResponsiveContainer,
-  LineChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  Line
+import {
+    ResponsiveContainer,
+    LineChart,
+    CartesianGrid,
+    XAxis,
+    YAxis,
+    Tooltip,
+    Legend,
+    Line
 } from 'recharts';
+import { useInsightsFilters } from '@/hooks/useInsightsFilters';
+import { FilterSelector } from '@/components/FilterSelector';
+import { TabsComponent } from '@/components/TabsComponent';
+import {
+    TRUST_BUILDING_DATA_KEY, OBJECTIONS_DATA_KEY, CROSS_SELLING_DATA_KEY, VALUE_EXPLANATION_DATA_KEY, CLOSING_DATA_KEY, MONTH_DATA_KEY
+} from '@/constants/insightsDataKeys';
 
 // Mock data for insights charts and strengths/weaknesses
 const insightTypeData = [
@@ -85,15 +91,14 @@ const aiRecommendationsMock = [
     priority: 'high'
   }
 ];
-
+// Constants for tabs
+const tabs = [
+    { value: "summary", label: "Summary" },
+    { value: "insights", label: "Insights" },
+    { value: "recommendations", label: "Recommendations" },
+];
 const SalesInsights = () => {
   const { t } = useTranslation();
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [dateRange, setDateRange] = useState('30days');
-  const [insightType, setInsightType] = useState('all');
-  const [skillFilter, setSkillFilter] = useState('all');
   const [activeTab, setActiveTab] = useState('summary');
   const [timelineFilter, setTimelineFilter] = useState('30days'); // Filter for timeline
   
@@ -111,19 +116,7 @@ const SalesInsights = () => {
     }
   }, [searchParams]);
 
-  // Update URL when tab changes
-  const handleTabChange = (value: string) => {
-    setActiveTab(value);
-    searchParams.set('tab', value);
-    setSearchParams(searchParams);
-  };
-  
-  // Filter insights based on selected filters
-  const filteredInsights = expandableInsightsMock.filter(insight => {
-    if (insightType !== 'all' && insight.type !== insightType) return false;
-    if (skillFilter !== 'all' && insight.skillKey !== skillFilter) return false;
-    return true;
-  });
+    const { filteredInsights, insightType, setInsightType, skillFilter, setSkillFilter, dateRange, setDateRange } = useInsightsFilters(expandableInsightsMock);
   
   // Handle navigation to detail pages
   const navigateToTotalInsights = () => {

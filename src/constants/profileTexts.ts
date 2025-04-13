@@ -1,0 +1,9 @@
+export const PROFILE_TITLE_TEXT = 'profile.title';
+export const PROFILE_FULL_NAME_TEXT = 'profile.fullName';
+export const PROFILE_EMAIL_TEXT = 'profile.email';
+export const PROFILE_ROLE_TEXT = 'profile.role';
+export const PROFILE_LANGUAGE_TEXT = 'profile.language';
+export const PROFILE_SAVE_TEXT = 'profile.save';
+export const PROFILE_LOGOUT_TEXT = 'profile.logout';
+export const PROFILE_SUCCESS_UPDATE_TEXT = 'profile.successUpdate';
+export const PROFILE_ERROR_UPDATE_TEXT = 'profile.errorUpdate';

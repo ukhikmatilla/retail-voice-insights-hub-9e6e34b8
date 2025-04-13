@@ -1,0 +1,15 @@
+export const MONTH_DATA_KEY = "month";
+export const HIRES_DATA_KEY = "hires";
+export const TERMINATIONS_DATA_KEY = "terminations";
+export const DEPARTMENT_DATA_KEY = "department";
+export const COUNT_DATA_KEY = "count";
+export const NAME_DATA_KEY = "name";
+export const VALUE_DATA_KEY = "value";
+export const ID_DATA_KEY = "id";
+export const POSITION_DATA_KEY = "position";
+export const ISSUE_DATA_KEY = "issue";
+export const RISK_DATA_KEY = "risk";
+export const HIRE_DATE_DATA_KEY = "hireDate";
+export const PROGRESS_DATA_KEY = "progress";
+export const INSIGHT_DATA_KEY = "insight";
+export const PRIORITY_DATA_KEY = "priority";

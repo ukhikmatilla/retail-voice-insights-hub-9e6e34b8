@@ -1,0 +1,15 @@
+export const LAST_7_DAYS_TEXT = '7days';
+export const LAST_30_DAYS_TEXT = '30days';
+export const LAST_90_DAYS_TEXT = '90days';
+export const CUSTOM_TEXT = 'custom';
+export const ALL_TEXT = 'all';
+export const IMPROVEMENT_TEXT = 'improvement';
+export const OPPORTUNITY_TEXT = 'opportunity';
+export const URGENT_TEXT = 'urgent';
+export const BEHAVIOR_TEXT = 'behavior';
+export const CUSTOM_INSIGHT_TEXT = 'custom';
+export const TRUST_BUILDING_TEXT = 'trustBuilding';
+export const OBJECTIONS_TEXT = 'objections';
+export const CROSS_SELLING_TEXT = 'crossSelling';
+export const VALUE_EXPLANATION_TEXT = 'valueExplanation';
+export const CLOSING_TEXT = 'closing';

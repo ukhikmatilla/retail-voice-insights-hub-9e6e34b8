@@ -1,0 +1,17 @@
+export const TOTAL_STORES_DATA_KEY = 'totalStores';
+export const TOTAL_SELLERS_DATA_KEY = 'totalSellers';
+export const TOTAL_CALLS_DATA_KEY = 'totalCalls';
+export const AVG_SCORE_DATA_KEY = 'avgScore';
+export const STORE_ID_DATA_KEY = 'id';
+export const STORE_NAME_DATA_KEY = 'name';
+export const STORE_LOCATION_DATA_KEY = 'location';
+export const STORE_SCORE_DATA_KEY = 'score';
+export const STORE_STATUS_DATA_KEY = 'status';
+export const INSIGHT_ID_DATA_KEY = 'id';
+export const INSIGHT_TYPE_DATA_KEY = 'type';
+export const INSIGHT_CONTENT_DATA_KEY = 'content';
+export const SELLER_ID_DATA_KEY = 'id';
+export const SELLER_NAME_DATA_KEY = 'name';
+export const SELLER_TOTAL_MODULES_DATA_KEY = 'totalModules';
+export const SELLER_COMPLETED_MODULES_DATA_KEY = 'completedModules';
+export const SELLER_PROGRESS_PERCENT_DATA_KEY = 'progressPercent';

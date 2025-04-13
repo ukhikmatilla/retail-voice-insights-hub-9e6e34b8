@@ -69,7 +69,7 @@ const StatCard: React.FC<StatCardProps> = ({
             "font-medium",
             trend.isPositive ? "text-insight-green" : "text-insight-red"
           )}>
-            {trend.isPositive ? "↑" : "↓"} {Math.abs(trend.value)}%
+            {trend.isPositive ? t('insights.trend.up') : t('insights.trend.down')} {Math.abs(trend.value)}%
           </span> {t('insights.tooltips.fromLastPeriod')}
         </p>
       )}
@@ -106,7 +106,7 @@ const StatCard: React.FC<StatCardProps> = ({
                         trend.isPositive ? "text-insight-green" : "text-insight-red"
                       )}
                     >
-                      {trend.isPositive ? "↑" : "↓"} {Math.abs(trend.value)}%
+                      {trend.isPositive ? t('insights.trend.up') : t('insights.trend.down')} {Math.abs(trend.value)}%
                     </div>
                   )}
                 </div>
@@ -142,7 +142,7 @@ const StatCard: React.FC<StatCardProps> = ({
                     trend.isPositive ? "text-insight-green" : "text-insight-red"
                   )}
                 >
-                  {trend.isPositive ? "↑" : "↓"} {Math.abs(trend.value)}%
+                  {trend.isPositive ? t('insights.trend.up') : t('insights.trend.down')} {Math.abs(trend.value)}%
                 </div>
               )}
             </div>

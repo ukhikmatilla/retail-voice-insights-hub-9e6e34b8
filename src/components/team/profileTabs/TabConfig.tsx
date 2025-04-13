@@ -7,8 +7,7 @@ import {
   BookOpen,
   Award,
   Upload,
-  Zap,
-  Layers
+  GraduationCap
 } from 'lucide-react';
 import { TeamMember } from '@/utils/mockData/types';
 import { TeamMemberDetails } from '@/utils/mockData/types';
@@ -59,7 +58,7 @@ export const getTabConfig = (
     {
       id: 'training',
       label: t('team.training'),
-      icon: <BookOpen className="h-4 w-4" />,
+      icon: <GraduationCap className="h-4 w-4" />,
       content: <TrainingTab memberDetails={memberDetails} />
     },
     {

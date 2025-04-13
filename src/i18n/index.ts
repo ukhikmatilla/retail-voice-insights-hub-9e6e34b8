@@ -1,19 +1,71 @@
 
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import uzTranslation from './locales/uz.json';
-import ruTranslation from './locales/ru.json';
+
+// Uzbek translations
+import uzCommon from './locales/uz/common.json';
+import uzDashboard from './locales/uz/dashboard.json';
+import uzInsights from './locales/uz/insights.json';
+import uzTraining from './locales/uz/training.json';
+import uzConversation from './locales/uz/conversation.json';
+import uzTeam from './locales/uz/team.json';
+import uzHr from './locales/uz/hr.json';
+import uzRoles from './locales/uz/roles.json';
+import uzButton from './locales/uz/button.json';
+import uzLanguage from './locales/uz/language.json';
 import uzStoresTranslation from './locales/uz/stores.json';
+
+// Russian translations
+import ruCommon from './locales/ru/common.json';
+import ruDashboard from './locales/ru/dashboard.json';
+import ruInsights from './locales/ru/insights.json';
+import ruTraining from './locales/ru/training.json';
+import ruConversation from './locales/ru/conversation.json';
+import ruTeam from './locales/ru/team.json';
+import ruHr from './locales/ru/hr.json';
+import ruRoles from './locales/ru/roles.json';
+import ruButton from './locales/ru/button.json';
+import ruLanguage from './locales/ru/language.json';
+import ruInsight from './locales/ru/insight.json';
+import ruManager from './locales/ru/manager.json';
+import ruCoaching from './locales/ru/coaching.json';
+import ruSotuvchi from './locales/ru/sotuvchi.json';
+import ruCalls from './locales/ru/calls.json';
+import ruSales from './locales/ru/sales.json';
 import ruStoresTranslation from './locales/ru/stores.json';
 
 // Merge translations
 const mergedUzTranslations = {
-  ...uzTranslation,
+  ...uzCommon,
+  ...uzDashboard,
+  ...uzInsights,
+  ...uzTraining,
+  ...uzConversation,
+  ...uzTeam,
+  ...uzHr,
+  ...uzRoles,
+  ...uzButton,
+  ...uzLanguage,
   ...uzStoresTranslation
 };
 
 const mergedRuTranslations = {
-  ...ruTranslation,
+  ...ruCommon,
+  ...ruDashboard,
+  ...ruInsights,
+  ...ruTraining,
+  ...ruConversation,
+  ...ruTeam,
+  ...ruHr,
+  ...ruRoles,
+  ...ruButton,
+  ...ruLanguage,
+  ...ruInsight,
+  ...ruManager,
+  ...ruCoaching,
+  ...ruSotuvchi,
+  ...ruCalls,
+  ...ruSales,
   ...ruStoresTranslation
 };
 

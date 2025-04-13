@@ -1,0 +1,65 @@
+
+{
+  "dashboard": {
+    "title": "HR Обзор",
+    "dashboardDescription": "Общая статистика сотрудников и обучения",
+    "personnel": "Сотрудники",
+    "personnelDescription": "Управление персоналом и ролями",
+    "analysis": "Аналитика",
+    "analysisDescription": "Аналитика активности персонала и текучести",
+    "trainingManagement": "Управление обучением",
+    "trainingManagementDescription": "Прогресс обучения и назначение модулей",
+    "workforceOverview": "Обзор персонала",
+    "stats": {
+      "personnelCount": "Всего сотрудников",
+      "activeEmployees": "Активные сотрудники",
+      "newThisMonth": "Принято в этом месяце",
+      "terminationsThisMonth": "Уволено в этом месяце",
+      "trainingProgress": "Прогресс по обучению",
+      "adaptationLevel": "Уровень адаптации",
+      "requiredTraining": "Требуется обучение",
+      "averageTenure": "Средний стаж",
+      "years": "лет",
+      "trainingDistribution": "Распределение обучения"
+    },
+    "turnoverTrend": "Текучесть по месяцам",
+    "departmentBreakdown": "Распределение по отделам",
+    "recentHires": "Недавно принятые",
+    "attentionRequired": "Требуют внимания",
+    "aiInsights": "AI-аналитика",
+    "hiredOn": "Дата приема",
+    "trainingProgress": "Прогресс обучения",
+    "risk": {
+      "high": "Высокий риск",
+      "medium": "Средний риск",
+      "low": "Низкий риск"
+    },
+    "priority": {
+      "high": "Высокий приоритет",
+      "medium": "Средний приоритет",
+      "low": "Низкий приоритет"
+    },
+    "actions": {
+      "addEmployee": "Добавить сотрудника",
+      "assignTraining": "Назначить обучение",
+      "exportReport": "Экспорт отчета",
+      "message": "Отправить сообщение",
+      "assignCoach": "Назначить наставника",
+      "viewDetails": "Подробнее",
+      "takeAction": "Принять меры"
+    },
+    "tabs": {
+      "charts": "Графики",
+      "attention": "Требуют внимания",
+      "insights": "AI-аналитика"
+    },
+    "charts": {
+      "hires": "Принято на работу",
+      "terminations": "Уволено",
+      "employeeCount": "Количество сотрудников"
+    },
+    "aiInsight1": "10 сотрудников регулярно перебивают клиента во время разговора",
+    "aiInsight2": "5 новых сотрудников не используют стандартное приветствие",
+    "aiInsight3": "У 15 сотрудников недостаточно знаний для ответа на запросы клиентов"
+  }
+}

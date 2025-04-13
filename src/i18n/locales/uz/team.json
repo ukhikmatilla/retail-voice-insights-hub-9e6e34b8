@@ -1,0 +1,20 @@
+
+{
+  "title": "Guruh",
+  "viewProfile": "A'zo profili",
+  "conversations": "Suhbatlar",
+  "uploadNew": "Yangi suhbat yuklash",
+  "transcript": "Transkripsiya",
+  "training": "O'qitish",
+  "progress": "Jarayon",
+  "badges": "Yutuqlar",
+  "role": "Rol",
+  "status": {
+    "active": "Faol",
+    "pending": "Kutilmoqda"
+  },
+  "lastLogin": "So'nggi kirish",
+  "delete": "O'chirish",
+  "changeRole": "Rolni o'zgartirish",
+  "addMember": "A'zo qo'shish"
+}

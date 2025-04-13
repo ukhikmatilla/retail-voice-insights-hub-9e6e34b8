@@ -1,0 +1,12 @@
+
+{
+  "content": "Kontent",
+  "theory": "Nazariya",
+  "finalQuiz": "Yakuniy test",
+  "quizDescription": "O'qitish modulini yakunlash uchun testdan o'ting.",
+  "status": {
+    "completed": "Tugallangan",
+    "inProgress": "Jarayonda"
+  },
+  "title": "Trening"
+}

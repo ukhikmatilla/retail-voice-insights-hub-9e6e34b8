@@ -1,0 +1,110 @@
+
+{
+  "hide": "Yashirish",
+  "questioning": "Savol berish ko'nikmalari",
+  "objections": "E'tirozlar bilan ishlash",
+  "title": "Tahlil",
+  "weeklyTrends": "Haftalik tendensiyalar",
+  "filters": {
+    "seller": "Sotuvchi",
+    "store": "Do'kon",
+    "range": "Sana oralig'i",
+    "all": "Barcha",
+    "dateRange": "Davr",
+    "insightType": "Tahlil turi",
+    "skill": "Ko'nikma",
+    "custom": "Sozlash",
+    "last7Days": "7 kun",
+    "last30Days": "30 kun",
+    "last90Days": "90 kun",
+    "title": "Filterlar",
+    "apply": "Filterni qo'llash",
+    "selectStore": "Do'konni tanlang",
+    "selectSeller": "Sotuvchini tanlang",
+    "selectDates": "Sanalarni tanlang",
+    "selectTemplate": "Shablonni tanlang",
+    "template": "Shablon"
+  },
+  "charts": {
+    "errors": "Xatolik turlari",
+    "trends": "Trendlar",
+    "skillProgress": "Ko'nikmalar bo'yicha progresslar"
+  },
+  "behavior": {
+    "ai": "AI kuzatuvlar"
+  },
+  "table": {
+    "store": "Do'kon",
+    "score": "O'rtacha baho",
+    "calls": "Qo'ng'iroqlar",
+    "flags": "Xatoliklar"
+  },
+  "export": "Eksport qilish",
+  "summary": {
+    "totalInsights": "Jami tahlillar",
+    "averageScore": "O'rtacha ball",
+    "improvementRate": "Yaxshilanish sur'ati"
+  },
+  "tabs": {
+    "summary": "Umumiy tahlil",
+    "insights": "Tahlillar",
+    "recommendations": "Tavsiyalar"
+  },
+  "insightsList": "Tahlillar ro'yxati",
+  "insightsDescription": "AI tomonidan aniqlangan tahliliy ma'lumotlar",
+  "recommendationsList": "Tavsiyalar",
+  "recommendationsDescription": "Sotuv ko'nikmalarini yaxshilash bo'yicha AI-tavsiyalar",
+  "viewTrainingModule": "O'quv modulini ko'rish",
+  "noInsightsFound": "Tahlillar topilmadi. Filter mezonlarini o'zgartiring.",
+  "types": {
+    "improvement": {
+      "example": "E'tirozlar bilan ishlash ko'nikmasini yaxshilang"
+    }
+  },
+  "priority": {
+    "high": "Yuqori muhimlik",
+    "medium": "O'rta muhimlik",
+    "low": "Past muhimlik"
+  },
+  "trustBuilding": "Ishonch yaratish",
+  "crossSelling": "Qo'shimcha sotuvlar",
+  "valueExplanation": "Qiymat tushuntirish",
+  "closing": "Savdoni yakunlash",
+  "storePerformance": "Do'konlar taqqoslanishi",
+  "sellerLeaderboard": "Sotuvchilar reytingi",
+  "topPerformers": "Eng yaxshi sotuvchilar",
+  "bottomPerformers": "Past ko'rsatkichli sotuvchilar",
+  "callsCount": "Qo'ng'iroqlar soni",
+  "flaggedCalls": "Muammoli qo'ng'iroqlar",
+  "aiComment": "AI izohi",
+  "viewTraining": "O'qitishni ko'rish",
+  "listenConversation": "Suhbatni tinglash",
+  "status": {
+    "good": "Yaxshi",
+    "warning": "Diqqat",
+    "critical": "Jiddiy"
+  },
+  "outcome": {
+    "good": "Yaxshi",
+    "warning": "Diqqat",
+    "critical": "Jiddiy"
+  },
+  "outcomeDistribution": "Natijalarning taqsimlanishi",
+  "percentage": "Foiz",
+  "count": "Soni",
+  "calls": "qo'ng'iroq",
+  "mistakes": {
+    "didntClarify": "Ehtiyojni aniqlamadi",
+    "noFollowUp": "Davomi yo'q",
+    "rushedExplanation": "Shoshilinch tushuntirish",
+    "missedUpsell": "Qo'shimcha mahsulot taklif qilinmadi",
+    "poorObjectionHandling": "E'tirozlar yomon ishlandi",
+    "noValueProposition": "Qiymat tushuntirilmadi",
+    "other": "Boshqa"
+  },
+  "templates": {
+    "productIntro": "Mahsulotni taqdim etish",
+    "objectionHandling": "E'tirozlar bilan ishlash",
+    "crossSelling": "Qo'shimcha sotuvlar"
+  }
+}

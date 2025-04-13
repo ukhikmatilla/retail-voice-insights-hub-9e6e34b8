@@ -1,0 +1,36 @@
+
+{
+  "overview": "Обзор",
+  "conversations": "Разговоры",
+  "insights": "Аналитика",
+  "training": "Обучение",
+  "team": "Команда",
+  "personnel": "Персонал",
+  "analysis": "Анализ",
+  "trainingManagement": "Управление обучением",
+  "title": "Обзор",
+  "stats": {
+    "totalConversations": "Всего разговоров",
+    "successRate": "Успешных разговоров",
+    "totalStores": "Всего точек",
+    "totalSellers": "Всего продавцов",
+    "totalCalls": "Разговоров",
+    "avgScore": "Средний балл"
+  },
+  "aiFocus": "Фокус AI недели",
+  "training": {
+    "title": "Прогресс обучения"
+  },
+  "welcome": "Добро пожаловать, {name}",
+  "criticalAttention": "Требуется внимание",
+  "aiWeeklyInsights": "Аналитика AI за неделю",
+  "focusOfTheWeek": "Фокус недели",
+  "storeActivity": "Активность магазинов",
+  "viewAll": "Посмотреть все",
+  "storeName": "Название магазина",
+  "performance": "Показатели",
+  "status": "Статус",
+  "actions": "Действия",
+  "stores": "Точки",
+  "coaching": "Коучинг"
+}

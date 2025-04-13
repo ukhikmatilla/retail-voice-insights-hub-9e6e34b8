@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
@@ -245,9 +244,9 @@ const HrPersonnel = () => {
       <div className="animate-fade-in">
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h1 className="text-3xl font-bold">{t('hr.personnel')}</h1>
+            <h1 className="text-3xl font-bold">{t('hr.dashboard.personnel')}</h1>
             <p className="text-muted-foreground mt-1">
-              {t('hr.personnelDescription')}
+              {t('hr.dashboard.personnelDescription')}
             </p>
           </div>
           <div className="flex gap-2">

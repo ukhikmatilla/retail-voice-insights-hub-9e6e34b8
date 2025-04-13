@@ -1,0 +1,20 @@
+
+{
+  "title": "Команда",
+  "viewProfile": "Профиль участника",
+  "conversations": "Разговоры",
+  "uploadNew": "Загрузить разговор",
+  "transcript": "Расшифровка",
+  "training": "Обучение",
+  "progress": "Прогресс",
+  "badges": "Награды",
+  "role": "Роль",
+  "status": {
+    "active": "Активен",
+    "pending": "Приглашение отправлено"
+  },
+  "lastLogin": "Последний вход",
+  "delete": "Удалить",
+  "changeRole": "Изменить роль",
+  "addMember": "Пригласить участника"
+}

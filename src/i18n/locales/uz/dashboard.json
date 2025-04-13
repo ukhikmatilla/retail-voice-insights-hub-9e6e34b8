@@ -1,0 +1,36 @@
+
+{
+  "overview": "Asosiy",
+  "conversations": "Suhbatlar",
+  "insights": "Tahlillar",
+  "training": "O'qitish",
+  "team": "Guruh",
+  "personnel": "Xodimlar",
+  "analysis": "Tahlil",
+  "trainingManagement": "O'qitishni boshqarish",
+  "title": "Umumiy ko'rinish",
+  "stats": {
+    "totalConversations": "Jami suhbatlar",
+    "successRate": "Muvaffaqiyat darajasi",
+    "totalStores": "Jami do'konlar",
+    "totalSellers": "Jami sotuvchilar",
+    "totalCalls": "Suhbatlar",
+    "avgScore": "O'rtacha baho"
+  },
+  "aiFocus": "AI haftalik e'tibori",
+  "training": {
+    "title": "Trening jarayoni"
+  },
+  "welcome": "Xush kelibsiz, {name}",
+  "criticalAttention": "E'tibor talab",
+  "aiWeeklyInsights": "AI haftalik tahlillari",
+  "focusOfTheWeek": "Haftalik e'tibor",
+  "storeActivity": "Do'konlar faolligi",
+  "viewAll": "Barchasini ko'rish",
+  "storeName": "Do'kon nomi",
+  "performance": "Ko'rsatkichlar",
+  "status": "Holati",
+  "actions": "Harakatlar",
+  "stores": "Do'konlar",
+  "coaching": "Kouching"
+}

@@ -1,0 +1,17 @@
+
+{
+  "error": {
+    "stepNotFound": "Qadam topilmadi",
+    "contentNotFound": "Kontent topilmadi"
+  },
+  "coachingPlaceholder": "Bu bo'lim kelajakda kouching materiallari bilan to'ldiriladi.",
+  "viewDetails": "Batafsil ko'rish",
+  "insightsPlaceholder": "Bu yerda tahliliy ma'lumotlar ko'rsatiladi.",
+  "workforceOverviewPlaceholder": "Bu yerda ishchi kuchi haqida ma'lumotlar ko'rsatiladi.",
+  "personnelPlaceholder": "Bu yerda xodimlar haqida ma'lumotlar ko'rsatiladi.",
+  "analysisPlaceholder": "Bu yerda tahlil ma'lumotlari ko'rsatiladi.",
+  "trainingManagementPlaceholder": "Bu yerda o'qitishni boshqarish ma'lumotlari ko'rsatiladi.",
+  "save": "Saqlash",
+  "cancel": "Bekor qilish",
+  "noResults": "Ma'lumotlar topilmadi"
+}

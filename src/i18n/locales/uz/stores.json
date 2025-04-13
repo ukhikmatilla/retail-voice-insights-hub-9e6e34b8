@@ -1,37 +1,35 @@
 
 {
-  "stores": {
-    "title": "Do'konlar",
-    "add": "Yangi do'kon qo'shish",
-    "assignSeller": "Sotuvchini biriktirish",
-    "assignSellerDescription": "Do'kon uchun sotuvchilar sonini tanlang: {{store}}",
-    "sellerCountToAssign": "Sotuvchilar soni",
-    "edit": "Do'konni tahrirlash",
-    "delete": "Do'konni o'chirish",
+  "title": "Do'konlar",
+  "add": "Do'kon qo'shish",
+  "edit": "Do'konni tahrirlash",
+  "delete": "Do'konni o'chirish",
+  "deleteConfirmation": "Haqiqatan ham bu do'konni o'chirib tashlamoqchimisiz?",
+  "form": {
     "name": "Do'kon nomi",
-    "location": "Joylashuv",
-    "status": "Holati",
-    "sellersCount": "Sotuvchilar",
-    "lastUpdated": "Oxirgi yangilanish",
-    "actions": "Harakatlar"
+    "location": "Manzil",
+    "namePlaceholder": "Markaziy do'kon",
+    "locationPlaceholder": "City Mall, 1-qavat",
+    "submit": "Saqlash",
+    "cancel": "Bekor qilish"
   },
-  "confirm": {
-    "delete": "{{item}} do'konini o'chirishni xohlaysizmi?"
+  "assignSeller": {
+    "title": "Sotuvchini tayinlash",
+    "to": "{store} ga",
+    "count": "Sotuvchilar soni",
+    "submit": "Tayinlash"
+  },
+  "table": {
+    "name": "Nomi",
+    "location": "Manzil",
+    "score": "Ball",
+    "sellers": "Sotuvchilar",
+    "lastUpdated": "So'nggi yangilanish",
+    "actions": "Amallar"
   },
   "actions": {
-    "cancel": "Bekor qilish",
-    "confirm": "Tasdiqlash",
-    "save": "Saqlash",
-    "create": "Yaratish",
-    "assign": "Biriktirish"
-  },
-  "validation": {
-    "required": "Bu maydon talab qilinadi"
-  },
-  "manager": {
-    "storesOverview": "Do'konlar va filiallar boshqaruvi"
-  },
-  "dashboard": {
-    "stores": "Do'konlar"
+    "edit": "Tahrirlash",
+    "delete": "O'chirish",
+    "assignSeller": "Sotuvchini tayinlash"
   }
 }

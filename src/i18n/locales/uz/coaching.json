@@ -1,0 +1,10 @@
+
+{
+  "status": {
+    "needsAttention": "E'tibor talab qiladi",
+    "improving": "Yaxshilanmoqda",
+    "good": "Yaxshi"
+  },
+  "sellerProgress": "Sotuvchilar progressi",
+  "completedModules": "Yakunlangan modullar"
+}

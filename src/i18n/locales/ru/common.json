@@ -10,5 +10,16 @@
   "workforceOverviewPlaceholder": "Здесь будет отображен обзор рабочей силы.",
   "personnelPlaceholder": "Здесь будет отображена информация о сотрудниках.",
   "analysisPlaceholder": "Здесь будет отображена аналитическая информация.",
-  "trainingManagementPlaceholder": "Здесь будет отображена информация об управлении обучением."
+  "trainingManagementPlaceholder": "Здесь будет отображена информация об управлении обучением.",
+  "save": "Сохранить",
+  "cancel": "Отмена",
+  "noResults": "Данные не найдены",
+  "loading": "Загрузка...",
+  "next": "Далее",
+  "back": "Назад",
+  "min": "мин",
+  "close": "Закрыть",
+  "app": {
+    "name": "RetailVoiceAI"
+  }
 }

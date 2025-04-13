@@ -1,0 +1,13 @@
+
+{
+  "type": {
+    "urgent": "Muhim",
+    "opportunity": "Imkoniyat",
+    "improvement": "Yaxshilanish"
+  },
+  "content": {
+    "upsellMissed": "Sotuvchilar asosiy xaridlarni to'ldiruvchi mahsulotlarni taklif qilayotganda qo'shimcha sotish imkoniyatlarini yo'qotishmoqda.",
+    "customerSatisfaction": "Mijoz mamnuniyati ko'rsatkichi oshdi, biroq shikoyatlar sonini kamaytirish uchun xodimlar yanada samarali muloqot qilishlari kerak.",
+    "productKnowledge": "Sotuvchilar uchun mahsulot bilimlarini oshirish o'quv dasturini tashkil eting - texnik savollarga javob berishda ayrim kamchiliklar kuzatilmoqda."
+  }
+}

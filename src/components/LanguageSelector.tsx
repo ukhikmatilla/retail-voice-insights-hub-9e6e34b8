@@ -30,7 +30,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
       onClick={toggleLanguage}
       className={`font-medium ${className}`}
     >
-      {language === 'uz' ? 'O\'zbek tili' : 'Русский'}
+      {t(`language.${language}`)}
     </Button>
   );
 };

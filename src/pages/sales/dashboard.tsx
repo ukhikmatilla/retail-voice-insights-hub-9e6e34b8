@@ -44,32 +44,24 @@ const SalesDashboard = () => {
               value={mockSalespersonStats.totalConversations} 
               icon={<BarChart3Icon />} 
               trend={{ value: 8, isPositive: true }} 
-              tooltipKey="conversations"
-              route="/sales/insights/conversations"
             />
             <StatCard 
               title={t('dashboard.stats.averageScore')} 
               value={mockSalespersonStats.averageScore + '%'} 
               icon={<PercentIcon />} 
               trend={{ value: 3, isPositive: true }} 
-              tooltipKey="score"
-              route="/sales/insights/score"
             />
             <StatCard 
               title={t('dashboard.stats.missedOpportunities')} 
               value={mockSalespersonStats.missedOpportunities} 
               icon={<AlertCircleIcon />} 
               trend={{ value: 5, isPositive: false }} 
-              tooltipKey="missed"
-              route="/sales/insights/missed"
             />
             <StatCard 
               title={t('dashboard.stats.successRate')} 
               value={mockSalespersonStats.successRate + '%'} 
               icon={<CheckCircleIcon />} 
               trend={{ value: 2, isPositive: true }} 
-              tooltipKey="success"
-              route="/sales/insights/success"
             />
           </div>
         </section>

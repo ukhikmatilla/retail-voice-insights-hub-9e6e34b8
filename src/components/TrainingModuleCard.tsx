@@ -45,7 +45,7 @@ const TrainingModuleCard: React.FC<TrainingModuleCardProps> = ({ training }) => 
     }
   };
   
-  const getSkillIcon = () => {
+  const getSkillIcon = (skill: string) => {
     return <BookOpen className="h-4 w-4" />;
   };
   
@@ -59,64 +59,12 @@ const TrainingModuleCard: React.FC<TrainingModuleCardProps> = ({ training }) => 
     return isAfter(today, dueDate) && training.status !== 'completed';
   };
 
-  // Get the translation key for the module
-  const getModuleKey = () => {
-    // Create a slug from the title to match our translation keys
-    const titleSlug = training.title
-      .toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-'); // Handle multiple dashes
-      
-    if (titleSlug.includes('price') || titleSlug.includes('narx') || titleSlug.includes('цен')) {
-      return 'priceObjections';
-    }
-    if (titleSlug.includes('trust') || titleSlug.includes('ишонч') || titleSlug.includes('довер')) {
-      return 'buildTrust';
-    }
-    if (titleSlug.includes('cross') || titleSlug.includes('кросс') || titleSlug.includes('qoshimcha')) {
-      return 'crossSell';
-    }
-    if (titleSlug.includes('clos') || titleSlug.includes('битим') || titleSlug.includes('завер')) {
-      return 'closing';
-    }
-    if (titleSlug.includes('value') || titleSlug.includes('qiymat') || titleSlug.includes('ценн')) {
-      return 'valueComm';
-    }
-    if (titleSlug.includes('signal') || titleSlug.includes('сигнал') || titleSlug.includes('signal')) {
-      return 'customerSignals';
-    }
-    
-    // Default to the original title if no match
-    return '';
-  };
-
-  // Get translated content based on the module
-  const getTranslatedContent = () => {
-    const moduleKey = getModuleKey();
-    
-    if (moduleKey) {
-      return {
-        title: t(`modules.${moduleKey}.title`, { defaultValue: training.title }),
-        description: t(`modules.${moduleKey}.description`, { defaultValue: training.description }),
-        level: t(`modules.${moduleKey}.level`, { defaultValue: training.level })
-      };
-    }
-    
-    return {
-      title: training.title,
-      description: training.description,
-      level: training.level
-    };
-  };
-
   // Handle button click based on training module
   const handleButtonClick = () => {
     // Create URL-friendly slug from title
     const slug = training.title.toLowerCase().replace(/\s+/g, '-');
     navigate(`/sales/training/${slug}`);
   };
-
-  const translatedContent = getTranslatedContent();
 
   return (
     <Card className="overflow-hidden h-full flex flex-col">
@@ -128,18 +76,18 @@ const TrainingModuleCard: React.FC<TrainingModuleCardProps> = ({ training }) => 
           </Badge>
         </div>
         
-        <h3 className="font-medium mb-2 line-clamp-2">{translatedContent.title}</h3>
+        <h3 className="font-medium mb-2 line-clamp-2">{training.title}</h3>
         
         <div className="flex items-center text-xs text-muted-foreground mb-2">
           <span className="flex items-center mr-3">
-            {getSkillIcon()}
+            {getSkillIcon(training.skill)}
             <span className="ml-1">{t(`insights.${training.skill}`)}</span>
           </span>
-          <span className="capitalize">{t(`training.${translatedContent.level.toLowerCase()}`, { defaultValue: translatedContent.level })}</span>
+          <span className="capitalize">{training.level}</span>
         </div>
         
         <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-          {translatedContent.description}
+          {training.description}
         </p>
         
         {training.dueDate && training.status !== 'completed' && (
@@ -150,7 +98,7 @@ const TrainingModuleCard: React.FC<TrainingModuleCardProps> = ({ training }) => 
               </span>
             ) : (
               <span>
-                {t('label.dueDate', { defaultValue: t('training.dueDate') })}: {format(new Date(training.dueDate), 'PP')}
+                {t('training.dueDate')}: {format(new Date(training.dueDate), 'PP')}
               </span>
             )}
           </div>
@@ -158,7 +106,7 @@ const TrainingModuleCard: React.FC<TrainingModuleCardProps> = ({ training }) => 
         
         {training.completedDate && training.status === 'completed' && (
           <div className="text-xs text-muted-foreground mb-3">
-            {t('label.completedDate', { defaultValue: t('training.completed') })}: {format(new Date(training.completedDate), 'PP')}
+            {t('training.completed')}: {format(new Date(training.completedDate), 'PP')}
           </div>
         )}
         
@@ -185,10 +133,10 @@ const TrainingModuleCard: React.FC<TrainingModuleCardProps> = ({ training }) => 
           onClick={handleButtonClick}
         >
           {training.status === 'completed' 
-            ? t('button.viewCertificate', { defaultValue: t('training.viewCertificate') })
+            ? t('training.viewCertificate') 
             : training.status === 'inProgress' 
-              ? t('button.continue', { defaultValue: t('training.continue') })
-              : t('button.start', { defaultValue: t('training.start') })}
+              ? t('training.continue') 
+              : t('training.start')}
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </CardFooter>

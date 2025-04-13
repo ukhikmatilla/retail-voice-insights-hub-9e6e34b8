@@ -1,148 +1,275 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { 
+  ArrowLeft, 
+  BarChart3, 
+  LineChart as LineChartIcon, 
+  TrendingUpIcon, 
+  LightbulbIcon 
+} from 'lucide-react';
 import RoleLayout from '@/components/RoleLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { mockConversations } from '@/data/mockData';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, BarChart, Bar } from 'recharts';
 
-const chartData = [
-  { name: 'Week 1', value: 72 },
-  { name: 'Week 2', value: 76 },
-  { name: 'Week 3', value: 78 },
-  { name: 'Week 4', value: 75 },
-  { name: 'Week 5', value: 81 },
-  { name: 'Week 6', value: 84 },
+// Mock data for score trend
+const scoreTrendData = [
+  { week: 'Week 1', score: 65 },
+  { week: 'Week 2', score: 68 },
+  { week: 'Week 3', score: 72 },
+  { week: 'Week 4', score: 75 },
+  { week: 'Week 5', score: 80 },
+  { week: 'Week 6', score: 82 },
 ];
 
-const ScoreInsightPage = () => {
-  const { t } = useTranslation();
-  const location = useLocation();
+// Mock data for skill contribution
+const skillContributionData = [
+  { skill: 'trustBuilding', score: 85 },
+  { skill: 'valueExplanation', score: 80 },
+  { skill: 'crossSelling', score: 75 },
+  { skill: 'closing', score: 70 },
+  { skill: 'objections', score: 65 },
+];
 
+// Mock AI tips
+const aiScoreTips = [
+  {
+    id: 'tip1',
+    title: 'Ask More Open Questions',
+    description: 'Try to use more open-ended questions to understand customer needs better.',
+    impact: '+5% score'
+  },
+  {
+    id: 'tip2',
+    title: 'Address Price Objections Early',
+    description: 'Customers responded better when value was established before price discussion.',
+    impact: '+3% score'
+  },
+  {
+    id: 'tip3',
+    title: 'Personalize Product Benefits',
+    description: 'The most successful conversations connected product features to specific customer needs.',
+    impact: '+7% score'
+  }
+];
+
+const ScoreInsightsPage = () => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [dateRange, setDateRange] = useState('30days');
+  
   return (
     <RoleLayout currentPath={location.pathname}>
-      <div className="animate-fade-in space-y-6">
-        <div className="flex flex-col">
-          <h1 className="text-3xl font-bold mb-2">
-            {t('insights.pages.score.title')}
-          </h1>
-          <p className="text-muted-foreground mb-6">
-            {t('insights.pages.score.description')}
-          </p>
+      <div className="animate-fade-in">
+        <div className="flex items-center mb-6">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="mr-2"
+            onClick={() => navigate('/sales/insights')}
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </Button>
+          <div>
+            <h1 className="text-3xl font-bold">{t('insights.score.title')}</h1>
+            <p className="text-muted-foreground mt-1">
+              {t('insights.score.description')}
+            </p>
+          </div>
         </div>
-
-        <div className="grid gap-6 md:grid-cols-2">
-          {/* Weekly Trend Chart */}
-          <Card className="col-span-2">
+        
+        {/* Filters Section */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          <Select value={dateRange} onValueChange={setDateRange}>
+            <SelectTrigger className="w-[130px]">
+              <SelectValue placeholder={t('insights.filters.dateRange')} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="7days">{t('insights.filters.last7Days')}</SelectItem>
+              <SelectItem value="30days">{t('insights.filters.last30Days')}</SelectItem>
+              <SelectItem value="90days">{t('insights.filters.last90Days')}</SelectItem>
+              <SelectItem value="custom">{t('insights.filters.custom')}</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          {/* Score Trend Chart */}
+          <Card className="lg:col-span-2">
             <CardHeader>
-              <CardTitle>{t('insights.pages.score.weeklyTrend')}</CardTitle>
+              <CardTitle>{t('insights.score.trendChart')}</CardTitle>
+              <CardDescription>
+                {t('insights.score.trendDescription')}
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="h-80">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={chartData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis domain={[60, 100]} />
-                    <Tooltip />
-                    <Line 
-                      type="monotone" 
-                      dataKey="value" 
-                      stroke="#9333EA" 
-                      strokeWidth={2} 
-                      activeDot={{ r: 8 }} 
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
+                <ScoreTrendGraph data={scoreTrendData} />
               </div>
             </CardContent>
           </Card>
           
-          {/* Key Patterns */}
+          {/* Skill Contribution Chart */}
           <Card>
             <CardHeader>
-              <CardTitle>{t('insights.pages.score.patterns')}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="p-4 border rounded-md">
-                <h3 className="font-medium mb-2">Consistent improvement</h3>
-                <p className="text-sm text-muted-foreground">Your score has increased by an average of 2% per week over the last 6 weeks.</p>
-              </div>
-              <div className="p-4 border rounded-md">
-                <h3 className="font-medium mb-2">Skill contributions</h3>
-                <p className="text-sm text-muted-foreground">Your largest gains came from improved objection handling (+12%) and value explanation (+8%).</p>
-              </div>
-              <div className="p-4 border rounded-md">
-                <h3 className="font-medium mb-2">Performance dips</h3>
-                <p className="text-sm text-muted-foreground">Your score decreases after extended periods without training refreshers.</p>
-              </div>
-            </CardContent>
-          </Card>
-          
-          {/* Recommendations */}
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('insights.pages.score.recommendations')}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="p-4 border border-primary/20 bg-primary/5 rounded-md">
-                <h3 className="font-medium mb-2">Focus on closing techniques</h3>
-                <p className="text-sm text-muted-foreground">This is your lowest-scoring area. Complete the "Effective Closing" training module.</p>
-              </div>
-              <div className="p-4 border border-primary/20 bg-primary/5 rounded-md">
-                <h3 className="font-medium mb-2">Regular training refreshers</h3>
-                <p className="text-sm text-muted-foreground">Schedule 15-minute training sessions twice weekly to maintain skill levels.</p>
-              </div>
-              <div className="p-4 border border-primary/20 bg-primary/5 rounded-md">
-                <h3 className="font-medium mb-2">Practice active listening</h3>
-                <p className="text-sm text-muted-foreground">Try to summarize customer needs before presenting solutions.</p>
-              </div>
-            </CardContent>
-          </Card>
-          
-          {/* Score Breakdown */}
-          <Card className="col-span-2">
-            <CardHeader>
-              <CardTitle>{t('conversation.scoreBreakdown')}</CardTitle>
+              <CardTitle>{t('insights.score.skillContribution')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                <div className="p-4 border rounded-md">
-                  <h3 className="font-medium mb-2">Needs Assessment</h3>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">How well you identify customer needs</span>
-                    <span className="font-medium">86%</span>
-                  </div>
-                </div>
-                <div className="p-4 border rounded-md">
-                  <h3 className="font-medium mb-2">Product Knowledge</h3>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Your product feature awareness</span>
-                    <span className="font-medium">92%</span>
-                  </div>
-                </div>
-                <div className="p-4 border rounded-md">
-                  <h3 className="font-medium mb-2">Objection Handling</h3>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">How you address customer concerns</span>
-                    <span className="font-medium">78%</span>
-                  </div>
-                </div>
-                <div className="p-4 border rounded-md">
-                  <h3 className="font-medium mb-2">Closing Techniques</h3>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Your ability to finalize sales</span>
-                    <span className="font-medium">72%</span>
-                  </div>
-                </div>
+              <div className="h-80">
+                <SkillContributionChart data={skillContributionData} />
               </div>
+            </CardContent>
+          </Card>
+          
+          {/* AI Score Tips */}
+          <Card>
+            <CardHeader className="flex flex-row items-center space-x-2">
+              <LightbulbIcon className="h-5 w-5 text-primary" />
+              <CardTitle>{t('insights.score.aiTips')}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <AiScoreTips tips={aiScoreTips} />
             </CardContent>
           </Card>
         </div>
+        
+        {/* Score Recommendations */}
+        <Card>
+          <CardHeader>
+            <CardTitle>{t('insights.score.recommendations')}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ScoreRecommendations />
+          </CardContent>
+        </Card>
       </div>
     </RoleLayout>
   );
 };
 
-export default ScoreInsightPage;
+// Score Trend Graph Component
+const ScoreTrendGraph = ({ data }) => {
+  const { t } = useTranslation();
+  
+  return (
+    <ResponsiveContainer width="100%" height="100%">
+      <LineChart
+        data={data}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="week" />
+        <YAxis domain={[0, 100]} />
+        <Tooltip />
+        <Legend />
+        <Line 
+          type="monotone" 
+          dataKey="score" 
+          stroke="#3b82f6" 
+          name={t('insights.score.averageScore')}
+          strokeWidth={2} 
+        />
+      </LineChart>
+    </ResponsiveContainer>
+  );
+};
+
+// Skill Contribution Chart Component
+const SkillContributionChart = ({ data }) => {
+  const { t } = useTranslation();
+  
+  // Translate skill names
+  const translatedData = data.map(item => ({
+    ...item,
+    skillName: t(`insights.${item.skill}`)
+  }));
+  
+  return (
+    <ResponsiveContainer width="100%" height="100%">
+      <BarChart
+        data={translatedData}
+        layout="vertical"
+        margin={{
+          top: 5,
+          right: 30,
+          left: 100,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis type="number" domain={[0, 100]} />
+        <YAxis 
+          dataKey="skillName" 
+          type="category" 
+          width={100}
+        />
+        <Tooltip />
+        <Bar 
+          dataKey="score" 
+          fill="#3b82f6" 
+          name={t('insights.score.skillScore')} 
+        />
+      </BarChart>
+    </ResponsiveContainer>
+  );
+};
+
+// AI Score Tips Component
+const AiScoreTips = ({ tips }) => {
+  return (
+    <div className="space-y-4">
+      {tips.map(tip => (
+        <div key={tip.id} className="p-3 bg-accent/10 rounded-lg">
+          <div className="flex justify-between">
+            <h4 className="font-medium">{tip.title}</h4>
+            <span className="text-sm text-emerald-600 font-semibold">{tip.impact}</span>
+          </div>
+          <p className="text-sm text-muted-foreground mt-1">{tip.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// Score Recommendations Component
+const ScoreRecommendations = () => {
+  const { t } = useTranslation();
+  
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="p-4 bg-accent/10 rounded-lg">
+        <div className="flex items-center gap-2 mb-2">
+          <TrendingUpIcon className="h-5 w-5 text-emerald-600" />
+          <h4 className="font-medium">{t('insights.score.shortTermTips')}</h4>
+        </div>
+        <ul className="list-disc list-inside text-sm space-y-2">
+          <li>{t('insights.score.tip1')}</li>
+          <li>{t('insights.score.tip2')}</li>
+          <li>{t('insights.score.tip3')}</li>
+        </ul>
+      </div>
+      <div className="p-4 bg-accent/10 rounded-lg">
+        <div className="flex items-center gap-2 mb-2">
+          <LineChartIcon className="h-5 w-5 text-blue-600" />
+          <h4 className="font-medium">{t('insights.score.longTermTips')}</h4>
+        </div>
+        <ul className="list-disc list-inside text-sm space-y-2">
+          <li>{t('insights.score.tip4')}</li>
+          <li>{t('insights.score.tip5')}</li>
+          <li>{t('insights.score.tip6')}</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default ScoreInsightsPage;

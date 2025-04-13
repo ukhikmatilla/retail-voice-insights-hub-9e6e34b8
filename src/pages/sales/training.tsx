@@ -109,7 +109,7 @@ const SalesTraining = () => {
       <div className="animate-fade-in">
         <h1 className="text-3xl font-bold mb-6">{t('sales.training')}</h1>
         <p className="text-muted-foreground mb-8">
-          {t('sales.trainingDescription')}
+          {t('sales.trainingDescription', 'Personalized training modules to improve your sales skills based on AI analysis.')}
         </p>
         
         {/* AI Goal of the Week */}
@@ -119,7 +119,7 @@ const SalesTraining = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Filters - Left side on desktop, top on mobile */}
-          <div className="lg:col-span-1 order-2 lg:order-1">
+          <div className="lg:col-span-1">
             {/* Filter Panel */}
             <div className="space-y-6">
               <TrainingFilterPanel 
@@ -133,7 +133,7 @@ const SalesTraining = () => {
           </div>
           
           {/* Training Modules and other content */}
-          <div className="lg:col-span-3 order-1 lg:order-2">
+          <div className="lg:col-span-3">
             <h2 className="text-xl font-semibold mb-4">{t('sales.trainingModules')}</h2>
             
             {/* Training Module List */}

@@ -1,90 +1,21 @@
-export interface TrainingTheory {
+
+export type UserRole = 'salesperson' | 'manager' | 'hr';
+
+export interface User {
   id: string;
-  title: string;
-  content: string;
-  sections: TheorySection[];
+  name: string;
+  email: string;
+  role: UserRole;
+  language: 'uz' | 'ru';
 }
 
-export interface TheorySection {
-  title: string;
-  content: string;
-  type: "text" | "warning" | "tip" | "example";
-}
-
-export interface TrainingQuiz {
+export interface Conversation {
   id: string;
-  question: string;
-  options: string[];
-  correctAnswer: string;
-  explanation: string;
-  questions: QuizQuestion[];
-  passingScore: number;
-}
-
-export interface QuizQuestion {
-  id: string;
-  question: string;
-  options: string[];
-  correctAnswer: number;
-  explanation: string;
-}
-
-export interface TrainingModule {
-  id: string;
-  title: string;
-  description: string;
-  level: 'beginner' | 'intermediate' | 'advanced';
-  skill: string;
-  theoryId: string;
-  videoId: string;
-  quizId: string;
-  estimatedTime: string;
-  dueDate?: string;
-  completedDate?: string;
-  videoUrl?: string;
-  videoDuration?: string;
-  theory?: TrainingTheory;
-  quiz?: TrainingQuiz;
-  aiTips?: string[];
-  relatedScripts?: ScriptSnippet[];
-}
-
-export interface TrainingStep {
-  id: string;
-  type: 'intro' | 'theory' | 'video' | 'quiz' | 'aiAdvice';
-  moduleId: string;
-}
-
-export type ScriptCategory = 'greeting' | 'objection' | 'closing' | 'followUp' | 'pricing' | 'trust' | 'crossSell' | 'other';
-
-export interface ScriptSnippet {
-  id: string;
-  scenario: string;
-  aiAnswer: string;
-  category: ScriptCategory;
-  source: string;
-}
-
-export interface Training {
-  id: string;
-  title: string;
-  description: string;
-  status: 'recommended' | 'assigned' | 'inProgress' | 'completed';
-  skill: string;
-  level: 'beginner' | 'intermediate' | 'advanced';
-  progress: number;
-  dueDate?: string;
-  completedDate?: string;
-}
-
-export interface MicroTraining {
-  id: string;
-  title: string;
-  estimatedTime: string;
-  question: string;
-  answer: string;
-  completed: boolean;
+  userId: string;
   date: string;
+  duration: number;
+  score: number;
+  insights: Insight[];
 }
 
 export type InsightType = 'improvement' | 'opportunity' | 'urgent' | 'behavior' | 'custom';
@@ -97,22 +28,6 @@ export interface Insight {
   skillKey?: string;
 }
 
-export interface Conversation {
-  id: string;
-  userId: string;
-  date: string;
-  duration: number;
-  score: number;
-  insights: Insight[];
-}
-
-export interface DashboardStats {
-  totalConversations: number;
-  averageScore: number;
-  successRate: number;
-  missedOpportunities: number;
-}
-
 export interface TeamMember {
   id: string;
   name: string;
@@ -122,12 +37,43 @@ export interface TeamMember {
   successRate: number;
 }
 
-export interface User {
+export interface DashboardStats {
+  totalConversations: number;
+  averageScore: number;
+  successRate: number;
+  missedOpportunities: number;
+}
+
+export interface Training {
   id: string;
-  name: string;
-  email: string;
-  role: 'salesperson' | 'manager' | 'hr';
-  language: 'uz' | 'ru';
+  title: string;
+  description: string;
+  status: 'assigned' | 'inProgress' | 'completed' | 'recommended';
+  dueDate?: string;
+  completedDate?: string;
+  skill: string;
+  level: string;
+  progress: number;
+}
+
+// New interfaces for enhanced training page
+export interface MicroTraining {
+  id: string;
+  title: string;
+  estimatedTime: string;
+  question: string;
+  answer: string;
+  completed: boolean;
+  date: string;
+}
+
+export interface ScriptSnippet {
+  id: string;
+  category: string;
+  scenario: string;
+  aiAnswer: string;
+  source: string;
+  expanded?: boolean;
 }
 
 export interface Badge {
@@ -136,12 +82,53 @@ export interface Badge {
   title: string;
   description: string;
   status: 'received' | 'locked';
+  icon?: string;
   earnedDate?: string;
 }
 
 export interface StreakInfo {
   days: number;
   lastActivity: string;
+}
+
+// Training Module specific interfaces
+export interface TrainingModule {
+  id: string;
+  title: string;
+  description: string;
+  level: 'beginner' | 'intermediate' | 'advanced';
+  dueDate: string;
+  videoUrl: string;
+  videoDuration: string;
+  skill: string;
+  theory: TrainingTheory;
+  aiTips: string[];
+  quiz: TrainingQuiz;
+  relatedScripts: ScriptSnippet[];
+  badges: string[];
+}
+
+export interface TrainingTheory {
+  sections: TheorySection[];
+}
+
+export interface TheorySection {
+  title: string;
+  content: string;
+  type: 'text' | 'example' | 'warning' | 'tip';
+}
+
+export interface TrainingQuiz {
+  questions: QuizQuestion[];
+  passingScore: number;
+}
+
+export interface QuizQuestion {
+  id: string;
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
 }
 
 export interface TrainingResult {
@@ -151,43 +138,12 @@ export interface TrainingResult {
   feedback: string;
 }
 
-export interface LocalizedString {
-  en: string;
-  ru: string;
-  uz: string;
-}
-
-export interface ScriptEntry {
-  id: string;
-  customerSays: LocalizedString;
-  category: ScriptCategory;
-  aiResponse: LocalizedString;
-  insight: LocalizedString;
-}
-
-export interface InsightDetail {
-  title: string;
-  description: string;
-  chartData?: any;
-  recommendations: string[];
-  relatedConversations?: Conversation[];
-  metrics?: {
-    label: string;
-    value: string | number;
-    change?: number;
-    isPositive?: boolean;
-  }[];
-}
-
-export interface StatCardData {
+// New interfaces for Udemy-like module structure
+export interface TrainingStep {
   id: string;
   title: string;
-  value: string | number;
-  icon: string;
-  trend?: {
-    value: number;
-    isPositive: boolean;
-  };
-  tooltipKey: 'conversations' | 'score' | 'missed' | 'success';
-  route: string;
+  type: 'video' | 'theory' | 'quiz';
+  status: 'completed' | 'in_progress' | 'locked';
+  youtubeUrl?: string;
+  content?: string;
 }

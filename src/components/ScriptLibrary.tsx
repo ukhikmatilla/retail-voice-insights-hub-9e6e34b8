@@ -32,15 +32,12 @@ const ScriptLibrary: React.FC<ScriptLibraryProps> = ({ scripts }) => {
     <Card>
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
-          <span>{t('scripts.title')}</span>
+          <span>{t('training.scriptLibrary')}</span>
         </CardTitle>
-        <p className="text-sm text-muted-foreground mb-4">
-          {t('scripts.description')}
-        </p>
         <div className="relative">
           <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
           <Input 
-            placeholder={t('scripts.searchScripts')}
+            placeholder={t('training.searchScripts')}
             className="pl-10"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -50,24 +47,22 @@ const ScriptLibrary: React.FC<ScriptLibraryProps> = ({ scripts }) => {
       
       <CardContent>
         <Tabs defaultValue="all" value={activeCategory} onValueChange={setActiveCategory}>
-          <div className="relative">
-            <TabsList className="mb-4 w-full overflow-x-auto flex no-scrollbar pb-1">
-              {categories.map(category => (
-                <TabsTrigger key={category} value={category} className="capitalize whitespace-nowrap">
-                  {t(`scripts.categories.${category}`)}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </div>
+          <TabsList className="mb-4 w-full overflow-x-auto flex no-scrollbar pb-1">
+            {categories.map(category => (
+              <TabsTrigger key={category} value={category} className="capitalize">
+                {t(`insights.${category === 'all' ? 'filters.all' : category}`)}
+              </TabsTrigger>
+            ))}
+          </TabsList>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-4">
             {filteredScripts.length > 0 ? (
               filteredScripts.map(script => (
                 <ScriptCard key={script.id} script={script} />
               ))
             ) : (
-              <div className="col-span-full text-center py-8 text-muted-foreground">
-                {t('scripts.noScriptsFound')}
+              <div className="text-center py-8 text-muted-foreground">
+                {t('training.noScriptsFound')}
               </div>
             )}
           </div>

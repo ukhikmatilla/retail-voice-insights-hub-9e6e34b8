@@ -32,8 +32,8 @@ interface StatCardProps {
   };
   className?: string;
   route?: string;
-  tooltipKey?: 'conversations' | 'score' | 'missed' | 'success' | 'total' | 'improvement';
-  onClick?: () => void;
+  tooltipKey?: 'total' | 'score' | 'improvement';
+  onClick?: () => void; // Added onClick prop
 }
 
 const StatCard: React.FC<StatCardProps> = ({ 
@@ -44,7 +44,7 @@ const StatCard: React.FC<StatCardProps> = ({
   className,
   route,
   tooltipKey = 'total',
-  onClick
+  onClick  // Add onClick handling
 }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ const StatCard: React.FC<StatCardProps> = ({
 
   const handleCardClick = () => {
     if (onClick) {
-      onClick();
+      onClick();  // Use provided onClick function if available
     } else if (route) {
       navigate(route);
     }

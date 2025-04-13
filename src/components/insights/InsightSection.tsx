@@ -3,16 +3,12 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Insight, InsightType } from '@/types';
 import ExpandableInsightCard from './ExpandableInsightCard';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 
 interface InsightSectionProps {
   insights: Insight[];
-  title?: string;
-  viewAllLink?: string;
 }
 
-export const InsightSection: React.FC<InsightSectionProps> = ({ insights, title, viewAllLink }) => {
+export const InsightSection: React.FC<InsightSectionProps> = ({ insights }) => {
   const { t } = useTranslation();
   
   // Group insights by type
@@ -65,20 +61,6 @@ export const InsightSection: React.FC<InsightSectionProps> = ({ insights, title,
 
   return (
     <div className="space-y-2">
-      {/* Section title and View All link */}
-      {title && (
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">{title}</h2>
-          {viewAllLink && (
-            <Button variant="ghost" size="sm" asChild className="gap-1">
-              <a href={viewAllLink}>
-                {t('common.viewAll')} <ArrowRight className="h-4 w-4" />
-              </a>
-            </Button>
-          )}
-        </div>
-      )}
-      
       {/* Critical/Urgent insights - shown first for priority */}
       {renderSection('urgent')}
       

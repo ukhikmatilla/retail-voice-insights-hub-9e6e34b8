@@ -196,14 +196,14 @@ export const mockMicroTraining: MicroTraining = {
 export const mockScriptSnippets: ScriptSnippet[] = [
   {
     id: "s1",
-    category: "objection", // Fixed from "objections" to "objection"
+    category: "objections",
     scenario: "Customer says: 'This is too expensive'",
     aiAnswer: "I understand price is important. Let me explain the value you're getting first: our product has [specific benefits] that will help you [achieve specific outcome]. When you consider the [long-term savings/increased productivity], it's actually a great investment.",
     source: "AI selected this script based on 85 successful sales"
   },
   {
     id: "s2",
-    category: "trust", // Fixed from "trustBuilding" to "trust"
+    category: "trustBuilding",
     scenario: "First-time customer hesitates to make a decision",
     aiAnswer: "I can see you want to make the right choice. Many of our customers felt the same way initially. What specific concerns do you have that I can address? Also, we offer a 30-day satisfaction guarantee, so you can try it with complete peace of mind.",
     source: "AI selected this script based on 67 successful conversions"
@@ -217,7 +217,7 @@ export const mockScriptSnippets: ScriptSnippet[] = [
   },
   {
     id: "s4",
-    category: "crossSell", // Fixed from "crossSelling" to "crossSell"
+    category: "crossSelling",
     scenario: "Customer already decided to purchase main product",
     aiAnswer: "Great choice! Many customers who purchase this also get [complementary product] because it enhances [specific benefit] and [solves related problem]. Would you like to learn how they work together?",
     source: "AI selected this script based on 73 successful cross-sells"

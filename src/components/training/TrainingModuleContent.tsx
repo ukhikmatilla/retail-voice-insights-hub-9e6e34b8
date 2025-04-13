@@ -48,20 +48,6 @@ const TrainingModuleContent: React.FC<TrainingModuleContentProps> = ({
     );
   }
 
-  // Use the step ID to get appropriate translations
-  const getStepTitle = (stepId: string): string => {
-    const translationKey = `training_content.priceObjections.steps.${stepId}.title`;
-    const translated = t(translationKey);
-    // Return the original title if the translation key doesn't exist (returns the key itself)
-    return translated === translationKey ? step.title : translated;
-  };
-
-  const getStepContent = (stepId: string): string => {
-    const translationKey = `training_content.priceObjections.steps.${stepId}.content`;
-    const translated = t(translationKey);
-    return translated === translationKey ? (step.content || '') : translated;
-  };
-
   // Get tips from translations for AI hints
   const getAITips = (): string[] => {
     const moduleKey = 'priceObjections';
@@ -86,8 +72,8 @@ const TrainingModuleContent: React.FC<TrainingModuleContentProps> = ({
           <div className="space-y-6">
             <TrainingVideo videoUrl={videoData.videoUrl} duration={videoData.duration} />
             <div className="prose max-w-none">
-              <h3>{getStepTitle(step.id)}</h3>
-              <p>{getStepContent(step.id)}</p>
+              <h3>{step.title}</h3>
+              <p>{step.content}</p>
             </div>
             <TrainingAIHint tips={getAITips()} />
           </div>
@@ -96,11 +82,9 @@ const TrainingModuleContent: React.FC<TrainingModuleContentProps> = ({
         return (
           <div className="space-y-6">
             <h3 className="text-xl font-bold mb-4">{t('training.finalQuiz')}</h3>
-            <p className="text-muted-foreground mb-6">
-              {t(`training_content.priceObjections.steps.quiz.intro`, {
-                defaultValue: t('training.quizDescription')
-              })}
-            </p>
+            <p className="text-muted-foreground mb-6">{t('training_content.priceObjections.steps.quiz.intro', {
+              defaultValue: t('training.quizDescription')
+            })}</p>
             <TrainingQuiz quiz={quizData} onComplete={(result) => {
               console.log("Quiz completed with score:", result.score);
               if (result.completed) {
@@ -113,14 +97,14 @@ const TrainingModuleContent: React.FC<TrainingModuleContentProps> = ({
       default:
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-bold mb-4">{getStepTitle(step.id) || t('training.theory')}</h3>
+            <h3 className="text-xl font-bold mb-4">{step?.title || t('training.theory')}</h3>
             {step.id === 'ai-advice' ? (
               <TrainingAIHint tips={getAITips()} />
             ) : (
               <TrainingTheory theory={theoryData} />
             )}
             <div className="prose max-w-none">
-              <p>{getStepContent(step.id)}</p>
+              <p>{step?.content || ''}</p>
             </div>
           </div>
         );
@@ -129,7 +113,7 @@ const TrainingModuleContent: React.FC<TrainingModuleContentProps> = ({
 
   return (
     <div className="animate-fade-in">
-      <h2 className="text-2xl font-bold mb-6">{getStepTitle(step.id) || t('training.content')}</h2>
+      <h2 className="text-2xl font-bold mb-6">{step?.title || t('training.content')}</h2>
       {renderContent()}
     </div>
   );

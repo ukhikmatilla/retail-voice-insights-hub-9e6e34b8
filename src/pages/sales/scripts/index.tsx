@@ -3,8 +3,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import RoleLayout from '@/components/RoleLayout';
-import { Card } from '@/components/ui/card';
-import { BookOpen } from 'lucide-react';
+import { TabsContent, Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Search, BookOpen } from 'lucide-react';
 import ScriptLibrary from '@/components/ScriptLibrary';
 import { mockScriptSnippets } from '@/data/mockData';
 
@@ -18,9 +20,9 @@ const ScriptsPage = () => {
         <div className="flex items-center gap-3 mb-6">
           <BookOpen className="h-8 w-8 text-primary" />
           <div>
-            <h1 className="text-3xl font-bold">{t('scripts.title')}</h1>
+            <h1 className="text-3xl font-bold">{t('training.scriptLibrary')}</h1>
             <p className="text-muted-foreground">
-              {t('scripts.description')}
+              {t('training.scriptLibraryDesc')}
             </p>
           </div>
         </div>

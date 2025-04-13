@@ -11,7 +11,10 @@
     "workforceOverviewPlaceholder": "Bu yerda ishchi kuchi haqida ma'lumotlar ko'rsatiladi.",
     "personnelPlaceholder": "Bu yerda xodimlar haqida ma'lumotlar ko'rsatiladi.",
     "analysisPlaceholder": "Bu yerda tahlil ma'lumotlari ko'rsatiladi.",
-    "trainingManagementPlaceholder": "Bu yerda o'qitishni boshqarish ma'lumotlari ko'rsatiladi."
+    "trainingManagementPlaceholder": "Bu yerda o'qitishni boshqarish ma'lumotlari ko'rsatiladi.",
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "noResults": "Ma'lumotlar topilmadi"
   },
   "button": {
     "prevLesson": "Oldingi dars",
@@ -98,7 +101,9 @@
       "message": "Xabar yuborish",
       "assignCoach": "Koucher biriktirish",
       "viewDetails": "Tafsilotlarni ko'rish",
-      "takeAction": "Choralar ko'rish"
+      "takeAction": "Choralar ko'rish",
+      "filters": "Filtrlar",
+      "searchEmployee": "Xodimni qidirish"
     },
     "tabs": {
       "charts": "Grafiklar",
@@ -248,5 +253,24 @@
       "objectionHandling": "E'tirozlar bilan ishlash",
       "crossSelling": "Qo'shimcha sotuvlar"
     }
+  },
+  "team": {
+    "title": "Guruh",
+    "viewProfile": "A'zo profili",
+    "conversations": "Suhbatlar",
+    "uploadNew": "Yangi suhbat yuklash",
+    "transcript": "Transkripsiya",
+    "training": "O'qitish",
+    "progress": "Jarayon",
+    "badges": "Yutuqlar",
+    "role": "Rol",
+    "status": {
+      "active": "Faol",
+      "pending": "Kutilmoqda"
+    },
+    "lastLogin": "So'nggi kirish",
+    "delete": "O'chirish",
+    "changeRole": "Rolni o'zgartirish",
+    "addMember": "A'zo qo'shish"
   }
 }

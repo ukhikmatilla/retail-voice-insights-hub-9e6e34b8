@@ -5,12 +5,12 @@ import RoleLayout from '@/components/RoleLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { BarChart, LineChart, PieChart } from '@/components/ui/chart';
-import { ExpandableInsightCard } from '@/components/insights/ExpandableInsightCard';
-import { StrengthsWeaknessesCard } from '@/components/insights/StrengthsWeaknessesCard';
-import { WeeklyFocusCard } from '@/components/insights/WeeklyFocusCard';
-import { InsightTypeChart } from '@/components/insights/InsightTypeChart';
-import { InsightSection } from '@/components/insights/InsightSection';
+import { ChartContainer } from '@/components/ui/chart';
+import ExpandableInsightCard from '@/components/insights/ExpandableInsightCard';
+import StrengthsWeaknessesCard from '@/components/insights/StrengthsWeaknessesCard';
+import WeeklyFocusCard from '@/components/insights/WeeklyFocusCard';
+import InsightTypeChart from '@/components/insights/InsightTypeChart';
+import InsightSection from '@/components/insights/InsightSection';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowRight, Calendar, Filter } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -18,6 +18,12 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { DateRange, DateRangePicker } from '@/components/ui/date-range-picker';
 import { MobileFiltersSheet } from '@/components/insights/MobileFiltersSheet';
 import { expandableInsightsMock } from '@/data/insightsMockData';
+import { 
+  AreaChart, 
+  BarChart,
+  LineChart, 
+  PieChart
+} from "recharts";
 
 // Mock data for charts
 const mockScoreData = [
@@ -171,15 +177,41 @@ const SalesInsights = () => {
               <CardTitle>{t('insights.charts.skillProgress', 'Прогресс навыков')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <LineChart
-                data={mockScoreData}
-                categories={['Score']}
-                index="name"
-                showLegend={false}
-                colors={['blue']}
-                valueFormatter={(value) => `${value}/100`}
+              <ChartContainer
+                config={{
+                  Score: { color: "#2563EB" },
+                }}
                 className="aspect-[4/3] sm:aspect-[16/9]"
-              />
+              >
+                <LineChart
+                  data={mockScoreData}
+                  margin={{
+                    top: 20,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <defs>
+                    <linearGradient
+                      id="scoreGradient"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
+                      <stop offset="5%" stopColor="#2563EB" stopOpacity={0.8} />
+                      <stop offset="95%" stopColor="#2563EB" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <AreaChart
+                    dataKey="Score"
+                    stroke="var(--color-Score)"
+                    fillOpacity={1}
+                    fill="url(#scoreGradient)"
+                  />
+                </LineChart>
+              </ChartContainer>
             </CardContent>
           </Card>
           <Card className="col-span-1">
@@ -187,16 +219,24 @@ const SalesInsights = () => {
               <CardTitle>{t('insights.charts.skillBreakdown', 'Навыки')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <BarChart
-                data={mockSkillsData}
-                categories={['value']}
-                index="name"
-                showLegend={false}
-                layout="vertical"
-                colors={['blue']}
-                valueFormatter={(value) => `${value}/100`}
+              <ChartContainer
+                config={{
+                  value: { color: "#2563EB" }
+                }}
                 className="aspect-square sm:aspect-[4/3]"
-              />
+              >
+                <BarChart
+                  data={mockSkillsData}
+                  layout="vertical"
+                  margin={{
+                    top: 20,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                </BarChart>
+              </ChartContainer>
             </CardContent>
           </Card>
         </div>
@@ -208,20 +248,40 @@ const SalesInsights = () => {
             </CardHeader>
             <CardContent>
               <div className="h-80">
-                <PieChart
-                  data={mockInsightsTypeData}
-                  index="name"
-                  category="value"
-                  colors={['blue', 'green', 'yellow', 'red']}
-                  valueFormatter={(value) => `${value}%`}
+                <ChartContainer
+                  config={{
+                    value: {
+                      theme: {
+                        light: "#3b82f6",
+                        dark: "#60a5fa"
+                      }
+                    }
+                  }}
                   className="aspect-square"
-                />
+                >
+                  <PieChart>
+                    {/* ... */}
+                  </PieChart>
+                </ChartContainer>
               </div>
             </CardContent>
           </Card>
           <div className="col-span-1 lg:col-span-2 space-y-6">
-            <WeeklyFocusCard />
-            <StrengthsWeaknessesCard />
+            <WeeklyFocusCard 
+              skillKey="objectionHandling"
+              context={t('insights.weeklySkillContext', 'Вы часто упускаете возможность адресовать возражения клиентов по цене и качеству.')}
+              score={60}
+            />
+            <StrengthsWeaknessesCard 
+              strengths={[
+                { skillKey: "greeting", score: 85, trend: "up" },
+                { skillKey: "presentation", score: 70, trend: "stable" }
+              ]}
+              weaknesses={[
+                { skillKey: "objectionHandling", score: 60, trend: "down" },
+                { skillKey: "needsDiscovery", score: 65, trend: "stable" }
+              ]}
+            />
           </div>
         </div>
 
@@ -234,28 +294,28 @@ const SalesInsights = () => {
           </TabsList>
           <TabsContent value="all" className="mt-6">
             <InsightSection 
-              title={String(t('insights.latestInsights', 'Последние инсайты'))}
+              title={t('insights.latestInsights', 'Последние инсайты')}
               insights={expandableInsightsMock}
               viewAllLink="/sales/insights/total"
             />
           </TabsContent>
           <TabsContent value="improvement" className="mt-6">
             <InsightSection 
-              title={String(t('insights.improvements', 'Улучшения'))}
+              title={t('insights.improvements', 'Улучшения')}
               insights={expandableInsightsMock.filter(i => i.type === 'improvement')}
               viewAllLink="/sales/insights/improvement"
             />
           </TabsContent>
           <TabsContent value="opportunity" className="mt-6">
             <InsightSection 
-              title={String(t('insights.opportunities', 'Возможности'))}
+              title={t('insights.opportunities', 'Возможности')}
               insights={expandableInsightsMock.filter(i => i.type === 'opportunity')}
               viewAllLink="/sales/insights/missed"
             />
           </TabsContent>
           <TabsContent value="urgent" className="mt-6">
             <InsightSection 
-              title={String(t('insights.urgent', 'Срочные'))}
+              title={t('insights.urgent', 'Срочные')}
               insights={expandableInsightsMock.filter(i => i.type === 'urgent')}
               viewAllLink="/sales/insights/improvement"
             />

@@ -130,7 +130,7 @@
     "date": "Sana",
     "device": "Qurilma",
     "language": "Til",
-    "playAudio": "Audio eshitish",
+    "playAudio": "Audioni ijro etish",
     "downloadTranscript": "Transkripsiyani yuklab olish",
     "salesperson": "Sotuvchi",
     "customer": "Mijoz",
@@ -142,7 +142,8 @@
       "opportunity": "Imkoniyat",
       "mentionLoyaltyProgram": "Sodiqlik dasturini eslatib o'ting"
     },
-    "notFound": "Suhbat topilmadi"
+    "notFound": "Suhbat topilmadi",
+    "recommendation": "Tavsiya"
   },
   "insights": {
     "yourInsights": "Sizning tahlillaringiz",

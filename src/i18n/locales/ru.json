@@ -449,5 +449,11 @@
     "filterConversations": "Фильтрация разговоров",
     "scoreThreshold": "Порог оценки",
     "noConversations": "Разговоры не найдены"
+  },
+  "conversation": {
+    "playAudio": "Воспроизвести аудио",
+    "salesperson": "Продавец",
+    "customer": "Клиент",
+    "recommendation": "Рекомендация"
   }
 }

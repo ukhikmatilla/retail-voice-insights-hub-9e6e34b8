@@ -1,4 +1,3 @@
-
 {
   "common": {
     "loading": "Загрузка...",
@@ -7,7 +6,8 @@
       "contentNotFound": "Контент не найден. Пожалуйста, попробуйте позже."
     },
     "coachingPlaceholder": "Здесь будет информация о коучинге.",
-    "viewDetails": "Подробнее"
+    "viewDetails": "Подробнее",
+    "insightsPlaceholder": "Здесь будут отображены аналитические данные."
   },
   "button": {
     "prevLesson": "Предыдущий урок",
@@ -69,7 +69,106 @@
     "title": "Аналитика",
     "weeklyTrends": "Тренды недели",
     "filters": {
-      "seller": "Продавец"
+      "seller": "Продавец",
+      "store": "Магазин",
+      "range": "Диапазон дат",
+      "all": "Все",
+      "dateRange": "Период",
+      "insightType": "Тип инсайта",
+      "skill": "Навык",
+      "custom": "Настроить",
+      "last7Days": "7 дней",
+      "last30Days": "30 дней",
+      "last90Days": "90 дней",
+      "title": "Фильтры",
+      "apply": "Применить фильтры",
+      "selectStore": "Выберите магазин",
+      "selectSeller": "Выберите продавца",
+      "selectDates": "Выберите даты",
+      "selectTemplate": "Выберите шаблон",
+      "template": "Шаблон"
+    },
+    "charts": {
+      "errors": "Типы ошибок",
+      "trends": "Тренды",
+      "skillProgress": "Прогресс по навыкам"
+    },
+    "behavior": {
+      "ai": "AI-наблюдения"
+    },
+    "table": {
+      "store": "Магазин",
+      "score": "Средний балл",
+      "calls": "Звонки",
+      "flags": "Ошибки"
+    },
+    "export": "Экспорт",
+    "summary": {
+      "totalInsights": "Всего инсайтов",
+      "averageScore": "Средний балл",
+      "improvementRate": "Темп улучшения"
+    },
+    "tabs": {
+      "summary": "Общая сводка",
+      "insights": "Инсайты",
+      "recommendations": "Рекомендации"
+    },
+    "insightsList": "Список инсайтов",
+    "insightsDescription": "Аналитические данные, обнаруженные AI",
+    "recommendationsList": "Рекомендации",
+    "recommendationsDescription": "AI-рекомендации по улучшению навыков продаж",
+    "viewTrainingModule": "Просмотреть модуль обучения",
+    "noInsightsFound": "Инсайты не найдены. Попробуйте изменить критерии фильтра.",
+    "types": {
+      "improvement": {
+        "example": "Улучшите навык работы с возражениями"
+      }
+    },
+    "priority": {
+      "high": "Высокий приоритет",
+      "medium": "Средний приоритет",
+      "low": "Низкий приоритет"
+    },
+    "trustBuilding": "Построение доверия",
+    "crossSelling": "Дополнительные продажи",
+    "valueExplanation": "Объяснение ценности",
+    "closing": "Закрытие сделки",
+    "storePerformance": "Сравнение магазинов",
+    "sellerLeaderboard": "Рейтинг продавцов",
+    "topPerformers": "Лучшие продавцы",
+    "bottomPerformers": "Продавцы с низкими показателями",
+    "callsCount": "Кол-во звонков",
+    "flaggedCalls": "Проблемные звонки",
+    "aiComment": "Комментарий AI",
+    "viewTraining": "Просмотреть обучение",
+    "listenConversation": "Прослушать разговор",
+    "status": {
+      "good": "Хорошо",
+      "warning": "Внимание",
+      "critical": "Критическое"
+    },
+    "outcome": {
+      "good": "Хорошо",
+      "warning": "Внимание",
+      "critical": "Критическое"
+    },
+    "outcomeDistribution": "Распределение результатов",
+    "percentage": "Процент",
+    "count": "Количество",
+    "calls": "звонков",
+    "mistakes": {
+      "didntClarify": "Не уточнил потребность",
+      "noFollowUp": "Нет продолжения",
+      "rushedExplanation": "Торопливое объяснение",
+      "missedUpsell": "Пропущен дополнительный товар",
+      "poorObjectionHandling": "Плохая обработка возражений",
+      "noValueProposition": "Не объяснена ценность",
+      "other": "Прочее"
+    },
+    "templates": {
+      "productIntro": "Представление товара",
+      "objectionHandling": "Работа с возражениями",
+      "crossSelling": "Дополнительные продажи"
     }
   },
   "training": {
@@ -97,7 +196,9 @@
     "coaching": "Коучинг",
     "coachingDescription": "Развитие навыков продаж и обучение продавцов",
     "dashboardDescription": "Управляйте своей командой и анализируйте показатели продаж",
-    "teamOverview": "Обзор команды"
+    "teamOverview": "Обзор команды",
+    "insights": "Аналитика",
+    "insightsDescription": "Детальный анализ производительности продавцов и обнаружение поведенческих паттернов"
   },
   "coaching": {
     "recommendations": "Рекомендации ИИ",
@@ -173,5 +274,9 @@
     "upload": {
       "button": "Загрузить"
     }
+  },
+  "sales": {
+    "insights": "Аналитика",
+    "insightsDescription": "Анализ продаж и результаты AI"
   }
 }

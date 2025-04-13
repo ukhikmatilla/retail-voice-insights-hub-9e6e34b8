@@ -1,4 +1,3 @@
-
 {
   "common": {
     "error": {
@@ -6,7 +5,8 @@
       "contentNotFound": "Kontent topilmadi"
     },
     "coachingPlaceholder": "Bu bo'lim kelajakda kouching materiallari bilan to'ldiriladi.",
-    "viewDetails": "Batafsil ko'rish"
+    "viewDetails": "Batafsil ko'rish",
+    "insightsPlaceholder": "Bu yerda tahliliy ma'lumotlar ko'rsatiladi."
   },
   "button": {
     "prevLesson": "Oldingi dars",
@@ -80,97 +80,106 @@
     "title": "Tahlil",
     "weeklyTrends": "Haftalik tendensiyalar",
     "filters": {
-      "seller": "Sotuvchi"
-    }
-  },
-  "insight": {
-    "type": {
-      "improvement": "Yaxshilash",
-      "opportunity": "Imkoniyat",
-      "urgent": "Shoshilinch",
-      "behavior": "Xulq-atvor",
-      "custom": "Maxsus"
-    }
-  },
-  "manager": {
-    "coaching": "Kouching",
-    "coachingDescription": "Sotuv ko'nikmalarini rivojlantirish va sotuvchilarni o'qitish",
-    "dashboardDescription": "Jamoangizni boshqaring va sotish ko'rsatkichlarini tahlil qiling",
-    "teamOverview": "Jamoa ko'rinishi"
-  },
-  "coaching": {
-    "recommendations": "AI tavsiyalari",
-    "aiRecommendation1": "Sotuvchilarning ko'pchiligi mijozlardan katta yoki ochiq savollarni so'rash bilan muammo o'zbekiston qilmoqda. \"Narx bilan qanday muammolar bor?\" deb so'rash o'rniga, ular \"Sizga yordam kerakmi?\" deb so'rashni afzal ko'radilar.",
-    "aiRecommendation2": "Ayrim sotuvchilarimiz narx bo'yicha e'tirozlar oldida qiyinchilik bilan kurashmoqda. Narx haqidagi e'tirozlar bo'yicha maxsus trening moduliga barcha sotuvchilarni yo'naltirish tavsiya etiladi.",
-    "sellerProgress": "Sotuvchilar rivojlanishi",
-    "assignModule": "Modul belgilash",
-    "seller": "Sotuvchi",
-    "completedModules": "Tugallangan modullar",
-    "lastActivity": "Oxirgi faollik",
-    "progress": "Progress",
-    "actions": "Amallar",
-    "details": "Batafsil",
-    "recentModules": "Oxirgi modullar",
-    "recommendedModules": "Tavsiya etilgan modullar",
-    "basedOnPerformance": "Ko'rsatkichlar asosida",
-    "assign": "Belgilash",
-    "storeLeaderboard": "Do'konlar reytingi",
-    "sellerCount": "Sotuvchilar soni",
-    "viewDetails": "Batafsil ko'rish",
-    "status": {
-      "needsAttention": "E'tibor kerak",
-      "improving": "Yaxshilanyapti",
-      "good": "Yaxshi"
-    }
-  },
-  "team": {
-    "title": "Jamoa",
-    "viewProfile": "Foydalanuvchi profili",
-    "conversations": "Suhbatlar",
-    "uploadNew": "Suhbat yuklash",
-    "transcript": "Matnli transkript",
-    "training": "Trening",
-    "progress": "Jarayon",
-    "badges": "Yutuqlar",
-    "role": "Rol",
-    "status": {
-      "active": "Faol",
-      "pending": "Taklif yuborilgan"
+      "seller": "Sotuvchi",
+      "store": "Do'kon",
+      "range": "Sana oralig'i",
+      "all": "Barcha",
+      "dateRange": "Davr",
+      "insightType": "Tahlil turi",
+      "skill": "Ko'nikma",
+      "custom": "Sozlash",
+      "last7Days": "7 kun",
+      "last30Days": "30 kun",
+      "last90Days": "90 kun",
+      "title": "Filterlar",
+      "apply": "Filterni qo'llash",
+      "selectStore": "Do'konni tanlang",
+      "selectSeller": "Sotuvchini tanlang",
+      "selectDates": "Sanalarni tanlang",
+      "selectTemplate": "Shablonni tanlang",
+      "template": "Shablon"
     },
-    "lastLogin": "Oxirgi kirish",
-    "delete": "O'chirish",
-    "changeRole": "Rolni o'zgartirish",
-    "addMember": "Ishtirokchini taklif qilish"
-  },
-  "sotuvchi": {
-    "improvement": {
-      "questioning": "Sotuvchilar mijozlarning ehtiyojlarini aniqlash uchun ko'proq ochiq savollar berishlari kerak"
+    "charts": {
+      "errors": "Xatolik turlari",
+      "trends": "Trendlar",
+      "skillProgress": "Ko'nikmalar bo'yicha progresslar"
     },
-    "opportunity": {
-      "upselling": "Qo'shimcha mahsulotlar bilan chekni oshirish imkoniyati mavjud"
+    "behavior": {
+      "ai": "AI kuzatuvlar"
     },
-    "urgent": {
-      "pricing": "Jamoani narx e'tirozlari bilan ishlashga o'rgatish juda zarur"
-    },
-    "focus": {
-      "clarifyingObjections": "Javob berishdan oldin mijozning e'tirozlarini aniqlashtirish"
-    }
-  },
-  "language": {
-    "uz": "O'zbekcha",
-    "ru": "Ruscha"
-  },
-  "calls": {
     "table": {
-      "status": {
-        "done": "Tugallangan",
-        "analyzing": "Tahlil qilinmoqda",
-        "error": "Xatolik"
-      },
-      "listen": "Tinglash"
+      "store": "Do'kon",
+      "score": "O'rtacha baho",
+      "calls": "Qo'ng'iroqlar",
+      "flags": "Xatoliklar"
     },
-    "upload": {
-      "button": "Yuklash"
+    "export": "Eksport qilish",
+    "summary": {
+      "totalInsights": "Jami tahlillar",
+      "averageScore": "O'rtacha ball",
+      "improvementRate": "Yaxshilanish sur'ati"
+    },
+    "tabs": {
+      "summary": "Umumiy tahlil",
+      "insights": "Tahlillar",
+      "recommendations": "Tavsiyalar"
+    },
+    "insightsList": "Tahlillar ro'yxati",
+    "insightsDescription": "AI tomonidan aniqlangan tahliliy ma'lumotlar",
+    "recommendationsList": "Tavsiyalar",
+    "recommendationsDescription": "Sotuv ko'nikmalarini yaxshilash bo'yicha AI-tavsiyalar",
+    "viewTrainingModule": "O'quv modulini ko'rish",
+    "noInsightsFound": "Tahlillar topilmadi. Filter mezonlarini o'zgartiring.",
+    "types": {
+      "improvement": {
+        "example": "E'tirozlar bilan ishlash ko'nikmasini yaxshilang"
+      }
+    },
+    "priority": {
+      "high": "Yuqori muhimlik",
+      "medium": "O'rta muhimlik",
+      "low": "Past muhimlik"
+    },
+    "trustBuilding": "Ishonch yaratish",
+    "crossSelling": "Qo'shimcha sotuvlar",
+    "valueExplanation": "Qiymat tushuntirish",
+    "closing": "Savdoni yakunlash",
+    "storePerformance": "Do'konlar taqqoslanishi",
+    "sellerLeaderboard": "Sotuvchilar reytingi",
+    "topPerformers": "Eng yaxshi sotuvchilar",
+    "bottomPerformers": "Past ko'rsatkichli sotuvchilar",
+    "callsCount": "Qo'ng'iroqlar soni",
+    "flaggedCalls": "Muammoli qo'ng'iroqlar",
+    "aiComment": "AI izohi",
+    "viewTraining": "O'qitishni ko'rish",
+    "listenConversation": "Suhbatni tinglash",
+    "status": {
+      "good": "Yaxshi",
+      "warning": "Diqqat",
+      "critical": "Jiddiy"
+    },
+    "outcome": {
+      "good": "Yaxshi",
+      "warning": "Diqqat",
+      "critical": "Jiddiy"
+    },
+    "outcomeDistribution": "Natijalarning taqsimlanishi",
+    "percentage": "Foiz",
+    "count": "Soni",
+    "calls": "qo'ng'iroq",
+    "mistakes": {
+      "didntClarify": "Ehtiyojni aniqlamadi",
+      "noFollowUp": "Davomi yo'q",
+      "rushedExplanation": "Shoshilinch tushuntirish",
+      "missedUpsell": "Qo'shimcha mahsulot taklif qilinmadi",
+      "poorObjectionHandling": "E'tirozlar yomon ishlandi",
+      "noValueProposition": "Qiymat tushuntirilmadi",
+      "other": "Boshqa"
+    },
+    "templates": {
+      "productIntro": "Mahsulotni taqdim etish",
+      "objectionHandling": "E'tirozlar bilan ishlash",
+      "crossSelling": "Qo'shimcha sotuvlar"
     }
   }
 }

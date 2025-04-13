@@ -2,5 +2,7 @@
 {
   "title": "RetailVoiceAI",
   "desc": "Улучшите свои навыки продаж с помощью ИИ",
-  "name": "RetailVoiceAI"
+  "name": "RetailVoiceAI",
+  "thisMonth": "в этом месяце",
+  "since": "с прошлого месяца"
 }

@@ -16,14 +16,13 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   className = ''
 }) => {
   const { language, changeLanguage } = useLanguage();
-  const { t } = useTranslation();
+  const { t } = useTranslation('language');
 
   const toggleLanguage = () => {
     const newLang = language === 'uz' ? 'ru' : 'uz';
     changeLanguage(newLang);
   };
 
-  // Use the language namespace to access language names
   return (
     <Button
       variant={variant}
@@ -31,7 +30,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
       onClick={toggleLanguage}
       className={`font-medium ${className}`}
     >
-      {t(`language.${language}`)}
+      {t(language)}
     </Button>
   );
 };

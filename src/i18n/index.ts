@@ -8,6 +8,10 @@ import ruAuth from './locales/ru/auth.json';
 import ruDashboard from './locales/ru/dashboard.json';
 import ruAi from './locales/ru/ai.json';
 import ruRoles from './locales/ru/roles.json';
+import ruApp from './locales/ru/app.json';
+import ruOnboarding from './locales/ru/onboarding.json';
+import ruTraining from './locales/ru/training.json';
+import ruLanguage from './locales/ru/language.json';
 
 // Import Uzbek translations
 import uzCommon from './locales/uz/common.json';
@@ -28,15 +32,10 @@ const resources = {
     dashboard: ruDashboard,
     ai: ruAi,
     roles: ruRoles,
-    // Add empty objects for namespaces that exist in uz but not in ru
-    // to prevent fallback to another language
-    app: {},
-    onboarding: {},
-    training: {},
-    language: {
-      ru: "Русский",
-      uz: "Узбекский"
-    }
+    app: ruApp,
+    onboarding: ruOnboarding,
+    training: ruTraining,
+    language: ruLanguage
   },
   uz: {
     common: uzCommon,

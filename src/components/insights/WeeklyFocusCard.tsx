@@ -2,28 +2,50 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
-import { TargetIcon, BookOpenIcon } from 'lucide-react';
+import { TargetIcon, BookOpenIcon, InfoIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 interface WeeklyFocusCardProps {
   skillKey: string;
   context: string;
   score?: number;
+  recommendation?: string;
 }
 
 const WeeklyFocusCard: React.FC<WeeklyFocusCardProps> = ({
   skillKey,
   context,
-  score
+  score,
+  recommendation
 }) => {
   const { t } = useTranslation();
 
   return (
     <Card className="bg-primary/5 border-primary/20">
       <CardHeader className="pb-2">
-        <div className="flex items-center gap-2">
-          <TargetIcon className="h-5 w-5 text-primary" />
-          <CardTitle className="text-lg">{t('insights.weeklySkill')}</CardTitle>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <TargetIcon className="h-5 w-5 text-primary" />
+            <CardTitle className="text-lg">{t('insights.weeklySkill')}</CardTitle>
+          </div>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <InfoIcon className="h-4 w-4 text-muted-foreground cursor-help" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p className="max-w-xs text-sm">
+                  {t('insights.weeklySkillTooltip', { defaultValue: 'AI determines your focus area based on recent conversation analysis' })}
+                </p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
       </CardHeader>
       <CardContent>
@@ -40,7 +62,9 @@ const WeeklyFocusCard: React.FC<WeeklyFocusCardProps> = ({
           </div>
           <div>
             <h4 className="font-medium text-sm text-amber-800">{t('insights.frequentIssue')}</h4>
-            <p className="text-xs text-amber-700 mt-1">{t('insights.weeklySkillDescription')}</p>
+            <p className="text-xs text-amber-700 mt-1">
+              {recommendation || t('insights.weeklySkillDescription')}
+            </p>
           </div>
         </div>
       </CardContent>

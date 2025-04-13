@@ -229,7 +229,25 @@
     "frequentIssue": "Ko'p uchraydigan muammo",
     "weeklySkillDescription": "Bu ko'nikmani yaxshilash uchun treningni boshlang",
     "startTraining": "Treningni boshlash",
-    "viewConversation": "Suhbatni ko'rish"
+    "viewConversation": "Suhbatni ko'rish",
+    "weeklySkillTooltip": "AI sizning so'nggi suhbatlaringiz tahlili asosida diqqat markazida bo'lishi kerak bo'lgan ko'nikmani aniqlaydi",
+    "tooltips": {
+      "total": {
+        "title": "Jami tahlillar",
+        "description": "So'nggi 30 kundagi umumiy tavsiyalar soni. Unda yaxshilanishlar, xatoliklar, imkoniyatlar bor."
+      },
+      "score": {
+        "title": "O'rtacha ball",
+        "description": "AI tomonidan berilgan o'rtacha ball. Mijoz bilan muloqot sifati asosida baholanadi."
+      },
+      "improvement": {
+        "title": "Yaxshilanish darajasi",
+        "description": "Oldingi davrga nisbatan rivojlanish sur'ati foizda."
+      },
+      "fromLastPeriod": "oldingi davrdan",
+      "clickForDetails": "Batafsil ko'rish uchun bosing",
+      "viewDetails": "Batafsil ko'rish"
+    }
   },
   "training": {
     "status": {

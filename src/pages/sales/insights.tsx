@@ -173,29 +173,35 @@ const SalesInsights = () => {
           
           {/* Summary Tab */}
           <TabsContent value="summary">
-            {/* Stat Cards */}
+            {/* Stat Cards - Updated with tooltip and route props */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <StatCard 
                 title={t('insights.summary.totalInsights')} 
                 value={expandableInsightsMock.length} 
                 icon={<LightbulbIcon />} 
                 trend={{ value: 15, isPositive: true }}
+                tooltipKey="total"
+                route="/sales/insights/total"
               />
               <StatCard 
                 title={t('insights.summary.averageScore')} 
                 value="72%" 
                 icon={<BarChart3 />} 
                 trend={{ value: 5, isPositive: true }}
+                tooltipKey="score"
+                route="/sales/insights/score"
               />
               <StatCard 
                 title={t('insights.summary.improvementRate')} 
                 value="8%" 
                 icon={<TrendingUpIcon />} 
                 trend={{ value: 3, isPositive: true }}
+                tooltipKey="improvement"
+                route="/sales/insights/improvement"
               />
             </div>
             
-            {/* Strengths & Weaknesses Card - NEW */}
+            {/* Strengths & Weaknesses Card */}
             <div className="mb-6">
               <StrengthsWeaknessesCard 
                 strengths={strengthsData}
@@ -232,7 +238,7 @@ const SalesInsights = () => {
                 <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle>{t('insights.charts.skillProgress')}</CardTitle>
                   
-                  {/* NEW: Timeline Filter Dropdown */}
+                  {/* Timeline Filter Dropdown */}
                   <Select value={timelineFilter} onValueChange={setTimelineFilter}>
                     <SelectTrigger className="w-[130px] h-8">
                       <SelectValue placeholder={t('insights.filters.dateRange')} />
@@ -293,7 +299,7 @@ const SalesInsights = () => {
           
           {/* Recommendations Tab */}
           <TabsContent value="recommendations">
-            {/* NEW: Weekly Focus Card */}
+            {/* Weekly Focus Card */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
               <div className="md:col-span-2">
                 <div className="mb-4">
@@ -340,6 +346,7 @@ const SalesInsights = () => {
                   skillKey="objections"
                   context={t('insights.types.improvement.example')}
                   score={62}
+                  recommendation="Попробуйте подчеркивать соотношение цены и качества вместо фокусировки только на стоимости."
                 />
               </div>
             </div>

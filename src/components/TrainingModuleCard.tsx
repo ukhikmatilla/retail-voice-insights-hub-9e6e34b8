@@ -1,23 +1,13 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { format, isAfter } from 'date-fns';
 import { BookOpen, Check, Clock, ArrowRight, Lightbulb } from 'lucide-react';
-
-interface Training {
-  id: string;
-  title: string;
-  description: string;
-  skill: string;
-  level: string;
-  status: string;
-  progress: number;
-  dueDate?: string;
-  completedDate?: string;
-}
+import { Training } from '@/types';
 
 interface TrainingModuleCardProps {
   training: Training;
@@ -25,6 +15,7 @@ interface TrainingModuleCardProps {
 
 const TrainingModuleCard: React.FC<TrainingModuleCardProps> = ({ training }) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   
   const getStatusColor = (status: string) => {
     switch(status) {
@@ -66,6 +57,13 @@ const TrainingModuleCard: React.FC<TrainingModuleCardProps> = ({ training }) => 
     const today = new Date();
     
     return isAfter(today, dueDate) && training.status !== 'completed';
+  };
+
+  // Handle button click based on training module
+  const handleButtonClick = () => {
+    // Create URL-friendly slug from title
+    const slug = training.title.toLowerCase().replace(/\s+/g, '-');
+    navigate(`/sales/training/${slug}`);
   };
 
   return (
@@ -128,7 +126,12 @@ const TrainingModuleCard: React.FC<TrainingModuleCardProps> = ({ training }) => 
       </CardContent>
       
       <CardFooter className="px-5 py-3 border-t bg-muted/50">
-        <Button variant="secondary" size="sm" className="w-full flex items-center">
+        <Button 
+          variant="secondary" 
+          size="sm" 
+          className="w-full flex items-center"
+          onClick={handleButtonClick}
+        >
           {training.status === 'completed' 
             ? t('training.viewCertificate') 
             : training.status === 'inProgress' 

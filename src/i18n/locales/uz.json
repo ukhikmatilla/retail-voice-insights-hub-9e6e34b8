@@ -42,7 +42,9 @@
     "storeName": "Do'kon nomi",
     "performance": "Ko'rsatkichlar",
     "status": "Holati",
-    "actions": "Harakatlar"
+    "actions": "Harakatlar",
+    "stores": "Do'konlar",
+    "coaching": "Kouching"
   },
   "roles": {
     "salesperson": "Sotuvchi",
@@ -152,5 +154,9 @@
     "focus": {
       "clarifyingObjections": "Javob berishdan oldin mijozning e'tirozlarini aniqlashtirish"
     }
+  },
+  "language": {
+    "uz": "O'zbekcha",
+    "ru": "Ruscha"
   }
 }

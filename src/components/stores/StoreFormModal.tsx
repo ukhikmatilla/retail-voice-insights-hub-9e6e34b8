@@ -58,11 +58,15 @@ export const StoreFormModal: React.FC<StoreFormModalProps> = ({
   const handleSubmit = (values: z.infer<typeof formSchema>) => {
     if (mode === 'edit' && initialData) {
       onSubmit({
-        ...values,
+        name: values.name,
+        location: values.location,
         id: initialData.id,
       });
     } else {
-      onSubmit(values);
+      onSubmit({
+        name: values.name,
+        location: values.location,
+      });
     }
     form.reset();
   };

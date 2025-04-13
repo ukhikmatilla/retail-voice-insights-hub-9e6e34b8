@@ -1,3 +1,4 @@
+
 {
   "app": {
     "title": "RetailVoiceAI",
@@ -197,6 +198,9 @@
       "last7Days": "Oxirgi 7 kun",
       "last30Days": "Oxirgi 30 kun",
       "last90Days": "Oxirgi 90 kun",
+      "last3Months": "Oxirgi 3 oy",
+      "last6Months": "Oxirgi 6 oy",
+      "last12Months": "Oxirgi 12 oy",
       "custom": "Boshqa",
       "insightType": "Tahlil turi",
       "skill": "Ko'nikma",
@@ -260,7 +264,9 @@
       "noInsightsFound": "Tahlillar topilmadi"
     },
     "noInsightsFound": "Tahlillar topilmadi",
-    "weeklyTrend": "Eженедельная тенденция"
+    "weeklyTrend": "Haftalik tendensiya",
+    "recommendationsList": "Tavsiyalar ro'yxati",
+    "recommendationsDescription": "AI tavsiyalari asosida ko'nikmalaringizni qanday yaxshilash kerakligi"
   },
   "training": {
     "recommendedFor": "Siz uchun tavsiya etilgan",
@@ -450,5 +456,24 @@
     "filterConversations": "Suhbatlarni filtrlash",
     "scoreThreshold": "Ball chegarasi",
     "noConversations": "Suhbatlar topilmadi"
+  },
+  "transcript": {
+    "speakerLabels": "Kim gapirmoqda",
+    "showInsight": "AI tahlilni ko'rsatish",
+    "hideInsight": "AI tahlilni yashirish"
+  },
+  "conversation": {
+    "playAudio": "Audioni ijro etish",
+    "downloadTranscript": "Transkripsiyani yuklab olish",
+    "salesperson": "Sotuvchi",
+    "customer": "Mijoz",
+    "recommendation": "Tavsiya",
+    "scoreBreakdown": "Ball taqsimoti",
+    "device": "Qurilma",
+    "meta": {
+      "location": "Joylashuv",
+      "device": "Qurilma",
+      "duration": "Davomiyligi"
+    }
   }
 }

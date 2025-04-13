@@ -140,7 +140,7 @@ const TranscriptMessageBubble: React.FC<TranscriptMessageBubbleProps> = ({ messa
               <HoverCardTrigger asChild>
                 <button 
                   className="absolute -right-6 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-1 shadow-sm hover:shadow"
-                  aria-label={t('transcript.showInsight', 'Show AI insight')}
+                  aria-label={t('transcript.showInsight')}
                 >
                   <LightbulbIcon size={16} className="text-amber-500" />
                 </button>
@@ -156,7 +156,7 @@ const TranscriptMessageBubble: React.FC<TranscriptMessageBubbleProps> = ({ messa
             <button
               onClick={toggleInsight}
               className="absolute right-2 bottom-2 bg-amber-100 rounded-full p-1"
-              aria-label={t('transcript.showInsight', 'Show AI insight')}
+              aria-label={t('transcript.showInsight')}
             >
               <LightbulbIcon size={14} className="text-amber-600" />
             </button>

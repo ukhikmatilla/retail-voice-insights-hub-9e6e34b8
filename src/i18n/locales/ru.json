@@ -1,3 +1,4 @@
+
 {
   "app": {
     "title": "RetailVoiceAI",
@@ -196,6 +197,9 @@
       "last7Days": "Последние 7 дней",
       "last30Days": "Последние 30 дней",
       "last90Days": "Последние 90 дней",
+      "last3Months": "Последние 3 месяца",
+      "last6Months": "Последние 6 месяцев",
+      "last12Months": "Последние 12 месяцев",
       "custom": "Другое",
       "insightType": "Тип инсайта",
       "skill": "Навык",
@@ -259,7 +263,9 @@
       "noInsightsFound": "Инсайты не найдены"
     },
     "noInsightsFound": "Инсайты не найдены",
-    "weeklyTrend": "Еженедельная тенденция"
+    "weeklyTrend": "Еженедельная тенденция",
+    "recommendationsList": "Список рекомендаций",
+    "recommendationsDescription": "Как улучшить свои навыки на основе рекомендаций ИИ"
   },
   "training": {
     "recommendedFor": "Рекомендовано для вас",
@@ -450,10 +456,23 @@
     "scoreThreshold": "Порог оценки",
     "noConversations": "Разговоры не найдены"
   },
+  "transcript": {
+    "speakerLabels": "Кто говорит",
+    "showInsight": "Показать инсайт ИИ",
+    "hideInsight": "Скрыть инсайт ИИ"
+  },
   "conversation": {
     "playAudio": "Воспроизвести аудио",
+    "downloadTranscript": "Скачать транскрипт",
     "salesperson": "Продавец",
     "customer": "Клиент",
-    "recommendation": "Рекомендация"
+    "recommendation": "Рекомендация",
+    "scoreBreakdown": "Распределение баллов",
+    "device": "Устройство",
+    "meta": {
+      "location": "Местоположение",
+      "device": "Устройство",
+      "duration": "Продолжительность"
+    }
   }
 }

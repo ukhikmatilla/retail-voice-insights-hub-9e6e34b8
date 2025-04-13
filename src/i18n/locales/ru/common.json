@@ -1,0 +1,63 @@
+
+{
+  "save": "Сохранить",
+  "cancel": "Отменить",
+  "edit": "Редактировать",
+  "delete": "Удалить",
+  "confirm": "Подтвердить",
+  "loading": "Загрузка...",
+  "success": "Успех!",
+  "error": "Ошибка!",
+  "home": "Главная",
+  "settings": "Настройки",
+  "profile": "Профиль",
+  "logout": "Выйти",
+  "search": "Поиск...",
+  "next": "Далее",
+  "back": "Назад",
+  "submit": "Отправить",
+  "close": "Закрыть",
+  "create": "Создать",
+  "update": "Обновить",
+  "view": "Просмотреть",
+  "actions": "Действия",
+  "details": "Детали",
+  "information": "Информация",
+  "date": "Дата",
+  "time": "Время",
+  "status": "Статус",
+  "filters": {
+    "dateRange": "Период",
+    "last7Days": "Последние 7 дней",
+    "last30Days": "Последние 30 дней",
+    "last90Days": "Последние 90 дней",
+    "custom": "Выбрать",
+    "insightType": "Тип аналитики",
+    "skill": "Навык",
+    "all": "Все"
+  },
+  "insight": {
+    "type": {
+      "improvement": "Улучшение",
+      "opportunity": "Возможность",
+      "urgent": "Срочно",
+      "behavior": "Поведение",
+      "custom": "Своё"
+    }
+  },
+  "tabs": {
+    "summary": "Сводка",
+    "insights": "Аналитика",
+    "recommendations": "Рекомендации"
+  },
+  "insights": {
+    "summary": {
+      "totalInsights": "Всего аналитик",
+      "averageScore": "Средний балл",
+      "improvementRate": "Темп улучшения"
+    },
+    "charts": {
+      "skillProgress": "Прогресс навыков"
+    }
+  }
+}

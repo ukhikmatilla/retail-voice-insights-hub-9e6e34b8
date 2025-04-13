@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -45,6 +46,9 @@ import ProfileSettings from "./pages/profile/settings";
 
 // Add import for the training module page
 import TrainingModuleDetail from "./pages/sales/training/[slug]";
+
+// AI trainer page
+import AiTrainerPage from "./pages/ai/trainer";
 
 // Import i18n instance
 import "./i18n/index";
@@ -251,6 +255,16 @@ const App = () => (
                     <HrTrainingManagement />
                   </RoleProtectedRoute>
                 } 
+              />
+
+              {/* AI Trainer route */}
+              <Route 
+                path="/ai/trainer" 
+                element={
+                  <RoleProtectedRoute allowedRoles={['salesperson', 'manager']}>
+                    <AiTrainerPage />
+                  </RoleProtectedRoute>
+                }
               />
 
               {/* Redirect / to onboarding or role-specific dashboard */}

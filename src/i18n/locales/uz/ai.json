@@ -1,0 +1,50 @@
+
+{
+  "trainer": {
+    "title": "AI murabbiy",
+    "start": "Simulyatsiyani boshlash",
+    "selectScenario": "Ssenariyni tanlang",
+    "feedbackTitle": "AI tavsiyasi",
+    "score": "Umumiy ball",
+    "recommendation": "Trening tavsiyasi",
+    "scenarios": {
+      "priceObjection": "Narx e'tirozi",
+      "trustBuilding": "Ishonch qurish",
+      "upsell": "Qo'shimcha sotish",
+      "finalClosing": "Yakuniy bitim",
+      "followUp": "Keyingi aloqa"
+    },
+    "feedback": {
+      "missedObjections": "O'tkazib yuborilgan e'tirozlar",
+      "weakAnswers": "Zaif javoblar",
+      "tips": "AI maslahatlari"
+    },
+    "simulator": {
+      "yourTurn": "Javobingiz...",
+      "send": "Yuborish",
+      "startPrompt": "Mijoz bilan suhbatni boshlang",
+      "thinking": "AI o'ylayapti...",
+      "endSimulation": "Simulyatsiyani tugatish",
+      "restart": "Qayta boshlash"
+    },
+    "results": {
+      "scorePrefix": "Sizning natijangiz:",
+      "badgesEarned": "Qo'lga kiritilgan nishonlar:",
+      "suggestedModules": "Tavsiya etilgan modullar:",
+      "improveTip": "Ko'nikmalarni yaxshilash uchun o'rganish tavsiya etiladi:",
+      "tryAgain": "Qayta urinish"
+    },
+    "badges": {
+      "quickThinker": "Tez fikrlovchi",
+      "objectionHandler": "E'tirozlarni hal qiluvchi",
+      "trustBuilder": "Ishonch quruvchi"
+    }
+  },
+  "skills": {
+    "trustBuilding": "Ishonch qurish",
+    "objections": "E'tirozlar bilan ishlash",
+    "crossSelling": "Ko'ndalang sotish",
+    "valueExplanation": "Qiymatni tushuntirish",
+    "closing": "Bitimni yakunlash"
+  }
+}

@@ -14,12 +14,12 @@ import { useProfile } from '@/hooks/useProfile';
 const ProfileForm = () => {
   const { t } = useTranslation();
   const { user, error, loading, saveProfile, logout } = useProfile();
-  const { language, changeLanguage } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   const [name, setName] = useState('');
 
   const handleLanguageChange = (lang: 'uz' | 'ru') => {
-    changeLanguage(lang);
+    setLanguage(lang);
   };
 
   if (!user) return null;
@@ -33,7 +33,7 @@ const ProfileForm = () => {
   useEffect(() => {
     if (error) {
       toast({
-        title: t(PROFILE_ERROR_UPDATE_TEXT),
+        title: t('profile.errorUpdate'),
         description: error,
         variant: 'destructive',
       });
@@ -62,7 +62,7 @@ const ProfileForm = () => {
         {/* Avatar & User Info */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
           <Avatar className="h-20 w-20 text-lg">
-            <AvatarFallback className="bg-primary text-primary-foreground">{/* Avatar Fallback with user initials */}</>
+            <AvatarFallback className="bg-primary text-primary-foreground">{getInitials(user.name)}</AvatarFallback>
           </Avatar>
           
           <div className="space-y-1.5">
@@ -77,7 +77,7 @@ const ProfileForm = () => {
         <div className="space-y-6">
           {/* Name Field */}
           <div className="space-y-2">
-            <Label htmlFor="name">{t(PROFILE_FULL_NAME_TEXT)}</Label>
+            <Label htmlFor="name">{t('profile.fullName')}</Label>
             <Input
               id="name"
               value={name}
@@ -88,7 +88,7 @@ const ProfileForm = () => {
           
           {/* Email Field (read-only) */}
           <div className="space-y-2">
-            <Label htmlFor="email">{t(PROFILE_EMAIL_TEXT)}</Label>
+            <Label htmlFor="email">{t('profile.email')}</Label>
             <Input
               id="email"
               value={user.email}
@@ -99,7 +99,7 @@ const ProfileForm = () => {
           
           {/* Role Field (read-only) */}
           <div className="space-y-2">
-            <Label htmlFor="role">{t(PROFILE_ROLE_TEXT)}</Label>
+            <Label htmlFor="role">{t('profile.role')}</Label>
             <Input
               id="role"
               value={t(`roles.${user.role}`)}
@@ -110,7 +110,7 @@ const ProfileForm = () => {
           
           {/* Language Selection */}
           <div className="space-y-3">
-            <Label>{t(PROFILE_LANGUAGE_TEXT)}</Label>
+            <Label>{t('profile.language')}</Label>
             <div className="flex flex-col sm:flex-row gap-3">
               <Button
                 type="button"
@@ -142,7 +142,7 @@ const ProfileForm = () => {
             variant="destructive"
             onClick={logout}
             disabled={loading}
-          >{/* Logout Button */}
+          >
             <LogOutIcon className="mr-2 h-4 w-4" /> {t('profile.logout')}
           </Button>
         </div>

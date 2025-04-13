@@ -1,3 +1,4 @@
+
 import { Conversation } from "@/types/conversations";
 import { ConversationInsight } from "@/types/commonTypes";
 
@@ -35,4 +36,4 @@ const generateRandomConversation = (id: number): Conversation => {
 
 export const mockConversations: Conversation[] = Array.from({ length: 100 }, (_, i) =>
   generateRandomConversation(i + 1)
-});
+);

@@ -1,3 +1,4 @@
+
 import { EmployeeAtRisk } from '@/types';
 
 type RiskFilter = 'all' | 'high' | 'medium' | 'low';
@@ -39,24 +40,28 @@ const useEmployeesAtRiskData: UseEmployeesAtRiskData = (
       } else if (sortBy === 'risk') {
         const riskOrder = { high: 1, medium: 2, low: 3 };
         return (riskOrder[a.risk] || 4) - (riskOrder[b.risk] || 4);
-      } else {
-        return 0;
       }
+      return 0;
     });
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const paginatedData = filteredData.slice(startIndex, endIndex);
+    
     return {
-      }
-      return 0;
-    });
-
-    return filteredData;
       data: paginatedData,
       currentPage: page,
       totalPages: Math.ceil(filteredData.length / pageSize),
-      totalItems: filteredData.length,
+      totalItems: filteredData.length
+    };
+  } catch (error) {
+    return {
+      data: [],
+      currentPage: page,
+      totalPages: 0,
+      totalItems: 0,
+      error: 'Failed to process employees at risk data'
     };
   }
 };
+
 export default useEmployeesAtRiskData;

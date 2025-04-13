@@ -1,8 +1,10 @@
+
 import {
   HrAiInsight,
   HrDepartmentData,
   HrTurnoverTrendData,
   TrainingCompletionData,
+  HrRecentHire
 } from '@/types';
 import { Seller } from '@/types/commonTypes';
 import { sellers } from './commonMockData';
@@ -27,6 +29,17 @@ const generateRandomDate = (start: Date, end: Date) => {
     start.getTime() + Math.random() * (end.getTime() - start.getTime())
   );
 };
+
+const positions = [
+  'Sales Associate',
+  'Sales Manager',
+  'Junior Specialist',
+  'Senior Specialist',
+  'Team Lead',
+  'Regional Manager',
+  'Assistant Manager',
+  'Department Coordinator'
+];
 
 export const turnoverTrendData: HrTurnoverTrendData[] = months
   .map((month, index) => ({
@@ -96,41 +109,43 @@ export const employeesAtRisk = Array.from({ length: 30 }, () =>
   generateSellerAtRisk()
 );
 
-const generateRecentHire = (): Seller & { hireDate: string } => {
+const generateRecentHire = (): HrRecentHire => {
   const seller = sellers[Math.floor(Math.random() * sellers.length)];
   return {
-    ...seller,
+    id: seller.id,
+    name: seller.name,
+    position: positions[Math.floor(Math.random() * positions.length)],
     hireDate: generateRandomDate(new Date(2024, 0, 1), new Date(2024, 11, 31))
       .toISOString()
       .split('T')[0],
+    progress: Math.floor(Math.random() * 100),
   };
 };
 
-export const recentHires = Array.from({ length: 25 }, () =>
+export const recentHires = Array.from({ length: 15 }, () =>
   generateRecentHire()
 ).sort((a, b) => new Date(b.hireDate).getTime() - new Date(a.hireDate).getTime());
-
-export const aiInsights: HrAiInsight[] = Array.from({ length: 5 }, (_, i) => ({
-  id: i + 1,
-  insight: `insights.aiInsight${Math.floor(Math.random() * 5) + 1}`,
-  priority: riskLevels[Math.floor(Math.random() * riskLevels.length)] as
-    | 'high'
-    | 'medium'
-    | 'low',
-}));
-
-export const recentHires: HrRecentHire[] = Array.from({ length: 15 }, (_, i) => ({
-  id: i + 1,
-  name: `New Hire ${i + 1}`,
-  position: positions[Math.floor(Math.random() * positions.length)],
-  hireDate: generateRandomDate(new Date(2024, 0, 1), new Date(2024, 11, 31))
-    .toISOString()
-    .split('T')[0],
-  progress: Math.floor(Math.random() * 100),
-})).sort((a, b) => new Date(b.hireDate).getTime() - new Date(a.hireDate).getTime());
 
 export const aiInsights: HrAiInsight[] = [
   { id: 1, insight: 'insights.aiInsight1', priority: 'high' },
   { id: 2, insight: 'insights.aiInsight2', priority: 'medium' },
   { id: 3, insight: 'insights.aiInsight3', priority: 'low' },
 ];
+
+// Mock data for dashboard
+export const hrMockData = {
+  personnelCount: 248,
+  activeEmployees: 235,
+  newHires: 12,
+  terminations: 5,
+  trainingProgress: 76,
+  averageTenure: 3.2,
+  adaptationLevel: 84,
+  requiredTraining: 18,
+  turnoverTrendData,
+  departmentData,
+  trainingCompletionData,
+  employeesAtRisk,
+  recentHires,
+  aiInsights
+};

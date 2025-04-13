@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
@@ -50,10 +51,10 @@ const HrDashboard: React.FC = () => {
 
   // Extract data and pagination info
   const turnoverTrendData = useMemo(() => turnoverTrendDataResult && "data" in turnoverTrendDataResult ? turnoverTrendDataResult.data : [], [turnoverTrendDataResult]) as TurnoverTrendData[];
-  const departmentData = useMemo(() => departmentDataResult && "data" in departmentDataResult ? departmentDataResult.data : [], [departmentDataResult]) as { department: string; count: number }[];
-  const trainingCompletionData = useMemo(() => trainingCompletionDataResult && "data" in trainingCompletionDataResult ? trainingCompletionDataResult.data : [], [trainingCompletionDataResult]) as { name: string; value: number }[];
-  const employeesAtRiskData = useMemo(() => employeesAtRiskDataResult && "data" in employeesAtRiskDataResult ? employeesAtRiskDataResult.data : [], [employeesAtRiskDataResult]) as { id: number; name: string; position: string; issue: string; risk: string }[];
-  const recentHiresData = useMemo(() => recentHiresDataResult && "data" in recentHiresDataResult ? recentHiresDataResult.data : [], [recentHiresDataResult]) as { id: number; name: string; position: string; hireDate: string; progress: number }[];
+  const departmentData = useMemo(() => departmentDataResult && "data" in departmentDataResult ? departmentDataResult.data : [], [departmentDataResult]);
+  const trainingCompletionData = useMemo(() => trainingCompletionDataResult && "data" in trainingCompletionDataResult ? trainingCompletionDataResult.data : [], [trainingCompletionDataResult]);
+  const employeesAtRiskData = useMemo(() => employeesAtRiskDataResult && "data" in employeesAtRiskDataResult ? employeesAtRiskDataResult.data : [], [employeesAtRiskDataResult]);
+  const recentHiresData = useMemo(() => recentHiresDataResult && "data" in recentHiresDataResult ? recentHiresDataResult.data : [], [recentHiresDataResult]);
   
   // Extract pagination information
   const employeesAtRiskCurrentPage = useMemo(() => employeesAtRiskDataResult && "currentPage" in employeesAtRiskDataResult ? employeesAtRiskDataResult.currentPage : 1, [employeesAtRiskDataResult]);
@@ -64,8 +65,7 @@ const HrDashboard: React.FC = () => {
   const recentHiresTotalPages = useMemo(() => recentHiresDataResult && "totalPages" in recentHiresDataResult ? recentHiresDataResult.totalPages : 1, [recentHiresDataResult]);
   const recentHiresTotalItems = useMemo(() => recentHiresDataResult && "totalItems" in recentHiresDataResult ? recentHiresDataResult.totalItems : 0, [recentHiresDataResult]);
   
-
-    const hasErrors = useMemo(() => {
+  const hasErrors = useMemo(() => {
     return !!(
       "error" in turnoverTrendDataResult ||
       "error" in departmentDataResult ||
@@ -96,6 +96,7 @@ const HrDashboard: React.FC = () => {
         </div>
       </RoleLayout>
     );
+  }
 
   const handleRiskFilterChange = (value: string) => {
     setRiskFilter(value as "all" | "high" | "medium" | "low");
@@ -170,7 +171,7 @@ const HrDashboard: React.FC = () => {
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          <FilterSelector<"7days" | "30days" | "90days" | "custom">
+          <FilterSelector
             value={dateRange}
             onValueChange={setDateRange}
             placeholder={t('common.dateRange')}
@@ -179,13 +180,11 @@ const HrDashboard: React.FC = () => {
               { value: '30days', label: t('common.last30Days') },
               { value: '90days', label: t('common.last90Days') },
               { value: 'custom', label: t('common.custom') }
-            ]}
+            ], [t])}
           />
-          , [t])}
-          <FilterSelector<"all" | "high" | "medium" | "low">
+          <FilterSelector
             value={riskFilter}
             onValueChange={handleRiskFilterChange}
-            onValueChange={() => {}}
             placeholder={t('hr.risk.filter')}
             options={[
               { value: 'all', label: t('common.all') },
@@ -310,6 +309,8 @@ const HrDashboard: React.FC = () => {
             </CardContent>
           </Card>
         </div>
+        
+        <div className="flex gap-2 mb-8">
           <Button>
             <UserPlus className="mr-2 h-4 w-4" /> {t('hr.actions.addEmployee')}
           </Button>
@@ -319,9 +320,11 @@ const HrDashboard: React.FC = () => {
           <Button variant="outline">
             <Download className="mr-2 h-4 w-4" /> {t('hr.actions.exportReport')}
           </Button>
+        </div>
 
         <Tabs defaultValue="charts" className="mb-8">
           <TabsList className="mb-4">
+            <TabsTrigger value="charts">{t('hr.tabs.charts')}</TabsTrigger>
             <TabsTrigger value="attention">{t('hr.tabs.attention')}</TabsTrigger>
             <TabsTrigger value="insights">{t('hr.tabs.insights')}</TabsTrigger>
           </TabsList>
@@ -341,8 +344,8 @@ const HrDashboard: React.FC = () => {
                         <XAxis dataKey="month" />
                         <YAxis />
                         <Tooltip />
-                </CardContent>
-                        <Line type="monotone" dataKey={TERMINATIONS_DATA_KEY} stroke="#F97316" name={t('hr.charts.terminations')} />
+                        <Line type="monotone" dataKey="hires" stroke="#10B981" name={t('hr.charts.hires')} />
+                        <Line type="monotone" dataKey="terminations" stroke="#F97316" name={t('hr.charts.terminations')} />
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
@@ -357,7 +360,7 @@ const HrDashboard: React.FC = () => {
                 <CardContent>
                   <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={hrMockData.departmentData}>
+                      <BarChart data={departmentData}>
                         <CartesianGrid strokeDasharray="3 3"/>
                         <XAxis dataKey="department"/>
                         <YAxis />
@@ -379,7 +382,7 @@ const HrDashboard: React.FC = () => {
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
                         <Pie
-                          data={hrMockData.trainingCompletionData}
+                          data={trainingCompletionData}
                           cx="50%"
                           cy="50%"
                           labelLine={true}
@@ -388,7 +391,7 @@ const HrDashboard: React.FC = () => {
                           dataKey="value"
                           label={generatePieChartLabel}
                         >
-                          {hrMockData.trainingCompletionData.map((entry, index) => (
+                          {trainingCompletionData.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                           ))}
                         </Pie>
@@ -409,15 +412,13 @@ const HrDashboard: React.FC = () => {
                     {recentHiresData.map(renderRecentHire)}
                     {recentHiresTotalItems > pageSize && (
                       <div className="flex justify-center mt-4">
-                          <Paginator
-                            currentPage={recentHiresCurrentPage}
-                            totalPages={recentHiresTotalPages}
-                            onPageChange={handleRecentHiresPageChange}
-                            totalItems={recentHiresTotalItems}
-                            pageSize={pageSize}
-                          />
-                        
-                        
+                        <Paginator
+                          currentPage={recentHiresCurrentPage}
+                          totalPages={recentHiresTotalPages}
+                          onPageChange={handleRecentHiresPageChange}
+                          totalItems={recentHiresTotalItems}
+                          pageSize={pageSize}
+                        />
                       </div>
                     )}
                   </div>
@@ -434,22 +435,18 @@ const HrDashboard: React.FC = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                    {employeesAtRiskData.map(renderEmployeeAtRisk)}
-                    {employeesAtRiskTotalItems > pageSize && (
-                      <div className="flex justify-center mt-4">
-                          <Paginator
-                            currentPage={employeesAtRiskCurrentPage}
-                            totalPages={employeesAtRiskTotalPages}
-                            onPageChange={handleEmployeesAtRiskPageChange}
-                            totalItems={employeesAtRiskTotalItems}
-                            pageSize={pageSize}
-                          />
-                      
-                        
-                      </div>
-                    )}
+                  {employeesAtRiskData.map(renderEmployeeAtRisk)}
+                  {employeesAtRiskTotalItems > pageSize && (
+                    <div className="flex justify-center mt-4">
+                      <Paginator
+                        currentPage={employeesAtRiskCurrentPage}
+                        totalPages={employeesAtRiskTotalPages}
+                        onPageChange={handleEmployeesAtRiskPageChange}
+                        totalItems={employeesAtRiskTotalItems}
+                        pageSize={pageSize}
+                      />
                     </div>
-                  ))}
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -465,20 +462,20 @@ const HrDashboard: React.FC = () => {
               <CardContent>
                 <div className="space-y-4">
                   {hrMockData.aiInsights.map(insight => (
-                    <div key={insight[ID_DATA_KEY]} className="p-4 border rounded-md">
+                    <div key={insight.id} className="p-4 border rounded-md">
                       <div className="flex items-center gap-2 mb-2">
                         <Badge variant={
-                          insight[PRIORITY_DATA_KEY] === HIGH_RISK_TEXT ? 'destructive' : 
-                            insight[PRIORITY_DATA_KEY] === MEDIUM_RISK_TEXT ? 'outline' :
+                          insight.priority === 'high' ? 'destructive' : 
+                            insight.priority === 'medium' ? 'outline' :
                               'secondary'
                         }>
-                          {t(`hr.priority.${insight[PRIORITY_DATA_KEY]}`)}
+                          {t(`hr.priority.${insight.priority}`)}
                         </Badge>
                       </div>
-                      <p>{t(insight[INSIGHT_DATA_KEY])}</p>
+                      <p>{t(insight.insight)}</p>
                       <div className="mt-3 flex gap-2">
-                        <Button size="sm" variant="outline">{t('hr.actions.viewdetails')}</Button>
-                        <Button size="sm">{t('hr.actions.takeaction')}</Button>
+                        <Button size="sm" variant="outline">{t('hr.actions.viewDetails')}</Button>
+                        <Button size="sm">{t('hr.actions.takeAction')}</Button>
                       </div>
                     </div>
                   ))}
@@ -494,66 +491,78 @@ const HrDashboard: React.FC = () => {
 
 export default HrDashboard;
 
-const Paginator: React.FC<{ currentPage: number; totalPages: number; onPageChange: (page: number) => void; totalItems: number; pageSize: number }> = ({ currentPage, totalPages, onPageChange, totalItems, pageSize }) => {
-    const { t } = useTranslation();
+const Paginator: React.FC<{ 
+  currentPage: number; 
+  totalPages: number; 
+  onPageChange: (page: number) => void; 
+  totalItems: number; 
+  pageSize: number 
+}> = ({ 
+  currentPage, 
+  totalPages, 
+  onPageChange, 
+  totalItems, 
+  pageSize 
+}) => {
+  const { t } = useTranslation();
   
-    const getPageNumbers = () => {
-      const pagesToShow = 5;
-      const halfWay = Math.ceil(pagesToShow / 2);
-      const isStart = currentPage <= halfWay;
-      const isEnd = totalPages - currentPage < halfWay;
-  
-      let startPage = 1;
-      let endPage = Math.min(totalPages, pagesToShow);
-  
-      if (!isStart && !isEnd) {
-        startPage = Math.max(1, currentPage - Math.floor(pagesToShow / 2));
-        endPage = Math.min(totalPages, currentPage + Math.floor(pagesToShow / 2));
-      } else if (isEnd) {
-        startPage = Math.max(1, totalPages - pagesToShow + 1);
-        endPage = totalPages;
-      }
-  
-      return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
-    };
-  
-    const pageNumbers = getPageNumbers();
-  
-    return (
-      <div className="flex items-center justify-between">
-        <div className="text-sm text-muted-foreground">
-          {t('pagination.showing', { min: Math.min((currentPage - 1) * pageSize + 1, totalItems), max: Math.min(currentPage * pageSize, totalItems), total: totalItems })}
-        </div>
-        <div className="flex items-center space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => onPageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            {t('pagination.previous')}
-          </Button>
-  
-          {pageNumbers.map(page => (
-            <Button
-              key={page}
-              variant={currentPage === page ? "default" : "outline"}
-              size="sm"
-              onClick={() => onPageChange(page)}
-            >
-              {page}
-            </Button>
-          ))}
-  
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => onPageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            {t('pagination.next')}
-          </Button>
-        </div>
-      </div>
-    );
+  const getPageNumbers = () => {
+    const pagesToShow = 5;
+    const halfWay = Math.ceil(pagesToShow / 2);
+    const isStart = currentPage <= halfWay;
+    const isEnd = totalPages - currentPage < halfWay;
+
+    let startPage = 1;
+    let endPage = Math.min(totalPages, pagesToShow);
+
+    if (!isStart && !isEnd) {
+      startPage = Math.max(1, currentPage - Math.floor(pagesToShow / 2));
+      endPage = Math.min(totalPages, currentPage + Math.floor(pagesToShow / 2));
+    } else if (isEnd) {
+      startPage = Math.max(1, totalPages - pagesToShow + 1);
+      endPage = totalPages;
+    }
+
+    return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
   };
+
+  const pageNumbers = getPageNumbers();
+
+  return (
+    <div className="flex items-center justify-between">
+      <div className="text-sm text-muted-foreground">
+        {t('pagination.showing', { min: Math.min((currentPage - 1) * pageSize + 1, totalItems), max: Math.min(currentPage * pageSize, totalItems), total: totalItems })}
+      </div>
+      <div className="flex items-center space-x-2">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          {t('pagination.previous')}
+        </Button>
+
+        {pageNumbers.map(page => (
+          <Button
+            key={page}
+            variant={currentPage === page ? "default" : "outline"}
+            size="sm"
+            onClick={() => onPageChange(page)}
+          >
+            {page}
+          </Button>
+        ))}
+
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          {t('pagination.next')}
+        </Button>
+      </div>
+    </div>
+  );
+};

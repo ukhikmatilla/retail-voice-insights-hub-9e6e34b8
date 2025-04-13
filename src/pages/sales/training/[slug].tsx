@@ -11,58 +11,71 @@ import { Training, TrainingTheory as TrainingTheoryType, TheorySection, Training
 import TrainingModuleSidebar from '@/components/training/TrainingModuleSidebar';
 import TrainingModuleContent from '@/components/training/TrainingModuleContent';
 
+// Define the Step type here to match exactly with our component interfaces
+type StepType = 'video' | 'theory' | 'quiz';
+type StepStatus = 'completed' | 'in_progress' | 'locked';
+
+interface Step {
+  id: string;
+  title: string;
+  type: StepType;
+  status: StepStatus;
+  youtubeUrl?: string;
+  content?: string;
+}
+
 // Sample mock training module structure
-const mockModuleSteps = [
+const mockModuleSteps: Step[] = [
   {
     id: 'intro',
     title: 'Introduction',
-    type: 'theory' as const,
-    status: 'completed' as const,
+    type: 'theory',
+    status: 'completed',
     content: "Price objections are one of the most common challenges sales professionals face. They occur when a prospect expresses concern about the cost of your product or service."
   },
   {
     id: 'lesson1',
     title: 'Lesson 1: Psychology of Pricing',
-    type: 'video' as const,
-    status: 'in_progress' as const,
+    type: 'video',
+    status: 'in_progress',
     youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     content: "Understanding how customers perceive value is essential to overcoming price objections."
   },
   {
     id: 'lesson2',
     title: 'Lesson 2: What NOT to Say',
-    type: 'video' as const,
-    status: 'locked' as const,
+    type: 'video',
+    status: 'locked',
     youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     content: "Never immediately offer discounts when facing price objections. This devalues your product and reduces your profit margin unnecessarily."
   },
   {
     id: 'lesson3',
     title: 'Lesson 3: Effective Scripts',
-    type: 'video' as const,
-    status: 'locked' as const,
+    type: 'video',
+    status: 'locked',
     youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     content: "Using the right language can help redirect the customer's focus from price to value."
   },
   {
     id: 'practice',
     title: 'Practice: Role Simulation',
-    type: 'theory' as const,
-    status: 'locked' as const,
+    type: 'theory',
+    status: 'locked',
     content: "Practice these techniques with role-playing scenarios to build confidence in real-world situations."
   },
   {
     id: 'ai-advice',
     title: 'AI Recommendations',
-    type: 'theory' as const,
-    status: 'locked' as const,
+    type: 'theory',
+    status: 'locked',
     content: "Based on your responses in previous lessons, here are personalized suggestions for improvement."
   },
   {
     id: 'quiz',
     title: 'Final Test',
-    type: 'quiz' as const,
-    status: 'locked' as const
+    type: 'quiz',
+    status: 'locked'
   }
 ];
 
@@ -133,7 +146,7 @@ const TrainingModuleDetail = () => {
   const { t } = useTranslation();
   const [training, setTraining] = useState<Training | null>(null);
   const [currentStep, setCurrentStep] = useState('intro');
-  const [steps, setSteps] = useState(mockModuleSteps);
+  const [steps, setSteps] = useState<Step[]>(mockModuleSteps);
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
@@ -180,11 +193,11 @@ const TrainingModuleDetail = () => {
     // Update steps progress
     const updatedSteps = steps.map(step => {
       if (step.id === stepId) {
-        return { ...step, status: 'in_progress' as const };
+        return { ...step, status: 'in_progress' as StepStatus };
       } else if (step.status === 'locked') {
         return step;
       } else {
-        return { ...step, status: 'completed' as const };
+        return { ...step, status: 'completed' as StepStatus };
       }
     });
     
@@ -199,7 +212,7 @@ const TrainingModuleDetail = () => {
       const updatedSteps = [...steps];
       updatedSteps[currentIndex + 1] = {
         ...updatedSteps[currentIndex + 1],
-        status: 'in_progress' as const
+        status: 'in_progress' as StepStatus
       };
       setSteps(updatedSteps);
       setCurrentStep(nextStep.id);

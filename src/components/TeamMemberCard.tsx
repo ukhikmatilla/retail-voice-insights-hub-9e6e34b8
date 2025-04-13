@@ -2,19 +2,25 @@
 import React from 'react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { TeamMember } from '@/types';
+import { TeamMember } from '@/utils/teamMockData';
 import { useTranslation } from 'react-i18next';
 import { Eye } from 'lucide-react';
 
 interface TeamMemberCardProps {
   member: TeamMember;
-  onViewProfile: (memberId: string) => void;
+  onViewProfile?: (memberId: string) => void;
 }
 
 const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, onViewProfile }) => {
   const { t } = useTranslation();
   
   const isUnderperforming = member.averageScore < 75;
+
+  const handleViewProfile = () => {
+    if (onViewProfile) {
+      onViewProfile(member.id);
+    }
+  };
 
   return (
     <Card className={`mb-4 overflow-hidden ${isUnderperforming ? 'border-insight-red/50' : ''}`}>
@@ -46,7 +52,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, onViewProfile }
         </div>
       </CardContent>
       <CardFooter className="px-6 py-3 bg-muted/50 flex justify-end">
-        <Button variant="outline" size="sm" onClick={() => onViewProfile(member.id)}>
+        <Button variant="outline" size="sm" onClick={handleViewProfile}>
           <Eye className="mr-2 h-4 w-4" />
           {t('team.viewProfile')}
         </Button>

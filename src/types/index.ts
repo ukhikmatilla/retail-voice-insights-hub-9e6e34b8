@@ -1,4 +1,3 @@
-
 export interface TrainingTheory {
   id: string;
   title: string;
@@ -164,4 +163,31 @@ export interface ScriptEntry {
   category: ScriptCategory;
   aiResponse: LocalizedString;
   insight: LocalizedString;
+}
+
+export interface InsightDetail {
+  title: string;
+  description: string;
+  chartData?: any;
+  recommendations: string[];
+  relatedConversations?: Conversation[];
+  metrics?: {
+    label: string;
+    value: string | number;
+    change?: number;
+    isPositive?: boolean;
+  }[];
+}
+
+export interface StatCardData {
+  id: string;
+  title: string;
+  value: string | number;
+  icon: string;
+  trend?: {
+    value: number;
+    isPositive: boolean;
+  };
+  tooltipKey: 'conversations' | 'score' | 'missed' | 'success';
+  route: string;
 }

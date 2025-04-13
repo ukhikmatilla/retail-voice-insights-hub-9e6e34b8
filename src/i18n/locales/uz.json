@@ -1,4 +1,3 @@
-
 {
   "app": {
     "title": "RetailVoiceAI",
@@ -82,6 +81,22 @@
       "averageScore": "O'rtacha ball",
       "missedOpportunities": "Boy berilgan imkoniyatlar",
       "successRate": "Muvaffaqiyat darajasi"
+    },
+    "totalConversations": {
+      "title": "Jami suhbatlar",
+      "tooltip": "Siz 23 ta suhbat o'tkazdingiz. Ulardan 8 tasi yaxshi tuzilgan."
+    },
+    "averageScore": {
+      "title": "O'rtacha ball",
+      "tooltip": "O'rtacha ball 3% ga oshdi. Sababi — argumentatsiya ko'nikmasi yaxshilangan."
+    },
+    "missedOpportunities": {
+      "title": "Yo'qotilgan imkoniyatlar",
+      "tooltip": "12 ta imkoniyat qo'ldan boy berilgan. Apseyl taklif qilinmagan bo'lishi mumkin."
+    },
+    "successRate": {
+      "title": "Muvaffaqiyat darajasi",
+      "tooltip": "67% muvaffaqiyat. Bu o'tgan haftaga nisbatan 2% yuqori."
     }
   },
   "navigation": {
@@ -284,7 +299,20 @@
         "description": "Vaqt davomida savdo ko'nikmalaringiz qanchalik yaxshilanganini ko'rsatadi"
       },
       "fromLastPeriod": "oxirgi davrga nisbatan",
-      "clickForDetails": "Batafsil ma'lumot uchun bosing"
+      "clickForDetails": "Batafsil ma'lumot uchun bosing",
+      "conversations": {
+        "title": "Jami suhbatlar",
+        "description": "Siz 23 ta suhbat o'tkazdingiz. Ulardan 8 tasi yaxshi tuzilgan."
+      },
+      "missed": {
+        "title": "Yo'qotilgan imkoniyatlar",
+        "description": "12 ta imkoniyat qo'ldan boy berilgan. Apseyl taklif qilinmagan bo'lishi mumkin."
+      },
+      "success": {
+        "title": "Muvaffaqiyat darajasi",
+        "description": "67% muvaffaqiyat. Bu o'tgan haftaga nisbatan 2% yuqori."
+      },
+      "viewDetails": "Batafsil ma'lumotni ko'rish"
     },
     "shortLabels": {
       "improvement": "Yaxsh.",
@@ -292,6 +320,36 @@
       "urgent": "Shosh.",
       "behavior": "Xulq",
       "custom": "Max."
+    },
+    "pages": {
+      "conversations": {
+        "title": "Suhbatlar tahlili",
+        "description": "Barcha suhbatlaringiz bo'yicha batafsil tahlil",
+        "weeklyTrend": "Haftalik tendensiya",
+        "patterns": "Asosiy naqshlar",
+        "recommendations": "Tavsiyalar"
+      },
+      "score": {
+        "title": "Ball tahlili",
+        "description": "Savdo samaradorligi ballari tahlili",
+        "weeklyTrend": "Haftalik tendensiya",
+        "patterns": "Asosiy naqshlar",
+        "recommendations": "Tavsiyalar"
+      },
+      "missed": {
+        "title": "Yo'qotilgan imkoniyatlar tahlili",
+        "description": "Boy berilgan imkoniyatlar bo'yicha batafsil tahlil",
+        "weeklyTrend": "Haftalik tendensiya",
+        "patterns": "Asosiy naqshlar",
+        "recommendations": "Tavsiyalar"
+      },
+      "success": {
+        "title": "Muvaffaqiyat darajasi tahlili",
+        "description": "Savdo muvaffaqiyati ko'rsatkichlari tahlili",
+        "weeklyTrend": "Haftalik tendensiya",
+        "patterns": "Asosiy naqshlar",
+        "recommendations": "Tavsiyalar"
+      }
     }
   },
   "training": {
@@ -522,7 +580,7 @@
       "description": "Mijozlar narxga qarshi e'tirozlar bildirganida qanday samarali muloqot qilishni o'rganing",
       "tips": {
         "0": "Avval mahsulotning qiymatini ta'kidlang, keyin narxni muhokama qiling",
-        "1": "Mijoz e'tirozlariga qarshi turmasdan, ularni e'tirof eting va qayta yo'naltiring",
+        "1": "Mijoz e'tirozlariga qarshi turmasdan, ularni e'tirof etiring va qayta yo'naltiring",
         "2": "Narx qarshiliklarini har doim ulkan savdo to'siqlari deb o'ylamang - ular ko'pincha qo'shimcha ma'lumot uchun so'rovlardir",
         "3": "Narx/qiymat nisbatini tushuntirish ko'pincha to'g'ridan-to'g'ri narx chegirmasidan ko'ra ta'sirliroq bo'ladi"
       },
@@ -559,169 +617,4 @@
       "theory": {
         "section1": {
           "title": "Asosiy tushunchalar",
-          "content": "Narx qarshiliklari savdo jarayonida tabiiy hisoblanadi va har doim ham bitimni rad etish emas, balki ko'pincha mahsulot/xizmat haqida qo'shimcha ma'lumot olish usuli bo'lishi mumkin. Ularni qanday talqin qilish va javob berish muhimdir."
-        },
-        "section2": {
-          "title": "Muhim ogohlantirish",
-          "content": "Narxni kamaytirishga shoshilmang! Bu sizning foyda marjangizni kamaytiradi va ko'pincha zarur emas. Narx haqidagi muzokaralarni mahsulotingiz qiymatini aniq ko'rsatmasdan boshlamang."
-        },
-        "section3": {
-          "title": "Zarur maslahatlar",
-          "content": "Mijozga qiymatni tushuntirgandan so'ng, 'Agar bu mahsulot sizning muammoingizni hal qilishga yordam bersa, narx sizga to'g'ri keladimi?' deb so'rang. Bu mijozning asosiy qarshiligini yaxshiroq tushunishga yordam beradi."
-        },
-        "section4": {
-          "title": "Misol dialog",
-          "content": "Mijoz: 'Bu narx bizning byudjetimizdan yuqori.' \nSiz: 'Tushunaman, sarmoyangizdan maksimal foyda olishni xohlaysiz. Ushbu mahsulot qanday qilib vaqt va pulni tejashga yordam berishini ko'rib chiqaylik, bu uzoq muddatli qarashda juda foydali investitsiya bo'lishini ta'minlaydi...'"
-        }
-      },
-      "quiz": {
-        "question1": {
-          "question": "Mijoz 'Bu juda qimmat' deb aytsa, eng yaxshi javob qanday bo'ladi?",
-          "options": {
-            "0": "Narxni pasaytirish va darhol chegirma taklif qilish",
-            "1": "Mahsulotning qiymatini tushuntirish va qanday muammoni hal qilishini ta'kidlash",
-            "2": "Raqobatchilarimiz narxlarini tanqid qilish",
-            "3": "Bu narxni kamaytirib bo'lmasligini aytish va boshqa mahsulot taklif qilish"
-          },
-          "explanation": "To'g'ri javob - mahsulotning qiymatini tushuntirish. Narx qarshiliklarida chegirmalarni darhol taklif qilish o'rniga, mijozning ehtiyojlari va mahsulot qanday qilib bu ehtiyojlarni qondira olishi haqida gaplashish yaxshiroq."
-        },
-        "question2": {
-          "question": "Narx qarshiliklarida 'Qiymat' deganda nimani tushunamiz?",
-          "options": {
-            "0": "Mahsulot/xizmat mijozga keltirishi mumkin bo'lgan foyda va afzalliklar",
-            "1": "Boshqa raqobatchilarimizdan qanchalik arzonroq narx taklif qilishimiz",
-            "2": "Mahsulotimiz qanday ishlab chiqarilgani va qanchalik sifatli ekanligi",
-            "3": "Bizga mahsulotimizni ishlab chiqarish qanchalik turishi"
-          },
-          "explanation": "To'g'ri javob - mijoz ko'rishi mumkin bo'lgan afzalliklar va foyda. Qiymat - bu nafaqat pul, balki mijozning muammosini hal qilish, vaqtni tejash va qulaylikni oshirishdir."
-        }
-      }
-    }
-  },
-  "button": {
-    "startModule": "Modulni boshlash",
-    "continue": "Davom etish",
-    "viewDetails": "Batafsil",
-    "submitAnswer": "Javobni yuborish",
-    "tryAgain": "Qayta urinish",
-    "finish": "Yakunlash",
-    "startTraining": "O'quvni boshlash",
-    "viewAll": "Barchasini ko'rish",
-    "downloadTranscript": "Transkripsiyani yuklab olish",
-    "uploadConversation": "Suhbatni yuklash",
-    "filterResults": "Natijalarni filtrlash",
-    "clearFilters": "Filtrlarni tozalash",
-    "saveChanges": "O'zgarishlarni saqlash",
-    "cancel": "Bekor qilish",
-    "confirm": "Tasdiqlash"
-  },
-  "title": {
-    "modules": "O'quv modullari",
-    "recentConversations": "Oxirgi suhbatlar",
-    "insightsSummary": "Tahlillar xulosasi",
-    "weeklyProgress": "Haftalik taraqqiyot",
-    "skillsAnalysis": "Ko'nikmalar tahlili",
-    "recommendations": "Tavsiyalar",
-    "profileSettings": "Profil sozlamalari",
-    "conversationDetails": "Suhbat tafsilotlari",
-    "training": "O'quv",
-    "insights": "Tahlillar",
-    "conversations": "Suhbatlar",
-    "scripts": "Skriptlar",
-    "dashboard": "Boshqaruv paneli"
-  },
-  "label": {
-    "aiRecommended": "AI tomonidan tavsiya etilgan",
-    "completed": "Yakunlangan",
-    "inProgress": "Jarayonda",
-    "notStarted": "Boshlanmagan",
-    "dueDate": "Topshirish muddati",
-    "priority": "Ustuvorlik",
-    "skillLevel": "Ko'nikma darajasi",
-    "duration": "Davomiyligi",
-    "score": "Ball",
-    "improvement": "Yaxshilash",
-    "date": "Sana",
-    "time": "Vaqt",
-    "status": "Holat",
-    "language": "Til",
-    "category": "Kategoriya",
-    "type": "Turi",
-    "success": "Muvaffaqiyatli",
-    "error": "Xato"
-  },
-  "status": {
-    "inProgress": "Jarayonda",
-    "completed": "Yakunlangan",
-    "pending": "Kutilmoqda",
-    "failed": "Muvaffaqiyatsiz",
-    "canceled": "Bekor qilingan",
-    "overdue": "Muddati o'tgan"
-  },
-  "placeholder": {
-    "search": "Qidirish...",
-    "selectDate": "Sanani tanlang",
-    "selectOption": "Variantni tanlang",
-    "enterName": "Ismni kiriting",
-    "enterEmail": "Email kiriting",
-    "writeComment": "Izoh yozing...",
-    "selectSkill": "Ko'nikma tanlang",
-    "selectLevel": "Daraja tanlang",
-    "selectLanguage": "Til tanlang"
-  },
-  "notification": {
-    "success": "Muvaffaqiyatli bajarildi",
-    "error": "Xato yuz berdi",
-    "info": "Ma'lumot",
-    "warning": "Ogohlantirish",
-    "newMessage": "Yangi xabar",
-    "trainingAssigned": "Yangi o'quv tayinlandi",
-    "conversationAnalyzed": "Suhbat tahlil qilindi",
-    "profileUpdated": "Profil yangilandi",
-    "sessionScheduled": "Sessiya rejalashtirildi"
-  },
-  "onboarding": {
-    "welcome": "RetailVoiceAI'ga xush kelibsiz",
-    "intro": "AI bilan savdo ko'nikmalarini yaxshilang",
-    "step1Title": "Suhbatlarni yuklang",
-    "step1Description": "Mijozlar bilan suhbat yozuvlarini yuklang",
-    "step2Title": "Tahlillarni oling",
-    "step2Description": "Qimmatli ma'lumotlar va tavsiyalar oling",
-    "step3Title": "Ko'nikmalarni yaxshilang",
-    "step3Description": "Savdo ko'nikmalaringizni yaxshilang",
-    "getStarted": "Boshlash",
-    "skip": "O'tkazib yuborish"
-  },
-  "modules": {
-    "priceObjections": {
-      "title": "Narx qarshiliklarini boshqarish",
-      "level": "O'rta",
-      "description": "Mijozlarning narx qarshiliklarini samarali boshqarishni o'rganing."
-    },
-    "buildTrust": {
-      "title": "Ishonch qurish",
-      "level": "Boshlang'ich",
-      "description": "Mijoz bilan muloqotning dastlabki daqiqalarida ishonch qozonish san'atini o'zlashtiribng."
-    },
-    "crossSell": {
-      "title": "Qo'shimcha sotuv",
-      "level": "Ilg'or",
-      "description": "O'rtacha savdo miqdorini oshirish texnikalarini o'rganing."
-    },
-    "closing": {
-      "title": "Bitimni yakunlash",
-      "level": "Ilg'or",
-      "description": "Muvaffaqiyatli bitimni yakunlash uchun psixologik yondashuvlarni o'rganing."
-    },
-    "valueComm": {
-      "title": "Qiymat tushuntirish",
-      "level": "O'rta",
-      "description": "Shunchaki xususiyatlar emas, balki qiymatni sotishni o'rganing."
-    },
-    "customerSignals": {
-      "title": "Mijoz signallarini tushunish",
-      "level": "O'rta",
-      "description": "Mijozlarning so'zli va so'zsiz signallarini aniqlashni o'rganing."
-    }
-  }
-}
+          "content": "Narx qarshiliklari savdo jarayonida tabiiy hisoblanadi va har doim ham bitimni rad etish emas, balki ko'pincha mahsulot/xizmat haqida qo'shimcha ma'lumot olish usuli bo'lishi mumkin.

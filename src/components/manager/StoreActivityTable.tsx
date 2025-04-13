@@ -32,7 +32,9 @@ const mockStores = [
 const StatusBadge = ({ status }: { status: string }) => {
   const { t } = useTranslation();
   
-  let color, statusText;
+  let color = '';
+  let statusText = '';
+  
   switch (status) {
     case 'good':
       color = 'bg-green-400';

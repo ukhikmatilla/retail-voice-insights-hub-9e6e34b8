@@ -20,7 +20,7 @@ interface UploadConversationFormProps {
 
 export const UploadConversationForm: React.FC<UploadConversationFormProps> = ({ userId }) => {
   const { t } = useTranslation();
-  const [isUploading, setIsUploading] = React.useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [selectedStore, setSelectedStore] = useState<string>("");
   
   const handleSubmit = (e: React.FormEvent) => {

@@ -151,7 +151,7 @@ export const TeamProfileDrawer: React.FC<TeamProfileDrawerProps> = ({
                     onClick={() => setSelectedTranscriptId(conversation.id)}
                   >
                     <FileText className="h-4 w-4" />
-                    <span className="sr-only">{t('calls.table.transcript')}</span>
+                    <span className="sr-only">{t('team.transcript')}</span>
                   </Button>
                   <Button 
                     variant="ghost" 
@@ -253,7 +253,7 @@ export const TeamProfileDrawer: React.FC<TeamProfileDrawerProps> = ({
     </div>
   );
 
-  // Define tabs in array for easier management
+  // Define tabs configuration
   const tabs = [
     { id: 'info', label: t('dashboard.overview'), icon: <User className="h-4 w-4" />, content: renderGeneralInfo(memberInfo) },
     { id: 'conversations', label: t('team.conversations'), icon: <Headphones className="h-4 w-4" />, content: renderConversations() },
@@ -264,7 +264,7 @@ export const TeamProfileDrawer: React.FC<TeamProfileDrawerProps> = ({
   ];
 
   return (
-    <Sheet open={isOpen} onOpenChange={() => onClose()}>
+    <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <SheetContent className="sm:max-w-md md:max-w-lg">
         <SheetHeader>
           <SheetTitle>{t('team.viewProfile')}</SheetTitle>

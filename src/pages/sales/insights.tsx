@@ -1,7 +1,6 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { 
   BarChart3,
   Calendar,
@@ -15,24 +14,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-import { ChartContainer } from '@/components/ui/chart';
-import { 
-  BarChart, 
-  Bar, 
-  XAxis, 
-  YAxis, 
-  Tooltip, 
-  ResponsiveContainer,
-  LineChart,
-  Line,
-  CartesianGrid,
-  Legend
-} from 'recharts';
 import StatCard from '@/components/StatCard';
 import InsightCard from '@/components/InsightCard';
 import { expandableInsightsMock } from '@/data/insightsMockData';
 import StrengthsWeaknessesCard from '@/components/insights/StrengthsWeaknessesCard';
 import WeeklyFocusCard from '@/components/insights/WeeklyFocusCard';
+import InsightTypeChart from '@/components/insights/InsightTypeChart';
 
 // Mock data for insights charts and strengths/weaknesses
 const insightTypeData = [
@@ -92,11 +79,33 @@ const aiRecommendationsMock = [
 const SalesInsights = () => {
   const { t } = useTranslation();
   const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [dateRange, setDateRange] = useState('30days');
   const [insightType, setInsightType] = useState('all');
   const [skillFilter, setSkillFilter] = useState('all');
   const [activeTab, setActiveTab] = useState('summary');
-  const [timelineFilter, setTimelineFilter] = useState('30days'); // New filter for timeline
+  const [timelineFilter, setTimelineFilter] = useState('30days'); // Filter for timeline
+  
+  // Initialize state based on URL parameters
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    const type = searchParams.get('insightType');
+    
+    if (tab && ['summary', 'insights', 'recommendations'].includes(tab)) {
+      setActiveTab(tab);
+    }
+    
+    if (type) {
+      setInsightType(type);
+    }
+  }, [searchParams]);
+
+  // Update URL when tab changes
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    searchParams.set('tab', value);
+    setSearchParams(searchParams);
+  };
   
   // Filter insights based on selected filters
   const filteredInsights = expandableInsightsMock.filter(insight => {
@@ -164,7 +173,7 @@ const SalesInsights = () => {
         </div>
         
         {/* Tabs Navigation */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-6">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="mt-6">
           <TabsList className="grid w-full md:w-auto grid-cols-3 mb-6">
             <TabsTrigger value="summary">{t('insights.tabs.summary')}</TabsTrigger>
             <TabsTrigger value="insights">{t('insights.tabs.insights')}</TabsTrigger>
@@ -173,7 +182,7 @@ const SalesInsights = () => {
           
           {/* Summary Tab */}
           <TabsContent value="summary">
-            {/* Stat Cards - Updated with tooltip and route props */}
+            {/* Stat Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <StatCard 
                 title={t('insights.summary.totalInsights')} 
@@ -209,29 +218,10 @@ const SalesInsights = () => {
               />
             </div>
             
-            {/* Charts */}
+            {/* Charts - Updated with new InsightTypeChart */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              {/* Insight Types Chart */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>{t('insights.charts.insightTypes')}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="h-80">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={insightTypeData}>
-                        <XAxis dataKey="name" tickFormatter={(value) => t(`insight.type.${value}`)} />
-                        <YAxis />
-                        <Tooltip 
-                          formatter={(value, name) => [value, t(`insight.type.${name}`)]}
-                          labelFormatter={(label) => t(`insight.type.${label}`)}
-                        />
-                        <Bar dataKey="value" fill="#8884d8" />
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </CardContent>
-              </Card>
+              {/* Insight Types Chart - Now using the new component */}
+              <InsightTypeChart data={insightTypeData} />
               
               {/* Skills Progress Chart */}
               <Card>

@@ -246,7 +246,16 @@
       },
       "fromLastPeriod": "oldingi davrdan",
       "clickForDetails": "Batafsil ko'rish uchun bosing",
-      "viewDetails": "Batafsil ko'rish"
+      "viewDetails": "Batafsil ko'rish",
+      "insightCount": "ta tahlil"
+    },
+    "chartExplanation": "Bu diagramma sizning so'nggi suhbatlaringizdagi tahlillar turlarini ko'rsatadi. Batafsil ma'lumot olish uchun ustun yoki belgiga bosing.",
+    "shortLabels": {
+      "improvement": "Yaxsh.",
+      "opportunity": "Imkon.",
+      "urgent": "Muhim",
+      "behavior": "Xulq",
+      "custom": "Maxs."
     }
   },
   "training": {

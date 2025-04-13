@@ -246,7 +246,16 @@
       },
       "fromLastPeriod": "от предыдущего периода",
       "clickForDetails": "Нажмите для детализации",
-      "viewDetails": "Подробнее"
+      "viewDetails": "Подробнее",
+      "insightCount": "инсайтов"
+    },
+    "chartExplanation": "Эта диаграмма показывает типы инсайтов из ваших недавних разговоров. Нажмите на столбец или метку для подробной информации.",
+    "shortLabels": {
+      "improvement": "Улучш.",
+      "opportunity": "Возмож.",
+      "urgent": "Срочно",
+      "behavior": "Повед.",
+      "custom": "Спец."
     }
   },
   "training": {

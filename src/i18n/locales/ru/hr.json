@@ -1,30 +1,30 @@
 
 {
   "dashboard": {
-    "title": "HR Обзор",
-    "dashboardDescription": "Общая статистика сотрудников и обучения",
-    "personnel": "Сотрудники",
-    "personnelDescription": "Управление персоналом и ролями",
-    "analysis": "Аналитика",
-    "analysisDescription": "Аналитика активности персонала и текучести",
+    "title": "Обзор HR",
+    "dashboardDescription": "Статистика персонала и тренингов",
+    "personnel": "Персонал",
+    "personnelDescription": "Управление сотрудниками и ролями",
+    "analysis": "Анализ",
+    "analysisDescription": "Анализ активности сотрудников и статистики увольнений",
     "trainingManagement": "Управление обучением",
-    "trainingManagementDescription": "Прогресс обучения и назначение модулей",
+    "trainingManagementDescription": "Процесс обучения и назначение модулей",
     "workforceOverview": "Обзор персонала",
     "stats": {
       "personnelCount": "Всего сотрудников",
       "activeEmployees": "Активные сотрудники",
       "newThisMonth": "Принято в этом месяце",
       "terminationsThisMonth": "Уволено в этом месяце",
-      "trainingProgress": "Прогресс по обучению",
+      "trainingProgress": "Прогресс обучения",
       "adaptationLevel": "Уровень адаптации",
-      "requiredTraining": "Требуется обучение",
-      "averageTenure": "Средний стаж",
+      "requiredTraining": "Необходимые тренинги",
+      "averageTenure": "Средний стаж работы",
       "years": "лет",
-      "trainingDistribution": "Распределение обучения"
+      "trainingDistribution": "Распределение тренингов"
     },
-    "turnoverTrend": "Текучесть по месяцам",
+    "turnoverTrend": "Ежемесячная текучесть",
     "departmentBreakdown": "Распределение по отделам",
-    "recentHires": "Недавно принятые",
+    "recentHires": "Недавно нанятые",
     "attentionRequired": "Требуют внимания",
     "aiInsights": "AI-аналитика",
     "hiredOn": "Дата приема",
@@ -39,14 +39,16 @@
       "medium": "Средний приоритет",
       "low": "Низкий приоритет"
     },
-    "actions": {
+    "action": {
       "addEmployee": "Добавить сотрудника",
-      "assignTraining": "Назначить обучение",
+      "assignTraining": "Назначить тренинг",
       "exportReport": "Экспорт отчета",
       "message": "Отправить сообщение",
-      "assignCoach": "Назначить наставника",
-      "viewDetails": "Подробнее",
-      "takeAction": "Принять меры"
+      "assignCoach": "Назначить коуча",
+      "viewDetails": "Посмотреть детали",
+      "takeAction": "Принять меры",
+      "filters": "Фильтры",
+      "searchEmployee": "Поиск сотрудника"
     },
     "tabs": {
       "charts": "Графики",
@@ -58,8 +60,8 @@
       "terminations": "Уволено",
       "employeeCount": "Количество сотрудников"
     },
-    "aiInsight1": "10 сотрудников регулярно перебивают клиента во время разговора",
+    "aiInsight1": "10 сотрудников часто перебивают клиентов во время разговора",
     "aiInsight2": "5 новых сотрудников не используют стандартное приветствие",
-    "aiInsight3": "У 15 сотрудников недостаточно знаний для ответа на запросы клиентов"
+    "aiInsight3": "15 сотрудников не обладают достаточными знаниями для ответа на запросы клиентов"
   }
 }

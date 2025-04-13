@@ -39,7 +39,7 @@
       "medium": "O'rta muhimlik",
       "low": "Past muhimlik"
     },
-    "actions": {
+    "action": {
       "addEmployee": "Yangi xodim qo'shish",
       "assignTraining": "Trening biriktirish",
       "exportReport": "Hisobotni yuklab olish",

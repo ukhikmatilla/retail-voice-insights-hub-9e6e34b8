@@ -17,6 +17,9 @@ import uzStoresTranslation from './locales/uz/stores.json';
 import uzTemplates from './locales/uz/templates.json';
 import uzOnboarding from './locales/uz/onboarding.json';
 import uzAuth from './locales/uz/auth.json';
+import uzInsight from './locales/uz/insight.json';
+import uzManager from './locales/uz/manager.json';
+import uzCoaching from './locales/uz/coaching.json';
 
 // Russian translations
 import ruCommon from './locales/ru/common.json';
@@ -54,6 +57,9 @@ const mergedUzTranslations = {
   ...uzLanguage,
   ...uzStoresTranslation,
   ...uzTemplates,
+  ...uzInsight,
+  ...uzManager,
+  ...uzCoaching,
   onboarding: uzOnboarding,
   auth: uzAuth,
   pagination: {

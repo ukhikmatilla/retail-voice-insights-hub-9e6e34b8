@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { StoreTable } from '@/components/stores/StoreTable';
 import { StoreFormModal } from '@/components/stores/StoreFormModal';
 import { AssignSellerModal } from '@/components/stores/AssignSellerModal';
-import { Store } from '@/types/stores';
+import { Store, StoreFormData } from '@/types/stores';
 
 // Mock data for stores
 const mockStores: Store[] = [
@@ -54,22 +54,27 @@ const ManagerStoresPage = () => {
   const [isAssignSellerModalOpen, setIsAssignSellerModalOpen] = useState(false);
   const [selectedStoreId, setSelectedStoreId] = useState<string | null>(null);
   
-  const handleAddStore = (newStore: Omit<Store, 'id' | 'sellersCount' | 'lastUpdated' | 'score'>) => {
+  const handleAddStore = (newStore: StoreFormData) => {
     const store: Store = {
       id: `store-${Date.now()}`,
+      name: newStore.name,
+      location: newStore.location,
       sellersCount: 0,
       lastUpdated: new Date(),
       score: 0,
-      ...newStore
     };
     
     setStores([...stores, store]);
     setIsAddStoreModalOpen(false);
   };
   
-  const handleEditStore = (updatedStore: Partial<Store> & { id: string }) => {
+  const handleEditStore = (updatedStore: StoreFormData & { id: string }) => {
     setStores(stores.map(store => 
-      store.id === updatedStore.id ? { ...store, ...updatedStore } : store
+      store.id === updatedStore.id ? { 
+        ...store, 
+        name: updatedStore.name,
+        location: updatedStore.location 
+      } : store
     ));
     setIsEditStoreModalOpen(false);
     setSelectedStoreId(null);

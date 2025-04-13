@@ -1,28 +1,27 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import {
   Dialog,
   DialogContent,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogFooter,
 } from '@/components/ui/dialog';
 import {
   Drawer,
   DrawerContent,
+  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerFooter,
 } from '@/components/ui/drawer';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { useMobile } from '@/hooks/use-mobile';
+import { Input } from '@/components/ui/input';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { Store, StoreFormData } from '@/types/stores';
 
 interface StoreFormModalProps {
@@ -33,6 +32,11 @@ interface StoreFormModalProps {
   initialData?: Store;
 }
 
+const formSchema = z.object({
+  name: z.string().min(1, { message: 'validation.required' }),
+  location: z.string().optional(),
+});
+
 export const StoreFormModal: React.FC<StoreFormModalProps> = ({
   isOpen,
   onClose,
@@ -41,13 +45,8 @@ export const StoreFormModal: React.FC<StoreFormModalProps> = ({
   initialData,
 }) => {
   const { t } = useTranslation();
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
   
-  const formSchema = z.object({
-    name: z.string().min(1, t('validation.required')),
-    location: z.string().optional(),
-  });
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -56,59 +55,19 @@ export const StoreFormModal: React.FC<StoreFormModalProps> = ({
     },
   });
   
-  const handleSubmit = (data: z.infer<typeof formSchema>) => {
+  const handleSubmit = (values: z.infer<typeof formSchema>) => {
     if (mode === 'edit' && initialData) {
-      onSubmit({ ...data, id: initialData.id });
+      onSubmit({
+        ...values,
+        id: initialData.id,
+      });
     } else {
-      onSubmit(data);
+      onSubmit(values);
     }
     form.reset();
   };
-
-  const title = mode === 'add' ? t('stores.add') : t('stores.edit');
   
-  const FormContent = (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>{t('stores.name')}</FormLabel>
-              <FormControl>
-                <Input placeholder={t('stores.name')} {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        
-        <FormField
-          control={form.control}
-          name="location"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>{t('stores.location')}</FormLabel>
-              <FormControl>
-                <Input placeholder={t('stores.location')} {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        
-        <div className="flex justify-end gap-2">
-          <Button variant="outline" type="button" onClick={onClose}>
-            {t('actions.cancel')}
-          </Button>
-          <Button type="submit">
-            {mode === 'add' ? t('actions.create') : t('actions.save')}
-          </Button>
-        </div>
-      </form>
-    </Form>
-  );
+  const title = mode === 'add' ? t('stores.add') : t('stores.edit');
   
   if (isMobile) {
     return (
@@ -117,10 +76,44 @@ export const StoreFormModal: React.FC<StoreFormModalProps> = ({
           <DrawerHeader>
             <DrawerTitle>{title}</DrawerTitle>
           </DrawerHeader>
-          <div className="px-4">
-            {FormContent}
-          </div>
-          <DrawerFooter />
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 px-4">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('stores.name')}</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="location"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('stores.location')}</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <DrawerFooter className="px-0">
+                <Button type="submit">
+                  {mode === 'add' ? t('actions.create') : t('actions.save')}
+                </Button>
+                <Button type="button" variant="outline" onClick={onClose}>
+                  {t('actions.cancel')}
+                </Button>
+              </DrawerFooter>
+            </form>
+          </Form>
         </DrawerContent>
       </Drawer>
     );
@@ -132,8 +125,44 @@ export const StoreFormModal: React.FC<StoreFormModalProps> = ({
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
-        {FormContent}
-        <DialogFooter />
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('stores.name')}</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="location"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('stores.location')}</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <DialogFooter>
+              <Button type="button" variant="outline" onClick={onClose}>
+                {t('actions.cancel')}
+              </Button>
+              <Button type="submit">
+                {mode === 'add' ? t('actions.create') : t('actions.save')}
+              </Button>
+            </DialogFooter>
+          </form>
+        </Form>
       </DialogContent>
     </Dialog>
   );

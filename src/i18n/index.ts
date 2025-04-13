@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -36,6 +35,7 @@ import ruSales from './locales/ru/sales.json';
 import ruStoresTranslation from './locales/ru/stores.json';
 import ruTemplates from './locales/ru/templates.json';
 
+// Add onboarding translations
 // Merge translations
 const mergedUzTranslations = {
   ...uzCommon,
@@ -49,7 +49,13 @@ const mergedUzTranslations = {
   ...uzButton,
   ...uzLanguage,
   ...uzStoresTranslation,
-  ...uzTemplates
+  ...uzTemplates,
+  onboarding: require('./locales/uz/onboarding.json'),
+  auth: require('./locales/uz/auth.json'),
+  pagination: {
+    previous: "Oldingi",
+    next: "Keyingi"
+  }
 };
 
 const mergedRuTranslations = {
@@ -70,7 +76,13 @@ const mergedRuTranslations = {
   ...ruCalls,
   ...ruSales,
   ...ruStoresTranslation,
-  ...ruTemplates
+  ...ruTemplates,
+  onboarding: require('./locales/ru/onboarding.json'),
+  auth: require('./locales/ru/auth.json'),
+  pagination: {
+    previous: "Предыдущая",
+    next: "Следующая"
+  }
 };
 
 const resources = {

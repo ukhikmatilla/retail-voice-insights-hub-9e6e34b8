@@ -67,7 +67,7 @@ const Onboarding = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-muted p-4">
       <div className="w-full max-w-md">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold">{t('app.name')}</h1>
+          <h1 className="text-2xl font-bold">{t('app.name', 'RetailVoiceAI')}</h1>
           {showLanguageSelector && <LanguageSelector />}
         </div>
         
@@ -102,12 +102,12 @@ const Onboarding = () => {
                 onClick={handleBack}
                 disabled={activeSlide === 0}
               >
-                {t('common.back')}
+                {t('common.back', 'Back')}
               </Button>
               <Button onClick={handleNext}>
                 {activeSlide === slides.length - 1 
-                  ? t('onboarding.getStarted.button') 
-                  : t('common.next')
+                  ? t('onboarding.getStarted.button', 'Get Started') 
+                  : t('common.next', 'Next')
                 }
               </Button>
             </div>

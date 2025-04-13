@@ -147,3 +147,54 @@ export interface TrainingStep {
   youtubeUrl?: string;
   content?: string;
 }
+
+// Additional types for manager data
+export interface SellerTrainingData {
+  id: string;
+  name: string;
+  progress: number;
+  lastActivity: string;
+}
+
+export interface StoreActivity {
+  id: string;
+  name: string;
+  performance: number;
+  trend: 'up' | 'down' | 'stable';
+  conversations: number;
+}
+
+// HR data types
+export interface HrDepartmentData {
+  name: string;
+  value: number;
+  fill: string;
+}
+
+export interface HrRecentHire {
+  id: string;
+  name: string;
+  position: string;
+  department: string;
+  hiredDate: string;
+  avatar?: string;
+}
+
+export interface TrainingCompletionData {
+  name: string;
+  completed: number;
+  assigned: number;
+}
+
+export interface ConversationInsight {
+  id: string;
+  type: string;
+  content: string;
+  date: string;
+}
+
+export interface TrainingFilter {
+  skill: string;
+  level: string;
+  status: string;
+}

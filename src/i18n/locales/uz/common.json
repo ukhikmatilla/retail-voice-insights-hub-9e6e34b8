@@ -13,5 +13,13 @@
   "trainingManagementPlaceholder": "Bu yerda o'qitishni boshqarish ma'lumotlari ko'rsatiladi.",
   "save": "Saqlash",
   "cancel": "Bekor qilish",
-  "noResults": "Ma'lumotlar topilmadi"
+  "noResults": "Ma'lumotlar topilmadi",
+  "loading": "Yuklanmoqda...",
+  "next": "Keyingi",
+  "back": "Orqaga",
+  "min": "daqiqa",
+  "close": "Yopish",
+  "app": {
+    "name": "RetailVoiceAI"
+  }
 }

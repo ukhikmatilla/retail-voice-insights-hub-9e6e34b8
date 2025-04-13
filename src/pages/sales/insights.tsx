@@ -22,7 +22,8 @@ import {
   BarChart,
   LineChart, 
   PieChart,
-  Area
+  Area,
+  Pie
 } from "recharts";
 
 // Mock data for charts
@@ -92,11 +93,11 @@ const SalesInsights = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">{t('filters.all')}</SelectItem>
-                <SelectItem value="greeting">Приветствие</SelectItem>
-                <SelectItem value="needsDiscovery">Выявление потребностей</SelectItem>
-                <SelectItem value="presentation">Презентация</SelectItem>
-                <SelectItem value="objectionHandling">Работа с возражениями</SelectItem>
-                <SelectItem value="closing">Закрытие продажи</SelectItem>
+                <SelectItem value="greeting">{t('insights.skills.greeting', 'Приветствие')}</SelectItem>
+                <SelectItem value="needsDiscovery">{t('insights.skills.needsDiscovery', 'Выявление потребностей')}</SelectItem>
+                <SelectItem value="presentation">{t('insights.skills.presentation', 'Презентация')}</SelectItem>
+                <SelectItem value="objectionHandling">{t('insights.skills.objectionHandling', 'Работа с возражениями')}</SelectItem>
+                <SelectItem value="closing">{t('insights.skills.closing', 'Закрытие продажи')}</SelectItem>
               </SelectContent>
             </Select>
 
@@ -131,7 +132,7 @@ const SalesInsights = () => {
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">247</div>
-              <p className="text-xs text-muted-foreground mt-1">+12% {t('dashboard.thisMonth')}</p>
+              <p className="text-xs text-muted-foreground mt-1">+12% {t('dashboard.thisMonth', 'в этом месяце')}</p>
             </CardContent>
           </Card>
           <Card className="col-span-1">
@@ -142,7 +143,7 @@ const SalesInsights = () => {
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">78/100</div>
-              <p className="text-xs text-green-500 mt-1">+5% {t('dashboard.since')}</p>
+              <p className="text-xs text-green-500 mt-1">+5% {t('dashboard.since', 'с')}</p>
             </CardContent>
           </Card>
           <Card className="col-span-1">
@@ -153,7 +154,7 @@ const SalesInsights = () => {
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">67%</div>
-              <p className="text-xs text-muted-foreground mt-1">{t('dashboard.thisMonth')}</p>
+              <p className="text-xs text-muted-foreground mt-1">{t('dashboard.thisMonth', 'в этом месяце')}</p>
             </CardContent>
           </Card>
           <Card className="col-span-1">
@@ -166,7 +167,7 @@ const SalesInsights = () => {
               <div className="text-xl font-bold">
                 {t('insights.skills.objectionHandling', 'Работа с возражениями')}
               </div>
-              <p className="text-xs text-red-500 mt-1">-2% {t('dashboard.thisMonth')}</p>
+              <p className="text-xs text-red-500 mt-1">-2% {t('dashboard.thisMonth', 'в этом месяце')}</p>
             </CardContent>
           </Card>
         </div>
@@ -260,7 +261,7 @@ const SalesInsights = () => {
                   className="aspect-square"
                 >
                   <PieChart>
-                    <PieChart
+                    <Pie
                       data={mockInsightsTypeData}
                       dataKey="value"
                       nameKey="name"
@@ -269,8 +270,7 @@ const SalesInsights = () => {
                       outerRadius={80}
                       fill="#8884d8"
                       label
-                    >
-                    </PieChart>
+                    />
                   </PieChart>
                 </ChartContainer>
               </div>

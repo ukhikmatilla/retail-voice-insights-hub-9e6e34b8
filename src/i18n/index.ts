@@ -12,6 +12,7 @@ import ruApp from './locales/ru/app.json';
 import ruOnboarding from './locales/ru/onboarding.json';
 import ruTraining from './locales/ru/training.json';
 import ruLanguage from './locales/ru/language.json';
+import ruInsights from './locales/ru/insights.json';
 
 // Import Uzbek translations
 import uzCommon from './locales/uz/common.json';
@@ -23,6 +24,7 @@ import uzApp from './locales/uz/app.json';
 import uzOnboarding from './locales/uz/onboarding.json';
 import uzTraining from './locales/uz/training.json';
 import uzLanguage from './locales/uz/language.json';
+import uzInsights from './locales/uz/insights.json';
 
 // Create nested resources structure for better organization
 const resources = {
@@ -35,7 +37,8 @@ const resources = {
     app: ruApp,
     onboarding: ruOnboarding,
     training: ruTraining,
-    language: ruLanguage
+    language: ruLanguage,
+    insights: ruInsights
   },
   uz: {
     common: uzCommon,
@@ -46,7 +49,8 @@ const resources = {
     app: uzApp,
     onboarding: uzOnboarding,
     training: uzTraining,
-    language: uzLanguage
+    language: uzLanguage,
+    insights: uzInsights
   }
 };
 
@@ -58,7 +62,7 @@ i18n
     lng: localStorage.getItem('language') === 'uz' ? 'uz' : 'ru',
     fallbackLng: 'ru', // Always fallback to Russian, not English
     defaultNS: 'common',
-    ns: ['common', 'auth', 'dashboard', 'ai', 'roles', 'app', 'onboarding', 'training', 'language'],
+    ns: ['common', 'auth', 'dashboard', 'ai', 'roles', 'app', 'onboarding', 'training', 'language', 'insights'],
     interpolation: {
       escapeValue: false
     },

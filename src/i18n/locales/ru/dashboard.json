@@ -6,7 +6,18 @@
   "training": "Обучение",
   "team": "Команда",
   "personnel": "Персонал",
+  "analysis": "Анализ",
   "behaviorAnalysis": "Анализ поведения",
   "trainingManagement": "Управление обучением",
-  "coaching": "Коучинг"
+  "coaching": "Коучинг",
+  "welcome": "Добро пожаловать, {{name}}!",
+  "thisMonth": "в этом месяце",
+  "since": "с",
+  "stats": {
+    "title": "Статистика",
+    "totalConversations": "Всего разговоров", 
+    "averageScore": "Средний балл",
+    "missedOpportunities": "Упущенные возможности",
+    "successRate": "Показатель успеха"
+  }
 }

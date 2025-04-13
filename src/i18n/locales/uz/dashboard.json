@@ -6,7 +6,18 @@
   "training": "Trening",
   "team": "Jamoa",
   "personnel": "Xodimlar",
+  "analysis": "Tahlil",
   "behaviorAnalysis": "Xulq-atvor tahlili",
   "trainingManagement": "Treningni boshqarish",
-  "coaching": "Kouching"
+  "coaching": "Kouching",
+  "welcome": "Xush kelibsiz, {{name}}!",
+  "thisMonth": "shu oyda",
+  "since": "dan beri",
+  "stats": {
+    "title": "Statistika",
+    "totalConversations": "Jami suhbatlar", 
+    "averageScore": "O'rtacha ball",
+    "missedOpportunities": "Boy berilgan imkoniyatlar",
+    "successRate": "Muvaffaqiyat ko'rsatkichi"
+  }
 }

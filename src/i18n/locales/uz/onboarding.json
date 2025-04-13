@@ -1,0 +1,16 @@
+
+{
+  "welcome": {
+    "title": "RetailVoiceAI ga xush kelibsiz",
+    "description": "Savdo ko'nikmalaringizni rivojlantiring va mijozlar bilan muloqotni tahlil qilish orqali yaxshilang."
+  },
+  "features": {
+    "title": "AI bilan ishlaydi",
+    "description": "Mijozlar bilan suhbatlarning chuqur va tushunarli tahlili hamda ko'nikmalarni rivojlantirish bo'yicha maqsadli tavsiyalar bilan savdo jarayoningizni yaxshilang."
+  },
+  "getStarted": {
+    "title": "Boshlash vaqti keldi",
+    "description": "Bugundan boshlab savdolaringizni va mijozlar bilan muloqotni o'zgartirishni boshlang.",
+    "button": "Boshlash"
+  }
+}

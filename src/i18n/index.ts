@@ -1,3 +1,4 @@
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -14,6 +15,8 @@ import uzButton from './locales/uz/button.json';
 import uzLanguage from './locales/uz/language.json';
 import uzStoresTranslation from './locales/uz/stores.json';
 import uzTemplates from './locales/uz/templates.json';
+import uzOnboarding from './locales/uz/onboarding.json';
+import uzAuth from './locales/uz/auth.json';
 
 // Russian translations
 import ruCommon from './locales/ru/common.json';
@@ -34,8 +37,9 @@ import ruCalls from './locales/ru/calls.json';
 import ruSales from './locales/ru/sales.json';
 import ruStoresTranslation from './locales/ru/stores.json';
 import ruTemplates from './locales/ru/templates.json';
+import ruOnboarding from './locales/ru/onboarding.json';
+import ruAuth from './locales/ru/auth.json';
 
-// Add onboarding translations
 // Merge translations
 const mergedUzTranslations = {
   ...uzCommon,
@@ -50,8 +54,8 @@ const mergedUzTranslations = {
   ...uzLanguage,
   ...uzStoresTranslation,
   ...uzTemplates,
-  onboarding: require('./locales/uz/onboarding.json'),
-  auth: require('./locales/uz/auth.json'),
+  onboarding: uzOnboarding,
+  auth: uzAuth,
   pagination: {
     previous: "Oldingi",
     next: "Keyingi"
@@ -77,8 +81,8 @@ const mergedRuTranslations = {
   ...ruSales,
   ...ruStoresTranslation,
   ...ruTemplates,
-  onboarding: require('./locales/ru/onboarding.json'),
-  auth: require('./locales/ru/auth.json'),
+  onboarding: ruOnboarding,
+  auth: ruAuth,
   pagination: {
     previous: "Предыдущая",
     next: "Следующая"

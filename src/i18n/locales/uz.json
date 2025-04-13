@@ -1,3 +1,4 @@
+
 {
   "app": {
     "title": "RetailVoiceAI",
@@ -25,7 +26,20 @@
     "terms": "Men shartlarga roziman",
     "alreadyAccount": "Allaqachon akkauntingiz bormi?",
     "login": "Kirish",
-    "createAccount": "Akkaut yaratish"
+    "createAccount": "Akkaut yaratish",
+    "welcome": {
+      "title": "RetailVoiceAI-ga xush kelibsiz!",
+      "description": "Savdo ko'nikmalaringizni rivojlantirish uchun shaxsiy AI-yordamchi"
+    },
+    "features": {
+      "title": "Ko'nikmalaringizni oshiring",
+      "description": "Suhbatlarni tahlil qilish, trenirovkalar va savdoni yaxshilash bo'yicha tavsiyalar"
+    },
+    "getStarted": {
+      "title": "Hoziroq boshlang",
+      "description": "Platformaga kirish uchun akkount yarating yoki tizimga kiring",
+      "button": "Boshlash"
+    }
   },
   "auth": {
     "login": "Kirish",
@@ -42,8 +56,31 @@
     "roles": {
       "salesperson": "Sotuvchi",
       "manager": "Menejer",
-      "hr": "HR menejer"
-    }
+      "hr": "HR menejer",
+      "select": "Rolni tanlang"
+    },
+    "requiredField": "Bu maydon to'ldirilishi shart",
+    "passwordMismatch": "Parollar mos kelmadi",
+    "name": "Ism",
+    "role": "Rol",
+    "resetLinkSent": "Parolni tiklash havolasi yuborildi",
+    "somethingWentWrong": "Nimadir noto'g'ri ketdi",
+    "forgotPasswordTitle": "Parolni tiklash",
+    "forgotPasswordSubtitle": "Email manzilingizni kiriting va biz sizga parolni tiklash havolasini yuboramiz",
+    "emailPlaceholder": "sizning@email.com",
+    "expireTooltip": "Parolni tiklash havolasi 30 daqiqadan keyin yaroqsiz bo'ladi",
+    "backToLogin": "Kirishga qaytish",
+    "previewTitle": "Email ko'rinishi",
+    "previewText": "Akkauntingiz uchun parolni tiklash so'rovi qabul qilindi. Yangi parol yaratish uchun quyidagi tugmani bosing.",
+    "previewButton": "Parolni tiklash",
+    "previewFooter": "Agar siz parolni tiklashni so'ramagan bo'lsangiz, iltimos, bu xatni e'tiborsiz qoldiring."
+  },
+  "common": {
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "back": "Orqaga",
+    "next": "Keyingi",
+    "loading": "Yuklanmoqda..."
   },
   "dashboard": {
     "overview": "Asosiy",
@@ -55,10 +92,16 @@
     "behaviorAnalysis": "Xulq-atvor tahlili",
     "trainingManagement": "Treningni boshqarish"
   },
+  "training": {
+    "recommendedFor": "Barcha darajadagi sotuvchilar uchun tavsiya etiladi"
+  },
   "roles": {
     "salesperson": "Sotuvchi",
     "manager": "Menejer",
-    "hr": "HR menejer"
+    "hr": "HR menejer",
+    "salespersonDesc": "AI yordamida savdo ko'nikmalaringizni rivojlantiring",
+    "managerDesc": "Jamoangizni tahlil qiling va natijalarni yaxshilang",
+    "hrDesc": "Xodimlar o'qitish va samaradorligini boshqaring"
   },
   "language": {
     "uz": "O'zbek",

@@ -1,0 +1,17 @@
+
+{
+  "loading": "Loading...",
+  "error": {
+    "contentNotFound": "Content not found",
+    "stepNotFound": "Step not found",
+    "loadingStats": "Error loading statistics",
+    "loadingInsights": "Error loading insights",
+    "loadingStoreActivity": "Error loading store activity",
+    "loadingTrainingData": "Error loading training data"
+  },
+  "analysisPlaceholder": "Analysis dashboard is under construction",
+  "trainingManagementPlaceholder": "Training management dashboard is under construction",
+  "min": "min",
+  "back": "Back",
+  "viewDetails": "View Details"
+}

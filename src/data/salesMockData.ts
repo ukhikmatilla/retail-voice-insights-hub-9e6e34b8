@@ -1,6 +1,5 @@
 
-import { Conversation } from "@/types/conversations";
-import { ConversationInsight } from "@/types/commonTypes";
+import { Conversation, ConversationInsight } from '@/types';
 
 const insightTypes = ["improvement", "opportunity", "improvement"];
 

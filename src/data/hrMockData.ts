@@ -112,7 +112,7 @@ export const employeesAtRisk = Array.from({ length: 30 }, () =>
 const generateRecentHire = (): HrRecentHire => {
   const seller = sellers[Math.floor(Math.random() * sellers.length)];
   return {
-    id: seller.id,
+    id: parseInt(seller.id),  // Convert string to number to match HrRecentHire type
     name: seller.name,
     position: positions[Math.floor(Math.random() * positions.length)],
     hireDate: generateRandomDate(new Date(2024, 0, 1), new Date(2024, 11, 31))

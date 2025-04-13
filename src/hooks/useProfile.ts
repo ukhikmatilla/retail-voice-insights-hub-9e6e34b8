@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useAuth } from '@/contexts/AuthContext';
+
+import { useState } from 'react';
 
 interface User {
   id: string;
@@ -8,46 +8,60 @@ interface User {
   role: string;
 }
 
-interface UseProfileResult {
-  user: User | null;
-  error: string | null;
-  loading: boolean;
-  saveProfile: (name: string) => Promise<void>;
-  logout: () => void;
-}
-
-const useProfile = (): UseProfileResult => {
-  const { user: authUser, logout: authLogout } = useAuth();
-  const [user, setUser] = useState<User | null>(null);
+export function useProfile() {
+  const [user, setUser] = useState<User | null>({
+    id: '1',
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    role: 'manager'
+  });
+  
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    setUser(authUser);
-  }, [authUser]);
-
-  const saveProfile = async (name: string): Promise<void> => {
+  
+  const saveProfile = async (name: string) => {
     setLoading(true);
     setError(null);
+    
     try {
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 500));
-      if (user) {
-        const updatedUser = { ...user, name: name.trim() };
-        localStorage.setItem('user', JSON.stringify(updatedUser));
-        setUser(updatedUser);
-      }
+      
+      setUser(prev => prev ? { ...prev, name } : null);
+      return true;
     } catch (err) {
       setError('Error updating profile');
+      return false;
     } finally {
       setLoading(false);
     }
   };
-
-  const logout = (): void => {
-    authLogout();
+  
+  const logout = async () => {
+    setLoading(true);
+    
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // In a real app, this would clear authentication state
+      // and redirect to login page
+      return true;
+    } catch (err) {
+      setError('Error logging out');
+      return false;
+    } finally {
+      setLoading(false);
+    }
   };
-
-  return { user, error, loading, saveProfile, logout };
-};
+  
+  return {
+    user,
+    loading,
+    error,
+    saveProfile,
+    logout
+  };
+}
 
 export default useProfile;

@@ -1,0 +1,83 @@
+
+{
+  "title": "Training",
+  "skills": {
+    "objections": "Objections",
+    "trustBuilding": "Trust Building",
+    "crossSelling": "Cross-Selling",
+    "closing": "Closing",
+    "valueExplanation": "Value"
+  },
+  "levels": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+  "filters": {
+    "all": "All",
+    "skill": "Skill",
+    "level": "Level",
+    "status": "Status"
+  },
+  "statuses": {
+    "recommended": "Recommended",
+    "inProgress": "In Progress",
+    "completed": "Completed",
+    "assigned": "Assigned"
+  },
+  "start": "Start",
+  "continue": "Continue",
+  "complete": "Complete",
+  "theory": "Theory",
+  "finalQuiz": "Final Quiz",
+  "question": "Question",
+  "of": "of",
+  "quizDescription": "Complete the quiz to test your knowledge",
+  "quizResult": "Quiz Result",
+  "correctOf": "correct out of",
+  "questions": "questions",
+  "quizTitle": "Knowledge Check",
+  "checkAnswer": "Check Answer",
+  "nextQuestion": "Next Question",
+  "viewAllBadges": "View All Badges",
+  "content": "Training Content",
+  "theoryTitle": "Theory & Concepts",
+  "videoDuration": "Video Duration",
+  "scriptLibrary": "Script Library",
+  "scriptLibraryDesc": "Browse scripts for various customer situations",
+  "searchScripts": "Search scripts...",
+  "noScriptsFound": "No scripts found",
+  "viewScript": "View Script",
+  "hideScript": "Hide Script",
+  "gameProgress": "Your Learning Progress",
+  "gameProgressDesc": "Track your achievements and streaks",
+  "streakDays": "day streak",
+  "today": "Today",
+  "microTitle": "Micro-Training",
+  "aiGoalTitle": "AI Training Goal",
+  "aiGoalDesc": "Focus on improving your skills in:",
+  "overdue": "Overdue",
+  "dueDate": "Due Date",
+  "badges": {
+    "dailyLearner": "Daily Learner",
+    "perfectScore": "Perfect Score",
+    "fiveInARow": "Five in a Row",
+    "scriptMaster": "Script Master",
+    "teamLeader": "Team Leader",
+    "dailyLearner": {
+      "description": "Complete training 5 days in a row"
+    },
+    "perfectScore": {
+      "description": "Complete a quiz with 100% score"
+    },
+    "fiveInARow": {
+      "description": "Answer 5 quiz questions correctly in a row"
+    },
+    "scriptMaster": {
+      "description": "Master 10 different scripts"
+    },
+    "teamLeader": {
+      "description": "Lead the team in training completion"
+    }
+  }
+}

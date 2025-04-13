@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -43,6 +42,9 @@ import HrTrainingManagement from "./pages/hr/training-management";
 
 // Profile pages
 import ProfileSettings from "./pages/profile/settings";
+
+// Add import for the training module page
+import TrainingModuleDetail from "./pages/sales/training/[slug]";
 
 // Import i18n instance
 import "./i18n/index";
@@ -141,6 +143,7 @@ const App = () => (
                   </RoleProtectedRoute>
                 } 
               />
+              
               <Route 
                 path="/sales/training" 
                 element={
@@ -148,6 +151,14 @@ const App = () => (
                     <SalesTraining />
                   </RoleProtectedRoute>
                 } 
+              />
+              <Route 
+                path="/sales/training/:slug" 
+                element={
+                  <RoleProtectedRoute allowedRoles={['salesperson']}>
+                    <TrainingModuleDetail />
+                  </RoleProtectedRoute>
+                }
               />
               <Route 
                 path="/sales/training/micro/:id" 

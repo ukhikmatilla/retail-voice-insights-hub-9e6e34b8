@@ -448,7 +448,6 @@ const HrDashboard: React.FC = () => {
                         
                       </div>
                     )}
-                      </div>
                     </div>
                   ))}
                 </div>

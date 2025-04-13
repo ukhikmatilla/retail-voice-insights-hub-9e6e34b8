@@ -17,7 +17,7 @@ import ForgotPassword from "./pages/auth/ForgotPassword";
 
 // Salesperson pages
 import SalesDashboard from "./pages/sales/dashboard";
-import SalesConversations from "./pages/sales/conversations";
+import SalesConversations from "./pages/sales/conversations"; // Keep this as it's the index page
 import ConversationDetail from "./pages/sales/conversations/[id]";
 import SalesInsights from "./pages/sales/insights";
 import TotalInsightsPage from "./pages/sales/insights/total";

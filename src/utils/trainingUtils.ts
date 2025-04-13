@@ -1,5 +1,6 @@
 
-import { format, subDays } from 'date-fns';
+import { format } from 'date-fns/esm/format';
+import { subDays } from 'date-fns/esm/subDays';
 import { Training } from '@/types';
 
 // Generate progress data for chart

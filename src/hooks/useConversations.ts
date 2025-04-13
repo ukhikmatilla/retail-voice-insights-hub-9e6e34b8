@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { format, subMonths } from 'date-fns';
+import { subMonths } from 'date-fns/esm/subMonths';
 
 interface Insight {
   id: string;

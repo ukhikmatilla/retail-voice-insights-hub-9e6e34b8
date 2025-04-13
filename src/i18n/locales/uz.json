@@ -120,6 +120,25 @@
       "good": "Yaxshi"
     }
   },
+  "team": {
+    "title": "Jamoa",
+    "viewProfile": "Foydalanuvchi profili",
+    "conversations": "Suhbatlar",
+    "uploadNew": "Suhbat yuklash",
+    "transcript": "Matnli transkript",
+    "training": "Trening",
+    "progress": "Jarayon",
+    "badges": "Yutuqlar",
+    "role": "Rol",
+    "status": {
+      "active": "Faol",
+      "pending": "Taklif yuborilgan"
+    },
+    "lastLogin": "Oxirgi kirish",
+    "delete": "O'chirish",
+    "changeRole": "Rolni o'zgartirish",
+    "addMember": "Ishtirokchini taklif qilish"
+  },
   "sotuvchi": {
     "improvement": {
       "questioning": "Sotuvchilar mijozlarning ehtiyojlarini aniqlash uchun ko'proq ochiq savollar berishlari kerak"

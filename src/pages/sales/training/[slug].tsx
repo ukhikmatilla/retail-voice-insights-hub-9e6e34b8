@@ -16,53 +16,53 @@ const mockModuleSteps = [
   {
     id: 'intro',
     title: 'Introduction',
-    type: 'theory',
-    status: 'completed',
+    type: 'theory' as const,
+    status: 'completed' as const,
     content: "Price objections are one of the most common challenges sales professionals face. They occur when a prospect expresses concern about the cost of your product or service."
   },
   {
     id: 'lesson1',
     title: 'Lesson 1: Psychology of Pricing',
-    type: 'video',
-    status: 'in_progress',
+    type: 'video' as const,
+    status: 'in_progress' as const,
     youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     content: "Understanding how customers perceive value is essential to overcoming price objections."
   },
   {
     id: 'lesson2',
     title: 'Lesson 2: What NOT to Say',
-    type: 'video',
-    status: 'locked',
+    type: 'video' as const,
+    status: 'locked' as const,
     youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     content: "Never immediately offer discounts when facing price objections. This devalues your product and reduces your profit margin unnecessarily."
   },
   {
     id: 'lesson3',
     title: 'Lesson 3: Effective Scripts',
-    type: 'video',
-    status: 'locked',
+    type: 'video' as const,
+    status: 'locked' as const,
     youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     content: "Using the right language can help redirect the customer's focus from price to value."
   },
   {
     id: 'practice',
     title: 'Practice: Role Simulation',
-    type: 'theory',
-    status: 'locked',
+    type: 'theory' as const,
+    status: 'locked' as const,
     content: "Practice these techniques with role-playing scenarios to build confidence in real-world situations."
   },
   {
     id: 'ai-advice',
     title: 'AI Recommendations',
-    type: 'theory',
-    status: 'locked',
+    type: 'theory' as const,
+    status: 'locked' as const,
     content: "Based on your responses in previous lessons, here are personalized suggestions for improvement."
   },
   {
     id: 'quiz',
     title: 'Final Test',
-    type: 'quiz',
-    status: 'locked'
+    type: 'quiz' as const,
+    status: 'locked' as const
   }
 ];
 
@@ -180,11 +180,11 @@ const TrainingModuleDetail = () => {
     // Update steps progress
     const updatedSteps = steps.map(step => {
       if (step.id === stepId) {
-        return { ...step, status: 'in_progress' };
+        return { ...step, status: 'in_progress' as const };
       } else if (step.status === 'locked') {
         return step;
       } else {
-        return { ...step, status: 'completed' };
+        return { ...step, status: 'completed' as const };
       }
     });
     
@@ -199,7 +199,7 @@ const TrainingModuleDetail = () => {
       const updatedSteps = [...steps];
       updatedSteps[currentIndex + 1] = {
         ...updatedSteps[currentIndex + 1],
-        status: 'in_progress'
+        status: 'in_progress' as const
       };
       setSteps(updatedSteps);
       setCurrentStep(nextStep.id);

@@ -5,7 +5,8 @@
       "stepNotFound": "Qadam topilmadi",
       "contentNotFound": "Kontent topilmadi"
     },
-    "coachingPlaceholder": "Bu bo'lim kelajakda kouching materiallari bilan to'ldiriladi."
+    "coachingPlaceholder": "Bu bo'lim kelajakda kouching materiallari bilan to'ldiriladi.",
+    "viewDetails": "Batafsil ko'rish"
   },
   "button": {
     "prevLesson": "Oldingi dars",
@@ -158,5 +159,18 @@
   "language": {
     "uz": "O'zbekcha",
     "ru": "Ruscha"
+  },
+  "calls": {
+    "table": {
+      "status": {
+        "done": "Tugallangan",
+        "analyzing": "Tahlil qilinmoqda",
+        "error": "Xatolik"
+      },
+      "listen": "Tinglash"
+    },
+    "upload": {
+      "button": "Yuklash"
+    }
   }
 }

@@ -5,6 +5,7 @@ import { Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { toast } from '@/hooks/use-toast';
 import { 
   Select,
   SelectContent,
@@ -30,6 +31,10 @@ export const UploadConversationForm: React.FC<UploadConversationFormProps> = ({ 
     // Simulate API call
     setTimeout(() => {
       setIsUploading(false);
+      toast({
+        title: t('calls.upload.success'),
+        description: t('calls.upload.successDescription'),
+      });
     }, 1500);
   };
   

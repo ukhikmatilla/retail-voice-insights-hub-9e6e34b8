@@ -4,27 +4,16 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { TeamMember } from '@/types';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Eye } from 'lucide-react';
 
 interface TeamMemberCardProps {
   member: TeamMember;
+  onViewProfile: (memberId: string) => void;
 }
 
-const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
+const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, onViewProfile }) => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   
-  const handleViewDetails = () => {
-    // In a real app, this would navigate to the specific team member's details
-    // For now, we'll just show a toast or alert
-    alert(`View details for ${member.name}`);
-  };
-
-  const handleAssignTraining = () => {
-    // In a real app, this would open a modal to assign training
-    alert(`Assign training to ${member.name}`);
-  };
-
   const isUnderperforming = member.averageScore < 75;
 
   return (
@@ -56,12 +45,10 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
           </div>
         </div>
       </CardContent>
-      <CardFooter className="px-6 py-3 bg-muted/50 flex justify-between">
-        <Button variant="outline" size="sm" onClick={handleViewDetails}>
-          {t('common.viewDetails')}
-        </Button>
-        <Button variant="secondary" size="sm" onClick={handleAssignTraining}>
-          {t('common.assignTraining')}
+      <CardFooter className="px-6 py-3 bg-muted/50 flex justify-end">
+        <Button variant="outline" size="sm" onClick={() => onViewProfile(member.id)}>
+          <Eye className="mr-2 h-4 w-4" />
+          {t('team.viewProfile')}
         </Button>
       </CardFooter>
     </Card>

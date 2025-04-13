@@ -54,6 +54,18 @@ export const TeamTable: React.FC<TeamTableProps> = ({ members, onViewProfile }) 
                     <span>{member.lastLogin}</span>
                   </div>
                 )}
+                {member.averageScore !== undefined && (
+                  <div className="flex justify-between mt-2">
+                    <span className="text-muted-foreground">{t('dashboard.stats.avgScore')}:</span>
+                    <span className={`font-medium ${
+                      member.averageScore >= 80 ? 'text-green-600' :
+                      member.averageScore >= 50 ? 'text-amber-600' : 
+                      'text-red-600'
+                    }`}>
+                      {member.averageScore}
+                    </span>
+                  </div>
+                )}
                 <div className="mt-2">
                   <Button 
                     variant="outline" 
@@ -82,6 +94,7 @@ export const TeamTable: React.FC<TeamTableProps> = ({ members, onViewProfile }) 
             <TableHead>{t('team.role')}</TableHead>
             <TableHead>{t('team.status')}</TableHead>
             <TableHead>{t('team.lastLogin')}</TableHead>
+            <TableHead>{t('dashboard.stats.avgScore')}</TableHead>
             <TableHead className="text-right">{t('dashboard.actions')}</TableHead>
           </TableRow>
         </TableHeader>
@@ -113,6 +126,17 @@ export const TeamTable: React.FC<TeamTableProps> = ({ members, onViewProfile }) 
               </TableCell>
               <TableCell>
                 {member.lastLogin || '-'}
+              </TableCell>
+              <TableCell>
+                {member.averageScore !== undefined ? (
+                  <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                    member.averageScore >= 80 ? 'bg-green-100 text-green-800' :
+                    member.averageScore >= 50 ? 'bg-yellow-100 text-yellow-800' :
+                    member.averageScore > 0 ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800'
+                  }`}>
+                    {member.averageScore}
+                  </span>
+                ) : '-'}
               </TableCell>
               <TableCell className="text-right">
                 <Button 

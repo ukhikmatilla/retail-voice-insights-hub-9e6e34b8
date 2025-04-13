@@ -172,6 +172,25 @@
     "strengthsAndWeaknesses": "Kuchli va zaif tomonlar",
     "strengths": "Kuchli tomonlar",
     "weaknesses": "Zaif tomonlar",
+    "hide": "Yashirish",
+    "weeklySkill": "Haftalik ko'nikma",
+    "weeklySkillTooltip": "AI suhbat tahlillaringiz asosida e'tibor qaratish kerak bo'lgan sohasini aniqlaydi",
+    "weeklySkillDescription": "Bu ko'nikmani rivojlantirish orqali savdo samaradorligingizni oshirishingiz mumkin",
+    "types": {
+      "improvement": {
+        "example": "Ko'proq ochiq savollar bering va sotish strategiyasini mijoz ehtiyojlariga qarab moslashtiring"
+      }
+    },
+    "frequentIssue": "Tez-tez uchraydigan muammo",
+    "startTraining": "O'quvni boshlash",
+    "priority": {
+      "high": "Yuqori",
+      "medium": "O'rta"
+    },
+    "viewTrainingModule": "O'quv modulini ko'rish",
+    "insightsList": "Tahlillar ro'yxati",
+    "insightsDescription": "Savdo ko'nikmalaringiz bo'yicha topilgan tahlillar",
+    "viewConversation": "Suhbatni ko'rish",
     "filters": {
       "dateRange": "Sana oralig'i",
       "last7Days": "Oxirgi 7 kun",
@@ -198,27 +217,6 @@
     },
     "skillAnalysis": "Ko'nikmalar tahlili",
     "aiAdvice": "AI maslahatlar",
-    "insightsList": "Tahlillar ro'yxati",
-    "insightsDescription": "Savdo ko'nikmalaringiz bo'yicha topilgan tahlillar",
-    "viewConversation": "Suhbatni ko'rish",
-    "hide": "Yashirish",
-    "weeklySkill": "Haftalik ko'nikma",
-    "weeklySkillTooltip": "AI suhbat tahlillaringiz asosida e'tibor qaratish kerak bo'lgan sohasini aniqlaydi",
-    "weeklySkillDescription": "Bu ko'nikmani rivojlantirish orqali savdo samaradorligingizni oshirishingiz mumkin",
-    "types": {
-      "improvement": {
-        "example": "Ko'proq ochiq savollar bering va sotish strategiyasini mijoz ehtiyojlariga qarab moslashtiring"
-      }
-    },
-    "frequentIssue": "Tez-tez uchraydigan muammo",
-    "startTraining": "O'quvni boshlash",
-    "priority": {
-      "high": "Yuqori",
-      "medium": "O'rta"
-    },
-    "viewTrainingModule": "O'quv modulini ko'rish",
-    "recommendationsList": "Tavsiyalar ro'yxati",
-    "recommendationsDescription": "Savdo ko'nikmalaringizni yaxshilash bo'yicha AI tavsiylari",
     "score": {
       "title": "Ball tahlili",
       "description": "Ball ko'rsatkichingizning vaqt davomida o'zgarishi",

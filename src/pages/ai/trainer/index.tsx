@@ -73,29 +73,29 @@ const AiTrainerPage = () => {
         {
           type: 'missed',
           title: 'Value proposition',
-          description: 'You missed the opportunity to highlight the long-term value of the product.'
+          description: "You missed the opportunity to highlight the long-term value of the product."
         },
         {
           type: 'weak',
           title: 'Price justification',
-          description: 'Your price justification wasn't supported by specific benefits.'
+          description: "Your price justification wasn't supported by specific benefits."
         },
         {
           type: 'tip',
           title: 'Focus on ROI',
-          description: 'Try focusing on return on investment rather than upfront cost.'
+          description: "Try focusing on return on investment rather than upfront cost."
         },
       ],
       'trustBuilding': [
         {
           type: 'tip',
           title: 'Case studies',
-          description: 'Share specific success stories to build credibility.'
+          description: "Share specific success stories to build credibility."
         },
         {
           type: 'tip',
           title: 'Active listening',
-          description: 'Great job reflecting the customer's concerns back to them.'
+          description: "Great job reflecting the customer's concerns back to them."
         },
       ],
       // Add more scenarios here
@@ -109,7 +109,7 @@ const AiTrainerPage = () => {
         {
           type: 'tip',
           title: 'General improvement',
-          description: 'Try to address customer concerns more directly.'
+          description: "Try to address customer concerns more directly."
         }
       ]);
     }

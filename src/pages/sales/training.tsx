@@ -1,44 +1,16 @@
+
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
-import { 
-  LineChart, 
-  Line, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  Legend, 
-  ResponsiveContainer 
-} from 'recharts';
-import { format, subDays } from 'date-fns';
-import { 
-  BookOpen, 
-  Filter, 
-  Award, 
-  TrendingUp, 
-  MessageCircle,
-  Check,
-  Clock,
-  Lightbulb
-} from 'lucide-react';
 import RoleLayout from '@/components/RoleLayout';
-import { 
-  Card, 
-  CardContent, 
-  CardHeader, 
-  CardTitle, 
-  CardDescription 
-} from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Separator } from '@/components/ui/separator';
-import TrainingModuleCard from '@/components/TrainingModuleCard';
 import MicroTrainingCard from '@/components/MicroTrainingCard';
 import ScriptLibrary from '@/components/ScriptLibrary';
 import BadgeBoard from '@/components/BadgeBoard';
+import TrainingHeader from '@/components/training/TrainingHeader';
+import TrainingFilterPanel from '@/components/training/TrainingFilterPanel';
+import TrainingModuleList from '@/components/training/TrainingModuleList';
+import TrainingProgressChart from '@/components/training/TrainingProgressChart';
+import { generateProgressData, filterTrainingModules } from '@/utils/trainingUtils';
 import { mockTrainings, mockMicroTraining, mockScriptSnippets, mockBadges, mockStreak } from '@/data/mockData';
 
 // Mock training modules
@@ -105,155 +77,6 @@ const trainingModules = [
   }
 ];
 
-// Mock progress data for chart
-const generateProgressData = (days = 30) => {
-  const data = [];
-  const today = new Date();
-  
-  for (let i = days; i >= 0; i -= 7) {
-    const date = subDays(today, i);
-    data.push({
-      week: format(date, 'MMM d'),
-      completed: Math.floor(Math.random() * 3 + (days - i) / 7), // Increasing trend
-      inProgress: Math.floor(Math.random() * 2)
-    });
-  }
-  
-  return data;
-};
-
-const progressData = generateProgressData();
-
-// Component for AI recommendation header
-const TrainingHeader = ({ recommendedModule }) => {
-  const { t } = useTranslation();
-  
-  return (
-    <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-100">
-      <CardContent className="pt-6">
-        <div className="flex flex-col md:flex-row md:items-center gap-6">
-          <div className="rounded-full bg-indigo-100 p-3 w-12 h-12 flex items-center justify-center">
-            <Lightbulb className="h-6 w-6 text-indigo-600" />
-          </div>
-          <div className="flex-1">
-            <h3 className="text-lg font-medium text-indigo-900">{t('training.aiGoalTitle')}</h3>
-            <p className="text-sm text-indigo-700 mt-1">
-              {t('training.aiGoalDesc')} <span className="font-medium">{t(`insights.${recommendedModule.skill}`)}</span>
-            </p>
-          </div>
-          <div>
-            <Button>
-              {t('training.start')}
-            </Button>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
-
-// Component for filters
-const TrainingFilterPanel = ({ filters, onChange }) => {
-  const { t } = useTranslation();
-  
-  return (
-    <div className="space-y-4 p-4 bg-muted rounded-lg">
-      <div className="flex items-center mb-2">
-        <Filter className="h-4 w-4 mr-2 opacity-70" />
-        <span className="font-medium text-sm">{t('common.search')}</span>
-      </div>
-      
-      <div className="space-y-3">
-        <div>
-          <Select value={filters.skill} onValueChange={(value) => onChange('skill', value)}>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder={t('training.skillFilter')} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
-              <SelectItem value="trustBuilding">{t('insights.trustBuilding')}</SelectItem>
-              <SelectItem value="objections">{t('insights.objections')}</SelectItem>
-              <SelectItem value="crossSelling">{t('insights.crossSelling')}</SelectItem>
-              <SelectItem value="valueExplanation">{t('insights.valueExplanation')}</SelectItem>
-              <SelectItem value="closing">{t('insights.closing')}</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        
-        <div>
-          <Select value={filters.level} onValueChange={(value) => onChange('level', value)}>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder={t('training.levelFilter')} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
-              <SelectItem value="beginner">Beginner</SelectItem>
-              <SelectItem value="intermediate">Intermediate</SelectItem>
-              <SelectItem value="advanced">Advanced</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        
-        <div>
-          <Select value={filters.status} onValueChange={(value) => onChange('status', value)}>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder={t('training.statusFilter')} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">{t('insights.filters.all')}</SelectItem>
-              <SelectItem value="recommended">{t('training.recommended')}</SelectItem>
-              <SelectItem value="inProgress">{t('training.inProgress')}</SelectItem>
-              <SelectItem value="completed">{t('training.completed')}</SelectItem>
-              <SelectItem value="assigned">{t('training.status.assigned')}</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Component for progress chart
-const TrainingProgressChart = ({ data }) => {
-  const { t } = useTranslation();
-  
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{t('training.progressTitle', 'Your Learning Progress')}</CardTitle>
-        <CardDescription>{t('training.progressDesc', 'Track your completed and in-progress modules')}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="h-64">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="week" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Line 
-                type="monotone" 
-                dataKey="completed" 
-                stroke="#8884d8" 
-                name={t('training.completed')} 
-                strokeWidth={2}
-              />
-              <Line 
-                type="monotone" 
-                dataKey="inProgress" 
-                stroke="#82ca9d" 
-                name={t('training.inProgress')} 
-                strokeWidth={2}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
-
 const SalesTraining = () => {
   const { t } = useTranslation();
   const location = useLocation();
@@ -263,16 +86,14 @@ const SalesTraining = () => {
     status: 'all',
   });
   
+  // Progress chart data
+  const progressData = generateProgressData();
+  
   // Find recommended module for AI goal
   const recommendedModule = trainingModules.find(module => module.status === 'recommended') || trainingModules[0];
   
   // Filter modules based on selected filters
-  const filteredModules = trainingModules.filter(module => {
-    if (filters.skill !== 'all' && module.skill !== filters.skill) return false;
-    if (filters.level !== 'all' && module.level !== filters.level) return false;
-    if (filters.status !== 'all' && module.status !== filters.status) return false;
-    return true;
-  });
+  const filteredModules = filterTrainingModules(trainingModules, filters);
   
   // Handler for filter changes
   const handleFilterChange = (filterType, value) => {
@@ -305,7 +126,7 @@ const SalesTraining = () => {
                 onChange={handleFilterChange} 
               />
               
-              {/* Micro-Training of the Day - NEW */}
+              {/* Micro-Training of the Day */}
               <MicroTrainingCard microTraining={mockMicroTraining} />
             </div>
           </div>
@@ -313,22 +134,11 @@ const SalesTraining = () => {
           {/* Training Modules and other content */}
           <div className="lg:col-span-3">
             <h2 className="text-xl font-semibold mb-4">{t('sales.trainingModules')}</h2>
-            {filteredModules.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-                {filteredModules.map(module => (
-                  <TrainingModuleCard 
-                    key={module.id} 
-                    training={module}
-                  />
-                ))}
-              </div>
-            ) : (
-              <Card className="p-8 text-center mb-8">
-                <p className="text-muted-foreground">{t('sales.noTrainingModules')}</p>
-              </Card>
-            )}
             
-            {/* Script Library - NEW */}
+            {/* Training Module List */}
+            <TrainingModuleList modules={filteredModules} />
+            
+            {/* Script Library */}
             <div className="mb-8">
               <ScriptLibrary scripts={mockScriptSnippets} />
             </div>
@@ -338,7 +148,7 @@ const SalesTraining = () => {
               <TrainingProgressChart data={progressData} />
             </div>
             
-            {/* Gamification and Challenges - NEW */}
+            {/* Gamification and Challenges */}
             <div>
               <BadgeBoard badges={mockBadges} streak={mockStreak} />
             </div>

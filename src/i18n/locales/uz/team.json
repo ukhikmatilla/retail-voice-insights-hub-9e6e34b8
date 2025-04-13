@@ -16,5 +16,24 @@
   "lastLogin": "So'nggi kirish",
   "delete": "O'chirish",
   "changeRole": "Rolni o'zgartirish",
-  "addMember": "A'zo qo'shish"
+  "addMember": "A'zo qo'shish",
+  "stats": {
+    "count": "Xodimlar soni: {{count}}",
+    "avgScore": "O'rtacha ball",
+    "improvement": "Yaxshilanish sur'ati"
+  },
+  "table": {
+    "name": "Ism",
+    "role": "Rol",
+    "status": "Holat",
+    "lastLogin": "Oxirgi kirish",
+    "score": "Ballar",
+    "actions": "Harakatlar"
+  },
+  "actions": {
+    "view": "Ko'rish"
+  },
+  "filtering": "Filtr faol",
+  "filteringBy": "Filtr bo'yicha",
+  "clearFilter": "Filtrni tozalash"
 }

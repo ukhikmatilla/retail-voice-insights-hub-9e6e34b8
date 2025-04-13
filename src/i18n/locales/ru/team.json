@@ -16,5 +16,24 @@
   "lastLogin": "Последний вход",
   "delete": "Удалить",
   "changeRole": "Изменить роль",
-  "addMember": "Пригласить участника"
+  "addMember": "Пригласить участника",
+  "stats": {
+    "count": "Сотрудников: {{count}}",
+    "avgScore": "Средний балл",
+    "improvement": "Темп улучшения"
+  },
+  "table": {
+    "name": "Имя",
+    "role": "Роль",
+    "status": "Статус",
+    "lastLogin": "Последний вход",
+    "score": "Баллы",
+    "actions": "Действия"
+  },
+  "actions": {
+    "view": "Посмотреть"
+  },
+  "filtering": "Фильтр активен",
+  "filteringBy": "Фильтр по",
+  "clearFilter": "Очистить фильтр"
 }

@@ -13,12 +13,74 @@ import TrainingQuiz from '@/components/training/TrainingQuiz';
 import { mockTrainings } from '@/data/mockData';
 import { Training } from '@/types';
 
+// Sample mock data for the training module components
+const mockTheoryData = {
+  sections: [
+    {
+      title: "Understanding Price Objections",
+      content: "Price objections are one of the most common challenges sales professionals face. They occur when a prospect expresses concern about the cost of your product or service.",
+      type: "text"
+    },
+    {
+      title: "Common Mistakes",
+      content: "Never immediately offer discounts when facing price objections. This devalues your product and reduces your profit margin unnecessarily.",
+      type: "warning"
+    },
+    {
+      title: "Value-Based Approach",
+      content: "Focus on communicating the value and ROI of your solution rather than defending the price point.",
+      type: "tip"
+    },
+    {
+      title: "Practical Example",
+      content: "When a customer says 'Your product is too expensive,' respond with 'I understand price is important. May I ask what specific aspect of the pricing concerns you?' This helps uncover the real objection.",
+      type: "example"
+    }
+  ]
+};
+
+const mockVideoData = {
+  videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  duration: "10:25"
+};
+
+const mockQuizData = {
+  questions: [
+    {
+      id: "q1",
+      question: "What should you do first when facing a price objection?",
+      options: [
+        "Immediately offer a discount",
+        "Acknowledge the concern and probe deeper",
+        "Compare your price to competitors",
+        "Change the subject"
+      ],
+      correctAnswer: 1,
+      explanation: "Acknowledging the concern validates the customer's perspective, while probing deeper helps you understand their specific price objection."
+    },
+    {
+      id: "q2",
+      question: "Which approach is most effective for handling price objections?",
+      options: [
+        "Value-based selling",
+        "Price-matching",
+        "Discounting",
+        "Delaying the discussion"
+      ],
+      correctAnswer: 0,
+      explanation: "Value-based selling focuses on the benefits and ROI of your solution rather than the price itself."
+    }
+  ],
+  passingScore: 70
+};
+
 const TrainingModuleDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('theory');
   const [training, setTraining] = useState<Training | null>(null);
+  const [quizCompleted, setQuizCompleted] = useState(false);
 
   useEffect(() => {
     // Find training by slug
@@ -44,6 +106,12 @@ const TrainingModuleDetail = () => {
       document.title = t('sales.training');
     };
   }, [slug, t]);
+
+  const handleQuizComplete = (result: { score: number; completed: boolean }) => {
+    console.log("Quiz completed with score:", result.score);
+    setQuizCompleted(true);
+    // Here you would typically update the user's progress
+  };
 
   if (!training) {
     return (
@@ -99,15 +167,15 @@ const TrainingModuleDetail = () => {
           
           <Card className="p-6">
             <TabsContent value="theory">
-              <TrainingTheory trainingId={training.id} />
+              <TrainingTheory theory={mockTheoryData} />
             </TabsContent>
             
             <TabsContent value="video">
-              <TrainingVideo trainingId={training.id} />
+              <TrainingVideo videoUrl={mockVideoData.videoUrl} duration={mockVideoData.duration} />
             </TabsContent>
             
             <TabsContent value="quiz">
-              <TrainingQuiz trainingId={training.id} />
+              <TrainingQuiz quiz={mockQuizData} onComplete={handleQuizComplete} />
             </TabsContent>
           </Card>
         </Tabs>

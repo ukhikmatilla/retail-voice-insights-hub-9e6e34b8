@@ -23,6 +23,9 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
     changeLanguage(newLang);
   };
 
+  // Display the language name in the current language
+  const languageDisplay = language === 'ru' ? t('language.ru') : t('language.uz');
+
   return (
     <Button
       variant={variant}
@@ -30,7 +33,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
       onClick={toggleLanguage}
       className={`font-medium ${className}`}
     >
-      {t(`language.${language}`)}
+      {languageDisplay}
     </Button>
   );
 };

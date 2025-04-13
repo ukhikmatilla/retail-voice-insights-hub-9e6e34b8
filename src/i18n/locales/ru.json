@@ -25,7 +25,8 @@
     "error": {
       "stepNotFound": "Шаг не найден",
       "contentNotFound": "Содержание не найдено"
-    }
+    },
+    "teamOverviewPlaceholder": "Здесь будет обзор вашей команды"
   },
   "auth": {
     "login": "Вход",
@@ -81,8 +82,63 @@
       "totalConversations": "Всего разговоров",
       "averageScore": "Средний балл",
       "missedOpportunities": "Упущенные возможности",
-      "successRate": "Успешность"
-    }
+      "successRate": "Успешность",
+      "stores": "Точки",
+      "sellers": "Продавцы",
+      "conversations": "Разговоры за неделю",
+      "rating": "Средний рейтинг",
+      "active": "Активные",
+      "conversationsMonthly": "{{count}} за месяц"
+    },
+    "insights": {
+      "title": "Ошибки и возможности",
+      "mistakes": "Частые ошибки",
+      "opportunities": "Возможности роста",
+      "frequentMistake1": "Продавцы не задают уточняющие вопросы о потребностях",
+      "frequentMistake2": "Отсутствие предложения дополнительных товаров",
+      "growthOpportunity1": "Усиление навыка объяснения ценности товара",
+      "growthOpportunity2": "Потенциал для увеличения продаж аксессуаров",
+      "severity": {
+        "high": "Высокий",
+        "medium": "Средний",
+        "low": "Низкий"
+      }
+    },
+    "aiFocus": {
+      "title": "Фокус от AI",
+      "recommendation": "На этой неделе рекомендовано улучшить:",
+      "valueComm": "Коммуникация ценности",
+      "valueCommDesc": "Научите продавцов объяснять ценность, а не только характеристики продукта",
+      "viewTraining": "Перейти к обучению"
+    },
+    "activity": {
+      "title": "Активность по точкам",
+      "store": "Точка",
+      "conversations": "Разговоры",
+      "score": "Средний балл",
+      "status": "Статус",
+      "viewDetails": "Подробнее",
+      "status": {
+        "good": "Хорошо",
+        "warning": "Требует внимания",
+        "critical": "Критично",
+        "unknown": "Неизвестно"
+      }
+    },
+    "training": {
+      "title": "Обучение",
+      "modulesCompleted": "Пройдено модулей",
+      "activeSellers": "Активных продавцов",
+      "recommended": "Рекомендовано AI",
+      "viewModule": "Просмотреть модуль",
+      "recommendedModuleTitle": "Работа с возражениями",
+      "recommendedModuleDesc": "Помогает продавцам эффективно отвечать на самые распространенные возражения клиентов"
+    },
+    "criticalAttention": "Требуют срочного внимания",
+    "team": "Команда",
+    "coaching": "Коучинг",
+    "personnel": "Персонал",
+    "teamOverview": "Обзор команды"
   },
   "navigation": {
     "dashboard": "Дашборд",
@@ -95,7 +151,19 @@
     "personnel": "Персонал",
     "analysis": "Анализ",
     "trainingManagement": "Управление обучением",
-    "settings": "Настройки"
+    "settings": "Настройки",
+    "stores": "Точки",
+    "sellers": "Продавцы",
+    "calls": "Звонки",
+    "templates": "Шаблоны оценки",
+    "aiTrainer": "AI-Тренер"
+  },
+  "manager": {
+    "dashboardDescription": "Просмотр ключевых показателей, статистики и аналитической информации",
+    "teamOverview": "Обзор команды",
+    "storesOverview": "Обзор точек продаж",
+    "recentActivity": "Недавняя активность",
+    "performanceMetrics": "Показатели эффективности"
   },
   "profile": {
     "settings": "Настройки профиля",
@@ -284,7 +352,20 @@
         "description": "Показывает, как улучшились ваши навыки продаж со временем"
       },
       "fromLastPeriod": "по сравнению с предыдущим периодом",
-      "clickForDetails": "Нажмите для подробностей"
+      "clickForDetails": "Нажмите для подробностей",
+      "conversations": {
+        "title": "Всего разговоров",
+        "description": "Вы провели 23 разговора. Из них 8 хорошо структурированы."
+      },
+      "missed": {
+        "title": "Упущенные возможности",
+        "description": "12 возможностей упущены. Возможно, не было предложено апсейла."
+      },
+      "success": {
+        "title": "Успешность",
+        "description": "67% успешность. Это на 2% выше, чем на прошлой неделе."
+      },
+      "viewDetails": "Просмотреть подробности"
     },
     "shortLabels": {
       "improvement": "Улуч.",
@@ -292,6 +373,36 @@
       "urgent": "Сроч.",
       "behavior": "Повед.",
       "custom": "Кастом."
+    },
+    "pages": {
+      "conversations": {
+        "title": "Анализ разговоров",
+        "description": "Подробный анализ по всем вашим разговорам",
+        "weeklyTrend": "Еженедельная тенденция",
+        "patterns": "Ключевые паттерны",
+        "recommendations": "Рекомендации"
+      },
+      "score": {
+        "title": "Анализ баллов",
+        "description": "Анализ показателей эффективности продаж",
+        "weeklyTrend": "Еженедельная тенденция",
+        "patterns": "Ключевые паттерны",
+        "recommendations": "Рекомендации"
+      },
+      "missed": {
+        "title": "Анализ упущенных возможностей",
+        "description": "Подробный анализ упущенных возможностей",
+        "weeklyTrend": "Еженедельная тенденция",
+        "patterns": "Ключевые паттерны",
+        "recommendations": "Рекомендации"
+      },
+      "success": {
+        "title": "Анализ успешности",
+        "description": "Анализ показателей успешности продаж",
+        "weeklyTrend": "Еженедельная тенденция",
+        "patterns": "Ключевые паттерны",
+        "recommendations": "Рекомендации"
+      }
     }
   },
   "training": {

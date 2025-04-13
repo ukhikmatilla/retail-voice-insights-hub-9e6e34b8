@@ -17,8 +17,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: localStorage.getItem('language') || 'uz',
-    fallbackLng: 'uz',
+    lng: localStorage.getItem('language') || 'ru', // Default to Russian
+    fallbackLng: 'ru', // Fallback to Russian if translation missing
     interpolation: {
       escapeValue: false
     },

@@ -25,7 +25,8 @@
     "error": {
       "stepNotFound": "Qadam topilmadi",
       "contentNotFound": "Tarkib topilmadi"
-    }
+    },
+    "teamOverviewPlaceholder": "Bu yerda jamoangiz bo'yicha ma'lumot ko'rsatiladi"
   },
   "auth": {
     "login": "Kirish",
@@ -81,24 +82,63 @@
       "totalConversations": "Jami suhbatlar",
       "averageScore": "O'rtacha ball",
       "missedOpportunities": "Boy berilgan imkoniyatlar",
-      "successRate": "Muvaffaqiyat darajasi"
+      "successRate": "Muvaffaqiyat darajasi",
+      "stores": "Do'konlar",
+      "sellers": "Sotuvchilar",
+      "conversations": "Haftalik suhbatlar",
+      "rating": "O'rtacha reyting",
+      "active": "Faol", 
+      "conversationsMonthly": "Oylik {{count}} ta"
     },
-    "totalConversations": {
-      "title": "Jami suhbatlar",
-      "tooltip": "Siz 23 ta suhbat o'tkazdingiz. Ulardan 8 tasi yaxshi tuzilgan."
+    "insights": {
+      "title": "Xatolar va imkoniyatlar",
+      "mistakes": "Ko'p uchraydigan xatolar",
+      "opportunities": "Rivojlanish imkoniyatlari",
+      "frequentMistake1": "Sotuvchilar mijoz ehtiyojlari haqida aniqlashtiruvchi savollar bermayapti",
+      "frequentMistake2": "Qo'shimcha mahsulotlar taklif qilinmayapti",
+      "growthOpportunity1": "Mahsulot qiymatini tushuntirish ko'nikmasini kuchaytirish",
+      "growthOpportunity2": "Aksessuarlar sotuvi salohiyatini oshirish",
+      "severity": {
+        "high": "Yuqori",
+        "medium": "O'rta",
+        "low": "Past"
+      }
     },
-    "averageScore": {
-      "title": "O'rtacha ball",
-      "tooltip": "O'rtacha ball 3% ga oshdi. Sababi — argumentatsiya ko'nikmasi yaxshilangan."
+    "aiFocus": {
+      "title": "AI yo'nalishlari",
+      "recommendation": "Bu hafta quyidagini yaxshilash tavsiya etiladi:",
+      "valueComm": "Qiymat kommunikatsiyasi",
+      "valueCommDesc": "Sotuvchilarga mahsulotning faqat xususiyatlarini emas, balki qiymatini tushuntirishni o'rgating",
+      "viewTraining": "O'quvga o'tish"
     },
-    "missedOpportunities": {
-      "title": "Yo'qotilgan imkoniyatlar",
-      "tooltip": "12 ta imkoniyat qo'ldan boy berilgan. Apseyl taklif qilinmagan bo'lishi mumkin."
+    "activity": {
+      "title": "Do'konlar faoliyati",
+      "store": "Do'kon",
+      "conversations": "Suhbatlar",
+      "score": "O'rtacha ball",
+      "status": "Holat",
+      "viewDetails": "Batafsil",
+      "status": {
+        "good": "Yaxshi",
+        "warning": "E'tibor talab",
+        "critical": "Kritik",
+        "unknown": "Noma'lum"
+      }
     },
-    "successRate": {
-      "title": "Muvaffaqiyat darajasi",
-      "tooltip": "67% muvaffaqiyat. Bu o'tgan haftaga nisbatan 2% yuqori."
-    }
+    "training": {
+      "title": "O'quv",
+      "modulesCompleted": "Bajarilgan modullar",
+      "activeSellers": "Faol sotuvchilar",
+      "recommended": "AI tomonidan tavsiya etilgan",
+      "viewModule": "Modulni ko'rish",
+      "recommendedModuleTitle": "E'tirozlarni hal qilish",
+      "recommendedModuleDesc": "Sotuvchilarga mijozlarning eng ko'p uchraydigan e'tirozlariga samarali javob berishda yordam beradi"
+    },
+    "criticalAttention": "Shoshilinch e'tibor talab qiladi",
+    "team": "Jamoa",
+    "coaching": "Kouching",
+    "personnel": "Xodimlar",
+    "teamOverview": "Jamoa ko'rinishi"
   },
   "navigation": {
     "dashboard": "Boshqaruv paneli",
@@ -111,7 +151,19 @@
     "personnel": "Xodimlar",
     "analysis": "Tahlil",
     "trainingManagement": "O'quv boshqaruvi",
-    "settings": "Sozlamalar"
+    "settings": "Sozlamalar",
+    "stores": "Do'konlar",
+    "sellers": "Sotuvchilar",
+    "calls": "Qo'ng'iroqlar",
+    "templates": "Baholash shablonlari",
+    "aiTrainer": "AI murabbiy"
+  },
+  "manager": {
+    "dashboardDescription": "Asosiy ko'rsatkichlar, statistika va tahliliy ma'lumotlarni ko'rish",
+    "teamOverview": "Jamoa ko'rinishi",
+    "storesOverview": "Do'konlar ko'rinishi",
+    "recentActivity": "So'nggi faollik",
+    "performanceMetrics": "Samaradorlik ko'rsatkichlari"
   },
   "profile": {
     "settings": "Profil sozlamalari",
@@ -621,6 +673,134 @@
           "content": "Narx qarshiliklari savdo jarayonida tabiiy hisoblanadi va har doim ham bitimni rad etish emas, balki ko'pincha mahsulot/xizmat haqida qo'shimcha ma'lumot olish usuli bo'lishi mumkin."
         }
       }
+    }
+  },
+  "button": {
+    "startModule": "Modulni boshlash",
+    "continue": "Davom etish",
+    "viewDetails": "Batafsil",
+    "submitAnswer": "Javobni yuborish",
+    "tryAgain": "Qayta urinish",
+    "finish": "Yakunlash",
+    "startTraining": "O'quvni boshlash",
+    "viewAll": "Hammasini ko'rish",
+    "downloadTranscript": "Transkripsiyani yuklab olish",
+    "uploadConversation": "Suhbat yuklash",
+    "filterResults": "Natijalarni filtrlash",
+    "clearFilters": "Filtrlarni tozalash",
+    "saveChanges": "O'zgarishlarni saqlash",
+    "cancel": "Bekor qilish",
+    "confirm": "Tasdiqlash",
+    "viewCertificate": "Sertifikatni ko'rish",
+    "start": "Boshlash"
+  },
+  "title": {
+    "modules": "O'quv modullari",
+    "recentConversations": "Oxirgi suhbatlar",
+    "insightsSummary": "Tahlillar xulosasi",
+    "weeklyProgress": "Haftalik taraqqiyot",
+    "skillsAnalysis": "Ko'nikmalar tahlili",
+    "recommendations": "Tavsiyalar",
+    "profileSettings": "Profil sozlamalari",
+    "conversationDetails": "Suhbat tafsilotlari",
+    "training": "O'quv",
+    "insights": "Tahlillar",
+    "conversations": "Suhbatlar",
+    "scripts": "Skriptlar",
+    "dashboard": "Boshqaruv paneli"
+  },
+  "label": {
+    "aiRecommended": "AI tavsiya qilgan",
+    "completed": "Yakunlangan",
+    "inProgress": "Jarayonda",
+    "notStarted": "Boshlanmagan",
+    "dueDate": "Oxirgi muddat",
+    "priority": "Muhimlik darajasi",
+    "skillLevel": "Ko'nikma darajasi",
+    "duration": "Davomiyligi",
+    "score": "Ball",
+    "improvement": "Yaxshilash",
+    "date": "Sana",
+    "time": "Vaqt",
+    "status": "Holat",
+    "language": "Til",
+    "category": "Kategoriya",
+    "type": "Tur",
+    "success": "Muvaffaqiyatli",
+    "error": "Xato"
+  },
+  "status": {
+    "inProgress": "Jarayonda",
+    "completed": "Yakunlangan",
+    "pending": "Kutilmoqda",
+    "failed": "Muvaffaqiyatsiz",
+    "canceled": "Bekor qilingan",
+    "overdue": "Muddati o'tgan"
+  },
+  "placeholder": {
+    "search": "Qidirish...",
+    "selectDate": "Sanani tanlang",
+    "selectOption": "Variantni tanlang",
+    "enterName": "Ismni kiriting",
+    "enterEmail": "Emailni kiriting",
+    "writeComment": "Izoh yozing...",
+    "selectSkill": "Ko'nikmani tanlang",
+    "selectLevel": "Darajani tanlang",
+    "selectLanguage": "Tilni tanlang"
+  },
+  "notification": {
+    "success": "Muvaffaqiyatli bajarildi",
+    "error": "Xato yuz berdi",
+    "info": "Ma'lumot",
+    "warning": "Ogohlantirish",
+    "newMessage": "Yangi xabar",
+    "trainingAssigned": "Yangi o'quv tayinlandi",
+    "conversationAnalyzed": "Suhbat tahlil qilindi",
+    "profileUpdated": "Profil yangilandi",
+    "sessionScheduled": "Sessiya rejalashtirildi"
+  },
+  "onboarding": {
+    "welcome": "RetailVoiceAI'ga xush kelibsiz",
+    "intro": "AI bilan savdo ko'nikmalarini yaxshilash",
+    "step1Title": "Suhbatlarni yuklang",
+    "step1Description": "Mijozlar bilan suhbat yozuvlarini yuklang",
+    "step2Title": "Tahlil oling",
+    "step2Description": "Qimmatli tahlillar va tavsiyalarni oling",
+    "step3Title": "Ko'nikmalarni yaxshilang",
+    "step3Description": "Savdo ko'nikmalaringizni yaxshilang",
+    "getStarted": "Boshlash",
+    "skip": "O'tkazib yuborish"
+  },
+  "modules": {
+    "priceObjections": {
+      "title": "Narx e'tirozlari bilan ishlash",
+      "level": "O'rta",
+      "description": "Mijozlarning narx bo'yicha e'tirozlari bilan samarali ishlashni o'rganing."
+    },
+    "buildTrust": {
+      "title": "Ishonch qurish",
+      "level": "Boshlang'ich",
+      "description": "Mijoz bilan muloqotning dastlabki daqiqalarida ishonchni qozonish san'atini o'zlashtiring."
+    },
+    "crossSell": {
+      "title": "Qo'shimcha sotuv",
+      "level": "Ilg'or",
+      "description": "O'rtacha chekni oshirish texnikasini o'rganing."
+    },
+    "closing": {
+      "title": "Bitimni yakunlash",
+      "level": "Ilg'or",
+      "description": "Bitimni muvaffaqiyatli yakunlash uchun psixologik yondashuvlarni o'rganing."
+    },
+    "valueComm": {
+      "title": "Qiymat tushuntirish",
+      "level": "O'rta",
+      "description": "Faqat xususiyatlar emas, balki qiymatni sotishni o'rganing."
+    },
+    "customerSignals": {
+      "title": "Mijoz signallarini tushunish",
+      "level": "O'rta",
+      "description": "Mijozning og'zaki va og'zaki bo'lmagan signallarini aniqlay oling."
     }
   }
 }

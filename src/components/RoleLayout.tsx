@@ -15,7 +15,13 @@ import {
   UserIcon,
   LineChartIcon,
   BookOpenIcon,
-  SettingsIcon
+  SettingsIcon,
+  ShoppingBagIcon,
+  HeadphonesIcon,
+  BarChart2Icon,
+  LayersIcon,
+  BotIcon,
+  ScrollTextIcon
 } from 'lucide-react';
 
 interface NavItem {
@@ -52,6 +58,7 @@ const RoleLayout: React.FC<RoleLayoutProps> = ({ children, currentPath }) => {
     
     const basePath = rolePaths[user.role] || '/sales';
     
+    // Base items for all roles
     const baseItems: NavItem[] = [
       { 
         label: t('dashboard.overview'),
@@ -87,24 +94,75 @@ const RoleLayout: React.FC<RoleLayoutProps> = ({ children, currentPath }) => {
         ];
       case 'manager':
         return [
-          ...baseItems,
+          // Dashboard (from baseItems)
           { 
-            label: t('dashboard.team'),
-            icon: <UsersIcon className="h-5 w-5" />,
-            href: '/manager/team',
-            active: currentPath === '/manager/team'
+            label: t('navigation.dashboard'),
+            icon: <LayoutDashboardIcon className="h-5 w-5" />,
+            href: '/manager/dashboard',
+            active: currentPath === '/manager/dashboard'
           },
+          // Stores
           { 
-            label: t('dashboard.insights'),
+            label: t('navigation.stores'),
+            icon: <ShoppingBagIcon className="h-5 w-5" />,
+            href: '/manager/stores',
+            active: currentPath === '/manager/stores'
+          },
+          // Sellers
+          { 
+            label: t('navigation.sellers'),
+            icon: <UsersIcon className="h-5 w-5" />,
+            href: '/manager/sellers',
+            active: currentPath === '/manager/sellers'
+          },
+          // Calls
+          { 
+            label: t('navigation.calls'),
+            icon: <HeadphonesIcon className="h-5 w-5" />,
+            href: '/manager/calls',
+            active: currentPath === '/manager/calls'
+          },
+          // Insights
+          { 
+            label: t('navigation.insights'),
             icon: <LightbulbIcon className="h-5 w-5" />,
             href: '/manager/insights',
             active: currentPath === '/manager/insights'
           },
+          // Templates
           { 
-            label: t('dashboard.coaching'),
+            label: t('navigation.templates'),
+            icon: <LayersIcon className="h-5 w-5" />,
+            href: '/manager/templates',
+            active: currentPath === '/manager/templates'
+          },
+          // Training
+          { 
+            label: t('navigation.training'),
             icon: <GraduationCapIcon className="h-5 w-5" />,
-            href: '/manager/coaching',
-            active: currentPath === '/manager/coaching'
+            href: '/manager/training',
+            active: currentPath === '/manager/training'
+          },
+          // AI Trainer
+          { 
+            label: t('navigation.aiTrainer'),
+            icon: <BotIcon className="h-5 w-5" />,
+            href: '/ai/trainer',
+            active: currentPath === '/ai/trainer'
+          },
+          // Scripts
+          { 
+            label: t('navigation.scripts'),
+            icon: <ScrollTextIcon className="h-5 w-5" />,
+            href: '/sales/scripts',
+            active: currentPath === '/sales/scripts'
+          },
+          // Settings
+          { 
+            label: t('navigation.settings'),
+            icon: <SettingsIcon className="h-5 w-5" />,
+            href: '/manager/settings',
+            active: currentPath === '/manager/settings'
           }
         ];
       case 'hr':

@@ -29,7 +29,9 @@ i18n
     returnEmptyString: false, // Return key instead of empty string
     missingKeyHandler: (lng, ns, key) => {
       console.warn(`Missing translation key: "${key}" for language: ${lng}`);
-    }
+    },
+    returnObjects: true, // Support nested objects in translations
+    joinArrays: ' ', // How to join arrays in translations
   });
 
 // Export a function to change language that also updates localStorage

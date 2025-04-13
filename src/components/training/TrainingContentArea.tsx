@@ -31,23 +31,34 @@ const TrainingContentArea: React.FC<TrainingContentAreaProps> = ({
   if (!currentStepData) {
     console.error(`Could not find step with id: ${currentStep}`);
     console.log('Available steps:', steps);
+    
+    // Return a fallback UI when step data is missing
+    return (
+      <Card className="p-6">
+        <div className="p-6 text-center">
+          <p className="text-muted-foreground">{t('common.error.stepNotFound')}</p>
+          <Button 
+            variant="outline" 
+            onClick={handlePrevStep}
+            className="mt-4"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            {t('button.prevLesson')}
+          </Button>
+        </div>
+      </Card>
+    );
   }
   
   return (
     <Card className="p-6">
-      {currentStepData ? (
-        <TrainingModuleContent 
-          step={currentStepData}
-          theoryData={theoryData}
-          videoData={videoData}
-          quizData={quizData}
-          onComplete={handleNextStep}
-        />
-      ) : (
-        <div className="p-6 text-center">
-          <p className="text-muted-foreground">{t('common.error.stepNotFound')}</p>
-        </div>
-      )}
+      <TrainingModuleContent 
+        step={currentStepData}
+        theoryData={theoryData}
+        videoData={videoData}
+        quizData={quizData}
+        onComplete={handleNextStep}
+      />
       
       <div className="flex justify-between mt-8">
         <Button 

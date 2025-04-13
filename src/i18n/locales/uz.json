@@ -1,4 +1,3 @@
-
 {
   "app": {
     "title": "RetailVoiceAI",
@@ -413,9 +412,7 @@
     "upcoming": "Kelgusi",
     "past": "O'tgan",
     "schedule": "Yangi rejalashtirish",
-    "noSessions": "Rejalashtirilgan sessiyalar yo'q",
-    "noPastSessions": "Sessiyalar tarixi bo'sh",
-    "viewResults": "Sessiya natijalari"
+    "noSessions": "Rejalashtirilgan sessiyalar yo'q"
   },
   "hr": {
     "statistics": "Statistika",
@@ -517,7 +514,7 @@
       "tips": {
         "0": "Avval mahsulotning qiymatini ta'kidlang, keyin narxni muhokama qiling",
         "1": "Mijoz e'tirozlariga qarshi turmasdan, ularni e'tirof eting va qayta yo'naltiring",
-        "2": "Narx qarshiliklarini har doim ulkan savdo to'siqlari deb o'ylamang - ular ko'pincha qo'shimcha ma'lumot olish usuli bo'lishi mumkin",
+        "2": "Narx qarshiliklarini har doim ulkan savdo to'siqlari deb o'ylamang - ular ko'pincha qo'shimcha ma'lumot uchun so'rovlardir",
         "3": "Narx/qiymat nisbatini tushuntirish ko'pincha to'g'ridan-to'g'ri narx chegirmasidan ko'ra ta'sirliroq bo'ladi"
       },
       "steps": {
@@ -596,32 +593,8 @@
     "startModule": "Modulni boshlash",
     "continue": "Davom ettirish",
     "viewDetails": "Batafsil ko'rish",
-    "submitAnswer": "Javobni yuborish",
+    "submitAnswer": "Javob yuborish",
     "tryAgain": "Qayta urinish",
-    "finish": "Yakunlash",
-    "startTraining": "O'quvni boshlash",
-    "viewAll": "Barchasini ko'rish",
-    "downloadTranscript": "Transkripsiyani yuklab olish",
-    "uploadConversation": "Suhbatni yuklash",
-    "filterResults": "Natijalarni filtrlash",
-    "clearFilters": "Filtrlarni tozalash",
-    "saveChanges": "O'zgarishlarni saqlash",
-    "cancel": "Bekor qilish",
-    "confirm": "Tasdiqlash"
-  },
-  "title": {
-    "modules": "O'quv modullari",
-    "recentConversations": "Oxirgi suhbatlar",
-    "insightsSummary": "Tahlillar xulosasi",
-    "weeklyProgress": "Haftalik jarayon",
-    "skillsAnalysis": "Ko'nikmalar tahlili",
-    "recommendations": "Tavsiyalar",
-    "profileSettings": "Profil sozlamalari",
-    "conversationDetails": "Suhbat tafsilotlari",
-    "training": "O'quv",
-    "insights": "Tahlillar",
-    "conversations": "Suhbatlar",
-    "scripts": "Skriptlar",
-    "dashboard": "Boshqaruv paneli"
+    "finish": "Yakunlash"
   }
 }

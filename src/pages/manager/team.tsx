@@ -45,7 +45,7 @@ const ManagerTeam = () => {
         
         {selectedMemberId && (
           <TeamProfileDrawer
-            isOpen={!!selectedMemberId}
+            isOpen={Boolean(selectedMemberId)}
             onClose={handleCloseProfile}
             memberId={selectedMemberId}
           />

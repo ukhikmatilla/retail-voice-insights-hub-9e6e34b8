@@ -48,78 +48,84 @@ export const TrainingStepsProvider: React.FC<TrainingStepsProviderProps> = ({
 
   useEffect(() => {
     // Generate steps from translations
+    const getTranslatedTitle = (stepId: string): string => {
+      const key = `training_content.${moduleKey}.steps.${stepId}.title`;
+      const translated = t(key);
+      // Check if translation key exists and return a fallback if not
+      return translated !== key ? translated : `${stepId.charAt(0).toUpperCase() + stepId.slice(1)} Content`;
+    };
+
+    const getTranslatedContent = (stepId: string): string => {
+      const key = `training_content.${moduleKey}.steps.${stepId}.content`;
+      return t(key);
+    };
+
     const generatedSteps: Step[] = [
       {
         id: 'intro',
-        title: t(`training_content.${moduleKey}.steps.intro.title`),
+        title: getTranslatedTitle('intro'),
         type: 'theory',
         status: 'completed',
-        content: t(`training_content.${moduleKey}.steps.intro.content`)
+        content: getTranslatedContent('intro')
       },
       {
         id: 'lesson1',
-        title: t(`training_content.${moduleKey}.steps.lesson1.title`),
+        title: getTranslatedTitle('lesson1'),
         type: 'video',
         status: 'in_progress',
         youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        content: t(`training_content.${moduleKey}.steps.lesson1.content`)
+        content: getTranslatedContent('lesson1')
       },
       {
         id: 'lesson2',
-        title: t(`training_content.${moduleKey}.steps.lesson2.title`),
+        title: getTranslatedTitle('lesson2'),
         type: 'video',
         status: 'locked',
         youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        content: t(`training_content.${moduleKey}.steps.lesson2.content`)
+        content: getTranslatedContent('lesson2')
       },
       {
         id: 'lesson3',
-        title: t(`training_content.${moduleKey}.steps.lesson3.title`),
+        title: getTranslatedTitle('lesson3'),
         type: 'video',
         status: 'locked',
         youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        content: t(`training_content.${moduleKey}.steps.lesson3.content`)
+        content: getTranslatedContent('lesson3')
       },
       {
         id: 'practice',
-        title: t(`training_content.${moduleKey}.steps.practice.title`),
+        title: getTranslatedTitle('practice'),
         type: 'theory',
         status: 'locked',
-        content: t(`training_content.${moduleKey}.steps.practice.content`)
+        content: getTranslatedContent('practice')
       },
       {
         id: 'ai-advice',
-        title: t(`training_content.${moduleKey}.steps.aiAdvice.title`),
+        title: getTranslatedTitle('aiAdvice'),
         type: 'theory',
         status: 'locked',
-        content: t(`training_content.${moduleKey}.steps.aiAdvice.content`)
+        content: getTranslatedContent('aiAdvice')
       },
       {
         id: 'quiz',
-        title: t(`training_content.${moduleKey}.steps.quiz.title`),
+        title: getTranslatedTitle('quiz'),
         type: 'quiz',
         status: 'locked'
       }
     ];
     
-    // Add fallback titles for any steps where translation is missing
-    const fallbackSteps = generatedSteps.map(step => {
-      if (step.title === `training_content.${moduleKey}.steps.${step.id}.title`) {
-        return {
-          ...step,
-          title: `${step.id.charAt(0).toUpperCase() + step.id.slice(1)} Content`
-        };
-      }
-      return step;
-    });
-    
-    setSteps(fallbackSteps);
+    setSteps(generatedSteps);
     setIsInitialized(true);
 
-    console.log('Initialized steps:', fallbackSteps);
+    console.log('Initialized steps:', generatedSteps);
   }, [t, moduleKey]);
 
   const handleStepChange = (stepId: string) => {
+    if (!stepId) {
+      console.error('Invalid step ID provided to handleStepChange');
+      return;
+    }
+
     setCurrentStep(stepId);
     
     // Update steps progress
@@ -138,8 +144,18 @@ export const TrainingStepsProvider: React.FC<TrainingStepsProviderProps> = ({
 
   const handleNextStep = () => {
     const currentIndex = steps.findIndex(step => step.id === currentStep);
+    if (currentIndex < 0) {
+      console.error(`Current step ${currentStep} not found in steps array`);
+      return;
+    }
+    
     if (currentIndex < steps.length - 1) {
       const nextStep = steps[currentIndex + 1];
+      if (!nextStep) {
+        console.error(`Next step at index ${currentIndex + 1} is undefined`);
+        return;
+      }
+      
       // Unlock next step
       const updatedSteps = [...steps];
       updatedSteps[currentIndex + 1] = {
@@ -153,8 +169,18 @@ export const TrainingStepsProvider: React.FC<TrainingStepsProviderProps> = ({
 
   const handlePrevStep = () => {
     const currentIndex = steps.findIndex(step => step.id === currentStep);
+    if (currentIndex < 0) {
+      console.error(`Current step ${currentStep} not found in steps array`);
+      return;
+    }
+    
     if (currentIndex > 0) {
       const prevStep = steps[currentIndex - 1];
+      if (!prevStep) {
+        console.error(`Previous step at index ${currentIndex - 1} is undefined`);
+        return;
+      }
+      
       setCurrentStep(prevStep.id);
     }
   };

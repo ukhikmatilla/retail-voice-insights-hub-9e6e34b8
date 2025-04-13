@@ -24,6 +24,11 @@ i18n
     },
     react: {
       useSuspense: false // Prevents loading issues with React 18
+    },
+    returnNull: false,      // Return empty string instead of null
+    returnEmptyString: false, // Return key instead of empty string
+    missingKeyHandler: (lng, ns, key) => {
+      console.warn(`Missing translation key: "${key}" for language: ${lng}`);
     }
   });
 

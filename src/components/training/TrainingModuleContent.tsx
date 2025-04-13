@@ -82,7 +82,9 @@ const TrainingModuleContent: React.FC<TrainingModuleContentProps> = ({
         return (
           <div className="space-y-6">
             <h3 className="text-xl font-bold mb-4">{t('training.finalQuiz')}</h3>
-            <p className="text-muted-foreground mb-6">{t('training.quizDescription')}</p>
+            <p className="text-muted-foreground mb-6">{t('training_content.priceObjections.steps.quiz.intro', {
+              defaultValue: t('training.quizDescription')
+            })}</p>
             <TrainingQuiz quiz={quizData} onComplete={(result) => {
               console.log("Quiz completed with score:", result.score);
               if (result.completed) {
@@ -95,14 +97,14 @@ const TrainingModuleContent: React.FC<TrainingModuleContentProps> = ({
       default:
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-bold mb-4">{step.title}</h3>
+            <h3 className="text-xl font-bold mb-4">{step?.title || t('training.theory')}</h3>
             {step.id === 'ai-advice' ? (
               <TrainingAIHint tips={getAITips()} />
             ) : (
               <TrainingTheory theory={theoryData} />
             )}
             <div className="prose max-w-none">
-              <p>{step.content}</p>
+              <p>{step?.content || ''}</p>
             </div>
           </div>
         );
@@ -111,7 +113,7 @@ const TrainingModuleContent: React.FC<TrainingModuleContentProps> = ({
 
   return (
     <div className="animate-fade-in">
-      <h2 className="text-2xl font-bold mb-6">{step.title}</h2>
+      <h2 className="text-2xl font-bold mb-6">{step?.title || t('training.content')}</h2>
       {renderContent()}
     </div>
   );

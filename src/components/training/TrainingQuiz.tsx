@@ -129,7 +129,7 @@ const TrainingQuiz: React.FC<TrainingQuizProps> = ({ quiz, onComplete }) => {
             className="flex items-center gap-2"
           >
             <RotateCcw className="h-4 w-4" />
-            {t('training.retryQuiz')}
+            {t('button.retry')}
           </Button>
         </div>
       </div>
@@ -164,7 +164,7 @@ const TrainingQuiz: React.FC<TrainingQuizProps> = ({ quiz, onComplete }) => {
             <Button onClick={handleCheck}>{t('training.checkAnswer')}</Button>
           ) : (
             <Button onClick={handleNext} className="flex items-center gap-1">
-              {currentQuestion === quiz.questions.length - 1 ? t('training.finish') : t('training.nextQuestion')}
+              {currentQuestion === quiz.questions.length - 1 ? t('button.finish') : t('training.nextQuestion')}
               <ArrowRight className="h-4 w-4 ml-1" />
             </Button>
           )}

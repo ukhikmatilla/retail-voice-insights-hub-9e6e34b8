@@ -56,14 +56,14 @@ const TrainingContentArea: React.FC<TrainingContentAreaProps> = ({
           disabled={currentStep === 'intro'}
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
-          {t('training.previousLesson')}
+          {t('button.prevLesson')}
         </Button>
         
         <Button 
           onClick={handleNextStep}
           disabled={currentStep === 'quiz'}
         >
-          {t('training.nextLesson')}
+          {t('button.nextLesson')}
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </div>

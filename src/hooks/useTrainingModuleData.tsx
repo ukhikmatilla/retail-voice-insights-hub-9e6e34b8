@@ -18,8 +18,8 @@ export const useTrainingModuleData = (slug: string | undefined) => {
       id: '1',
       title: t('training_content.priceObjections.title'),
       description: t('training_content.priceObjections.description'),
-      skill: 'objections',
-      level: 'intermediate',
+      skill: t('training_content.priceObjections.skill', { defaultValue: 'objections' }),
+      level: t('training_content.priceObjections.level', { defaultValue: 'intermediate' }),
       status: 'recommended',
       progress: 0,
       dueDate: '2025-05-01'
@@ -106,27 +106,27 @@ export const useQuizData = () => {
       questions: [
         {
           id: "q1",
-          question: t(`training_content.${moduleKey}.quiz.question1.question`),
+          question: t(`training_content.${moduleKey}.steps.quiz.question1.question`),
           options: [
-            t(`training_content.${moduleKey}.quiz.question1.options.0`),
-            t(`training_content.${moduleKey}.quiz.question1.options.1`),
-            t(`training_content.${moduleKey}.quiz.question1.options.2`),
-            t(`training_content.${moduleKey}.quiz.question1.options.3`)
+            t(`training_content.${moduleKey}.steps.quiz.question1.options.0`),
+            t(`training_content.${moduleKey}.steps.quiz.question1.options.1`),
+            t(`training_content.${moduleKey}.steps.quiz.question1.options.2`),
+            t(`training_content.${moduleKey}.steps.quiz.question1.options.3`)
           ],
           correctAnswer: 1,
-          explanation: t(`training_content.${moduleKey}.quiz.question1.explanation`)
+          explanation: t(`training_content.${moduleKey}.steps.quiz.question1.explanation`, { defaultValue: "" })
         },
         {
           id: "q2",
-          question: t(`training_content.${moduleKey}.quiz.question2.question`),
+          question: t(`training_content.${moduleKey}.steps.quiz.question2.question`),
           options: [
-            t(`training_content.${moduleKey}.quiz.question2.options.0`),
-            t(`training_content.${moduleKey}.quiz.question2.options.1`),
-            t(`training_content.${moduleKey}.quiz.question2.options.2`),
-            t(`training_content.${moduleKey}.quiz.question2.options.3`)
+            t(`training_content.${moduleKey}.steps.quiz.question2.options.0`),
+            t(`training_content.${moduleKey}.steps.quiz.question2.options.1`),
+            t(`training_content.${moduleKey}.steps.quiz.question2.options.2`),
+            t(`training_content.${moduleKey}.steps.quiz.question2.options.3`)
           ],
           correctAnswer: 0,
-          explanation: t(`training_content.${moduleKey}.quiz.question2.explanation`)
+          explanation: t(`training_content.${moduleKey}.steps.quiz.question2.explanation`, { defaultValue: "" })
         }
       ],
       passingScore: 70

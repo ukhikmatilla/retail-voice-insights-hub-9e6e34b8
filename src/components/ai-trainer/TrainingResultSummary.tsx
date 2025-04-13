@@ -77,11 +77,14 @@ const TrainingResultSummary = ({
               {score}/{maxScore}
             </span>
           </h3>
-          <Progress
-            value={scorePercentage}
-            className="h-2"
-            indicatorClassName={getProgressColor()}
-          />
+          {/* Fix: Replace the Progress component with a custom div implementation
+              that allows us to style both the background and indicator */}
+          <div className="h-2 w-full bg-secondary rounded-full overflow-hidden">
+            <div 
+              className={`h-full ${getProgressColor()} transition-all`}
+              style={{ width: `${scorePercentage}%` }}
+            />
+          </div>
         </div>
 
         {earnedBadges.length > 0 && (

@@ -1,3 +1,4 @@
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -9,7 +10,15 @@ import ruAi from './locales/ru/ai.json';
 import ruRoles from './locales/ru/roles.json';
 
 // Import Uzbek translations
-import uzTranslation from './locales/uz.json';
+import uzCommon from './locales/uz/common.json';
+import uzAuth from './locales/uz/auth.json';
+import uzDashboard from './locales/uz/dashboard.json';
+import uzAi from './locales/uz/ai.json';
+import uzRoles from './locales/uz/roles.json';
+import uzApp from './locales/uz/app.json';
+import uzOnboarding from './locales/uz/onboarding.json';
+import uzTraining from './locales/uz/training.json';
+import uzLanguage from './locales/uz/language.json';
 
 const resources = {
   ru: {
@@ -22,7 +31,17 @@ const resources = {
     }
   },
   uz: {
-    translation: uzTranslation
+    translation: {
+      ...uzCommon,
+      ...uzAuth,
+      ...uzDashboard,
+      ...uzAi,
+      ...uzRoles,
+      app: uzApp,
+      onboarding: uzOnboarding,
+      training: uzTraining,
+      language: uzLanguage
+    }
   }
 };
 

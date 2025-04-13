@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { mockTrainings } from '@/data/mockData';
-import { Training, TrainingTheory, TheorySection, TrainingQuiz } from '@/types';
+import { Training, TrainingTheory, TheorySection, TrainingQuiz, QuizQuestion } from '@/types';
 
 export const useTrainingModuleData = (slug: string | undefined) => {
   const { t } = useTranslation();
@@ -67,6 +66,9 @@ export const useTheoryData = () => {
     const moduleKey = 'priceObjections';
     
     return {
+      id: "theory-1",
+      title: "Price Objections Theory",
+      content: "Main content of the theory",
       sections: [
         {
           title: t(`training_content.${moduleKey}.theory.section1.title`),
@@ -88,7 +90,7 @@ export const useTheoryData = () => {
           content: t(`training_content.${moduleKey}.theory.section4.content`),
           type: "example"
         }
-      ] as TheorySection[]
+      ] 
     };
   };
 
@@ -103,6 +105,11 @@ export const useQuizData = () => {
     const moduleKey = 'priceObjections';
     
     return {
+      id: "quiz-1",
+      question: "Main quiz question",
+      options: ["Option 1", "Option 2", "Option 3", "Option 4"],
+      correctAnswer: "Option 2",
+      explanation: "Explanation for the quiz",
       questions: [
         {
           id: "q1",

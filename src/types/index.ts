@@ -90,3 +90,50 @@ export interface StreakInfo {
   days: number;
   lastActivity: string;
 }
+
+// Training Module specific interfaces
+export interface TrainingModule {
+  id: string;
+  title: string;
+  description: string;
+  level: 'beginner' | 'intermediate' | 'advanced';
+  dueDate: string;
+  videoUrl: string;
+  videoDuration: string;
+  skill: string;
+  theory: TrainingTheory;
+  aiTips: string[];
+  quiz: TrainingQuiz;
+  relatedScripts: ScriptSnippet[];
+  badges: string[];
+}
+
+export interface TrainingTheory {
+  sections: TheorySection[];
+}
+
+export interface TheorySection {
+  title: string;
+  content: string;
+  type: 'text' | 'example' | 'warning' | 'tip';
+}
+
+export interface TrainingQuiz {
+  questions: QuizQuestion[];
+  passingScore: number;
+}
+
+export interface QuizQuestion {
+  id: string;
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
+}
+
+export interface TrainingResult {
+  score: number;
+  completed: boolean;
+  earnedBadges: string[];
+  feedback: string;
+}

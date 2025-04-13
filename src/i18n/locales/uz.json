@@ -1,4 +1,3 @@
-
 {
   "app": {
     "name": "RetailVoiceAI"
@@ -352,7 +351,45 @@
     "gameProgress": "O'yin yutuqlari",
     "gameProgressDesc": "Sizning yutuqlaringiz va jarayoningiz",
     "streakDays": "kun ketma-ket",
-    "viewAllBadges": "Barcha yutuqlarni ko'rish"
+    "viewAllBadges": "Barcha yutuqlarni ko'rish",
+    
+    "moduleResult": "Modul natijasi",
+    "needsImprovement": "Yaxshilash kerak",
+    "earnedBadges": "Qo'lga kiritilgan yutuqlar",
+    "backToTraining": "Treningga qaytish",
+    "retryModule": "Modulni qayta o'tish",
+    "feedbackSuccess": "Juda yaxshi ishladingiz! Siz ushbu modulni muvaffaqiyatli yakunladingiz.",
+    "feedbackImprovement": "Yaxshi urinish, lekin tavsiya etilgan ballga yeta olmadingiz. Yana bir bor urinib ko'ring.",
+    "progress": "Jarayon",
+    "watchVideo": "Videoni ko'rish",
+    "readTheory": "Nazariyani o'qish",
+    "takeQuiz": "Testni topshiring",
+    "seeResults": "Natijalarni ko'rish",
+    "relatedScripts": "Bog'liq skriptlar",
+    "continueToTheory": "Nazariyaga o'tish",
+    "continueToQuiz": "Testga o'tish",
+    "theoryTitle": "Nazariy ma'lumotlar",
+    "quizTitle": "Bilimlaringizni tekshiring",
+    "quizResult": "Test natijasi",
+    "question": "Savol",
+    "of": "dan",
+    "checkAnswer": "Javobni tekshirish",
+    "finish": "Yakunlash",
+    "nextQuestion": "Keyingi savol",
+    "correctOf": "to'g'ri javob",
+    "questions": "savoldan",
+    "retryQuiz": "Testni qayta topshirish",
+    "videoDuration": "Video davomiyligi",
+    "aiTipsTitle": "AI tavsiyalari",
+    "modulni boshlash": "Start Module",
+    "videoni tomosha qilish": "Watch Video",
+    "testni topshirish": "Take the Test",
+    "skriptni ko'rish": "View Script",
+    "qayta urinib ko'rish": "Retry",
+    "modulni yakunlash": "Finish Module",
+    "ai tavsiya qiladi": "AI recommends this",
+    "siz yutuqni qo'lga kiritdingiz": "You earned a badge!",
+    "ai tavsiyasi": "AI feedback"
   },
   "hr": {
     "analysis": "Tahlil",

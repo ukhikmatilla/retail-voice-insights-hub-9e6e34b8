@@ -1,4 +1,3 @@
-
 {
   "app": {
     "name": "RetailVoiceAI"
@@ -352,8 +351,47 @@
     "gameProgress": "Игровой прогресс",
     "gameProgressDesc": "Ваши достижения и прогресс",
     "streakDays": "дней подряд",
-    "viewAllBadges": "Посмотреть все награды"
+    "viewAllBadges": "Посмотреть все награды",
+    
+    "moduleResult": "Результат модуля",
+    "needsImprovement": "Требует улучшения",
+    "earnedBadges": "Полученные награды",
+    "backToTraining": "Назад к обучению",
+    "retryModule": "Повторить модуль",
+    "feedbackSuccess": "Отличная работа! Вы успешно завершили этот модуль.",
+    "feedbackImprovement": "Хорошая попытка, но вы не достигли рекомендуемого балла. Попробуйте еще раз.",
+    "progress": "Прогресс",
+    "watchVideo": "Смотреть видео",
+    "readTheory": "Изучить теорию",
+    "takeQuiz": "Пройти тест",
+    "seeResults": "Посмотреть результаты",
+    "relatedScripts": "Связанные скрипты",
+    "continueToTheory": "Перейти к теории",
+    "continueToQuiz": "Перейти к тесту",
+    "theoryTitle": "Теоретические материалы",
+    "quizTitle": "Проверьте свои знания",
+    "quizResult": "Результат теста",
+    "question": "Вопрос",
+    "of": "из",
+    "checkAnswer": "Проверить ответ",
+    "finish": "Завершить",
+    "nextQuestion": "Следующий вопрос",
+    "correctOf": "правильных из",
+    "questions": "вопросов",
+    "retryQuiz": "Пройти тест заново",
+    "videoDuration": "Продолжительность видео",
+    "aiTipsTitle": "Советы AI",
+    "начать модуль": "Start Module",
+    "смотреть видео": "Watch Video",
+    "пройти тест": "Take the Test",
+    "посмотреть скрипт": "View Script",
+    "повторить": "Retry",
+    "завершить модуль": "Finish Module",
+    "рекомендовано ai": "AI recommends this",
+    "вы получили бейдж": "You earned a badge!",
+    "советы от ai": "AI feedback"
   },
+  
   "hr": {
     "analysis": "Анализ",
     "analysisDescription": "Углубленный поведенческий анализ для сотрудников."

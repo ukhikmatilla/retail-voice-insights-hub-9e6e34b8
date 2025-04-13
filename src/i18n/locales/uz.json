@@ -22,7 +22,8 @@
     "conversationsPlaceholder": "Bu yerda suhbatlar ko'rsatiladi",
     "teamPlaceholder": "Bu yerda jamoa a'zolari ko'rsatiladi",
     "min": "daq",
-    "insightsPlaceholder": "Bu yerda tahlillar ko'rsatiladi"
+    "insightsPlaceholder": "Bu yerda tahlillar ko'rsatiladi",
+    "trainingPlaceholder": "Bu yerda treninglar ko'rsatiladi"
   },
   "language": {
     "uz": "O'zbekcha 🇺🇿",
@@ -119,7 +120,9 @@
     "scoreThreshold": "Ball chegarasi",
     "language": "Til",
     "insights": "Tahlillar",
-    "insightsDescription": "Suhbatlaringizning AI tahlillari va tavsiyalari."
+    "insightsDescription": "Suhbatlaringizning AI tahlillari va tavsiyalari.",
+    "training": "Treninglar",
+    "trainingDescription": "AI tahlillariga asoslangan shaxsiy o'quv modullari."
   },
   "conversation": {
     "duration": "Davomiyligi",
@@ -314,7 +317,21 @@
     "complete": "bajarildi",
     "viewCertificate": "Sertifikatni ko'rish",
     "continue": "Davom ettirish",
-    "start": "Boshlash"
+    "start": "Boshlash",
+    "aiGoalTitle": "AI haftalik maqsadi",
+    "aiGoalDesc": "Quyidagini kuchaytirish tavsiya etiladi:",
+    "skillFilter": "Ko'nikma",
+    "levelFilter": "Daraja",
+    "statusFilter": "Holat",
+    "recommended": "AI tavsiya qiladi",
+    "inProgress": "Jarayonda",
+    "completed": "Yakunlandi",
+    "progressTitle": "O'qish jarayoni",
+    "progressDesc": "Tugallangan va jarayondagi modullaringizni kuzating",
+    "badges": {
+      "title": "Yutuqlaringiz"
+    },
+    "earned": "Qo'lga kiritildi"
   },
   "hr": {
     "analysis": "Tahlil",

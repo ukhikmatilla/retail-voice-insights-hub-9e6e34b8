@@ -1,66 +1,52 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/button';
 import { TeamMember } from '@/utils/mockData/types';
 
 interface GeneralInfoTabProps {
-  member: TeamMember;
+  memberInfo: TeamMember;
 }
 
-export const GeneralInfoTab: React.FC<GeneralInfoTabProps> = ({ member }) => {
+export const GeneralInfoTab: React.FC<GeneralInfoTabProps> = ({ memberInfo }) => {
   const { t } = useTranslation();
+  
+  // Create an array of info items to render
+  const infoItems = [
+    { label: 'team.role', value: t(`roles.${memberInfo.role}`) },
+    { label: 'team.status', value: t(`team.status.${memberInfo.status}`) },
+    { label: 'team.lastLogin', value: memberInfo.lastLogin || '-' },
+    { label: 'dashboard.stats.avgScore', value: memberInfo.averageScore },
+    { label: 'dashboard.stats.totalConversations', value: memberInfo.conversationsCount },
+    { label: 'dashboard.stats.successRate', value: `${memberInfo.successRate}%` }
+  ];
+
+  if (memberInfo.store) {
+    infoItems.splice(2, 0, { label: 'stores.store', value: memberInfo.store });
+  }
 
   return (
-    <div className="space-y-4 p-1">
-      <div className="flex items-center space-x-4">
-        {member.avatar && (
-          <div className="h-16 w-16 rounded-full bg-gray-100 overflow-hidden">
-            <img src={member.avatar} alt={member.name} className="h-full w-full object-cover" />
+    <div className="space-y-6 p-1">
+      <div className="flex flex-col items-center justify-center p-4 text-center">
+        {memberInfo.avatar && (
+          <div className="h-24 w-24 rounded-full overflow-hidden mb-4">
+            <img src={memberInfo.avatar} alt={memberInfo.name} className="h-full w-full object-cover" />
           </div>
         )}
-        <div>
-          <h3 className="text-lg font-medium">{member.name}</h3>
-          <p className="text-sm text-muted-foreground">{member.email}</p>
-        </div>
+        <h3 className="text-xl font-semibold">{memberInfo.name}</h3>
+        <p className="text-muted-foreground">{memberInfo.email}</p>
       </div>
-      
-      <div className="grid gap-2">
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <p className="text-sm font-medium">{t('team.role')}</p>
-            <p className="text-sm text-muted-foreground">{t(`roles.${member.role}`)}</p>
+
+      <div className="space-y-3">
+        {infoItems.map((item, index) => (
+          <div key={index} className="flex justify-between border-b pb-2">
+            <span className="text-muted-foreground">{t(item.label)}</span>
+            <span className="font-medium">
+              {typeof item.value === 'number' && item.label.includes('Score') 
+                ? `${item.value}%` 
+                : item.value}
+            </span>
           </div>
-          <div>
-            <p className="text-sm font-medium">{t('team.status')}</p>
-            <p className={`text-sm ${member.status === 'active' ? 'text-green-600' : 'text-amber-600'}`}>
-              {t(`team.status.${member.status}`)}
-            </p>
-          </div>
-        </div>
-        
-        {member.store && (
-          <div>
-            <p className="text-sm font-medium">{t('dashboard.storeName')}</p>
-            <p className="text-sm text-muted-foreground">{member.store}</p>
-          </div>
-        )}
-        
-        {member.lastLogin && (
-          <div>
-            <p className="text-sm font-medium">{t('team.lastLogin')}</p>
-            <p className="text-sm text-muted-foreground">{member.lastLogin}</p>
-          </div>
-        )}
-      </div>
-      
-      <div className="flex flex-wrap gap-2 pt-4">
-        <Button variant="outline" size="sm">
-          {t('team.changeRole')}
-        </Button>
-        <Button variant="outline" size="sm" className="text-red-600 hover:text-red-700 hover:bg-red-50">
-          {t('team.delete')}
-        </Button>
+        ))}
       </div>
     </div>
   );
